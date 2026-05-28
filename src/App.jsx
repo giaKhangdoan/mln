@@ -182,25 +182,34 @@ const chaptersData = {
     badge: "Ứng dụng",
     chapterNum: "Chương 5",
     title: "Nhận thức Chân lý trong Kỷ nguyên số",
-    desc: "Xây dựng bộ lọc tri thức đúng đắn chống tin giả dựa trên con đường biện chứng của nhận thức.",
+    desc: "Trong bối cảnh mạng xã hội bùng nổ, việc con người xác định đúng - sai thường trải qua một quá trình giằng co giữa cảm tính bề ngoài và lý tính sâu sắc, phản ánh đúng con đường biện chứng của nhận thức: \"Từ trực quan sinh động đến tư duy trừu tượng, và từ tư duy trừu tượng đến thực tiễn\".",
     process: [
       {
         phase: "Giai đoạn 1",
-        title: "Nhận thức Cảm tính",
-        trap: "Cái bẫy của Số đông",
-        desc: "Xu hướng giật gân, lợi ích trước mắt, bài đăng triệu lượt chia sẻ. Dễ sa bẫy tâm lý bầy đàn nếu vội vàng coi hiện tượng bề ngoài là chân lý."
+        title: "Khi mới tiếp nhận thông tin",
+        trap: "Cái bẫy của \"Nhận thức cảm tính\" và Số đông",
+        realityLabel: "Thực trạng",
+        reality: "Khi mới tiếp cận một xu hướng đầu tư mang lại lợi ích ngay lập tức hoặc một tin giả được hàng triệu lượt chia sẻ, con người chủ yếu tiếp nhận thông qua cảm giác và tri giác bề ngoài (nhìn thấy số đông tung hô, nghe thấy lợi nhuận). Ở giai đoạn trực quan sinh động này, thông tin chưa được phân tích sâu, dẫn đến hiện tượng tâm lý bầy đàn và thiên kiến xác nhận.",
+        philosophyLabel: "Nhận định triết học",
+        philosophy: "Nhận thức lúc này chỉ mới phản ánh được những đặc điểm bên ngoài, rời rạc của sự vật. Nếu vội vàng đánh giá đây là chân lý chỉ vì nó \"hiển nhiên\", \"được số đông tán thành\" hay \"có lợi trước mắt\", con người đã rơi vào sai lầm của chủ nghĩa duy tâm chủ quan, lầm tưởng hiện tượng bề mặt là bản chất."
       },
       {
         phase: "Giai đoạn 2",
-        title: "Nhận thức Lý tính",
-        trap: "Tư duy phản biện",
-        desc: "Chuyển sang tư duy trừu tượng: tra cứu chéo, đối chiếu nguồn tin chính thống uy tín để gạt bỏ hiện tượng giả tạo, nhìn rõ quy luật tất yếu."
+        title: "Đánh giá lại vấn đề",
+        trap: "Vai trò của \"Nhận thức lý tính\" và Nguồn thông tin uy tín",
+        realityLabel: "Thực trạng",
+        reality: "Sau khi sự hào nhoáng ban đầu qua đi hoặc khi xuất hiện những cảnh báo rủi ro, những người có tư duy phản biện bắt đầu thu thập thêm dữ liệu từ các nguồn chính thống, chuyên gia uy tín. Họ phân tích đối chiếu, xâu chuỗi các luồng thông tin để nhìn nhận lại bản chất của sự việc (ví dụ: nhận ra bản chất của dự án là mô hình lừa đảo đa cấp Ponzi).",
+        philosophyLabel: "Nhận định triết học",
+        philosophy: "Đây là bước chuyển nhảy vọt lên giai đoạn tư duy trừu tượng. Thông qua các khái niệm, phán đoán và suy lý, óc người đã gạt bỏ những hiện tượng giả tạo, ngẫu nhiên do số đông tạo ra để phản ánh đúng những quy luật bên trong, tất yếu của sự vật. Tuy nhiên, nhận thức lý tính dù sâu sắc đến đâu vẫn chưa thể tự nó khẳng định hoàn toàn chân lý."
       },
       {
         phase: "Giai đoạn 3",
-        title: "Thực tiễn kiểm chứng",
-        trap: "Chốt chặn cuối cùng",
-        desc: "Đưa nhận định quay lại kiểm nghiệm thực tế (chạy thử, test thực tế). Thực tiễn Ponzi sụp đổ đập tan mọi ảo tưởng của nhận thức cảm tính."
+        title: "Chốt chặn cuối cùng",
+        trap: "\"Thực tiễn\" là tiêu chuẩn kiểm nghiệm chân lý",
+        realityLabel: "Vận dụng",
+        reality: "Dù đánh giá bằng nhận thức lý tính có logic và dựa trên nhiều nguồn uy tín đến đâu, bước quyết định để xác định chân lý vẫn phải là đưa những nhận định đó quay trở lại kiểm chứng bằng thực tiễn đời sống.",
+        philosophyLabel: "Kết quả",
+        philosophy: "Khi các mô hình đa cấp sập đổ, những người hùa theo số đông mất trắng tài sản; đó chính là lúc thực tiễn lên tiếng. Thực tiễn đã đập tan ảo tưởng của nhận thức cảm tính, chứng minh rằng sự ủng hộ của đám đông hay lợi ích cục bộ trước mắt tuyệt đối không thể bẻ cong được tính khách quan của chân lý."
       }
     ],
     comparison: {
@@ -329,6 +338,13 @@ export default function App() {
   // Debates Accordion state
   const [expandedDebate, setExpandedDebate] = useState(null);
 
+  // Toggle philosophy text in Chapter 5
+  const [showPhilosophy, setShowPhilosophy] = useState({});
+
+  const togglePhilosophy = (idx) => {
+    setShowPhilosophy(prev => ({ ...prev, [idx]: !prev[idx] }));
+  };
+
   // AI Chatbot state
   const [chatMessages, setChatMessages] = useState([
     { sender: 'bot', text: 'Xin chào bạn! Tôi là Trợ lý AI Triết học chuyên sâu về Lý luận Nhận thức & Chân lý của bạn. Bạn có thắc mắc gì về mối quan hệ giữa nhận thức và thực tiễn, hoặc cách lọc thông tin đúng đắn trong kỷ nguyên số theo tài liệu giáo trình không?' }
@@ -407,7 +423,10 @@ export default function App() {
       } else if (lowerText.includes('bẫy số đông') || lowerText.includes('dam dong') || lowerText.includes('đám đông')) {
         reply = "Chân lý có tính khách quan, nghĩa là nội dung phản ánh khách quan hoàn toàn độc lập với con người và loài người. Sự chấp nhận hay đồng thuận của đám đông KHÔNG phải là tiêu chuẩn đo lường chân lý. Thước đo duy nhất và khách quan của chân lý chính là Thực tiễn kiểm nghiệm!";
       } else if (lowerText.includes('kỷ nguyên số') || lowerText.includes('tin giả') || lowerText.includes('không gian mạng')) {
-        reply = "Trong kỷ nguyên số, chúng ta rất dễ sụp đổ nhận thức trước 'bẫy số đông' và 'bẫy lợi ích'. Triết học dạy ta quy trình lọc thông tin gồm 3 giai đoạn: Tiếp nhận cảm tính ban đầu (tỉnh táo trước các luồng giật gân) -> Phân tích lý tính biện chứng (so sánh chéo nguồn tin uy tín, dùng tư duy phản biện) -> Kiểm chứng qua thực tiễn (áp dụng thử, đánh giá hiệu quả hành động thực tế).";
+        reply = "Trong bối cảnh mạng xã hội bùng nổ, quá trình con người đánh giá thông tin và xác định chân lý trong kỷ nguyên số gồm 3 giai đoạn biện chứng:\n\n" +
+          "1. Giai đoạn 1 (Khi mới tiếp nhận thông tin): Tránh cái bẫy của nhận thức cảm tính và số đông. Nhận thức cảm tính chỉ phản ánh bề ngoài, dễ rơi vào tâm lý bầy đàn.\n\n" +
+          "2. Giai đoạn 2 (Đánh giá lại vấn đề): Vai trò của nhận thức lý tính và nguồn thông tin uy tín. Dùng tư duy phản biện để bóc tách hiện tượng giả tạo, hướng tới quy luật tất yếu.\n\n" +
+          "3. Giai đoạn 3 (Chốt chặn cuối cùng): Đưa nhận định quay lại kiểm chứng bằng Thực tiễn khách quan - đây là tiêu chuẩn duy nhất của chân lý, đập tan mọi ảo tưởng của nhận thức cảm tính.";
       } else if (lowerText.includes('con đường biện chứng') || lowerText.includes('lenin') || lowerText.includes('lênin')) {
         reply = "V.I. Lênin đúc kết con đường biện chứng cực kì chuẩn xác: 'Từ trực quan sinh động đến tư duy trừu tượng, và từ tư duy trừu tượng đến thực tiễn'. Đây là vòng tuần hoàn vô hạn giúp nhận thức của con người ngày càng tiệm cận sâu sắc tới chân lý tuyệt đối.";
       } else if (lowerText.includes('galileo') || lowerText.includes('nhật tâm')) {
@@ -922,26 +941,65 @@ export default function App() {
             <h2 className="text-3xl sm:text-4xl font-extrabold text-gradient-red tracking-tight">
               Nhận thức Chân lý trong Kỷ nguyên số
             </h2>
-            <p className="text-gray-600 text-base sm:text-lg max-w-3xl mx-auto">
-              Ứng dụng các nguyên lý triết học Mác-Lênin để xây dựng bộ lọc tri thức đúng đắn, tỉnh táo trước đại dương tin giả.
+            <p className="text-gray-600 text-base sm:text-lg max-w-4xl mx-auto leading-relaxed">
+              Trong bối cảnh mạng xã hội bùng nổ, việc con người xác định đúng - sai thường trải qua một quá trình giằng co giữa cảm tính bề ngoài và lý tính sâu sắc, phản ánh đúng con đường biện chứng của nhận thức: <strong className="text-red-700 font-bold">&quot;Từ trực quan sinh động đến tư duy trừu tượng, và từ tư duy trừu tượng đến thực tiễn&quot;</strong>.
             </p>
           </div>
 
           {/* Process steps */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {chaptersData.digital.process.map((pr, idx) => (
-              <div key={idx} className="bg-white border border-slate-200/60 rounded-3xl p-6 shadow-sm flex flex-col justify-between space-y-4 card-hover" style={{
+              <div key={idx} className="bg-white border border-slate-200/60 rounded-3xl p-6 shadow-sm flex flex-col justify-between space-y-4 card-hover transition-all duration-300 hover:shadow-md" style={{
                 borderTop: `4px solid ${idx === 0 ? '#dc2626' : idx === 1 ? '#eab308' : '#10b981'}`
               }}>
-                <div className="space-y-2">
-                  <span className={`inline-flex px-2 py-0.5 text-[10px] font-bold rounded-full ${
-                    idx === 0 ? 'bg-red-50 text-red-700' : idx === 1 ? 'bg-amber-50 text-amber-700' : 'bg-emerald-50 text-emerald-700'
-                  }`}>
-                    {pr.phase}
-                  </span>
-                  <h4 className="font-bold text-slate-800 text-base">{pr.title}</h4>
-                  <div className="text-xs font-bold text-slate-400 uppercase tracking-wider">{pr.trap}</div>
-                  <p className="text-gray-600 text-sm leading-relaxed">{pr.desc}</p>
+                <div className="space-y-4">
+                  <div className="flex justify-between items-center">
+                    <span className={`inline-flex px-2 py-0.5 text-[10px] font-bold rounded-full ${
+                      idx === 0 ? 'bg-red-50 text-red-700' : idx === 1 ? 'bg-amber-50 text-amber-700' : 'bg-emerald-50 text-emerald-700'
+                    }`}>
+                      {pr.phase}
+                    </span>
+                  </div>
+                  <div>
+                    <h4 className="font-extrabold text-slate-800 text-base leading-snug">{pr.title}</h4>
+                    <div className="text-xs font-bold text-slate-400 uppercase tracking-wider mt-1">{pr.trap}</div>
+                  </div>
+                  
+                  <div className="space-y-3 pt-3 border-t border-slate-100">
+                    <div className="space-y-1">
+                      <span className={`text-xs font-extrabold uppercase tracking-wider ${
+                        idx === 0 ? 'text-red-600' : idx === 1 ? 'text-amber-600' : 'text-emerald-600'
+                      }`}>{pr.realityLabel}:</span>
+                      <p className="text-gray-600 text-sm leading-relaxed">{pr.reality}</p>
+                    </div>
+                    <div className="space-y-2 pt-2">
+                      <button
+                        onClick={() => togglePhilosophy(idx)}
+                        className={`w-full flex items-center justify-between px-3 py-2 rounded-xl text-xs font-bold transition-all duration-300 ${
+                          showPhilosophy[idx]
+                            ? 'bg-slate-150 text-slate-800 border border-slate-200'
+                            : 'bg-red-50/50 text-red-700 hover:bg-red-50 border border-dashed border-red-200'
+                        }`}
+                      >
+                        <span className="flex items-center gap-1.5">
+                          💡 {pr.philosophyLabel}
+                        </span>
+                        <ChevronDown className={`w-3.5 h-3.5 transition-transform duration-300 ${
+                          showPhilosophy[idx] ? 'rotate-180 text-slate-500' : 'text-red-500'
+                        }`} />
+                      </button>
+                      
+                      <div className={`overflow-hidden transition-all duration-300 ${
+                        showPhilosophy[idx] 
+                          ? 'max-h-72 opacity-100 mt-2' 
+                          : 'max-h-0 opacity-0 pointer-events-none'
+                      }`}>
+                        <div className="p-3 bg-slate-50/60 border border-slate-100 rounded-xl">
+                          <p className="text-gray-600 text-sm leading-relaxed italic">{pr.philosophy}</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
             ))}
