@@ -21,7 +21,13 @@ import {
   Info,
   Send,
   HelpCircle as QuestionIcon,
-  MessageSquare
+  MessageSquare,
+  FileText,
+  Eye,
+  Users,
+  PenLine,
+  BookMarked,
+  Wrench
 } from 'lucide-react';
 
 // Full structured content matching both pptx and 2.docx perfectly
@@ -362,7 +368,7 @@ export default function App() {
       }
 
       // Check which section is in view
-      const sections = ['intro', 'theory', 'truth', 'practice', 'digital', 'flashcard', 'quiz', 'debates', 'chatbot'];
+      const sections = ['intro', 'theory', 'truth', 'practice', 'digital', 'flashcard', 'quiz', 'debates', 'chatbot', 'ai-usage'];
       for (const section of sections) {
         const el = document.getElementById(section);
         if (el) {
@@ -622,6 +628,7 @@ export default function App() {
               { id: 'quiz', label: 'Đố Vui', icon: Trophy },
               { id: 'debates', label: 'Phản Biện Lớp', icon: HelpCircle },
               { id: 'chatbot', label: 'Chatbot AI', icon: Bot },
+              { id: 'ai-usage', label: 'Phụ Lục AI', icon: FileText },
             ].map((tab) => {
               const Icon = tab.icon;
               const isActive = activeSection === tab.id;
@@ -1437,6 +1444,245 @@ export default function App() {
 
             </div>
 
+          </div>
+
+        </section>
+
+        {/* ================= SECTION 10: PHỤ LỤC AI USAGE ================= */}
+        <section id="ai-usage" className="scroll-mt-24 space-y-14">
+
+          {/* Section Header */}
+          <div className="text-center space-y-3">
+            <span className="inline-flex h-5 w-fit items-center justify-center rounded-full bg-red-100 text-red-700 border border-red-200 px-3 py-0.5 text-xs font-bold uppercase tracking-wider">
+              Phụ Lục
+            </span>
+            <h2 className="text-3xl sm:text-4xl font-extrabold text-gradient-red tracking-tight">
+              Phụ Lục: Ứng Dụng AI Trong Dự Án
+            </h2>
+            <p className="text-gray-600 text-base sm:text-lg max-w-3xl mx-auto">
+              Nguyên tắc sử dụng AI trong dự án học tập chuyên đề <span className="font-semibold text-red-700">Lý luận Nhận thức và Chân lý</span> — Triết học Mác - Lênin
+            </p>
+          </div>
+
+          {/* Intro quote */}
+          <div className="max-w-3xl mx-auto bg-red-50 border border-red-200 rounded-2xl px-7 py-5 text-center">
+            <p className="text-sm text-red-800 italic leading-relaxed">
+              &quot;Sự trung thực trong học thuật là nền tảng của tri thức chân chính. Sử dụng AI như một công cụ hỗ trợ, không phải thay thế quá trình tư duy và kiểm chứng thực tiễn.&quot;
+            </p>
+            <p className="text-xs text-red-500 mt-2 font-semibold uppercase tracking-wider">— Quan điểm của nhóm nghiên cứu</p>
+          </div>
+
+          {/* 4 Principles Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl mx-auto">
+
+            {/* 1. Minh Bạch */}
+            <div className="bg-white border border-slate-200 rounded-3xl p-7 shadow-sm card-hover space-y-5">
+              <div className="flex items-center gap-3">
+                <div className="w-11 h-11 rounded-2xl bg-red-gradient flex items-center justify-center shadow-md shadow-red-600/15 flex-shrink-0">
+                  <Eye className="w-5 h-5 text-white" />
+                </div>
+                <h3 className="text-lg font-extrabold text-red-800">1. Minh Bạch</h3>
+              </div>
+
+              <div className="space-y-3">
+                <p className="text-xs font-bold text-slate-500 uppercase tracking-wider">Công Cụ Và Mục Đích Sử Dụng</p>
+                {[
+                  {
+                    name: "ChatGPT",
+                    desc: "Hỗ trợ tìm kiếm và tổng hợp thông tin cho website để hệ thống lý luận chặt chẽ hơn."
+                  },
+                  {
+                    name: "NotebookLM",
+                    desc: "Trích xuất thông tin lý thuyết trực tiếp từ giáo trình Triết học Mác - Lênin và các nguồn học thuật chính thống."
+                  },
+                  {
+                    name: "Claude (Cursor AI)",
+                    desc: "Hỗ trợ thiết kế giao diện, chỉnh sửa CSS và xây dựng cấu trúc website tương tác."
+                  }
+                ].map((tool, i) => (
+                  <div key={i} className="flex gap-3 p-3 bg-slate-50 rounded-xl border border-slate-100">
+                    <div className="w-7 h-7 rounded-lg bg-red-100 flex items-center justify-center flex-shrink-0 mt-0.5">
+                      <Wrench className="w-3.5 h-3.5 text-red-600" />
+                    </div>
+                    <div>
+                      <p className="text-sm font-bold text-slate-800">{tool.name}</p>
+                      <p className="text-xs text-slate-500 leading-relaxed mt-0.5">{tool.desc}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* 2. Có Trách Nhiệm */}
+            <div className="bg-white border border-slate-200 rounded-3xl p-7 shadow-sm card-hover space-y-5">
+              <div className="flex items-center gap-3">
+                <div className="w-11 h-11 rounded-2xl bg-red-gradient flex items-center justify-center shadow-md shadow-red-600/15 flex-shrink-0">
+                  <Users className="w-5 h-5 text-white" />
+                </div>
+                <h3 className="text-lg font-extrabold text-red-800">2. Có Trách Nhiệm</h3>
+              </div>
+
+              <div className="space-y-3">
+                {[
+                  {
+                    icon: "🔍",
+                    title: "Kiểm Chứng Thông Tin",
+                    desc: "Tất cả thông tin do AI hỗ trợ đều được kiểm chứng lại bằng giáo trình Triết học Mác - Lênin và các văn bản học thuật chính thống — đúng theo tiêu chuẩn thực tiễn kiểm nghiệm chân lý."
+                  },
+                  {
+                    icon: "👥",
+                    title: "Trách Nhiệm Cá Nhân",
+                    desc: "Nhóm chịu trách nhiệm hoàn toàn về nội dung cuối cùng. AI không thay thế quá trình học tập và tư duy phản biện của sinh viên."
+                  },
+                  {
+                    icon: "📚",
+                    title: "Học Tập Tích Cực",
+                    desc: "AI là công cụ hỗ trợ — không thể thay thế hoạt động nhận thức biện chứng: từ trực quan sinh động đến tư duy trừu tượng và trở về thực tiễn."
+                  }
+                ].map((item, i) => (
+                  <div key={i} className="flex gap-3 p-3 bg-slate-50 rounded-xl border border-slate-100">
+                    <span className="text-xl flex-shrink-0 mt-0.5">{item.icon}</span>
+                    <div>
+                      <p className="text-sm font-bold text-slate-800">{item.title}</p>
+                      <p className="text-xs text-slate-500 leading-relaxed mt-0.5">{item.desc}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* 3. Sáng Tạo */}
+            <div className="bg-white border border-slate-200 rounded-3xl p-7 shadow-sm card-hover space-y-5">
+              <div className="flex items-center gap-3">
+                <div className="w-11 h-11 rounded-2xl bg-red-gradient flex items-center justify-center shadow-md shadow-red-600/15 flex-shrink-0">
+                  <Lightbulb className="w-5 h-5 text-white" />
+                </div>
+                <h3 className="text-lg font-extrabold text-red-800">3. Sáng Tạo</h3>
+              </div>
+
+              <p className="text-xs font-bold text-slate-500 uppercase tracking-wider">Ứng Dụng AI Trong Sáng Tạo</p>
+
+              <div className="space-y-3">
+                {[
+                  {
+                    label: "Thiết Kế Giao Diện",
+                    detail: "Ảnh minh họa, thiết kế layout, chỉnh sửa CSS cho trang web tương tác chuyên đề.",
+                    color: "bg-amber-50 border-amber-200 text-amber-700"
+                  },
+                  {
+                    label: "Tương Tác & Trò Chơi",
+                    detail: "Gợi ý câu hỏi quiz và tích hợp vào minigame ôn tập Lý luận Nhận thức.",
+                    color: "bg-blue-50 border-blue-200 text-blue-700"
+                  },
+                  {
+                    label: "Chatbot Triết Học",
+                    detail: "Xây dựng kịch bản phản hồi cho chatbot giả lập tư duy biện chứng Mác - Lênin.",
+                    color: "bg-emerald-50 border-emerald-200 text-emerald-700"
+                  }
+                ].map((item, i) => (
+                  <div key={i} className={`p-3 rounded-xl border text-xs font-medium ${item.color}`}>
+                    <p className="font-bold text-sm mb-0.5">{item.label}</p>
+                    <p className="opacity-80 leading-relaxed">{item.detail}</p>
+                  </div>
+                ))}
+              </div>
+
+              <div className="p-3 bg-red-50 border border-red-100 rounded-xl text-xs text-red-700">
+                <span className="font-bold">Lưu ý:</span> Nội dung phân tích học thuật (lý luận, dẫn chứng, lập luận triết học) đều được nhóm biên soạn dựa trên tài liệu chính thống.
+              </div>
+            </div>
+
+            {/* 4. Liêm Chính Học Thuật */}
+            <div className="bg-white border border-slate-200 rounded-3xl p-7 shadow-sm card-hover space-y-5">
+              <div className="flex items-center gap-3">
+                <div className="w-11 h-11 rounded-2xl bg-red-gradient flex items-center justify-center shadow-md shadow-red-600/15 flex-shrink-0">
+                  <BookMarked className="w-5 h-5 text-white" />
+                </div>
+                <h3 className="text-lg font-extrabold text-red-800">4. Liêm Chính Học Thuật</h3>
+              </div>
+
+              <div className="space-y-3">
+                {[
+                  {
+                    icon: <PenLine className="w-4 h-4" />,
+                    title: "Cam Kết",
+                    desc: "Không để AI làm thay hoàn toàn. AI chỉ là công cụ hỗ trợ — tư duy và kiểm chứng là trách nhiệm của sinh viên."
+                  },
+                  {
+                    icon: <CheckCircle2 className="w-4 h-4" />,
+                    title: "Phân Định Rõ",
+                    desc: "Các kết quả AI sinh ra đều được chú thích, chỉnh sửa và bổ sung bởi nhóm sinh viên trước khi đưa vào sản phẩm."
+                  },
+                  {
+                    icon: <BookOpen className="w-4 h-4" />,
+                    title: "Đối Chiếu Nguồn",
+                    desc: "Toàn bộ thông tin từ AI đều được so sánh với giáo trình Triết học Mác - Lênin và tài liệu chính thống trước khi dùng."
+                  }
+                ].map((item, i) => (
+                  <div key={i} className="flex gap-3 p-3 bg-slate-50 rounded-xl border border-slate-100">
+                    <div className="w-7 h-7 rounded-lg bg-red-100 flex items-center justify-center flex-shrink-0 mt-0.5 text-red-600">
+                      {item.icon}
+                    </div>
+                    <div>
+                      <p className="text-sm font-bold text-slate-800">{item.title}</p>
+                      <p className="text-xs text-slate-500 leading-relaxed mt-0.5">{item.desc}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+          </div>
+
+          {/* Conclusion Card */}
+          <div className="max-w-5xl mx-auto bg-red-gradient rounded-3xl p-8 text-white shadow-xl shadow-red-900/15 relative overflow-hidden">
+            <div className="absolute top-0 right-0 w-64 h-64 bg-white/5 rounded-full translate-x-1/3 -translate-y-1/3 blur-2xl pointer-events-none"></div>
+            <div className="relative z-10 space-y-4">
+              <h3 className="text-xl font-extrabold">Kết Luận</h3>
+              <p className="text-red-100 text-sm leading-relaxed max-w-3xl">
+                Việc sử dụng AI trong dự án học tập chuyên đề <strong>Lý luận Nhận thức và Chân lý</strong> đã mang lại hiệu quả tích cực, giúp nhóm sinh viên tiếp cận kiến thức triết học một cách hiện đại và sáng tạo hơn. Tuy nhiên, điều quan trọng nhất — đúng như tinh thần của chân lý biện chứng Mác - Lênin — là luôn duy trì tinh thần học tập chủ động, kiểm chứng thông tin bằng thực tiễn và không để công cụ thay thế tư duy.
+              </p>
+              <div className="flex flex-wrap gap-4 pt-2">
+                <div className="flex items-center gap-2 text-sm font-semibold text-red-100">
+                  <CheckCircle2 className="w-4 h-4 text-emerald-300" />
+                  Nội dung đã kiểm chứng
+                </div>
+                <div className="flex items-center gap-2 text-sm font-semibold text-red-100">
+                  <CheckCircle2 className="w-4 h-4 text-emerald-300" />
+                  Dựa trên giáo trình chính thống
+                </div>
+                <div className="flex items-center gap-2 text-sm font-semibold text-red-100">
+                  <CheckCircle2 className="w-4 h-4 text-emerald-300" />
+                  Chịu trách nhiệm học thuật
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Sources */}
+          <div className="max-w-5xl mx-auto border border-slate-200 rounded-2xl p-6 bg-slate-50 space-y-3">
+            <h4 className="text-sm font-bold text-slate-700 uppercase tracking-wider flex items-center gap-2">
+              <BookOpen className="w-4 h-4 text-red-600" />
+              Nguồn Tài Liệu Tham Khảo
+            </h4>
+            <ul className="space-y-2 text-xs text-slate-600">
+              <li className="flex items-start gap-2">
+                <span className="text-red-500 font-bold mt-0.5">•</span>
+                Giáo trình Triết học Mác - Lênin — Bộ Giáo dục và Đào tạo (tái bản 2021)
+              </li>
+              <li className="flex items-start gap-2">
+                <span className="text-red-500 font-bold mt-0.5">•</span>
+                Bộ Giáo dục và Đào tạo — Tài liệu giảng dạy học phần Triết học Mác - Lênin
+              </li>
+              <li className="flex items-start gap-2">
+                <span className="text-red-500 font-bold mt-0.5">•</span>
+                C. Mác — <em>Luận cương về Phoi-ơ-bắc</em> (Theses on Feuerbach, 1845)
+              </li>
+              <li className="flex items-start gap-2">
+                <span className="text-red-500 font-bold mt-0.5">•</span>
+                V.I. Lênin — <em>Bút ký Triết học</em> (Philosophical Notebooks, 1914-1916)
+              </li>
+            </ul>
           </div>
 
         </section>
