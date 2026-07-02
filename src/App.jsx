@@ -30,201 +30,201 @@ import {
   Wrench
 } from 'lucide-react';
 
-// Full structured content matching both pptx and 2.docx perfectly
+// ===== NỘI DUNG: CMCN 4.0 VÀ THẤT NGHIỆP (MLN122) =====
 const chaptersData = {
   intro: {
-    badge: "Khởi đầu",
-    chapterNum: "Chương 1",
-    title: "Đặt vấn đề & Cái bẫy Nhận thức",
-    desc: "Khám phá hiện trạng xác định chân lý trong một xã hội bất định thời đại bùng nổ thông tin và sự hạn chế, bế tắc của các quan niệm triết học cũ.",
+    badge: "Nền tảng",
+    chapterNum: "Phần 1",
+    title: "Lý luận: Đội quân thất nghiệp dự bị của C.Mác",
+    desc: "Lý thuyết kinh tế chính trị Mác-xít không chỉ phản ánh đúng thời kỳ trước mà còn dự báo chính xác hiện tượng đang diễn ra với AI hiện nay.",
     traps: [
       {
-        icon: "👥",
-        title: "Bẫy số đông (Tâm lý bầy đàn)",
-        desc: "Mỗi ngày trên mạng xã hội, chúng ta bị bủa vây bởi hàng ngàn luồng thông tin đa chiều. Đứng trước sự hỗn loạn này, con người rất dễ sa bẫy tin vào những thứ được đám đông tung hô (như các bài đăng triệu lượt chia sẻ)."
+        icon: "⚙️",
+        title: "Cơ chế: AI tăng cấu tạo tư bản",
+        desc: "Khi tư bản tích lũy, cấu tạo kỹ thuật tăng → tỷ lệ tư bản bất biến/khả biến tăng → nhu cầu tương đối về lao động giảm dù tổng tư bản tăng. AI là phiên bản công nghệ cao nhất của quy luật này."
       },
       {
-        icon: "💰",
-        title: "Bẫy lợi ích trước mắt",
-        desc: "Mù quáng chạy theo các trào lưu làm giàu nhanh, các lựa chọn mang lại sự có ích hay lợi ích chủ quan trước mắt, lầm tưởng lòng tham có thể bẻ cong được quy luật khách quan."
+        icon: "�",
+        title: "Đối tượng bị ảnh hưởng nặng nhất",
+        desc: "Lao động kỹ năng thấp trong ngành gia công/lắp ráp — đúng là cấu trúc lao động chủ lực của Việt Nam. 86% lao động dệt may và da giày đối mặt nguy cơ mất việc cao (ILO, 2016)."
       },
       {
-        icon: "⚡",
-        title: "Sự sụp đổ của ảo tưởng",
-        desc: "Thực tiễn qua sự sụp đổ của vô số mô hình lừa đảo tài chính đa cấp, trào lưu chữa bệnh phản khoa học chứng minh: đám đông và lợi ích tức thời không bảo chứng cho sự thật."
+        icon: "🏭",
+        title: "Hệ quả chính trị – xã hội",
+        desc: "Nguy cơ tái tạo 'đội quân thất nghiệp dự bị' ở quy mô lớn, kéo theo phân hóa thu nhập, đòi hỏi vai trò điều tiết của Nhà nước trong nền kinh tế thị trường định hướng XHCN."
       }
     ],
     historicalSchools: [
       {
-        school: "Chủ nghĩa Duy tâm Chủ quan",
-        philosophers: "Béccơli, E.Makhơ, Phichtơ",
-        desc: "Béccơli cho chân lý là sự phù hợp giữa suy diễn về sự vật với chính bản thân sự vật trên thực tế. Makhơ coi sự vật chỉ là phức hợp cảm giác. Phichtơ cho rằng nhận thức chỉ là nhận thức các cảm giác của con người.",
+        school: "Luận điểm gốc của C.Mác (Tư bản, quyển I)",
+        philosophers: "C.Mác — Tư bản luận",
+        desc: "Khi tư bản tích lũy, cấu tạo kỹ thuật tăng → nhu cầu tương đối về lao động giảm → hình thành 'nhân khẩu thừa tương đối'. Đây không phải thất bại của hệ thống mà là điều kiện tồn tại của nó.",
         color: "from-amber-50 to-orange-100 border-orange-200 text-orange-850"
       },
       {
-        school: "Chủ nghĩa Duy tâm Khách quan",
-        philosophers: "Platôn, Hêghen",
-        desc: "Giải thích duy tâm, thần bí. Platôn coi nhận thức chỉ là quá trình 'hồi tưởng' lại của linh hồn về thế giới ý niệm đã có từ trước. Hêghen cho rằng nhận thức là quá trình tự ý thức của tinh thần thế giới.",
+        school: "3 Hình thái của đội quân thất nghiệp dự bị",
+        philosophers: "Phân loại theo Mác",
+        desc: "Lưu động (mất việc tạm thời, di chuyển giữa ngành), Tiềm tàng (lao động dư ở nông nghiệp/nông thôn), Trì trệ (bán thất nghiệp kinh niên, việc làm không ổn định).",
         color: "from-blue-50 to-indigo-100 border-indigo-200 text-indigo-850"
       },
       {
-        school: "Hoài nghi & Bất khả tri",
-        philosophers: "Hium, Cantơ",
-        desc: "Hium nghi ngờ khả năng nhận thức của con người, nghi ngờ cả sự tồn tại khách quan của sự vật. Cantơ cho rằng con người chỉ biết hiện tượng bề ngoài, không thể biết bản chất thực sự của đối tượng - 'vật tự nó' (Ding an sich).",
+        school: "AI so với Máy móc cơ khí truyền thống",
+        philosophers: "Sự khác biệt về chất",
+        desc: "AI không chỉ thay thế lao động chân tay (CMCN 1-2) mà còn thay thế một phần lao động trí óc lặp lại (CMCN 3-4) — phạm vi 'đội quân dự bị' mở rộng từ công nhân sang cả lao động văn phòng kỹ năng thấp/trung.",
         color: "from-rose-50 to-red-100 border-red-200 text-red-850"
       },
       {
-        school: "Chủ nghĩa Duy vật trước Mác",
-        philosophers: "Duy vật siêu hình",
-        desc: "Thừa nhận khả năng nhận thức phản ánh thế giới. Tuy nhiên, họ hiểu phản ánh chỉ là sự sao chép giản đơn, thụ động, máy móc như soi gương, không có vận động, chưa hiểu vai trò của thực tiễn.",
+        school: "Kết nối với CNH, HĐH Việt Nam",
+        philosophers: "Giáo trình Chương 6, mục 6.1",
+        desc: "Mô hình CNH của Việt Nam dựa vào lợi thế lao động giá rẻ, gia công xuất khẩu. Chính lợi thế này lại là điểm dễ tổn thương nhất trước CMCN 4.0 — đây đúng là các ngành dễ tự động hóa nhất.",
         color: "from-teal-50 to-emerald-100 border-emerald-200 text-emerald-850"
       }
     ]
   },
   theory: {
-    badge: "Mác - Lênin",
-    chapterNum: "Chương 2",
-    title: "Lý luận Nhận thức Duy vật Biện chứng",
-    desc: "Cuộc cách mạng đưa phạm trù Thực tiễn vào làm cơ sở đo lường nhận thức, định nghĩa con đường nhận thức chân lý khách quan.",
-    definition: "Nhận thức là sự phản ánh hiện thực khách quan vào bộ óc người; đây không phải sự phản ánh thụ động, giản đơn, mà là một quá trình biện chứng, tích cực, sáng tạo.",
+    badge: "Thực tiễn VN",
+    chapterNum: "Phần 2",
+    title: "Số liệu & Case Study: Tự động hóa tại Việt Nam",
+    desc: "Dữ liệu thực tế chứng minh nguy cơ hình thành đội quân thất nghiệp dự bị trong các ngành thâm dụng lao động của Việt Nam.",
+    definition: "ILO (2016): 86% lao động Việt Nam trong ngành dệt may và da giày phải đối mặt với nguy cơ mất việc làm cao do sự dịch chuyển của công nghệ tự động hóa.",
     principles: [
       {
-        title: "Thế giới khách quan",
-        desc: "Thế giới vật chất tồn tại độc lập với ý thức con người và là đối tượng duy nhất của nhận thức."
+        title: "Ngành May mặc",
+        desc: "46,3% doanh nghiệp may tại Tây Nam Bộ đã tự động hóa ít nhất một công đoạn. 78% doanh nghiệp FDI áp dụng tự động hóa so với chỉ 39,5% ở doanh nghiệp nội địa (Huỳnh và cộng sự, 2026)."
       },
       {
-        title: "Khả năng nhận thức",
-        desc: "Con người có khả năng nhận thức được thế giới. Không có gì là không thể biết, chỉ có những cái chưa biết và sẽ được biết."
+        title: "Ngành Logistics",
+        desc: "55-60% doanh nghiệp đã ứng dụng TMS/WMS nhưng chỉ 10% đạt tự động hóa vật lý toàn trình. 80-90% quy trình forwarder vừa và nhỏ vẫn thao tác bằng tay (Báo cáo Logistics VN 2024)."
       },
       {
-        title: "Cơ sở Thực tiễn",
-        desc: "Lấy thực tiễn làm cơ sở, động lực, mục đích của nhận thức và là tiêu chuẩn duy nhất để kiểm tra chân lý."
+        title: "Tác động ròng đến 2030",
+        desc: "ADB (2021): Tác động ròng đến việc làm vẫn ở mức tích cực — số việc làm mới bù đắp được số mất đi, nhưng đòi hỏi kỹ năng thay đổi hoàn toàn từ thể chất lặp lại sang tư duy phân tích và kỹ năng số."
       }
     ],
     dialecticsSteps: [
       {
         step: "01",
-        name: "Trực quan sinh động (Nhận thức cảm tính)",
-        desc: "Gồm cảm giác, tri giác, biểu tượng. Phản ánh những đặc điểm, thuộc tính bên ngoài, rời rạc, trực tiếp của sự vật hiện tượng khi mới tiếp nhận."
+        name: "Sụp đổ lợi thế 'lao động giá rẻ'",
+        desc: "Hơn 20 năm CNH dựa vào gia công và lao động phổ thông. Với 86% lao động may mặc đối diện nguy cơ mất việc, lợi thế cạnh tranh truyền thống đang bị triệt tiêu nhanh chóng dưới CMCN 4.0."
       },
       {
         step: "02",
-        name: "Tư duy trừu tượng (Nhận thức lý tính)",
-        desc: "Gồm khái niệm, phán đoán, suy lý. Đi sâu bóc tách hiện tượng giả tạo, xâu chuỗi thông tin để phản ánh đúng bản chất, quy luật vận động bên trong."
+        name: "Nghịch lý 'Thừa - Thiếu' kiểu mới",
+        desc: "Tác động ròng dự báo tích cực nhưng người lao động thủ công (mất việc) không thể đáp ứng ngay kỹ năng số của việc làm mới — minh chứng cho lý luận Mác về 'nhân khẩu thừa tương đối'."
       },
       {
         step: "03",
-        name: "Trở về Thực tiễn (Kiểm nghiệm chân lý)",
-        desc: "Đưa tri thức lý tính quay lại kiểm chứng bằng thực tế đời sống để khẳng định chân lý khách quan hoặc phủ định các ảo tưởng sai lầm."
+        name: "Nguy cơ bị loại khỏi chuỗi cung ứng",
+        desc: "Doanh nghiệp nội địa chậm chân về công nghệ (39,5% so với 78% FDI). Nếu không số hóa và xanh hóa kịp, doanh nghiệp nội địa sẽ mất đơn hàng, kéo theo hàng triệu lao động mất việc."
       }
     ]
   },
   truth: {
-    badge: "Chân lý",
-    chapterNum: "Chương 3",
-    title: "Bản chất & 4 Đặc tính cốt lõi của Chân lý",
-    desc: "Chân lý là tri thức phù hợp với hiện thực khách quan và được thực tiễn kiểm nghiệm.",
+    badge: "Phản biện",
+    chapterNum: "Phần 3",
+    title: "AI Tạo Việc Làm Hay Thay Thế? — 3 Lớp Phân Tích",
+    desc: "AI không xóa bỏ việc làm theo nghĩa tuyệt đối — đúng như lý luận Mác về đội quân thất nghiệp dự bị, nó tái cấu trúc lực lượng lao động theo hướng phân cực kỹ năng.",
     properties: [
       {
-        name: "Tính Khách quan",
-        keyword: "Độc lập loài người",
-        desc: "Chân lý là tri thức phản ánh đúng thực tại khách quan, hoàn toàn không phụ thuộc vào con người và loài người, không phụ thuộc vào lôgic hay lợi ích và quy ước."
+        name: "Đội quân thất nghiệp dự bị",
+        keyword: "Nhân khẩu thừa tương đối",
+        desc: "C.Mác: khi cấu tạo kỹ thuật tăng, nhu cầu tương đối về lao động giảm → 3 hình thái: lưu động, tiềm tàng, trì trệ. AI tạo ra hình thái 'trì trệ' mới — lao động không thể chuyển đổi kỹ năng kịp tốc độ công nghệ."
       },
       {
-        name: "Tính Cụ thể",
-        keyword: "Không gian & Thời gian",
-        desc: "Không có chân lý trừu tượng chung chung. Chân lý luôn phản ánh sự vật trong điều kiện cụ thể, hoàn cảnh lịch sử cụ thể, không gian và thời gian xác định."
+        name: "Lệch về Kỹ năng",
+        keyword: "Skill Mismatch",
+        desc: "Việc làm AI tạo ra (kỹ sư dữ liệu, vận hành tự động) yêu cầu trình độ cao hơn nhiều so với việc làm bị mất (công nhân may, lái xe, bốc xếp). Đây là cơ chế tạo ra 'đội quân thất nghiệp dự bị trì trệ' kiểu mới."
       },
       {
-        name: "Tính Tương đối",
-        keyword: "Giới hạn lịch sử",
-        desc: "Tri thức đúng nhưng chưa hoàn toàn đầy đủ, mới phản ánh đúng một mặt, một bộ phận nào đó của hiện thực khách quan trong điều kiện giới hạn."
+        name: "Lệch về Thời gian",
+        keyword: "Creation Lag",
+        desc: "Việc làm mất ngay khi tự động hóa áp dụng; việc làm mới cần thời gian đào tạo nhân lực và xây hạ tầng số. Khoảng trống này tạo ra thất nghiệp hàng loạt — đặc biệt nghiêm trọng với lao động phổ thông Việt Nam."
       },
       {
-        name: "Tính Tuyệt đối",
-        keyword: "Tổng số biện chứng",
-        desc: "Phản ánh đầy đủ, toàn diện hiện thực khách quan. Chân lý tuyệt đối là tổng số vô hạn của các chân lý tương đối, con người ngày càng tiến gần đến nó."
+        name: "Nghịch lý Thừa-Thiếu",
+        keyword: "Net Effect — ADB 2021",
+        desc: "ADB (2021) dự báo tác động ròng đến 2030 vẫn tích cực — nhưng người mất việc (thủ công) không thể đáp ứng việc làm mới (kỹ năng số). Thị trường tự do không tự giải quyết khoảng cách này — cần Nhà nước can thiệp."
       }
     ]
   },
   practice: {
-    badge: "Thực tiễn",
-    chapterNum: "Chương 4",
-    title: "Vai trò quyết định của Thực tiễn",
-    desc: "Thực tiễn là toàn bộ những hoạt động vật chất - cảm tính, có tính lịch sử - xã hội của con người nhằm cải tạo tự nhiên và xã hội.",
+    badge: "Case Study",
+    chapterNum: "Phần 4",
+    title: "Doanh nghiệp Việt Nam ứng dụng AI/Tự động hóa",
+    desc: "Các case study thực tế chứng minh cả hai mặt của quá trình tự động hóa: tăng năng suất và thay thế lao động.",
     forms: [
       {
-        icon: "🌾",
-        name: "Hoạt động Sản xuất vật chất",
-        desc: "Hoạt động cơ bản nhất, quyết định sự sinh tồn và phát triển của toàn xã hội loài người."
+        icon: "👗",
+        name: "Ngành May — Hansae & Luen Thai",
+        desc: "Doanh nghiệp FDI tại Long An thử nghiệm hệ thống MES tích hợp AI kiểm lỗi: giảm tỷ lệ lỗi từ 35-40% và tăng năng suất lao động thêm 18% (Huỳnh và cộng sự, 2026)."
       },
       {
-        icon: "🏛️",
-        name: "Hoạt động Chính trị - xã hội",
-        desc: "Cải biến các quan hệ xã hội, đấu tranh vì sự công bằng, tự do và tiến bộ con người."
+        icon: "🚢",
+        name: "Logistics — Tân Cảng Sài Gòn",
+        desc: "Ứng dụng IoT và dữ liệu lớn: giảm 40% thời gian xử lý container, tiết kiệm 15% chi phí vận hành (Bộ Công Thương, 2025)."
       },
       {
-        icon: "🧪",
-        name: "Hoạt động Thực nghiệm khoa học",
-        desc: "Tạo môi trường nhân tạo đặc biệt để kiểm chứng giả thuyết lý thuyết và phát triển công nghệ."
+        icon: "📦",
+        name: "Viettel Post — AI Phân phối",
+        desc: "Ứng dụng AI phân tích dữ liệu giúp tăng tốc độ giao hàng lên 20%. Minh chứng rõ nét cho xu hướng tự động hóa trong logistics Việt Nam."
       }
     ],
     roles: [
       {
-        title: "Nguồn gốc & Cơ sở",
-        desc: "Thực tiễn cung cấp tài liệu, giác quan mở rộng và đặt ra nhu cầu buộc bộ óc nhận thức của con người hoạt động."
+        title: "Số hóa ≠ Tự động hóa",
+        desc: "55-60% doanh nghiệp logistics đã dùng phần mềm TMS/WMS nhưng chỉ 10% đạt tự động hóa vật lý toàn trình. 90,5% vẫn ở mức số hóa sơ khai (mức 1-2)."
       },
       {
-        title: "Mục đích của nhận thức",
-        desc: "Nhận thức không phải để cất giữ, mà để quay về định hướng, dẫn đường cho hoạt động thực tiễn cải biến thế giới."
+        title: "Phân hóa FDI vs Nội địa",
+        desc: "Khoảng cách lớn về ứng dụng công nghệ: 78% doanh nghiệp FDI đã tự động hóa so với chỉ 39,5% ở doanh nghiệp nội địa trong ngành may — nguy cơ mất đơn hàng cho khối nội địa."
       },
       {
-        title: "Tiêu chuẩn kiểm nghiệm chân lý",
-        desc: "Tiêu chuẩn khách quan duy nhất. Không thể lấy sự tán thành số đông, hiển nhiên hay sự có lợi trước mắt để kiểm tra đúng sai."
+        title: "Sẵn sàng chuyển đổi số",
+        desc: "Chỉ 16% doanh nghiệp logistics thực sự sẵn sàng chuyển đổi số cấp cao. Còn lại phần lớn đang 'dậm chân' ở mức sơ khai, tạo ra nguy cơ tụt hậu toàn diện."
       }
     ]
   },
   digital: {
-    badge: "Ứng dụng",
-    chapterNum: "Chương 5",
-    title: "Nhận thức Chân lý trong Kỷ nguyên số",
-    desc: "Trong bối cảnh mạng xã hội bùng nổ, việc con người xác định đúng - sai thường trải qua một quá trình giằng co giữa cảm tính bề ngoài và lý tính sâu sắc, phản ánh đúng con đường biện chứng của nhận thức: \"Từ trực quan sinh động đến tư duy trừu tượng, và từ tư duy trừu tượng đến thực tiễn\".",
+    badge: "Giải pháp",
+    chapterNum: "Phần 5",
+    title: "Bài học & Vai trò Nhà nước trong Kỷ nguyên AI",
+    desc: "Từ phân tích lý luận Mác và thực tiễn Việt Nam, 3 bài học hành động cụ thể cho từng đối tượng: người lao động, doanh nghiệp và Nhà nước trong ứng phó với CMCN 4.0.",
     process: [
       {
-        phase: "Giai đoạn 1",
-        title: "Khi mới tiếp nhận thông tin",
-        trap: "Cái bẫy của \"Nhận thức cảm tính\" và Số đông",
+        phase: "Bài học 1",
+        title: "Với Người Lao Động",
+        trap: "Chủ động nâng cấp kỹ năng — thoát khỏi 'đội quân trì trệ'",
         realityLabel: "Thực trạng",
-        reality: "Khi mới tiếp cận một xu hướng đầu tư mang lại lợi ích ngay lập tức hoặc một tin giả được hàng triệu lượt chia sẻ, con người chủ yếu tiếp nhận thông qua cảm giác và tri giác bề ngoài (nhìn thấy số đông tung hô, nghe thấy lợi nhuận). Ở giai đoạn trực quan sinh động này, thông tin chưa được phân tích sâu, dẫn đến hiện tượng tâm lý bầy đàn và thiên kiến xác nhận.",
-        philosophyLabel: "Nhận định triết học",
-        philosophy: "Nhận thức lúc này chỉ mới phản ánh được những đặc điểm bên ngoài, rời rạc của sự vật. Nếu vội vàng đánh giá đây là chân lý chỉ vì nó \"hiển nhiên\", \"được số đông tán thành\" hay \"có lợi trước mắt\", con người đã rơi vào sai lầm của chủ nghĩa duy tâm chủ quan, lầm tưởng hiện tượng bề mặt là bản chất."
+        reality: "Người lao động thủ công (mất việc do tự động hóa) không thể đáp ứng ngay các kỹ năng số của việc làm mới. Đây chính là cơ chế tạo ra 'đội quân thất nghiệp dự bị trì trệ' theo phân loại của Mác.",
+        philosophyLabel: "Hành động cụ thể",
+        philosophy: "Phải chủ động tham gia các chương trình đào tạo lại (reskilling), hướng tới kỹ năng tư duy phân tích và kỹ năng số — đây là điều kiện để không bị loại khỏi thị trường lao động trong CMCN 4.0."
       },
       {
-        phase: "Giai đoạn 2",
-        title: "Đánh giá lại vấn đề",
-        trap: "Vai trò của \"Nhận thức lý tính\" và Nguồn thông tin uy tín",
+        phase: "Bài học 2",
+        title: "Với Doanh Nghiệp Nội Địa",
+        trap: "Đầu tư tự động hóa thực chất — không nhầm 'số hóa màn hình' với tự động hóa",
         realityLabel: "Thực trạng",
-        reality: "Sau khi sự hào nhoáng ban đầu qua đi hoặc khi xuất hiện những cảnh báo rủi ro, những người có tư duy phản biện bắt đầu thu thập thêm dữ liệu từ các nguồn chính thống, chuyên gia uy tín. Họ phân tích đối chiếu, xâu chuỗi các luồng thông tin để nhìn nhận lại bản chất của sự việc (ví dụ: nhận ra bản chất của dự án là mô hình lừa đảo đa cấp Ponzi).",
-        philosophyLabel: "Nhận định triết học",
-        philosophy: "Đây là bước chuyển nhảy vọt lên giai đoạn tư duy trừu tượng. Thông qua các khái niệm, phán đoán và suy lý, óc người đã gạt bỏ những hiện tượng giả tạo, ngẫu nhiên do số đông tạo ra để phản ánh đúng những quy luật bên trong, tất yếu của sự vật. Tuy nhiên, nhận thức lý tính dù sâu sắc đến đâu vẫn chưa thể tự nó khẳng định hoàn toàn chân lý."
+        reality: "90,5% doanh nghiệp vẫn ở mức số hóa sơ khai. Khoảng cách với FDI ngày càng lớn (39,5% vs 78% tự động hóa trong ngành may). Nguy cơ mất đơn hàng và đào thải lao động hàng loạt.",
+        philosophyLabel: "Hành động cụ thể",
+        philosophy: "Phân biệt rõ 'số hóa trên màn hình' (dùng phần mềm) với 'tự động hóa vật lý' (robot, băng chuyền). Ưu tiên đầu tư vào tự động hóa thực chất để cạnh tranh với FDI, đồng thời xây dựng lộ trình đào tạo lại lao động dôi dư."
       },
       {
-        phase: "Giai đoạn 3",
-        title: "Chốt chặn cuối cùng",
-        trap: "\"Thực tiễn\" là tiêu chuẩn kiểm nghiệm chân lý",
-        realityLabel: "Vận dụng",
-        reality: "Dù đánh giá bằng nhận thức lý tính có logic và dựa trên nhiều nguồn uy tín đến đâu, bước quyết định để xác định chân lý vẫn phải là đưa những nhận định đó quay trở lại kiểm chứng bằng thực tiễn đời sống.",
-        philosophyLabel: "Kết quả",
-        philosophy: "Khi các mô hình đa cấp sập đổ, những người hùa theo số đông mất trắng tài sản; đó chính là lúc thực tiễn lên tiếng. Thực tiễn đã đập tan ảo tưởng của nhận thức cảm tính, chứng minh rằng sự ủng hộ của đám đông hay lợi ích cục bộ trước mắt tuyệt đối không thể bẻ cong được tính khách quan của chân lý."
+        phase: "Bài học 3",
+        title: "Với Nhà Nước",
+        trap: "Vai trò điều tiết chủ động — kinh tế thị trường định hướng XHCN",
+        realityLabel: "Luận điểm cốt lõi",
+        reality: "Thị trường tự do không thể tự giải quyết 'lệch về kỹ năng' và 'lệch về thời gian' trong chuyển đổi lao động. Đây là thất bại thị trường điển hình đòi hỏi can thiệp của Nhà nước.",
+        philosophyLabel: "Hành động cụ thể",
+        philosophy: "Nhà nước cần: (1) Xây dựng hệ thống đào tạo lại lao động quy mô lớn; (2) Chính sách hỗ trợ chuyển đổi cho người lao động bị thay thế; (3) Khuyến khích doanh nghiệp nội địa số hóa; (4) Điều tiết FDI gắn với trách nhiệm đào tạo lao động địa phương."
       }
     ],
     comparison: {
-      headers: ["Tiêu chí", "Niềm tin sai lầm / Ảo giác", "Chân lý Khách quan"],
+      headers: ["Tiêu chí", "Không can thiệp (Mặc kệ thị trường)", "Có vai trò Nhà nước (Định hướng XHCN)"],
       rows: [
-        ["Cơ sở", "Đồng thuận đám đông, mong muốn chủ quan, lợi ích cá nhân tạm thời", "Phản ánh đúng đắn quy luật vận động khách quan của thế giới"],
-        ["Tính chất", "Phụ thuộc hoàn toàn vào ý chí chủ quan, định kiến con người", "Hoàn toàn độc lập với con người, loài người hay sự quy ước số đông"],
-        ["Thước đo", "Tính hiển nhiên cảm tính, sự có lợi trước mắt, tính hấp dẫn", "Được kiểm nghiệm khách quan qua hành động thực tiễn sinh động"],
-        ["Hệ quả", "Thất bại thảm hại, sụp đổ đau đớn khi va chạm thực tế", "Vững bền trước thời gian, dẫn dắt hành động đi tới thành công thực tế"]
+        ["Người lao động", "Rơi vào bán thất nghiệp kinh niên, không có hỗ trợ chuyển đổi", "Được đào tạo lại, hỗ trợ chuyển ngành, tái hòa nhập thị trường lao động"],
+        ["Doanh nghiệp nội địa", "Mất đơn hàng vào tay FDI, phá sản hàng loạt, kéo theo thất nghiệp", "Được hỗ trợ số hóa, tiếp cận tín dụng ưu đãi, nâng cấp công nghệ"],
+        ["Cơ cấu kinh tế", "Phân hóa thu nhập sâu sắc, bất bình đẳng tăng theo cấp số nhân", "Chuyển dịch cơ cấu lao động có kiểm soát, giảm bất bình đẳng"],
+        ["Mục tiêu CNH", "CNH thiếu bền vững, phụ thuộc mãi vào lao động giá rẻ", "CNH chuyển sang giá trị gia tăng cao, thoát bẫy thu nhập trung bình"]
       ]
     }
   }
@@ -233,94 +233,94 @@ const chaptersData = {
 const quizQuestions = [
   {
     id: 1,
-    question: "Theo triết học Mác - Lênin, đặc tính nào khẳng định nội dung của chân lý hoàn toàn độc lập, 'không phụ thuộc vào con người và loài người', cũng như không phụ thuộc vào lợi ích hay sự quy ước của đám đông?",
+    question: "Theo lý luận của C.Mác, khi tư bản tích lũy và cấu tạo kỹ thuật tăng, điều gì sẽ xảy ra với nhu cầu về lao động?",
     options: [
-      { key: "A", text: "Tính cụ thể" },
-      { key: "B", text: "Tính khách quan" },
-      { key: "C", text: "Tính tuyệt đối" },
-      { key: "D", text: "Tính tương đối" }
+      { key: "A", text: "Nhu cầu lao động tuyệt đối tăng lên" },
+      { key: "B", text: "Nhu cầu tương đối về lao động giảm, hình thành nhân khẩu thừa tương đối" },
+      { key: "C", text: "Nhu cầu lao động không đổi" },
+      { key: "D", text: "Nhu cầu lao động chân tay tăng mạnh" }
     ],
     correct: "B",
-    explain: "Tính khách quan khẳng định nội dung chân lý hoàn toàn phản ánh thực tại khách quan và độc lập với con người, loài người hay sự đồng thuận chủ quan."
+    explain: "Mác khẳng định: khi cấu tạo giá trị (tỷ lệ tư bản bất biến/tư bản khả biến) tăng, nhu cầu tương đối về lao động giảm dù tổng tư bản tăng — tạo ra 'nhân khẩu thừa tương đối' hay 'đội quân thất nghiệp dự bị'."
   },
   {
     id: 2,
-    question: "Điền từ còn thiếu vào câu nói nổi tiếng của C. Mác: 'Vấn đề tìm hiểu xem tư duy của con người có thể đạt tới chân lý khách quan không, hoàn toàn không phải là một vấn đề lý luận mà là...'?",
+    question: "ILO (2016) cảnh báo bao nhiêu phần trăm lao động Việt Nam trong ngành dệt may và da giày có nguy cơ mất việc cao do tự động hóa?",
     options: [
-      { key: "A", text: "Một vấn đề thực tiễn" },
-      { key: "B", text: "Một sự đồng thuận của số đông" },
-      { key: "C", text: "Sự cảm nhận chủ quan" },
-      { key: "D", text: "Lợi ích trước mắt" }
+      { key: "A", text: "46,3%" },
+      { key: "B", text: "55%" },
+      { key: "C", text: "86%" },
+      { key: "D", text: "78%" }
     ],
-    correct: "A",
-    explain: "Nguyên văn luận điểm của C. Mác trong Luận cương về Feuerbach nhằm khẳng định thực tiễn là tiêu chuẩn kiểm nghiệm chân lý duy nhất."
+    correct: "C",
+    explain: "International Labour Organization (2016) cảnh báo có đến 86% lao động Việt Nam trong ngành dệt may và da giày phải đối mặt với nguy cơ mất việc làm cao do sự dịch chuyển của công nghệ tự động hóa."
   },
   {
     id: 3,
-    question: "Theo giáo trình, sai lầm của Chủ nghĩa duy tâm chủ quan (tiêu biểu là Béccơli) là định nghĩa chân lý như thế nào?",
+    question: "Điều gì tạo ra 'nghịch lý Thừa - Thiếu' trong thị trường lao động Việt Nam khi CMCN 4.0 diễn ra?",
     options: [
-      { key: "A", text: "Là quá trình hồi tưởng lại của linh hồn." },
-      { key: "B", text: "Là sự sao chép giản đơn, thụ động." },
-      { key: "C", text: "Là sự phù hợp giữa suy diễn về sự vật với chính bản thân sự vật trên thực tế." },
-      { key: "D", text: "Là sự tự nhận thức của tinh thần thế giới." }
+      { key: "A", text: "Tổng số việc làm giảm mạnh tuyệt đối" },
+      { key: "B", text: "Người lao động thủ công mất việc không đáp ứng được kỹ năng số của việc làm mới tạo ra" },
+      { key: "C", text: "Doanh nghiệp FDI không tuyển dụng lao động Việt Nam" },
+      { key: "D", text: "Nhà nước không cho phép tự động hóa" }
     ],
-    correct: "C",
-    explain: "Béccơli (Duy tâm chủ quan) cho chân lý là sự phù hợp giữa suy diễn của con người về sự vật với chính bản thân sự vật trên thực tế chủ quan."
+    correct: "B",
+    explain: "ADB (2021) dự báo tác động ròng vẫn tích cực (việc làm mới bù đắp việc làm mất đi), nhưng người lao động thủ công không thể đáp ứng ngay kỹ năng số — tạo ra trạng thái 'thừa lao động cũ, thiếu lao động kỹ năng cao'."
   },
   {
     id: 4,
-    question: "V.I. Lênin đã khái quát con đường biện chứng của sự nhận thức chân lý theo trình tự nào sau đây?",
+    question: "Theo số liệu thực tế, sự phân hóa về ứng dụng tự động hóa giữa doanh nghiệp FDI và nội địa trong ngành may là bao nhiêu?",
     options: [
-      { key: "A", text: "Từ tư duy trừu tượng đến thực tiễn, rồi quay lại trực quan sinh động." },
-      { key: "B", text: "Từ nhận thức cảm tính đến sự tung hô của số đông." },
-      { key: "C", text: "Từ trực quan sinh động đến thực tiễn, bỏ qua tư duy trừu tượng." },
-      { key: "D", text: "Từ trực quan sinh động đến tư duy trừu tượng, và từ tư duy trừu tượng đến thực tiễn." }
+      { key: "A", text: "FDI 55% vs Nội địa 45%" },
+      { key: "B", text: "FDI 78% vs Nội địa 39,5%" },
+      { key: "C", text: "FDI 90% vs Nội địa 10%" },
+      { key: "D", text: "FDI 60% vs Nội địa 50%" }
     ],
-    correct: "D",
-    explain: "Chu trình biện chứng: Đi từ nhận thức cảm tính (trực quan sinh động) đến nhận thức lý tính (tư duy trừu tượng), rồi quay về phục vụ, kiểm nghiệm tại thực tiễn."
+    correct: "B",
+    explain: "Huỳnh và cộng sự (2026): 78% doanh nghiệp FDI đã áp dụng tự động hóa, so với chỉ 39,5% ở doanh nghiệp nội địa — minh chứng cho sự phân hóa công nghệ và nguy cơ mất đơn hàng của khối nội địa."
   },
   {
     id: 5,
-    question: "Triết học Mác - Lênin khẳng định: 'Không có chân lý trừu tượng, chung chung, chân lý luôn là...'?",
+    question: "AI khác gì với máy móc cơ khí truyền thống (CMCN 1-2) về tác động đến lực lượng lao động?",
     options: [
-      { key: "A", text: "Số đông" },
-      { key: "B", text: "Cụ thể" },
-      { key: "C", text: "Bất biến" },
-      { key: "D", text: "Lợi ích" }
+      { key: "A", text: "AI chỉ tác động đến lao động nông nghiệp" },
+      { key: "B", text: "AI không thay thế được lao động trí óc" },
+      { key: "C", text: "AI thay thế cả lao động chân tay lẫn một phần lao động trí óc lặp lại, mở rộng phạm vi 'đội quân dự bị' sang lao động văn phòng kỹ năng thấp/trung" },
+      { key: "D", text: "AI chỉ ảnh hưởng đến các nước phát triển" }
     ],
-    correct: "B",
-    explain: "Tính cụ thể khẳng định chân lý luôn phản ánh đối tượng trong không gian, thời gian và điều kiện hoàn cảnh cụ thể xác định."
+    correct: "C",
+    explain: "AI có đặc điểm khác biệt về chất: không chỉ thay thế lao động chân tay (như CMCN 1-2) mà còn thay thế lao động trí óc lặp lại (CMCN 3-4) — phạm vi 'đội quân dự bị' mở rộng từ công nhân sang cả lao động văn phòng kỹ năng thấp/trung."
   }
 ];
 
 const debatesData = [
   {
-    question: "Liệu lợi ích trước mắt nó có lợi hoàn toàn cho đám đông là chân lý? Liệu có người đã đạt được lợi ích ban đầu thì có bị che mờ không?",
-    answer: "Chân lý KHÔNG đồng nhất với lợi ích chủ quan hay sự đồng thuận của đám đông. Triết học Mác - Lênin khẳng định chân lý có tính khách quan, tức là hoàn toàn độc lập với con người, loài người hay tính có lợi. Dù một tri thức mang lại lợi ích lớn tạm thời (như mô hình Ponzi, đa cấp thu hút đám đông ban đầu), nó đi ngược quy luật khách quan nên sớm muộn cũng bị thực tiễn đập tan. Những người nhận lợi ích ban đầu thường bị thiên kiến xác nhận và cảm tính che mờ mắt, dùng sự có lợi để đo đạc đúng sai thay vì dùng thực tiễn khách quan kiểm chứng."
+    question: "Phản biện 1: 'AI tạo ra việc làm mới, vậy có thực sự đáng lo không?'",
+    answer: "Đúng, AI tạo ra việc làm mới — nhưng câu hỏi không phải là 'có hay không', mà là việc làm mới đó dành cho ai và đủ nhanh để hấp thụ số lao động bị thay thế không? Có 3 lệch: (1) Lệch kỹ năng — việc làm AI yêu cầu trình độ cao hơn nhiều so với việc làm bị mất; (2) Lệch thời gian — việc làm mất ngay, việc làm mới cần đào tạo và hạ tầng; (3) Lệch số lượng — nhóm lao động thâm dụng tay nghề thấp là nhóm chịu rủi ro lớn nhất."
   },
   {
-    question: "Phản biện 1: Cú lừa 'Thực tiễn vs. Số đông'. Thực tiễn do con người tiến hành, vậy thực tiễn khác gì ý kiến số đông?",
-    answer: "Sự tán thành của số đông chỉ là trạng thái tâm lý chủ quan, dễ rơi vào ảo giác tập thể. Ngược lại, thực tiễn là 'hoạt động vật chất - cảm tính' cải tạo thế giới. Khi bắt tay vào hành động thực tế, các quy luật vật lý, hóa học, kinh tế khách quan sẽ lên tiếng trực tiếp để kiểm chứng, bất chấp số đông có tán thành chủ quan hay không. Thực tiễn đập tan mọi ảo tưởng tâm lý đám đông."
+    question: "Phản biện 2: 'Việt Nam có lợi thế lao động rẻ, vậy CMCN 4.0 không ảnh hưởng nhiều?'",
+    answer: "Đây chính là nghịch lý nguy hiểm nhất! Theo giáo trình (mục 6.1.2.2), CMCN 4.0 'làm mất đi những lợi thế sản xuất truyền thống, đặc biệt từ các nước đang phát triển như nhân công rẻ, dồi dào'. Chính lợi thế cạnh tranh đã giúp Việt Nam CNH thành công 20-30 năm qua lại là điểm dễ tổn thương nhất trước CMCN 4.0 — vì đây đúng là các ngành dễ tự động hóa nhất (công việc lặp lại, quy trình hóa cao)."
   },
   {
-    question: "Phản biện 2: Bẫy 'Chân lý lỗi thời' (Tính tương đối). Thực tiễn đổi thay, chân lý hôm nay có thể thành sai lầm ngày mai không?",
-    answer: "Có, và đó chính là minh chứng cho tính tương đối và tính cụ thể của chân lý. Không có chân lý trừu tượng chung chung, chân lý luôn là cụ thể gắn liền không gian, thời gian xác định. Việc nó không còn đúng ở tương lai không phải do nó là cú lừa, mà vì điều kiện lịch sử đã thay đổi. Nó đòi hỏi chúng ta liên tục tích lũy các 'chân lý tương đối' mới để tiệm cận sâu sắc hơn tới 'chân lý tuyệt đối'."
+    question: "Phản biện 3: 'Doanh nghiệp FDI đầu tư vào Việt Nam chứng tỏ lao động Việt Nam vẫn cạnh tranh được?'",
+    answer: "FDI vào vì chi phí thấp và vị trí địa lý, không phải vì kỹ năng. Dữ liệu cho thấy FDI đang tự động hóa nhanh hơn nhiều (78%) so với doanh nghiệp nội địa (39,5%). Điều này có nghĩa FDI đang dùng Việt Nam như cơ sở sản xuất nhưng dần giảm nhu cầu lao động tay nghề thấp. Nếu không nâng cấp kỹ năng lao động, Việt Nam có nguy cơ bị FDI rời đi khi chi phí tự động hóa tiếp tục giảm."
   },
   {
-    question: "Phản biện 3: Bẫy 'Sự thật chưa được kiểm chứng'. Thuyết Nhật tâm của Galileo ban đầu chưa kiểm chứng được thì có là chân lý không?",
-    answer: "Nội dung thuyết Nhật tâm đã là chân lý từ trước vì nó phản ánh đúng hiện thực khách quan (tính khách quan độc lập với loài người có nhận thức được nó hay chưa). Tuy nhiên, để con người xác nhận và khẳng định nó chắc chắn là chân lý thì bắt buộc phải chờ hoạt động thực tiễn phát triển (các công cụ viễn vọng, vật lý thiên văn sau này)."
+    question: "Phản biện 4: 'Lý luận của Mác từ thế kỷ 19, có còn áp dụng được trong kỷ nguyên AI không?'",
+    answer: "Mác không nói về AI, nhưng ông nói về quy luật: khi tư bản tích lũy và cấu tạo kỹ thuật tăng thì nhu cầu tương đối về lao động giảm. AI là phiên bản công nghệ cao nhất từ trước đến nay của quy luật này — máy móc thay lao động sống bằng lao động chết (tư bản cố định). Sự kiện 86% lao động may mặc đối diện nguy cơ mất việc là minh chứng thực tiễn xác nhận lý luận của Mác sau 150 năm."
   },
   {
-    question: "Phản biện 4: Niềm tin sai lầm có thể thành chân lý nếu có lợi ích vững bền không?",
-    answer: "Không bao giờ. Lấy lợi ích làm thước đo chân lý là sai lầm của chủ nghĩa thực dụng (pragmatism). Một niềm tin sai quy luật khách quan có thể mang lại thành công chớp nhoáng, nhưng sớm muộn sẽ vấp phải thực tế khách quan và sụp đổ hoàn toàn. Lợi ích chủ quan không bao giờ bẻ cong được quy luật khách quan."
+    question: "Phản biện 5: 'Nhà nước can thiệp nhiều có làm méo mó thị trường lao động không?'",
+    answer: "Đây là 'thất bại thị trường' điển hình — khi thị trường tự do không giải quyết được 'lệch kỹ năng' và 'lệch thời gian'. Trong nền kinh tế thị trường định hướng XHCN, vai trò của Nhà nước là điều tiết, không phải thay thế thị trường. Kinh nghiệm của Đức (đào tạo nghề kép), Singapore (SkillsFuture) cho thấy can thiệp có định hướng của Nhà nước là điều kiện cần thiết để chuyển đổi cơ cấu lao động thành công trong CMCN 4.0."
   }
 ];
 
 const chatbotFAQ = [
-  { q: "Thực tiễn là gì?", a: "Khái niệm và 3 hình thức cơ bản của thực tiễn." },
-  { q: "Tại sao đám đông không quyết định chân lý?", a: "Lý giải tính khách quan tối cao của chân lý triết học." },
-  { q: "Con đường biện chứng của nhận thức là gì?", a: "Phân tích 3 giai đoạn từ cảm tính đến lý tính và thực tiễn." },
-  { q: "Bộ lọc chống tin giả trong Kỷ nguyên số?", a: "Các bước ứng dụng triết học lọc sạch thông tin rác." }
+  { q: "Đội quân thất nghiệp dự bị là gì?", a: "Lý luận của C.Mác về nhân khẩu thừa tương đối và 3 hình thái của nó." },
+  { q: "AI khác gì máy móc truyền thống?", a: "Phân tích sự khác biệt về chất và phạm vi tác động đến lao động." },
+  { q: "Việt Nam bị ảnh hưởng như thế nào?", a: "Số liệu thực tế về các ngành may, logistics và nghịch lý thừa-thiếu." },
+  { q: "Nhà nước cần làm gì trước CMCN 4.0?", a: "Vai trò điều tiết và các chính sách cụ thể trong định hướng XHCN." }
 ];
 
 export default function App() {
@@ -344,7 +344,7 @@ export default function App() {
   // Debates Accordion state
   const [expandedDebate, setExpandedDebate] = useState(null);
 
-  // Toggle philosophy text in Chapter 5
+  // Toggle insight text in Phần 5
   const [showPhilosophy, setShowPhilosophy] = useState({});
 
   const togglePhilosophy = (idx) => {
@@ -353,7 +353,7 @@ export default function App() {
 
   // AI Chatbot state
   const [chatMessages, setChatMessages] = useState([
-    { sender: 'bot', text: 'Xin chào bạn! Tôi là Trợ lý AI Triết học chuyên sâu về Lý luận Nhận thức & Chân lý của bạn. Bạn có thắc mắc gì về mối quan hệ giữa nhận thức và thực tiễn, hoặc cách lọc thông tin đúng đắn trong kỷ nguyên số theo tài liệu giáo trình không?' }
+    { sender: 'bot', text: 'Xin chào! Tôi là Trợ lý AI chuyên về CMCN 4.0 và Thị trường Lao động Việt Nam. Bạn có thắc mắc gì về lý luận đội quân thất nghiệp dự bị, tác động của AI đến lao động, hay vai trò của Nhà nước không?' }
   ]);
   const [userMsg, setUserMsg] = useState('');
   const [isTyping, setIsTyping] = useState(false);
@@ -419,24 +419,19 @@ export default function App() {
 
     // AI logic response simulation
     setTimeout(() => {
-      let reply = "Tôi đã ghi nhận câu hỏi của bạn. Theo Triết học Mác - Lênin, mọi nhận thức đều xuất phát từ thực tiễn và quay về phục vụ thực tiễn. Bạn có thể làm rõ thêm khía cạnh bạn đang quan tâm không?";
+      let reply = "Tôi đã ghi nhận câu hỏi của bạn. Theo lý luận Mác-Lênin về kinh tế chính trị, CMCN 4.0 đang tái cấu trúc lực lượng lao động theo hướng phân cực kỹ năng. Bạn có thể làm rõ thêm khía cạnh bạn đang quan tâm không?";
       
       const lowerText = text.toLowerCase();
-      if (lowerText.includes('thực tiễn là gì') || lowerText.includes('khái niệm thực tiễn')) {
-        reply = "Thực tiễn là toàn bộ những hoạt động vật chất - cảm tính, có tính lịch sử - xã hội của con người nhằm cải tạo tự nhiên và xã hội phục vụ con người. Nó gồm 3 hình thức cơ bản: Hoạt động sản xuất vật chất (quyết định nhất), Hoạt động chính trị - xã hội, và Hoạt động thực nghiệm khoa học.";
-      } else if (lowerText.includes('chân lý') || lowerText.includes('chan ly')) {
-        reply = "Chân lý là tri thức phù hợp với hiện thực khách quan và được thực tiễn kiểm nghiệm. Nó có 4 đặc tính cốt lõi: Tính khách quan (luôn độc lập với con người, loài người hay quy ước), Tính cụ thể (gắn liền không gian, thời gian và hoàn cảnh lịch sử cụ thể), Tính tương đối (chưa đầy đủ toàn diện ở giai đoạn giới hạn), và Tính tuyệt đối (tổng số biện chứng của các chân lý tương đối).";
-      } else if (lowerText.includes('bẫy số đông') || lowerText.includes('dam dong') || lowerText.includes('đám đông')) {
-        reply = "Chân lý có tính khách quan, nghĩa là nội dung phản ánh khách quan hoàn toàn độc lập với con người và loài người. Sự chấp nhận hay đồng thuận của đám đông KHÔNG phải là tiêu chuẩn đo lường chân lý. Thước đo duy nhất và khách quan của chân lý chính là Thực tiễn kiểm nghiệm!";
-      } else if (lowerText.includes('kỷ nguyên số') || lowerText.includes('tin giả') || lowerText.includes('không gian mạng')) {
-        reply = "Trong bối cảnh mạng xã hội bùng nổ, quá trình con người đánh giá thông tin và xác định chân lý trong kỷ nguyên số gồm 3 giai đoạn biện chứng:\n\n" +
-          "1. Giai đoạn 1 (Khi mới tiếp nhận thông tin): Tránh cái bẫy của nhận thức cảm tính và số đông. Nhận thức cảm tính chỉ phản ánh bề ngoài, dễ rơi vào tâm lý bầy đàn.\n\n" +
-          "2. Giai đoạn 2 (Đánh giá lại vấn đề): Vai trò của nhận thức lý tính và nguồn thông tin uy tín. Dùng tư duy phản biện để bóc tách hiện tượng giả tạo, hướng tới quy luật tất yếu.\n\n" +
-          "3. Giai đoạn 3 (Chốt chặn cuối cùng): Đưa nhận định quay lại kiểm chứng bằng Thực tiễn khách quan - đây là tiêu chuẩn duy nhất của chân lý, đập tan mọi ảo tưởng của nhận thức cảm tính.";
-      } else if (lowerText.includes('con đường biện chứng') || lowerText.includes('lenin') || lowerText.includes('lênin')) {
-        reply = "V.I. Lênin đúc kết con đường biện chứng cực kì chuẩn xác: 'Từ trực quan sinh động đến tư duy trừu tượng, và từ tư duy trừu tượng đến thực tiễn'. Đây là vòng tuần hoàn vô hạn giúp nhận thức của con người ngày càng tiệm cận sâu sắc tới chân lý tuyệt đối.";
-      } else if (lowerText.includes('galileo') || lowerText.includes('nhật tâm')) {
-        reply = "Thuyết Nhật tâm của Galileo ban đầu bị toàn bộ xã hội phản đối và chưa có thiết bị để kiểm chứng thực tiễn. Nhưng nó đã luôn là chân lý vì nội dung của nó phản ánh đúng hiện thực khách quan (tính khách quan của chân lý không phụ thuộc vào việc loài người đã nhận thức được nó hay chưa). Để con người xác nhận được nó, cần sự phát triển của thực tiễn.";
+      if (lowerText.includes('đội quân') || lowerText.includes('thất nghiệp dự bị') || lowerText.includes('mác')) {
+        reply = "Theo C.Mác (Tư bản, quyển I): Khi tư bản tích lũy, cấu tạo kỹ thuật tăng → tỷ lệ tư bản bất biến/khả biến tăng → nhu cầu tương đối về lao động giảm → hình thành 'nhân khẩu thừa tương đối'. Đội quân này tồn tại dưới 3 hình thái: (1) Lưu động — mất việc tạm thời, di chuyển giữa ngành; (2) Tiềm tàng — lao động dư ở nông nghiệp/nông thôn; (3) Trì trệ — bán thất nghiệp kinh niên. AI chính là phiên bản công nghệ cao nhất của quy luật này sau 150 năm.";
+      } else if (lowerText.includes('ai') || lowerText.includes('tự động hóa') || lowerText.includes('robot')) {
+        reply = "AI khác với máy móc cơ khí truyền thống (CMCN 1-2) ở chỗ: nó không chỉ thay thế lao động chân tay mà còn thay thế một phần lao động trí óc lặp lại (CMCN 3-4). Điều này mở rộng phạm vi 'đội quân thất nghiệp dự bị' từ công nhân sang cả lao động văn phòng kỹ năng thấp/trung. Case study thực tế: Tân Cảng Sài Gòn giảm 40% thời gian xử lý container, Viettel Post tăng tốc giao hàng 20% nhờ AI.";
+      } else if (lowerText.includes('việt nam') || lowerText.includes('dệt may') || lowerText.includes('logistics')) {
+        reply = "ILO (2016) cảnh báo 86% lao động dệt may và da giày Việt Nam có nguy cơ mất việc cao do tự động hóa. Nghịch lý lớn nhất: chính lợi thế 'lao động giá rẻ' giúp Việt Nam CNH thành công 20-30 năm qua lại là điểm dễ tổn thương nhất — vì đây là các ngành dễ tự động hóa nhất. Trong logistics, 90,5% doanh nghiệp vẫn ở mức số hóa sơ khai và chỉ 10% đạt tự động hóa vật lý toàn trình.";
+      } else if (lowerText.includes('nhà nước') || lowerText.includes('xhcn') || lowerText.includes('chính sách')) {
+        reply = "Trong nền kinh tế thị trường định hướng XHCN, Nhà nước cần can thiệp vì đây là 'thất bại thị trường' điển hình. Cụ thể: (1) Xây dựng hệ thống đào tạo lại lao động quy mô lớn; (2) Chính sách hỗ trợ chuyển đổi cho người lao động bị thay thế; (3) Khuyến khích doanh nghiệp nội địa số hóa; (4) Điều tiết FDI gắn với trách nhiệm đào tạo lao động địa phương. Kinh nghiệm từ Singapore (SkillsFuture) và Đức (đào tạo nghề kép) là bài học tham khảo tốt.";
+      } else if (lowerText.includes('skill mismatch') || lowerText.includes('lệch kỹ năng') || lowerText.includes('creation lag')) {
+        reply = "3 loại 'lệch' trong chuyển đổi lao động thời AI: (1) Skill mismatch — việc làm AI tạo ra (kỹ sư dữ liệu, vận hành tự động) yêu cầu trình độ cao hơn nhiều so với việc làm bị mất; (2) Creation lag — việc làm mất ngay khi áp dụng công nghệ, việc làm mới cần thời gian đào tạo; (3) Net effect — ADB (2021) dự báo tác động ròng đến 2030 vẫn tích cực nhưng nhóm lao động tay nghề thấp chịu rủi ro lớn nhất.";
       }
 
       setChatMessages(prev => [...prev, { sender: 'bot', text: reply }]);
@@ -461,7 +456,7 @@ export default function App() {
         <div className="absolute bottom-0 left-0 w-[250px] sm:w-[600px] h-[250px] sm:h-[600px] bg-black/15 rounded-full -translate-x-1/3 translate-y-1/3 blur-3xl pointer-events-none"></div>
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[200px] sm:w-[500px] h-[200px] sm:h-[500px] bg-red-500/10 rounded-full blur-3xl pointer-events-none"></div>
 
-        {/* Artistic decorated images at sides matching mln111-tan */}
+        {/* Artistic decorated images at sides */}
         <div className="absolute left-0 bottom-0 h-[70%] w-[340px] pointer-events-none select-none hidden xl:block" style={{
           maskImage: 'linear-gradient(to right, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0.3) 50%, transparent 100%), linear-gradient(to top, transparent 0%, black 15%, black 85%, transparent 100%)',
           WebkitMaskImage: 'linear-gradient(to right, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0.3) 50%, transparent 100%), linear-gradient(to top, transparent 0%, black 15%, black 85%, transparent 100%)',
@@ -518,7 +513,7 @@ export default function App() {
             <div className="h-[1.5px] w-12 bg-white/30"></div>
             <span className="inline-flex h-6 items-center justify-center rounded-full border border-white/25 bg-white/15 px-4 text-xs font-bold uppercase tracking-wider text-white backdrop-blur-sm gap-1.5 hover:bg-white/25 transition-colors cursor-default">
               <Sparkles className="w-3.5 h-3.5 text-amber-300" />
-              Lý luận nhận thức & Chân lý
+              CMCN 4.0 & Kinh tế Chính trị
             </span>
             <div className="h-[1.5px] w-12 bg-white/30"></div>
           </div>
@@ -534,8 +529,8 @@ export default function App() {
 
           {/* Epic Main Titles */}
           <h1 className="text-5xl sm:text-7xl font-extrabold text-white mb-5 leading-tight tracking-tight drop-shadow-sm uppercase">
-            LÝ LUẬN NHẬN THỨC <br />
-            <span className="text-red-200">VÀ CHÂN LÝ</span>
+            CMCN 4.0 & <br />
+            <span className="text-red-200">THẤT NGHIỆP</span>
           </h1>
 
           {/* Aesthetic Center Line */}
@@ -547,10 +542,10 @@ export default function App() {
 
           {/* Descriptions */}
           <p className="text-xl sm:text-2xl text-red-100 mb-3 max-w-3xl mx-auto font-light">
-            Khoa học lý luận Mác - Lênin ứng dụng thực tiễn Kỷ nguyên số
+            Tác động của AI đến CNH và nguy cơ "Đội quân thất nghiệp dự bị"
           </p>
           <p className="text-red-200/80 text-sm max-w-2xl mx-auto">
-            Trình bày hệ thống, biện chứng mối quan hệ giữa Nhận thức - Chân lý - Thực tiễn, đập tan mọi bẫy ảo tưởng đám đông và lợi ích tức thời
+            Vận dụng lý luận kinh tế chính trị C.Mác phân tích thực tiễn Việt Nam trong các ngành thâm dụng lao động trước CMCN 4.0
           </p>
 
           {/* Action CTAs */}
@@ -573,9 +568,9 @@ export default function App() {
           {/* Under Quote Panel */}
           <div className="mx-auto max-w-xl bg-white/5 border border-white/10 rounded-2xl px-6 py-4 backdrop-blur-sm">
             <p className="text-red-100/90 text-sm italic leading-relaxed">
-              &quot;Triết học không chỉ giải thích thế giới theo nhiều cách khác nhau, điều quan trọng là phải thay đổi nó.&quot;
+              &quot;AI không tạo ra một hiện tượng mới, mà là phiên bản công nghệ cao nhất từ trước đến nay của quy luật mà Mác đã chỉ ra cách đây 150 năm.&quot;
             </p>
-            <p className="text-white/40 text-[10px] uppercase tracking-wider mt-2">— Karl Marx, Luận cương về Feuerbach</p>
+            <p className="text-white/40 text-[10px] uppercase tracking-wider mt-2">— Luận điểm cốt lõi của bài thuyết trình</p>
           </div>
 
           {/* Counters matching target style */}
@@ -585,7 +580,7 @@ export default function App() {
                 <BookOpen className="w-5 h-5 text-red-200" />
               </div>
               <div className="text-2xl font-bold">05</div>
-              <div className="text-red-200/80 text-xs uppercase tracking-wider">Chương học</div>
+              <div className="text-red-200/80 text-xs uppercase tracking-wider">Phần nội dung</div>
             </div>
             <div className="text-center flex flex-col items-center gap-1 group cursor-pointer" onClick={() => scrollToSection('quiz')}>
               <div className="w-10 h-10 rounded-xl bg-white/10 flex items-center justify-center mb-1 group-hover:bg-white/20 transition-colors">
@@ -619,11 +614,11 @@ export default function App() {
 
             {/* Menu Items */}
             {[
-              { id: 'intro', label: 'Bẫy Nhận Thức', icon: ShieldAlert },
-              { id: 'theory', label: 'Lý Luận Mác-Lênin', icon: BrainCircuit },
-              { id: 'truth', label: 'Bản Chất Chân Lý', icon: Compass },
-              { id: 'practice', label: 'Vai Trò Thực Tiễn', icon: Zap },
-              { id: 'digital', label: 'Kỷ Nguyên Số', icon: Cpu },
+              { id: 'intro', label: 'Lý luận C.Mác', icon: ShieldAlert },
+              { id: 'theory', label: 'Số liệu & Thực tiễn', icon: BrainCircuit },
+              { id: 'truth', label: 'Phản biện AI', icon: Compass },
+              { id: 'practice', label: 'Case Study VN', icon: Zap },
+              { id: 'digital', label: 'Bài học & Giải pháp', icon: Cpu },
               { id: 'flashcard', label: 'Flashcard 3D', icon: Layers },
               { id: 'quiz', label: 'Đố Vui', icon: Trophy },
               { id: 'debates', label: 'Phản Biện Lớp', icon: HelpCircle },
@@ -657,23 +652,23 @@ export default function App() {
       {/* ================= MAIN CONTENT SECTION (cuộn SPA dài) ================= */}
       <main className="max-w-7xl mx-auto px-4 py-16 w-full space-y-32">
 
-        {/* ================= CHAPTER 1: INTRO & BẪY NHẬN THỨC ================= */}
+        {/* ================= PHẦN 1: LÝ LUẬN C.MÁC & ĐỘI QUÂN THẤT NGHIỆP DỰ BỊ ================= */}
         <section id="intro" className="scroll-mt-24 space-y-12">
           
           {/* Header */}
           <div className="text-center space-y-3">
             <span className="inline-flex h-5 w-fit items-center justify-center rounded-full bg-red-100 text-red-700 border border-red-200 px-3 py-0.5 text-xs font-bold uppercase tracking-wider">
-              Chương 1
+              Phần 1
             </span>
             <h2 className="text-3xl sm:text-4xl font-extrabold text-gradient-red tracking-tight">
-              Thực trạng & Hai cái bẫy Nhận thức
+              Lý luận "Đội quân thất nghiệp dự bị" & Vận dụng vào AI
             </h2>
             <p className="text-gray-600 text-base sm:text-lg max-w-3xl mx-auto">
-              Mỗi ngày trên mạng xã hội, chúng ta bị bủa vây bởi hàng ngàn luồng thông tin đa chiều. Đứng trước sự hỗn loạn này, con người rất dễ sa bẫy tâm lý chủ quan.
+              Lý thuyết kinh tế chính trị của C.Mác không chỉ phản ánh thế kỷ 19 mà còn dự báo chính xác hiện tượng AI thay thế lao động đang diễn ra hiện nay.
             </p>
           </div>
 
-          {/* Traps Content Grid */}
+          {/* Luận điểm chính Grid */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {chaptersData.intro.traps.map((trap, idx) => (
               <div key={idx} className="card-hover bg-gradient-to-br from-red-50 to-red-100 border border-red-200/60 rounded-3xl p-6 shadow-sm flex flex-col justify-between space-y-5">
@@ -685,7 +680,7 @@ export default function App() {
                   <p className="text-gray-700 text-sm leading-relaxed">{trap.desc}</p>
                 </div>
                 <div className="pt-2 border-t border-red-200/30 flex items-center text-xs font-bold text-red-700 hover:text-red-900 cursor-pointer" onClick={() => scrollToSection('digital')}>
-                  <span>Giải pháp Mác - Lênin</span>
+                  <span>Xem phân tích</span>
                   <ChevronRight className="w-4 h-4 ml-1" />
                 </div>
               </div>
@@ -697,18 +692,18 @@ export default function App() {
             <div className="text-8xl font-serif absolute -top-4 left-4 opacity-15 select-none">&quot;</div>
             <blockquote className="relative z-10 space-y-4">
               <p className="text-lg sm:text-xl italic font-light leading-relaxed">
-                &quot;Thực tiễn qua sự sụp đổ của vô số mô hình lừa đảo tài chính đa cấp, trào lưu phản khoa học chứng minh: đám đông và lợi ích tức thời không bảo chứng cho sự thật.&quot;
+                &quot;Chính lợi thế cạnh tranh đã giúp Việt Nam CNH thành công trong 20-30 năm qua (lao động rẻ, dồi dào) lại chính là điểm dễ tổn thương nhất trước CMCN 4.0 — vì đây đúng là các ngành dễ tự động hóa nhất.&quot;
               </p>
               <footer className="font-semibold text-red-200/90 text-sm flex items-center gap-1.5">
                 <Info className="w-4 h-4" /> 
-                — Đâu là bộ lọc chuẩn xác để phân định Đúng - Sai?
+                — Nghịch lý cốt lõi trong quá trình CNH của Việt Nam
               </footer>
             </blockquote>
           </div>
 
-          {/* Historical Philosophy timeline matching target website */}
+          {/* Timeline vận dụng lý luận Mác */}
           <div className="space-y-8">
-            <h3 className="text-2xl font-bold text-center text-slate-800">Lịch sử phát triển Tư tưởng Nhận thức</h3>
+            <h3 className="text-2xl font-bold text-center text-slate-800">Vận dụng lý luận Mác vào bối cảnh CMCN 4.0</h3>
             <div className="relative">
               
               {/* Vertical timeline line */}
@@ -747,12 +742,12 @@ export default function App() {
                           {/* Expanded Content */}
                           {isExpanded && (
                             <div className="px-5 pb-5 border-t border-red-200/40 pt-4 bg-red-50/40 text-left">
-                              <h5 className="text-xs font-bold text-red-800 uppercase tracking-wider mb-2">Đặc điểm & Hạn chế lớn</h5>
+                    <h5 className="text-xs font-bold text-red-800 uppercase tracking-wider mb-2">Phân tích sâu & Ý nghĩa thực tiễn</h5>
                               <p className="text-xs text-slate-700 leading-relaxed">
-                                {idx === 0 && "Bản chất: Sự vật chỉ là phức hợp cảm giác con người. Hạn chế: Rơi vào duy tâm chủ quan, phủ nhận tính khách quan thực sự của thế giới bên ngoài, biến chân lý thành thứ tùy tiện thuộc tâm lý cá nhân."}
-                                {idx === 1 && "Bản chất: Platôn coi nhận thức là hồi tưởng ý niệm linh hồn; Hêghen coi là tinh thần thế giới tự ý thức. Hạn chế: Thần bí hóa tri thức, tách rời lý luận khỏi hoạt động vật chất cảm tính của con người."}
-                                {idx === 2 && "Bản chất: Hium nghi ngờ sự tồn tại của vật thể; Cantơ bảo con người không thể biết bản chất 'vật tự nó'. Hạn chế: Bất khả tri, phủ nhận năng lực nắm bắt quy luật khách quan của trí tuệ loài người."}
-                                {idx === 3 && "Bản chất: Thừa nhận thế giới khách quan phản ánh vào óc. Hạn chế: Coi phản ánh là chụp ảnh thụ động, siêu hình máy móc, hoàn toàn không thấy năng động sáng tạo và vai trò cốt lõi của thực tiễn."}
+                                {idx === 0 && "Luận điểm gốc: Cấu tạo kỹ thuật tăng → nhu cầu tương đối về lao động giảm → hình thành nhân khẩu thừa tương đối. AI là phiên bản công nghệ cao nhất thực hiện quy luật này sau 150 năm."}
+                                {idx === 1 && "3 hình thái: Lưu động (di chuyển tạm thời), Tiềm tàng (lao động dư nông nghiệp), Trì trệ (bán thất nghiệp kinh niên). AI tạo ra loại trì trệ mới — lao động không thể chuyển đổi kỹ năng kịp tốc độ công nghệ."}
+                                {idx === 2 && "Điểm khác biệt về chất: AI thay thế cả lao động trí óc lặp lại, không chỉ lao động chân tay như CMCN 1-2. Điều này mở rộng phạm vi 'đội quân dự bị' sang cả văn phòng kỹ năng thấp/trung."}
+                                {idx === 3 && "Giáo trình mục 6.1.2.2: CMCN 4.0 làm mất lợi thế sản xuất truyền thống. Mô hình CNH của Việt Nam dựa trên lao động giá rẻ chính là điểm dễ bị tổn thương nhất trước tự động hóa."}
                               </p>
                             </div>
                           )}
@@ -772,23 +767,23 @@ export default function App() {
 
         </section>
 
-        {/* ================= CHAPTER 2: LÝ LUẬN NHẬN THỨC MÁC-LÊNIN ================= */}
+        {/* ================= PHẦN 2: SỐ LIỆU & THỰC TIỄN VIỆT NAM ================= */}
         <section id="theory" className="scroll-mt-24 space-y-12">
           
           {/* Header */}
           <div className="text-center space-y-3">
             <span className="inline-flex h-5 w-fit items-center justify-center rounded-full bg-red-100 text-red-700 border border-red-200 px-3 py-0.5 text-xs font-bold uppercase tracking-wider">
-              Chương 2
+              Phần 2
             </span>
             <h2 className="text-3xl sm:text-4xl font-extrabold text-gradient-red tracking-tight">
-              Lý luận Nhận thức Duy vật Biện chứng
+              Số liệu & Case Study: Tự động hóa tại Việt Nam
             </h2>
             <p className="text-gray-600 text-base sm:text-lg max-w-3xl mx-auto">
-              Định nghĩa con đường khoa học của nhận thức chân lý khách quan. Đưa Thực tiễn trở thành trục xoay trung tâm của tri thức.
+              Dữ liệu thực tế từ ngành may, logistics và các case study doanh nghiệp chứng minh nguy cơ hình thành đội quân thất nghiệp dự bị tại Việt Nam.
             </p>
           </div>
 
-          {/* Cards 3-Columns grid */}
+          {/* Số liệu chính 3 cột */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {chaptersData.theory.principles.map((pr, idx) => (
               <div key={idx} className="card-hover bg-gradient-to-br from-rose-50 to-rose-100 border border-rose-200/60 rounded-3xl p-6 shadow-sm flex flex-col justify-between space-y-5">
@@ -800,27 +795,27 @@ export default function App() {
                   <p className="text-gray-700 text-sm leading-relaxed">{pr.desc}</p>
                 </div>
                 <div className="pt-2 border-t border-red-200/30 text-xs font-semibold text-slate-400">
-                  Nguyên lý triết học
+                  Số liệu thực tế
                 </div>
               </div>
             ))}
           </div>
 
-          {/* Lenin Quote Box */}
+          {/* Quote số liệu ILO */}
           <div className="bg-red-gradient text-white rounded-3xl p-8 relative overflow-hidden shadow-lg shadow-red-800/10">
             <div className="absolute right-0 bottom-0 w-80 h-80 bg-white/5 rounded-full blur-3xl pointer-events-none"></div>
             <div className="relative z-10 space-y-4 max-w-4xl">
-              <span className="text-red-200 font-extrabold text-xs uppercase tracking-wider">Luận điểm kinh điển</span>
+              <span className="text-red-200 font-extrabold text-xs uppercase tracking-wider">Số liệu ILO — Báo động đỏ</span>
               <p className="text-lg sm:text-xl italic font-light leading-relaxed">
-                &quot;Từ trực quan sinh động đến tư duy trừu tượng, và từ tư duy trừu tượng đến thực tiễn - đó là con đường biện chứng của sự nhận thức thực tại khách quan.&quot;
+                &quot;86% lao động Việt Nam trong ngành dệt may và da giày phải đối mặt với nguy cơ mất việc làm cao do sự dịch chuyển của công nghệ tự động hóa.&quot;
               </p>
-              <footer className="font-semibold text-red-200/90 text-sm">— V.I. Lênin</footer>
+              <footer className="font-semibold text-red-200/90 text-sm">— International Labour Organization (ILO), 2016</footer>
             </div>
           </div>
 
-          {/* Biện chứng steps grid */}
+          {/* 3 Hệ quả grid */}
           <div className="space-y-6">
-            <h3 className="text-2xl font-bold text-center text-slate-800">Chu trình 3 bước nhận thức chân lý</h3>
+            <h3 className="text-2xl font-bold text-center text-slate-800">3 Hệ quả suy ra từ số liệu thực tiễn</h3>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               {chaptersData.theory.dialecticsSteps.map((st, idx) => (
                 <div key={idx} className="bg-white border border-slate-200/60 rounded-3xl p-6 shadow-sm space-y-3 card-hover">
@@ -836,23 +831,23 @@ export default function App() {
 
         </section>
 
-        {/* ================= CHAPTER 3: ĐẶC TÍNH CỦA CHÂN LÝ ================= */}
+        {/* ================= PHẦN 3: PHÂN TÍCH "AI TẠO VIỆC LÀM HAY THAY THẾ?" ================= */}
         <section id="truth" className="scroll-mt-24 space-y-12">
           
           {/* Header */}
           <div className="text-center space-y-3">
             <span className="inline-flex h-5 w-fit items-center justify-center rounded-full bg-red-100 text-red-700 border border-red-200 px-3 py-0.5 text-xs font-bold uppercase tracking-wider">
-              Chương 3
+              Phần 3
             </span>
             <h2 className="text-3xl sm:text-4xl font-extrabold text-gradient-red tracking-tight">
-              Bản chất & 4 Đặc tính của Chân lý
+              AI Tạo Việc Làm Hay Thay Thế? — 3 Lớp Phân Tích
             </h2>
             <p className="text-gray-600 text-base sm:text-lg max-w-3xl mx-auto">
-              Chân lý không phải là thứ thuộc về số đông hay niềm tin chủ quan. Nó là tri thức phù hợp với hiện thực khách quan và được thực tiễn kiểm nghiệm.
+              Trả lời dứt khoát phản biện thường gặp nhất: AI không xóa bỏ việc làm tuyệt đối, nhưng tái cấu trúc theo hướng phân cực kỹ năng với 3 loại "lệch" nguy hiểm.
             </p>
           </div>
 
-          {/* Truth Properties Grid */}
+          {/* Phân tích 4 lớp */}
           <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
             {chaptersData.truth.properties.map((prop, idx) => (
               <div key={idx} className="bg-white border border-slate-200/60 rounded-3xl p-6 shadow-sm flex flex-col justify-between space-y-5 card-hover">
@@ -867,7 +862,7 @@ export default function App() {
                   <p className="text-gray-600 text-sm leading-relaxed">{prop.desc}</p>
                 </div>
                 <div className="pt-2 border-t border-slate-100 text-xs text-slate-400 font-semibold select-none">
-                  Thuộc tính {idx + 1}
+                  Lệch #{idx + 1}
                 </div>
               </div>
             ))}
@@ -875,23 +870,23 @@ export default function App() {
 
         </section>
 
-        {/* ================= CHAPTER 4: VAI TRÒ CỦA THỰC TIỄN ================= */}
+        {/* ================= PHẦN 4: CASE STUDY DOANH NGHIỆP VIỆT NAM ================= */}
         <section id="practice" className="scroll-mt-24 space-y-12">
           
           {/* Header */}
           <div className="text-center space-y-3">
             <span className="inline-flex h-5 w-fit items-center justify-center rounded-full bg-red-100 text-red-700 border border-red-200 px-3 py-0.5 text-xs font-bold uppercase tracking-wider">
-              Chương 4
+              Phần 4
             </span>
             <h2 className="text-3xl sm:text-4xl font-extrabold text-gradient-red tracking-tight">
-              Sức mạnh & Vai trò của Thực tiễn
+              Doanh nghiệp Việt Nam ứng dụng AI/Tự động hóa
             </h2>
             <p className="text-gray-600 text-base sm:text-lg max-w-3xl mx-auto">
-              Thực tiễn là toàn bộ hoạt động vật chất cảm tính của con người. Thực tiễn đóng vai trò quyết định, là nguồn gốc phát sinh và thước đo cuối cùng của nhận thức.
+              Case study thực tế từ ngành may, logistics và các tập đoàn lớn — chứng minh cả mặt tích cực và rủi ro của làn sóng tự động hóa tại Việt Nam.
             </p>
           </div>
 
-          {/* 3 Forms Grid */}
+          {/* Case Study 3 doanh nghiệp */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {chaptersData.practice.forms.map((form, idx) => (
               <div key={idx} className="card-hover bg-gradient-to-br from-red-50 to-orange-50 border border-orange-200/60 rounded-3xl p-6 shadow-sm flex flex-col justify-between space-y-5">
@@ -903,7 +898,7 @@ export default function App() {
                   <p className="text-gray-700 text-sm leading-relaxed">{form.desc}</p>
                 </div>
                 <div className="pt-2 border-t border-orange-200/35 text-xs font-bold text-orange-700">
-                  Hình thức {idx + 1}
+                  Case Study {idx + 1}
                 </div>
               </div>
             ))}
@@ -913,21 +908,21 @@ export default function App() {
           <div className="bg-red-gradient text-white rounded-3xl p-8 relative overflow-hidden shadow-lg shadow-red-800/10">
             <div className="absolute right-0 bottom-0 w-80 h-80 bg-white/5 rounded-full blur-3xl pointer-events-none"></div>
             <div className="relative z-10 space-y-4 max-w-4xl">
-              <span className="text-red-200 font-extrabold text-xs uppercase tracking-wider">Luận cương vĩ đại</span>
+              <span className="text-red-200 font-extrabold text-xs uppercase tracking-wider">Luận điểm cốt lõi của C.Mác</span>
               <p className="text-lg sm:text-xl italic font-light leading-relaxed">
-                &quot;Vấn đề tìm hiểu xem tư duy của con người có thể đạt tới chân lý khách quan không, hoàn toàn không phải là một vấn đề lý luận mà là một vấn đề thực tiễn.&quot;
+                &quot;AI không tạo ra một hiện tượng mới, mà là phiên bản công nghệ cao nhất từ trước đến nay của quy luật mà Mác đã chỉ ra cách đây 150 năm — máy móc thay lao động sống bằng lao động chết (tư bản cố định).&quot;
               </p>
-              <footer className="font-semibold text-red-200/90 text-sm">— C. Mác</footer>
+              <footer className="font-semibold text-red-200/90 text-sm">— Luận điểm trung tâm của bài thuyết trình</footer>
             </div>
           </div>
 
           {/* 3 Decisive Roles */}
           <div className="space-y-6">
-            <h3 className="text-2xl font-bold text-center text-slate-800">Vai trò quyết định của Thực tiễn đối với Nhận thức</h3>
+            <h3 className="text-2xl font-bold text-center text-slate-800">Phân tích thực trạng logistics Việt Nam</h3>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               {chaptersData.practice.roles.map((role, idx) => (
                 <div key={idx} className="bg-white border border-slate-200/60 rounded-3xl p-6 shadow-sm space-y-3 card-hover">
-                  <span className="text-xs uppercase font-extrabold tracking-wider text-red-600">Quy tắc {idx+1}</span>
+                  <span className="text-xs uppercase font-extrabold tracking-wider text-red-600">Phát hiện {idx+1}</span>
                   <h4 className="font-bold text-slate-800 text-base">{role.title}</h4>
                   <p className="text-gray-600 text-sm leading-relaxed">{role.desc}</p>
                 </div>
@@ -937,23 +932,23 @@ export default function App() {
 
         </section>
 
-        {/* ================= CHAPTER 5: KỶ NGUYÊN SỐ & PHÂN BIỆT CHÂN LÝ ================= */}
+        {/* ================= PHẦN 5: BÀI HỌC & VAI TRÒ NHÀ NƯỚC ================= */}
         <section id="digital" className="scroll-mt-24 space-y-12">
           
           {/* Header */}
           <div className="text-center space-y-3">
             <span className="inline-flex h-5 w-fit items-center justify-center rounded-full bg-red-100 text-red-700 border border-red-200 px-3 py-0.5 text-xs font-bold uppercase tracking-wider">
-              Chương 5
+              Phần 5
             </span>
             <h2 className="text-3xl sm:text-4xl font-extrabold text-gradient-red tracking-tight">
-              Nhận thức Chân lý trong Kỷ nguyên số
+              Bài học & Vai trò Nhà nước trong Kỷ nguyên AI
             </h2>
             <p className="text-gray-600 text-base sm:text-lg max-w-4xl mx-auto leading-relaxed">
-              Trong bối cảnh mạng xã hội bùng nổ, việc con người xác định đúng - sai thường trải qua một quá trình giằng co giữa cảm tính bề ngoài và lý tính sâu sắc, phản ánh đúng con đường biện chứng của nhận thức: <strong className="text-red-700 font-bold">&quot;Từ trực quan sinh động đến tư duy trừu tượng, và từ tư duy trừu tượng đến thực tiễn&quot;</strong>.
+              Từ lý luận Mác và thực tiễn Việt Nam, 3 bài học hành động cho người lao động, doanh nghiệp và Nhà nước để ứng phó chủ động với CMCN 4.0 trong khuôn khổ <strong className="text-red-700 font-bold">kinh tế thị trường định hướng XHCN</strong>.
             </p>
           </div>
 
-          {/* Process steps */}
+          {/* 3 Bài học hành động */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {chaptersData.digital.process.map((pr, idx) => (
               <div key={idx} className="bg-white border border-slate-200/60 rounded-3xl p-6 shadow-sm flex flex-col justify-between space-y-4 card-hover transition-all duration-300 hover:shadow-md" style={{
@@ -1012,11 +1007,11 @@ export default function App() {
             ))}
           </div>
 
-          {/* Bảng so sánh */}
+          {/* Bảng đối chiếu Có/Không có Nhà nước */}
           <div className="bg-white border border-slate-200/60 rounded-3xl p-6 sm:p-8 shadow-sm space-y-6 overflow-hidden">
             <div className="text-center max-w-md mx-auto">
-              <h3 className="text-lg font-bold text-slate-800">Đối chiếu: Niềm tin sai lầm (Ảo giác) & Chân lý khách quan</h3>
-              <p className="text-xs text-slate-400 uppercase font-bold tracking-wider mt-1">Giúp phân biệt chân lý với những niềm tin giả tạo</p>
+              <h3 className="text-lg font-bold text-slate-800">Đối chiếu: Có/Không có vai trò Nhà nước trong ứng phó CMCN 4.0</h3>
+              <p className="text-xs text-slate-400 uppercase font-bold tracking-wider mt-1">Tác động lên người lao động, doanh nghiệp và cơ cấu kinh tế</p>
             </div>
 
             <div className="overflow-x-auto">
@@ -1049,38 +1044,38 @@ export default function App() {
             </div>
           </div>
 
-          {/* Solutions box matching docx section 4 */}
+          {/* 3 Trường hợp thực tiễn */}
           <div className="bg-slate-100/70 border border-slate-200/50 rounded-3xl p-8 sm:p-10 space-y-6">
             <div className="text-center max-w-2xl mx-auto space-y-2">
-              <h3 className="text-2xl font-bold text-red-950">Giải pháp & Bài học thực tiễn</h3>
-              <p className="text-slate-500 text-sm">Các nguyên tắc rút ra từ thực tế vận động xã hội số</p>
+              <h3 className="text-2xl font-bold text-red-950">Phân tích 3 trường hợp thực tiễn tại Việt Nam</h3>
+              <p className="text-slate-500 text-sm">Từ số liệu thực tế đến bài học hành động cho từng nhóm đối tượng</p>
             </div>
             
             <div className="space-y-4">
               <div className="p-5 bg-white rounded-2xl shadow-sm border border-slate-200/40">
-                <h4 className="font-bold text-red-700 text-sm uppercase tracking-wider mb-2">Trường hợp 1: Nhận thức bị bóp méo bởi &quot;Số đông&quot;</h4>
+                <h4 className="font-bold text-red-700 text-sm uppercase tracking-wider mb-2">Trường hợp 1: Người lao động kỹ năng thấp — Nhóm dễ tổn thương nhất</h4>
                 <p className="text-slate-700 text-sm leading-relaxed">
-                  <strong>Ví dụ:</strong> Tin giả giật gân, các phương pháp tự chữa bệnh phản khoa học tràn lan mạng xã hội. Con người vì sợ bị cô lập thường hùa theo ảo giác tập thể.
+                  <strong>Thực trạng:</strong> 86% lao động dệt may, da giày đối mặt nguy cơ mất việc (ILO, 2016). Khi dây chuyền may tự động hóa, hàng nghìn công nhân không thể đáp ứng kỹ năng vận hành máy CNC hay lập trình robot.
                   <br />
-                  <strong className="text-emerald-700">Bài học hành động:</strong> Chân lý mang tính khách quan tuyệt đối, hoàn toàn độc lập với lợi ích hay sự quy ước của đám đông. Đừng bao giờ hùa theo một quan điểm chỉ vì &quot;ai cũng nói vậy&quot;, hãy giữ tư duy độc lập.
+                  <strong className="text-emerald-700">Bài học:</strong> Cần chủ động tham gia chương trình đào tạo lại (reskilling) ngay trước khi làn sóng tự động hóa đến — không chờ đến khi mất việc mới học kỹ năng mới.
                 </p>
               </div>
 
               <div className="p-5 bg-white rounded-2xl shadow-sm border border-slate-200/40">
-                <h4 className="font-bold text-amber-700 text-sm uppercase tracking-wider mb-2">Trường hợp 2: Nhận thức bị thao túng bởi &quot;Lợi ích trước mắt&quot;</h4>
+                <h4 className="font-bold text-amber-700 text-sm uppercase tracking-wider mb-2">Trường hợp 2: Doanh nghiệp nội địa — Nguy cơ bị loại khỏi chuỗi cung ứng</h4>
                 <p className="text-slate-700 text-sm leading-relaxed">
-                  <strong>Ví dụ:</strong> Bẫy đầu tư Ponzi đa cấp, coin rác thổi phồng lợi nhuận. Lòng tham tạo ra &quot;thiên kiến xác nhận&quot; che mờ quy luật kinh tế.
+                  <strong>Thực trạng:</strong> 78% FDI đã tự động hóa so với chỉ 39,5% nội địa trong ngành may. 90,5% doanh nghiệp logistics vẫn ở mức số hóa sơ khai — dễ mất đơn hàng khi FDI đặt tiêu chuẩn cao hơn.
                   <br />
-                  <strong className="text-emerald-700">Bài học hành động:</strong> Tuyệt đối không lấy sự có lợi/có ích làm thước đo đúng sai của tri thức. Mọi quyết định học tập, nghề nghiệp hay đầu tư phải dựa trên việc phân tích các quy luật khách quan của thực tế.
+                  <strong className="text-emerald-700">Bài học:</strong> Đầu tư vào tự động hóa thực chất (không chỉ số hóa phần mềm), xây dựng lộ trình chuyển đổi số dài hạn để duy trì sức cạnh tranh.
                 </p>
               </div>
 
               <div className="p-5 bg-white rounded-2xl shadow-sm border border-slate-200/40">
-                <h4 className="font-bold text-emerald-700 text-sm uppercase tracking-wider mb-2">Trường hợp 3: Vội vàng kết luận mà bỏ qua &quot;Kiểm chứng&quot;</h4>
+                <h4 className="font-bold text-emerald-700 text-sm uppercase tracking-wider mb-2">Trường hợp 3: Nghịch lý "Thừa - Thiếu" và vai trò điều tiết của Nhà nước</h4>
                 <p className="text-slate-700 text-sm leading-relaxed">
-                  <strong>Hệ quả:</strong> Mất mát tài sản, hậu quả nhãn tiền chỉ bộc lộ khi thực tế va chạm.
+                  <strong>Thực trạng:</strong> ADB (2021) dự báo tác động ròng đến 2030 vẫn tích cực — nhưng người lao động mất việc (thủ công) không thể đáp ứng việc làm mới (kỹ năng số). Thị trường tự do không giải quyết được khoảng cách này.
                   <br />
-                  <strong className="text-emerald-700">Bài học hành động (Liên hệ bản thân):</strong> Bất kỳ tri thức, ý tưởng, code tìm được trên mạng đều chỉ là &quot;giả thuyết&quot;. Bản thân phải tự bắt tay vào thực hành, &quot;chạy thử&quot; (test). Kết quả thực hành đó mới là câu trả lời cuối cùng xác minh chân lý.
+                  <strong className="text-emerald-700">Bài học:</strong> Nhà nước XHCN cần chủ động: hệ thống đào tạo lại quy mô lớn, hỗ trợ tài chính chuyển đổi ngành, chính sách thu hút FDI gắn với trách nhiệm đào tạo lao động địa phương.
                 </p>
               </div>
             </div>
@@ -1088,7 +1083,7 @@ export default function App() {
 
         </section>
 
-        {/* ================= SECTION 6: FLASHCARDS 3D ================= */}
+        {/* ================= FLASHCARD: 4 KHÁI NIỆM CỐT LÕI ================= */}
         <section id="flashcard" className="scroll-mt-24 space-y-12">
           
           {/* Header */}
@@ -1097,10 +1092,10 @@ export default function App() {
               Flashcard 3D
             </span>
             <h2 className="text-3xl sm:text-4xl font-extrabold text-gradient-red tracking-tight">
-              Thẻ học nhanh 4 Đặc tính Chân lý
+              Flashcard: 4 Khái niệm Cốt lõi CMCN 4.0
             </h2>
             <p className="text-gray-600 text-base sm:text-lg max-w-3xl mx-auto">
-              Nhấp chuột trực tiếp lên mỗi thẻ để lật xoay 3D khám phá nội dung định nghĩa cốt lõi của các tính chất Chân lý.
+              Nhấp vào mỗi thẻ để lật 3D và xem định nghĩa chi tiết. Ôn nhanh 4 khái niệm trọng tâm của bài thuyết trình.
             </p>
           </div>
 
@@ -1128,16 +1123,16 @@ export default function App() {
                         <span className="inline-block text-xs font-bold text-slate-400 bg-slate-100 px-2 py-0.5 rounded-full">{prop.keyword}</span>
                       </div>
                       <div className="text-xs font-semibold text-red-600 flex items-center gap-1">
-                        <span>Nhấp để lật</span>
+                        <span>Lật để xem</span>
                         <ChevronRight className="w-3 h-3" />
                       </div>
                     </div>
 
                     {/* Back Side */}
                     <div className="flip-card-back absolute inset-0 bg-red-950 text-white rounded-3xl p-6 flex flex-col justify-between items-center">
-                      <span className="text-xs uppercase font-extrabold tracking-wider text-red-400">Định nghĩa triết học</span>
+                      <span className="text-xs uppercase font-extrabold tracking-wider text-red-400">Giải thích chi tiết</span>
                       <p className="text-sm leading-relaxed text-red-100">{prop.desc}</p>
-                      <button className="text-xs text-red-300 font-semibold hover:underline">Quay lại</button>
+                      <button className="text-xs text-red-300 font-semibold hover:underline">Lật lại</button>
                     </div>
 
                   </div>
@@ -1148,7 +1143,7 @@ export default function App() {
 
         </section>
 
-        {/* ================= SECTION 7: INTERACTIVE QUIZ ================= */}
+        {/* ================= QUIZ: TRẮC NGHIỆM CMCN 4.0 ================= */}
         <section id="quiz" className="scroll-mt-24 space-y-12">
           
           {/* Header */}
@@ -1157,10 +1152,10 @@ export default function App() {
               Đố Vui
             </span>
             <h2 className="text-3xl sm:text-4xl font-extrabold text-gradient-red tracking-tight">
-              Trắc nghiệm 5 Câu hỏi Giáo trình (MLN111)
+              Trắc nghiệm 5 Câu hỏi về CMCN 4.0 & Lao động (MLN122)
             </h2>
             <p className="text-gray-600 text-base sm:text-lg max-w-3xl mx-auto">
-              Kiểm nghiệm tính đúng đắn của tri thức bạn vừa học được qua các câu hỏi chuẩn học thuật.
+              Kiểm tra mức độ nắm vững lý luận và số liệu thực tiễn về tác động của AI đến thị trường lao động Việt Nam.
             </p>
           </div>
 
@@ -1253,14 +1248,14 @@ export default function App() {
                 className="inline-flex items-center gap-2 px-6 py-2.5 bg-slate-100 hover:bg-slate-200 text-slate-700 border border-slate-300/60 rounded-xl font-bold text-sm transition-all shadow-sm"
               >
                 <RotateCcw className="w-4 h-4" />
-                Làm lại đố vui
+                Làm lại quiz
               </button>
             </div>
           )}
 
         </section>
 
-        {/* ================= SECTION 8: DEBATES QUESTIONS (Q&A Phản biện) ================= */}
+        {/* ================= PHẢN BIỆN: Q&A CMCN 4.0 ================= */}
         <section id="debates" className="scroll-mt-24 space-y-12">
           
           {/* Header */}
@@ -1269,10 +1264,10 @@ export default function App() {
               Phản Biện Lớp
             </span>
             <h2 className="text-3xl sm:text-4xl font-extrabold text-gradient-red tracking-tight">
-              Góc Phản Biện Chuyên Sâu & Đỡ Đòn Q&A
+              Phản Biện Thường Gặp & Cách Đỡ Đòn
             </h2>
             <p className="text-gray-600 text-base sm:text-lg max-w-3xl mx-auto">
-              Trang bị lý luận sắc bén chống lại các câu hỏi phản biện hiểm hóc nhất từ giảng viên và khán giả về chủ đề Chân lý.
+              Trang bị sẵn lý luận sắc bén để trả lời các câu hỏi hóc búa nhất từ giảng viên và khán giả về tác động của AI và CMCN 4.0 đến lao động Việt Nam.
             </p>
           </div>
 
@@ -1323,7 +1318,7 @@ export default function App() {
 
         </section>
 
-        {/* ================= SECTION 9: AI CHATBOT ================= */}
+        {/* ================= CHATBOT: AI CMCN 4.0 ================= */}
         <section id="chatbot" className="scroll-mt-24 space-y-12">
           
           {/* Header */}
@@ -1332,10 +1327,10 @@ export default function App() {
               Chatbot AI
             </span>
             <h2 className="text-3xl sm:text-4xl font-extrabold text-gradient-red tracking-tight">
-              Tương tác với AI Triết học Mác-Lênin
+              Hỏi AI về CMCN 4.0 & Lao động Việt Nam
             </h2>
             <p className="text-gray-600 text-base sm:text-lg max-w-3xl mx-auto">
-              Hệ thống giả lập Chatbot thông minh giúp tháo gỡ mọi khúc mắc, định lý sâu sắc liên quan đến nhận thức, chân lý và thực tiễn.
+              Chatbot AI mô phỏng giúp bạn tháo gỡ mọi khúc mắc về lý luận đội quân thất nghiệp dự bị, số liệu thực tiễn và vai trò Nhà nước.
             </p>
           </div>
 
@@ -1347,7 +1342,7 @@ export default function App() {
               <div className="space-y-4">
                 <h3 className="text-xs font-bold text-slate-400 uppercase tracking-wider flex items-center gap-1">
                   <HelpCircle className="w-4 h-4" />
-                  Câu hỏi triết học mẫu
+                  Câu hỏi mẫu về CMCN 4.0
                 </h3>
                 <div className="flex flex-col gap-2">
                   {chatbotFAQ.map((faq, idx) => (
@@ -1364,7 +1359,7 @@ export default function App() {
               </div>
               
               <div className="pt-4 border-t border-slate-200 text-slate-400 text-xs text-center font-medium">
-                Mô phỏng Tư duy Biện chứng
+                Mô phỏng Phân tích Kinh tế Chính trị
               </div>
             </div>
 
@@ -1378,7 +1373,7 @@ export default function App() {
                     <Bot className="w-5 h-5 animate-pulse" />
                   </div>
                   <div>
-                    <h4 className="text-sm font-bold text-slate-800 leading-none">Marxist Philo-AI</h4>
+                    <h4 className="text-sm font-bold text-slate-800 leading-none">CMCN 4.0 AI-Bot</h4>
                     <span className="text-[10px] text-emerald-600 font-bold flex items-center gap-1 mt-0.5">
                       <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-ping"></span>
                       Trực tuyến
@@ -1386,7 +1381,7 @@ export default function App() {
                   </div>
                 </div>
                 <div className="text-[10px] text-slate-400 font-bold uppercase tracking-wider">
-                  Trò chuyện lý luận
+                  Phân tích kinh tế chính trị
                 </div>
               </div>
 
@@ -1408,7 +1403,7 @@ export default function App() {
                 {isTyping && (
                   <div className="bg-white border border-slate-200/80 rounded-2xl rounded-tl-none px-4 py-3 text-sm text-slate-400 self-start animate-pulse flex items-center gap-1.5">
                     <Bot className="w-4 h-4 animate-spin text-red-600" />
-                    <span>AI Triết học đang liên kết lý luận...</span>
+                    <span>AI đang phân tích dữ liệu...</span>
                   </div>
                 )}
                 
@@ -1428,7 +1423,7 @@ export default function App() {
                     type="text"
                     value={userMsg}
                     onChange={(e) => setUserMsg(e.target.value)}
-                    placeholder="Đặt câu hỏi về Thực tiễn, Chân lý..."
+                    placeholder="Đặt câu hỏi về CMCN 4.0, lao động, AI..."
                     disabled={isTyping}
                     className="flex-grow px-4 py-2.5 text-sm rounded-xl border border-slate-200 focus:outline-none focus:border-red-500 focus:ring-1 focus:ring-red-500 disabled:opacity-50"
                   />
@@ -1448,7 +1443,7 @@ export default function App() {
 
         </section>
 
-        {/* ================= SECTION 10: PHỤ LỤC AI USAGE ================= */}
+        {/* ================= PHẦN PHỤ LỤC: SỬ DỤNG AI TRONG DỰ ÁN ================= */}
         <section id="ai-usage" className="scroll-mt-24 space-y-14">
 
           {/* Section Header */}
@@ -1460,14 +1455,14 @@ export default function App() {
               Phụ Lục: Ứng Dụng AI Trong Dự Án
             </h2>
             <p className="text-gray-600 text-base sm:text-lg max-w-3xl mx-auto">
-              Nguyên tắc sử dụng AI trong dự án học tập chuyên đề <span className="font-semibold text-red-700">Lý luận Nhận thức và Chân lý</span> — Triết học Mác - Lênin
+              Nguyên tắc sử dụng AI trong dự án học tập chuyên đề <span className="font-semibold text-red-700">CMCN 4.0 & Thất nghiệp</span> — Kinh tế Chính trị Mác-Lênin (MLN122)
             </p>
           </div>
 
           {/* Intro quote */}
           <div className="max-w-3xl mx-auto bg-red-50 border border-red-200 rounded-2xl px-7 py-5 text-center">
             <p className="text-sm text-red-800 italic leading-relaxed">
-              &quot;Sự trung thực trong học thuật là nền tảng của tri thức chân chính. Sử dụng AI như một công cụ hỗ trợ, không phải thay thế quá trình tư duy và kiểm chứng thực tiễn.&quot;
+              &quot;Số liệu không tự nói — con người phải đọc, phân tích và đặt đúng câu hỏi. AI hỗ trợ tra cứu, nhưng lý luận kinh tế chính trị phải do sinh viên tự xây dựng.&quot;
             </p>
             <p className="text-xs text-red-500 mt-2 font-semibold uppercase tracking-wider">— Quan điểm của nhóm nghiên cứu</p>
           </div>
@@ -1493,7 +1488,7 @@ export default function App() {
                   },
                   {
                     name: "NotebookLM",
-                    desc: "Trích xuất thông tin lý thuyết trực tiếp từ giáo trình Triết học Mác - Lênin và các nguồn học thuật chính thống."
+                    desc: "Trích xuất thông tin trực tiếp từ giáo trình MLN122 và các báo cáo ILO, ADB, Bộ Công Thương về lao động và CMCN 4.0."
                   },
                   {
                     name: "Claude (Cursor AI)",
@@ -1527,7 +1522,7 @@ export default function App() {
                   {
                     icon: "🔍",
                     title: "Kiểm Chứng Thông Tin",
-                    desc: "Tất cả thông tin do AI hỗ trợ đều được kiểm chứng lại bằng giáo trình Triết học Mác - Lênin và các văn bản học thuật chính thống — đúng theo tiêu chuẩn thực tiễn kiểm nghiệm chân lý."
+                    desc: "Tất cả thông tin do AI hỗ trợ đều được kiểm chứng lại bằng giáo trình MLN122, báo cáo ILO, ADB, Bộ Công Thương và các nguồn học thuật chính thống."
                   },
                   {
                     icon: "👥",
@@ -1537,7 +1532,7 @@ export default function App() {
                   {
                     icon: "📚",
                     title: "Học Tập Tích Cực",
-                    desc: "AI là công cụ hỗ trợ — không thể thay thế hoạt động nhận thức biện chứng: từ trực quan sinh động đến tư duy trừu tượng và trở về thực tiễn."
+                    desc: "AI là công cụ hỗ trợ — không thể thay thế quá trình nghiên cứu, đọc tài liệu và tư duy phân tích độc lập của sinh viên về kinh tế chính trị."
                   }
                 ].map((item, i) => (
                   <div key={i} className="flex gap-3 p-3 bg-slate-50 rounded-xl border border-slate-100">
@@ -1571,12 +1566,12 @@ export default function App() {
                   },
                   {
                     label: "Tương Tác & Trò Chơi",
-                    detail: "Gợi ý câu hỏi quiz và tích hợp vào minigame ôn tập Lý luận Nhận thức.",
+                    detail: "Gợi ý câu hỏi quiz và tích hợp vào minigame ôn tập CMCN 4.0 & Lao động.",
                     color: "bg-blue-50 border-blue-200 text-blue-700"
                   },
                   {
-                    label: "Chatbot Triết Học",
-                    detail: "Xây dựng kịch bản phản hồi cho chatbot giả lập tư duy biện chứng Mác - Lênin.",
+                    label: "Chatbot CMCN 4.0",
+                    detail: "Xây dựng kịch bản phản hồi cho chatbot giả lập tư duy kinh tế chính trị về CMCN 4.0 và lao động.",
                     color: "bg-emerald-50 border-emerald-200 text-emerald-700"
                   }
                 ].map((item, i) => (
@@ -1588,7 +1583,7 @@ export default function App() {
               </div>
 
               <div className="p-3 bg-red-50 border border-red-100 rounded-xl text-xs text-red-700">
-                <span className="font-bold">Lưu ý:</span> Nội dung phân tích học thuật (lý luận, dẫn chứng, lập luận triết học) đều được nhóm biên soạn dựa trên tài liệu chính thống.
+                <span className="font-bold">Lưu ý:</span> Nội dung phân tích học thuật (số liệu, lý luận kinh tế chính trị, lập luận phản biện) đều được nhóm biên soạn dựa trên tài liệu MLN122 và nguồn chính thống.
               </div>
             </div>
 
@@ -1616,7 +1611,7 @@ export default function App() {
                   {
                     icon: <BookOpen className="w-4 h-4" />,
                     title: "Đối Chiếu Nguồn",
-                    desc: "Toàn bộ thông tin từ AI đều được so sánh với giáo trình Triết học Mác - Lênin và tài liệu chính thống trước khi dùng."
+                    desc: "Toàn bộ thông tin từ AI đều được so sánh với giáo trình MLN122, báo cáo ILO, ADB, Bộ Công Thương và các nguồn học thuật chính thống trước khi đưa vào sản phẩm."
                   }
                 ].map((item, i) => (
                   <div key={i} className="flex gap-3 p-3 bg-slate-50 rounded-xl border border-slate-100">
@@ -1640,7 +1635,7 @@ export default function App() {
             <div className="relative z-10 space-y-4">
               <h3 className="text-xl font-extrabold">Kết Luận</h3>
               <p className="text-red-100 text-sm leading-relaxed max-w-3xl">
-                Việc sử dụng AI trong dự án học tập chuyên đề <strong>Lý luận Nhận thức và Chân lý</strong> đã mang lại hiệu quả tích cực, giúp nhóm sinh viên tiếp cận kiến thức triết học một cách hiện đại và sáng tạo hơn. Tuy nhiên, điều quan trọng nhất — đúng như tinh thần của chân lý biện chứng Mác - Lênin — là luôn duy trì tinh thần học tập chủ động, kiểm chứng thông tin bằng thực tiễn và không để công cụ thay thế tư duy.
+                Việc sử dụng AI trong dự án học tập chuyên đề <strong>CMCN 4.0 & Thất nghiệp</strong> đã mang lại hiệu quả tích cực, giúp nhóm sinh viên tra cứu, tổng hợp số liệu và xây dựng lập luận nhanh hơn. Tuy nhiên, toàn bộ số liệu, lý luận và phân tích đều được đối chiếu lại với giáo trình MLN122, báo cáo ILO, ADB, Bộ Công Thương và Viettel — không để AI thay thế quá trình nghiên cứu độc lập.
               </p>
               <div className="flex flex-wrap gap-4 pt-2">
                 <div className="flex items-center gap-2 text-sm font-semibold text-red-100">
@@ -1668,19 +1663,27 @@ export default function App() {
             <ul className="space-y-2 text-xs text-slate-600">
               <li className="flex items-start gap-2">
                 <span className="text-red-500 font-bold mt-0.5">•</span>
-                Giáo trình Triết học Mác - Lênin — Bộ Giáo dục và Đào tạo (tái bản 2021)
+                Giáo trình Kinh tế Chính trị Mác-Lênin (MLN122) — Bộ Giáo dục và Đào tạo (tái bản 2021)
               </li>
               <li className="flex items-start gap-2">
                 <span className="text-red-500 font-bold mt-0.5">•</span>
-                Bộ Giáo dục và Đào tạo — Tài liệu giảng dạy học phần Triết học Mác - Lênin
+                International Labour Organization — <em>ASEAN in Transformation: How Technology is Changing Jobs and Enterprises</em> (ILO, 2016)
               </li>
               <li className="flex items-start gap-2">
                 <span className="text-red-500 font-bold mt-0.5">•</span>
-                C. Mác — <em>Luận cương về Phoi-ơ-bắc</em> (Theses on Feuerbach, 1845)
+                Asian Development Bank — <em>The Future of Work: Regional Perspectives</em> (ADB, 2021)
               </li>
               <li className="flex items-start gap-2">
                 <span className="text-red-500 font-bold mt-0.5">•</span>
-                V.I. Lênin — <em>Bút ký Triết học</em> (Philosophical Notebooks, 1914-1916)
+                Bộ Công Thương Việt Nam — <em>Báo cáo Logistics Việt Nam 2024 & 2025</em>
+              </li>
+              <li className="flex items-start gap-2">
+                <span className="text-red-500 font-bold mt-0.5">•</span>
+                Huỳnh và cộng sự — <em>Tự động hóa trong ngành may mặc Tây Nam Bộ</em> (2026)
+              </li>
+              <li className="flex items-start gap-2">
+                <span className="text-red-500 font-bold mt-0.5">•</span>
+                C. Mác — <em>Tư bản luận (Das Kapital), Quyển I</em> — về Nhân khẩu thừa tương đối
               </li>
             </ul>
           </div>
@@ -1698,36 +1701,36 @@ export default function App() {
           
           <div className="space-y-4">
             <h3 className="text-lg font-bold text-white flex items-center gap-1.5">
-              <span className="text-red-500">☭</span> LÝ LUẬN NHẬN THỨC
+              <span className="text-red-500">☭</span> CMCN 4.0 & THẤT NGHIỆP
             </h3>
             <p className="text-slate-400 text-xs leading-relaxed max-w-sm">
-              Ứng dụng web tương tác học tập cao cấp về chuyên đề &quot;Lý luận Nhận thức và Chân lý&quot; thuộc học phần Triết học Mác - Lênin. Hướng tới xây dựng bộ lọc tri thức đúng đắn và nâng tầm tư duy phản biện trong Kỷ nguyên số.
+              Ứng dụng web tương tác học tập về chuyên đề &quot;Cách mạng công nghiệp 4.0 và Thất nghiệp&quot; thuộc học phần Kinh tế Chính trị Mác-Lênin (MLN122). Vận dụng lý luận C.Mác phân tích tác động của AI đến lao động Việt Nam.
             </p>
           </div>
 
           <div className="space-y-4">
-            <h4 className="text-sm font-bold uppercase tracking-wider text-red-500">Mục lục Chương</h4>
+            <h4 className="text-sm font-bold uppercase tracking-wider text-red-500">Mục lục Nội dung</h4>
             <div className="grid grid-cols-2 gap-2 text-xs text-slate-400">
-              <span onClick={() => scrollToSection('intro')} className="hover:text-white cursor-pointer transition-colors">Bẫy Nhận Thức</span>
-              <span onClick={() => scrollToSection('theory')} className="hover:text-white cursor-pointer transition-colors">Lý Luận Mác-Lênin</span>
-              <span onClick={() => scrollToSection('truth')} className="hover:text-white cursor-pointer transition-colors">Bản Chất Chân Lý</span>
-              <span onClick={() => scrollToSection('practice')} className="hover:text-white cursor-pointer transition-colors">Vai Trò Thực Tiễn</span>
-              <span onClick={() => scrollToSection('digital')} className="hover:text-white cursor-pointer transition-colors">Ứng Dụng Số</span>
+              <span onClick={() => scrollToSection('intro')} className="hover:text-white cursor-pointer transition-colors">Lý luận C.Mác</span>
+              <span onClick={() => scrollToSection('theory')} className="hover:text-white cursor-pointer transition-colors">Số liệu Thực tiễn</span>
+              <span onClick={() => scrollToSection('truth')} className="hover:text-white cursor-pointer transition-colors">Phân tích AI</span>
+              <span onClick={() => scrollToSection('practice')} className="hover:text-white cursor-pointer transition-colors">Case Study VN</span>
+              <span onClick={() => scrollToSection('digital')} className="hover:text-white cursor-pointer transition-colors">Bài học & Giải pháp</span>
               <span onClick={() => scrollToSection('quiz')} className="hover:text-white cursor-pointer transition-colors">Trắc Nghiệm</span>
             </div>
           </div>
 
           <div className="space-y-4">
-            <h4 className="text-sm font-bold uppercase tracking-wider text-red-500">Luận cương về Thực tiễn</h4>
+            <h4 className="text-sm font-bold uppercase tracking-wider text-red-500">Luận điểm trung tâm</h4>
             <div className="bg-white/5 border border-white/10 rounded-2xl p-4 text-xs text-slate-300 italic leading-relaxed">
-              &quot;Lý thuyết chỉ là màu xám xịt, còn cây đời mãi mãi xanh tươi. Hãy luôn kiểm nghiệm mọi tri thức bằng chính hành động thực tiễn vững bền.&quot;
+              &quot;AI không tạo ra hiện tượng mới — nó là phiên bản công nghệ cao nhất của quy luật Mác đã chỉ ra 150 năm trước. Câu hỏi không phải AI có thay thế lao động không, mà là ai sẽ bị thay thế và ai sẽ được tạo ra.&quot;
             </div>
           </div>
 
         </div>
 
         <div className="max-w-7xl mx-auto border-t border-slate-800 mt-8 pt-6 text-center text-xs text-slate-500 font-medium">
-          © {new Date().getFullYear()} Lý luận Nhận thức và Chân lý. Phát triển chuyên sâu cùng Triết học Mác - Lênin.
+          © {new Date().getFullYear()} CMCN 4.0 & Thất nghiệp — MLN122. Kinh tế Chính trị Mác-Lênin.
         </div>
       </footer>
 
