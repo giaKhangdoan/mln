@@ -138,3 +138,28 @@ body {
 .flip-card-back {
   transform: rotateY(180deg);
 }
+
+/* Background portraits slow float animation */
+@keyframes portrait-float-left {
+  0%, 100% {
+    transform: translateY(0px) scale(1);
+  }
+  50% {
+    transform: translateY(-10px) scale(1.03);
+  }
+}
+@keyframes portrait-float-right {
+  0%, 100% {
+    transform: translateY(0px) scale(1);
+  }
+  50% {
+    transform: translateY(-10px) scale(1.03);
+  }
+}
+.animate-portrait-left {
+  animation: portrait-float-left 10s ease-in-out infinite;
+}
+.animate-portrait-right {
+  animation: portrait-float-right 10s ease-in-out infinite;
+}
+

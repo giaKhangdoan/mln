@@ -341,6 +341,10 @@ export default function App() {
   // Quiz states
   const [answers, setAnswers] = useState({ 1: null, 2: null, 3: null, 4: null, 5: null });
 
+  // Poll states for the 6th open-ended question
+  const [pollVote, setPollVote] = useState(null);
+  const [pollResults, setPollResults] = useState({ A: 142, B: 68, C: 45 });
+
   // Debates Accordion state
   const [expandedDebate, setExpandedDebate] = useState(null);
 
@@ -368,7 +372,7 @@ export default function App() {
       }
 
       // Check which section is in view
-      const sections = ['intro', 'theory', 'truth', 'practice', 'digital', 'flashcard', 'quiz', 'debates', 'chatbot', 'ai-usage'];
+      const sections = ['intro', 'theory', 'truth', 'practice', 'digital', 'flashcard', 'quiz', 'debates', 'chatbot'];
       for (const section of sections) {
         const el = document.getElementById(section);
         if (el) {
@@ -620,10 +624,9 @@ export default function App() {
               { id: 'practice', label: 'Case Study VN', icon: Zap },
               { id: 'digital', label: 'Bài học & Giải pháp', icon: Cpu },
               { id: 'flashcard', label: 'Flashcard 3D', icon: Layers },
-              { id: 'quiz', label: 'Đố Vui', icon: Trophy },
+              { id: 'quiz', label: 'Đố Vui & Khảo sát', icon: Trophy },
               { id: 'debates', label: 'Phản Biện Lớp', icon: HelpCircle },
               { id: 'chatbot', label: 'Chatbot AI', icon: Bot },
-              { id: 'ai-usage', label: 'Phụ Lục AI', icon: FileText },
             ].map((tab) => {
               const Icon = tab.icon;
               const isActive = activeSection === tab.id;
@@ -1149,13 +1152,13 @@ export default function App() {
           {/* Header */}
           <div className="text-center space-y-3">
             <span className="inline-flex h-5 w-fit items-center justify-center rounded-full bg-red-100 text-red-700 border border-red-200 px-3 py-0.5 text-xs font-bold uppercase tracking-wider">
-              Đố Vui
+              Đố Vui & Khảo Sát
             </span>
             <h2 className="text-3xl sm:text-4xl font-extrabold text-gradient-red tracking-tight">
-              Trắc nghiệm 5 Câu hỏi về CMCN 4.0 & Lao động (MLN122)
+              Trắc nghiệm & Khảo sát ý kiến về CMCN 4.0 & Lao động (MLN122)
             </h2>
             <p className="text-gray-600 text-base sm:text-lg max-w-3xl mx-auto">
-              Kiểm tra mức độ nắm vững lý luận và số liệu thực tiễn về tác động của AI đến thị trường lao động Việt Nam.
+              Kiểm tra kiến thức về lý luận, số liệu thực tiễn và tham gia bình chọn khảo sát nhanh dưới góc nhìn cá nhân của bạn.
             </p>
           </div>
 
@@ -1163,7 +1166,7 @@ export default function App() {
             {quizQuestions.map((qz) => {
               const selectedOpt = answers[qz.id];
               return (
-                <div key={qz.id} className="bg-white border border-slate-200/60 rounded-3xl p-6 shadow-sm space-y-5">
+                <div key={qz.id} className="bg-white border border-slate-200/60 rounded-3xl p-6 shadow-sm space-y-5 text-left">
                   
                   {/* Title Question */}
                   <div className="flex gap-2.5">
@@ -1238,17 +1241,116 @@ export default function App() {
                 </div>
               );
             })}
+
+            {/* CÂU HỎI 6: KHẢO SÁT/POLL Ý KIẾN */}
+            <div className="bg-white border border-slate-200/60 rounded-3xl p-6 shadow-sm space-y-5 flex flex-col justify-between text-left">
+              <div className="space-y-4">
+                {/* Title Question */}
+                <div className="flex gap-2.5">
+                  <span className="w-6 h-6 rounded-full bg-orange-100 text-orange-700 font-bold flex items-center justify-center text-xs flex-shrink-0 mt-0.5">
+                    6
+                  </span>
+                  <h3 className="text-sm sm:text-base font-bold text-slate-800 leading-snug">
+                    Bản thân bạn có lo ngại công việc tương lai của mình sẽ bị AI thay thế hoặc làm giảm thu nhập không?
+                  </h3>
+                </div>
+
+                {/* Subtitle to indicate it is a poll */}
+                <div className="flex items-center gap-1.5 pb-2 border-b border-slate-100">
+                  <span className="inline-flex items-center justify-center rounded-full bg-orange-50 border border-orange-200 text-orange-700 text-[10px] font-bold uppercase px-2.5 py-0.5">
+                    Khảo sát ý kiến
+                  </span>
+                  <span className="text-[10px] text-slate-400 font-semibold">
+                    Lựa chọn phản ánh đúng suy nghĩ của bạn
+                  </span>
+                </div>
+
+                {/* Poll Options */}
+                {!pollVote ? (
+                  <div className="flex flex-col gap-2.5">
+                    {[
+                      { key: 'A', text: 'Rất lo lắng', color: 'hover:border-red-300 hover:bg-red-50/20' },
+                      { key: 'B', text: 'Bình thường', color: 'hover:border-amber-300 hover:bg-amber-50/20' },
+                      { key: 'C', text: 'Hoàn toàn tự tin vì đã có sự chuẩn bị', color: 'hover:border-emerald-300 hover:bg-emerald-50/20' }
+                    ].map((opt) => (
+                      <div
+                        key={opt.key}
+                        onClick={() => {
+                          setPollVote(opt.key);
+                          setPollResults(prev => ({
+                            ...prev,
+                            [opt.key]: prev[opt.key] + 1
+                          }));
+                        }}
+                        className="border border-slate-200/80 rounded-xl p-3 flex items-center gap-3 transition-all duration-300 cursor-pointer hover:border-orange-300 hover:bg-orange-50/10 group"
+                      >
+                        <div className="w-7 h-7 rounded-lg font-bold flex items-center justify-center text-xs flex-shrink-0 bg-slate-100 text-slate-600 group-hover:bg-orange-100 group-hover:text-orange-700 transition-colors">
+                          {opt.key}
+                        </div>
+                        <span className="text-xs font-semibold text-slate-700 leading-snug group-hover:text-orange-950 transition-colors">{opt.text}</span>
+                      </div>
+                    ))}
+                  </div>
+                ) : (
+                  <div className="space-y-4 pt-2">
+                    {(() => {
+                      const totalVotes = pollResults.A + pollResults.B + pollResults.C;
+                      const getPercent = (val) => Math.round((val / totalVotes) * 100);
+                      return [
+                        { key: 'A', text: 'Rất lo lắng', count: pollResults.A, color: 'bg-red-500' },
+                        { key: 'B', text: 'Bình thường', count: pollResults.B, color: 'bg-amber-500' },
+                        { key: 'C', text: 'Hoàn toàn tự tin vì đã có sự chuẩn bị', count: pollResults.C, color: 'bg-emerald-500' }
+                      ].map((opt) => {
+                        const pct = getPercent(opt.count);
+                        return (
+                          <div key={opt.key} className="space-y-1 text-left">
+                            <div className="flex justify-between text-xs font-bold text-slate-700">
+                              <span className="flex items-center gap-1.5">
+                                {opt.text}
+                                {pollVote === opt.key && (
+                                  <span className="text-[9px] font-extrabold uppercase px-1.5 py-0.5 rounded-full bg-slate-100 text-slate-500 border border-slate-200">
+                                    Lựa chọn của bạn
+                                  </span>
+                                )}
+                              </span>
+                              <span>{pct}% ({opt.count} bình chọn)</span>
+                            </div>
+                            <div className="w-full h-3 bg-slate-100 rounded-full overflow-hidden">
+                              <div 
+                                className={`h-full ${opt.color} transition-all duration-1000 ease-out`} 
+                                style={{ width: `${pct}%` }}
+                              />
+                            </div>
+                          </div>
+                        );
+                      });
+                    })()}
+                  </div>
+                )}
+              </div>
+
+              {/* Thank you note */}
+              {pollVote && (
+                <div className="p-3 bg-orange-50/40 border border-orange-100 rounded-xl text-[11px] text-orange-850 text-left italic">
+                  💡 <strong>Ý kiến của bạn đã được ghi nhận:</strong> Sự chủ động trang bị kỹ năng và thích ứng linh hoạt là chìa khóa hàng đầu để vượt qua làn sóng tự động hóa.
+                </div>
+              )}
+            </div>
           </div>
 
           {/* Reset quiz button */}
-          {Object.values(answers).some(a => a !== null) && (
+          {(Object.values(answers).some(a => a !== null) || pollVote !== null) && (
             <div className="text-center">
               <button 
-                onClick={() => setAnswers({ 1: null, 2: null, 3: null, 4: null, 5: null })}
+                onClick={() => {
+                  setAnswers({ 1: null, 2: null, 3: null, 4: null, 5: null });
+                  setPollVote(null);
+                  setPollResults({ A: 142, B: 68, C: 45 });
+                }}
                 className="inline-flex items-center gap-2 px-6 py-2.5 bg-slate-100 hover:bg-slate-200 text-slate-700 border border-slate-300/60 rounded-xl font-bold text-sm transition-all shadow-sm"
               >
                 <RotateCcw className="w-4 h-4" />
-                Làm lại quiz
+                Làm lại quiz & khảo sát
               </button>
             </div>
           )}
@@ -1443,251 +1545,38 @@ export default function App() {
 
         </section>
 
-        {/* ================= PHẦN PHỤ LỤC: SỬ DỤNG AI TRONG DỰ ÁN ================= */}
-        <section id="ai-usage" className="scroll-mt-24 space-y-14">
-
-          {/* Section Header */}
-          <div className="text-center space-y-3">
-            <span className="inline-flex h-5 w-fit items-center justify-center rounded-full bg-red-100 text-red-700 border border-red-200 px-3 py-0.5 text-xs font-bold uppercase tracking-wider">
-              Phụ Lục
-            </span>
-            <h2 className="text-3xl sm:text-4xl font-extrabold text-gradient-red tracking-tight">
-              Phụ Lục: Ứng Dụng AI Trong Dự Án
-            </h2>
-            <p className="text-gray-600 text-base sm:text-lg max-w-3xl mx-auto">
-              Nguyên tắc sử dụng AI trong dự án học tập chuyên đề <span className="font-semibold text-red-700">CMCN 4.0 & Thất nghiệp</span> — Kinh tế Chính trị Mác-Lênin (MLN122)
-            </p>
-          </div>
-
-          {/* Intro quote */}
-          <div className="max-w-3xl mx-auto bg-red-50 border border-red-200 rounded-2xl px-7 py-5 text-center">
-            <p className="text-sm text-red-800 italic leading-relaxed">
-              &quot;Số liệu không tự nói — con người phải đọc, phân tích và đặt đúng câu hỏi. AI hỗ trợ tra cứu, nhưng lý luận kinh tế chính trị phải do sinh viên tự xây dựng.&quot;
-            </p>
-            <p className="text-xs text-red-500 mt-2 font-semibold uppercase tracking-wider">— Quan điểm của nhóm nghiên cứu</p>
-          </div>
-
-          {/* 4 Principles Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl mx-auto">
-
-            {/* 1. Minh Bạch */}
-            <div className="bg-white border border-slate-200 rounded-3xl p-7 shadow-sm card-hover space-y-5">
-              <div className="flex items-center gap-3">
-                <div className="w-11 h-11 rounded-2xl bg-red-gradient flex items-center justify-center shadow-md shadow-red-600/15 flex-shrink-0">
-                  <Eye className="w-5 h-5 text-white" />
-                </div>
-                <h3 className="text-lg font-extrabold text-red-800">1. Minh Bạch</h3>
-              </div>
-
-              <div className="space-y-3">
-                <p className="text-xs font-bold text-slate-500 uppercase tracking-wider">Công Cụ Và Mục Đích Sử Dụng</p>
-                {[
-                  {
-                    name: "ChatGPT",
-                    desc: "Hỗ trợ tìm kiếm và tổng hợp thông tin cho website để hệ thống lý luận chặt chẽ hơn."
-                  },
-                  {
-                    name: "NotebookLM",
-                    desc: "Trích xuất thông tin trực tiếp từ giáo trình MLN122 và các báo cáo ILO, ADB, Bộ Công Thương về lao động và CMCN 4.0."
-                  },
-                  {
-                    name: "Claude (Cursor AI)",
-                    desc: "Hỗ trợ thiết kế giao diện, chỉnh sửa CSS và xây dựng cấu trúc website tương tác."
-                  }
-                ].map((tool, i) => (
-                  <div key={i} className="flex gap-3 p-3 bg-slate-50 rounded-xl border border-slate-100">
-                    <div className="w-7 h-7 rounded-lg bg-red-100 flex items-center justify-center flex-shrink-0 mt-0.5">
-                      <Wrench className="w-3.5 h-3.5 text-red-600" />
-                    </div>
-                    <div>
-                      <p className="text-sm font-bold text-slate-800">{tool.name}</p>
-                      <p className="text-xs text-slate-500 leading-relaxed mt-0.5">{tool.desc}</p>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            {/* 2. Có Trách Nhiệm */}
-            <div className="bg-white border border-slate-200 rounded-3xl p-7 shadow-sm card-hover space-y-5">
-              <div className="flex items-center gap-3">
-                <div className="w-11 h-11 rounded-2xl bg-red-gradient flex items-center justify-center shadow-md shadow-red-600/15 flex-shrink-0">
-                  <Users className="w-5 h-5 text-white" />
-                </div>
-                <h3 className="text-lg font-extrabold text-red-800">2. Có Trách Nhiệm</h3>
-              </div>
-
-              <div className="space-y-3">
-                {[
-                  {
-                    icon: "🔍",
-                    title: "Kiểm Chứng Thông Tin",
-                    desc: "Tất cả thông tin do AI hỗ trợ đều được kiểm chứng lại bằng giáo trình MLN122, báo cáo ILO, ADB, Bộ Công Thương và các nguồn học thuật chính thống."
-                  },
-                  {
-                    icon: "👥",
-                    title: "Trách Nhiệm Cá Nhân",
-                    desc: "Nhóm chịu trách nhiệm hoàn toàn về nội dung cuối cùng. AI không thay thế quá trình học tập và tư duy phản biện của sinh viên."
-                  },
-                  {
-                    icon: "📚",
-                    title: "Học Tập Tích Cực",
-                    desc: "AI là công cụ hỗ trợ — không thể thay thế quá trình nghiên cứu, đọc tài liệu và tư duy phân tích độc lập của sinh viên về kinh tế chính trị."
-                  }
-                ].map((item, i) => (
-                  <div key={i} className="flex gap-3 p-3 bg-slate-50 rounded-xl border border-slate-100">
-                    <span className="text-xl flex-shrink-0 mt-0.5">{item.icon}</span>
-                    <div>
-                      <p className="text-sm font-bold text-slate-800">{item.title}</p>
-                      <p className="text-xs text-slate-500 leading-relaxed mt-0.5">{item.desc}</p>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            {/* 3. Sáng Tạo */}
-            <div className="bg-white border border-slate-200 rounded-3xl p-7 shadow-sm card-hover space-y-5">
-              <div className="flex items-center gap-3">
-                <div className="w-11 h-11 rounded-2xl bg-red-gradient flex items-center justify-center shadow-md shadow-red-600/15 flex-shrink-0">
-                  <Lightbulb className="w-5 h-5 text-white" />
-                </div>
-                <h3 className="text-lg font-extrabold text-red-800">3. Sáng Tạo</h3>
-              </div>
-
-              <p className="text-xs font-bold text-slate-500 uppercase tracking-wider">Ứng Dụng AI Trong Sáng Tạo</p>
-
-              <div className="space-y-3">
-                {[
-                  {
-                    label: "Thiết Kế Giao Diện",
-                    detail: "Ảnh minh họa, thiết kế layout, chỉnh sửa CSS cho trang web tương tác chuyên đề.",
-                    color: "bg-amber-50 border-amber-200 text-amber-700"
-                  },
-                  {
-                    label: "Tương Tác & Trò Chơi",
-                    detail: "Gợi ý câu hỏi quiz và tích hợp vào minigame ôn tập CMCN 4.0 & Lao động.",
-                    color: "bg-blue-50 border-blue-200 text-blue-700"
-                  },
-                  {
-                    label: "Chatbot CMCN 4.0",
-                    detail: "Xây dựng kịch bản phản hồi cho chatbot giả lập tư duy kinh tế chính trị về CMCN 4.0 và lao động.",
-                    color: "bg-emerald-50 border-emerald-200 text-emerald-700"
-                  }
-                ].map((item, i) => (
-                  <div key={i} className={`p-3 rounded-xl border text-xs font-medium ${item.color}`}>
-                    <p className="font-bold text-sm mb-0.5">{item.label}</p>
-                    <p className="opacity-80 leading-relaxed">{item.detail}</p>
-                  </div>
-                ))}
-              </div>
-
-              <div className="p-3 bg-red-50 border border-red-100 rounded-xl text-xs text-red-700">
-                <span className="font-bold">Lưu ý:</span> Nội dung phân tích học thuật (số liệu, lý luận kinh tế chính trị, lập luận phản biện) đều được nhóm biên soạn dựa trên tài liệu MLN122 và nguồn chính thống.
-              </div>
-            </div>
-
-            {/* 4. Liêm Chính Học Thuật */}
-            <div className="bg-white border border-slate-200 rounded-3xl p-7 shadow-sm card-hover space-y-5">
-              <div className="flex items-center gap-3">
-                <div className="w-11 h-11 rounded-2xl bg-red-gradient flex items-center justify-center shadow-md shadow-red-600/15 flex-shrink-0">
-                  <BookMarked className="w-5 h-5 text-white" />
-                </div>
-                <h3 className="text-lg font-extrabold text-red-800">4. Liêm Chính Học Thuật</h3>
-              </div>
-
-              <div className="space-y-3">
-                {[
-                  {
-                    icon: <PenLine className="w-4 h-4" />,
-                    title: "Cam Kết",
-                    desc: "Không để AI làm thay hoàn toàn. AI chỉ là công cụ hỗ trợ — tư duy và kiểm chứng là trách nhiệm của sinh viên."
-                  },
-                  {
-                    icon: <CheckCircle2 className="w-4 h-4" />,
-                    title: "Phân Định Rõ",
-                    desc: "Các kết quả AI sinh ra đều được chú thích, chỉnh sửa và bổ sung bởi nhóm sinh viên trước khi đưa vào sản phẩm."
-                  },
-                  {
-                    icon: <BookOpen className="w-4 h-4" />,
-                    title: "Đối Chiếu Nguồn",
-                    desc: "Toàn bộ thông tin từ AI đều được so sánh với giáo trình MLN122, báo cáo ILO, ADB, Bộ Công Thương và các nguồn học thuật chính thống trước khi đưa vào sản phẩm."
-                  }
-                ].map((item, i) => (
-                  <div key={i} className="flex gap-3 p-3 bg-slate-50 rounded-xl border border-slate-100">
-                    <div className="w-7 h-7 rounded-lg bg-red-100 flex items-center justify-center flex-shrink-0 mt-0.5 text-red-600">
-                      {item.icon}
-                    </div>
-                    <div>
-                      <p className="text-sm font-bold text-slate-800">{item.title}</p>
-                      <p className="text-xs text-slate-500 leading-relaxed mt-0.5">{item.desc}</p>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-          </div>
-
-          {/* Conclusion Card */}
-          <div className="max-w-5xl mx-auto bg-red-gradient rounded-3xl p-8 text-white shadow-xl shadow-red-900/15 relative overflow-hidden">
-            <div className="absolute top-0 right-0 w-64 h-64 bg-white/5 rounded-full translate-x-1/3 -translate-y-1/3 blur-2xl pointer-events-none"></div>
-            <div className="relative z-10 space-y-4">
-              <h3 className="text-xl font-extrabold">Kết Luận</h3>
-              <p className="text-red-100 text-sm leading-relaxed max-w-3xl">
-                Việc sử dụng AI trong dự án học tập chuyên đề <strong>CMCN 4.0 & Thất nghiệp</strong> đã mang lại hiệu quả tích cực, giúp nhóm sinh viên tra cứu, tổng hợp số liệu và xây dựng lập luận nhanh hơn. Tuy nhiên, toàn bộ số liệu, lý luận và phân tích đều được đối chiếu lại với giáo trình MLN122, báo cáo ILO, ADB, Bộ Công Thương và Viettel — không để AI thay thế quá trình nghiên cứu độc lập.
-              </p>
-              <div className="flex flex-wrap gap-4 pt-2">
-                <div className="flex items-center gap-2 text-sm font-semibold text-red-100">
-                  <CheckCircle2 className="w-4 h-4 text-emerald-300" />
-                  Nội dung đã kiểm chứng
-                </div>
-                <div className="flex items-center gap-2 text-sm font-semibold text-red-100">
-                  <CheckCircle2 className="w-4 h-4 text-emerald-300" />
-                  Dựa trên giáo trình chính thống
-                </div>
-                <div className="flex items-center gap-2 text-sm font-semibold text-red-100">
-                  <CheckCircle2 className="w-4 h-4 text-emerald-300" />
-                  Chịu trách nhiệm học thuật
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {/* Sources */}
-          <div className="max-w-5xl mx-auto border border-slate-200 rounded-2xl p-6 bg-slate-50 space-y-3">
-            <h4 className="text-sm font-bold text-slate-700 uppercase tracking-wider flex items-center gap-2">
-              <BookOpen className="w-4 h-4 text-red-600" />
-              Nguồn Tài Liệu Tham Khảo
-            </h4>
-            <ul className="space-y-2 text-xs text-slate-600">
-              <li className="flex items-start gap-2">
-                <span className="text-red-500 font-bold mt-0.5">•</span>
-                Giáo trình Kinh tế Chính trị Mác-Lênin (MLN122) — Bộ Giáo dục và Đào tạo (tái bản 2021)
-              </li>
-              <li className="flex items-start gap-2">
-                <span className="text-red-500 font-bold mt-0.5">•</span>
-                International Labour Organization — <em>ASEAN in Transformation: How Technology is Changing Jobs and Enterprises</em> (ILO, 2016)
-              </li>
-              <li className="flex items-start gap-2">
-                <span className="text-red-500 font-bold mt-0.5">•</span>
-                Asian Development Bank — <em>The Future of Work: Regional Perspectives</em> (ADB, 2021)
-              </li>
-              <li className="flex items-start gap-2">
-                <span className="text-red-500 font-bold mt-0.5">•</span>
-                Bộ Công Thương Việt Nam — <em>Báo cáo Logistics Việt Nam 2024 & 2025</em>
-              </li>
-              <li className="flex items-start gap-2">
-                <span className="text-red-500 font-bold mt-0.5">•</span>
-                Huỳnh và cộng sự — <em>Tự động hóa trong ngành may mặc Tây Nam Bộ</em> (2026)
-              </li>
-              <li className="flex items-start gap-2">
-                <span className="text-red-500 font-bold mt-0.5">•</span>
-                C. Mác — <em>Tư bản luận (Das Kapital), Quyển I</em> — về Nhân khẩu thừa tương đối
-              </li>
-            </ul>
-          </div>
-
+        {/* ================= NGUỒN TÀI LIỆU THAM KHẢO ================= */}
+        <section id="sources" className="scroll-mt-24 max-w-5xl mx-auto border border-slate-200 rounded-3xl p-6 sm:p-8 bg-slate-50 space-y-4">
+          <h4 className="text-sm font-bold text-slate-700 uppercase tracking-wider flex items-center gap-2 justify-center sm:justify-start">
+            <BookOpen className="w-4.5 h-4.5 text-red-600" />
+            Nguồn Tài Liệu Tham Khảo
+          </h4>
+          <ul className="space-y-2.5 text-xs text-slate-600 text-left">
+            <li className="flex items-start gap-2">
+              <span className="text-red-500 font-bold mt-0.5">•</span>
+              Giáo trình Kinh tế Chính trị Mác-Lênin (MLN122) — Bộ Giáo dục và Đào tạo (tái bản 2021)
+            </li>
+            <li className="flex items-start gap-2">
+              <span className="text-red-500 font-bold mt-0.5">•</span>
+              International Labour Organization — <em>ASEAN in Transformation: How Technology is Changing Jobs and Enterprises</em> (ILO, 2016)
+            </li>
+            <li className="flex items-start gap-2">
+              <span className="text-red-500 font-bold mt-0.5">•</span>
+              Asian Development Bank — <em>The Future of Work: Regional Perspectives</em> (ADB, 2021)
+            </li>
+            <li className="flex items-start gap-2">
+              <span className="text-red-500 font-bold mt-0.5">•</span>
+              Bộ Công Thương Việt Nam — <em>Báo cáo Logistics Việt Nam 2024 & 2025</em>
+            </li>
+            <li className="flex items-start gap-2">
+              <span className="text-red-500 font-bold mt-0.5">•</span>
+              Huỳnh và cộng sự — <em>Tự động hóa trong ngành may mặc Tây Nam Bộ</em> (2026)
+            </li>
+            <li className="flex items-start gap-2">
+              <span className="text-red-500 font-bold mt-0.5">•</span>
+              C. Mác — <em>Tư bản luận (Das Kapital), Quyển I</em> — về Nhân khẩu thừa tương đối
+            </li>
+          </ul>
         </section>
 
       </main>
