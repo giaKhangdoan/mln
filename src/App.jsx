@@ -90,15 +90,18 @@ const chaptersData = {
     principles: [
       {
         title: "Ngành May mặc",
-        desc: "46,3% doanh nghiệp may tại Tây Nam Bộ đã tự động hóa ít nhất một công đoạn. 78% doanh nghiệp FDI áp dụng tự động hóa so với chỉ 39,5% ở doanh nghiệp nội địa (Huỳnh và cộng sự, 2026)."
+        desc: "46,3% doanh nghiệp may tại Tây Nam Bộ đã tự động hóa ít nhất một công đoạn. 78% doanh nghiệp FDI áp dụng tự động hóa so với chỉ 39,5% ở doanh nghiệp nội địa (Huỳnh và cộng sự, 2026).",
+        image: "/assets/image2.png"
       },
       {
         title: "Ngành Logistics",
-        desc: "55-60% doanh nghiệp đã ứng dụng TMS/WMS nhưng chỉ 10% đạt tự động hóa vật lý toàn trình. 80-90% quy trình forwarder vừa và nhỏ vẫn thao tác bằng tay (Báo cáo Logistics VN 2024)."
+        desc: "55-60% doanh nghiệp đã ứng dụng TMS/WMS nhưng chỉ 10% đạt tự động hóa vật lý toàn trình. 80-90% quy trình forwarder vừa và nhỏ vẫn thao tác bằng tay (Báo cáo Logistics VN 2024).",
+        image: "/assets/image3.png"
       },
       {
         title: "Tác động ròng đến 2030",
-        desc: "ADB (2021): Tác động ròng đến việc làm vẫn ở mức tích cực — số việc làm mới bù đắp được số mất đi, nhưng đòi hỏi kỹ năng thay đổi hoàn toàn từ thể chất lặp lại sang tư duy phân tích và kỹ năng số."
+        desc: "ADB (2021): Tác động ròng đến việc làm vẫn ở mức tích cực — số việc làm mới bù đắp được số mất đi, nhưng đòi hỏi kỹ năng thay đổi hoàn toàn từ thể chất lặp lại sang tư duy phân tích và kỹ năng số.",
+        image: "/assets/image8.jpg"
       }
     ],
     dialecticsSteps: [
@@ -149,7 +152,7 @@ const chaptersData = {
   },
   practice: {
     badge: "Case Study",
-    chapterNum: "Phần 4",
+    chapterNum: "Phần 3",
     title: "Doanh nghiệp Việt Nam ứng dụng AI/Tự động hóa",
     desc: "Các case study thực tế chứng minh cả hai mặt của quá trình tự động hóa: tăng năng suất và thay thế lao động.",
     forms: [
@@ -186,7 +189,7 @@ const chaptersData = {
   },
   digital: {
     badge: "Giải pháp",
-    chapterNum: "Phần 5",
+    chapterNum: "Phần 4",
     title: "Bài học & Vai trò Nhà nước trong Kỷ nguyên AI",
     desc: "Từ phân tích lý luận Mác và thực tiễn Việt Nam, 3 bài học hành động cụ thể cho từng đối tượng: người lao động, doanh nghiệp và Nhà nước trong ứng phó với CMCN 4.0.",
     process: [
@@ -293,28 +296,7 @@ const quizQuestions = [
   }
 ];
 
-const debatesData = [
-  {
-    question: "Phản biện 1: 'AI tạo ra việc làm mới, vậy có thực sự đáng lo không?'",
-    answer: "Đúng, AI tạo ra việc làm mới — nhưng câu hỏi không phải là 'có hay không', mà là việc làm mới đó dành cho ai và đủ nhanh để hấp thụ số lao động bị thay thế không? Có 3 lệch: (1) Lệch kỹ năng — việc làm AI yêu cầu trình độ cao hơn nhiều so với việc làm bị mất; (2) Lệch thời gian — việc làm mất ngay, việc làm mới cần đào tạo và hạ tầng; (3) Lệch số lượng — nhóm lao động thâm dụng tay nghề thấp là nhóm chịu rủi ro lớn nhất."
-  },
-  {
-    question: "Phản biện 2: 'Việt Nam có lợi thế lao động rẻ, vậy CMCN 4.0 không ảnh hưởng nhiều?'",
-    answer: "Đây chính là nghịch lý nguy hiểm nhất! Theo giáo trình (mục 6.1.2.2), CMCN 4.0 'làm mất đi những lợi thế sản xuất truyền thống, đặc biệt từ các nước đang phát triển như nhân công rẻ, dồi dào'. Chính lợi thế cạnh tranh đã giúp Việt Nam CNH thành công 20-30 năm qua lại là điểm dễ tổn thương nhất trước CMCN 4.0 — vì đây đúng là các ngành dễ tự động hóa nhất (công việc lặp lại, quy trình hóa cao)."
-  },
-  {
-    question: "Phản biện 3: 'Doanh nghiệp FDI đầu tư vào Việt Nam chứng tỏ lao động Việt Nam vẫn cạnh tranh được?'",
-    answer: "FDI vào vì chi phí thấp và vị trí địa lý, không phải vì kỹ năng. Dữ liệu cho thấy FDI đang tự động hóa nhanh hơn nhiều (78%) so với doanh nghiệp nội địa (39,5%). Điều này có nghĩa FDI đang dùng Việt Nam như cơ sở sản xuất nhưng dần giảm nhu cầu lao động tay nghề thấp. Nếu không nâng cấp kỹ năng lao động, Việt Nam có nguy cơ bị FDI rời đi khi chi phí tự động hóa tiếp tục giảm."
-  },
-  {
-    question: "Phản biện 4: 'Lý luận của Mác từ thế kỷ 19, có còn áp dụng được trong kỷ nguyên AI không?'",
-    answer: "Mác không nói về AI, nhưng ông nói về quy luật: khi tư bản tích lũy và cấu tạo kỹ thuật tăng thì nhu cầu tương đối về lao động giảm. AI là phiên bản công nghệ cao nhất từ trước đến nay của quy luật này — máy móc thay lao động sống bằng lao động chết (tư bản cố định). Sự kiện 86% lao động may mặc đối diện nguy cơ mất việc là minh chứng thực tiễn xác nhận lý luận của Mác sau 150 năm."
-  },
-  {
-    question: "Phản biện 5: 'Nhà nước can thiệp nhiều có làm méo mó thị trường lao động không?'",
-    answer: "Đây là 'thất bại thị trường' điển hình — khi thị trường tự do không giải quyết được 'lệch kỹ năng' và 'lệch thời gian'. Trong nền kinh tế thị trường định hướng XHCN, vai trò của Nhà nước là điều tiết, không phải thay thế thị trường. Kinh nghiệm của Đức (đào tạo nghề kép), Singapore (SkillsFuture) cho thấy can thiệp có định hướng của Nhà nước là điều kiện cần thiết để chuyển đổi cơ cấu lao động thành công trong CMCN 4.0."
-  }
-];
+
 
 const chatbotFAQ = [
   { q: "Đội quân thất nghiệp dự bị là gì?", a: "Lý luận của C.Mác về nhân khẩu thừa tương đối và 3 hình thái của nó." },
@@ -345,14 +327,11 @@ export default function App() {
   const [pollVote, setPollVote] = useState(null);
   const [pollResults, setPollResults] = useState({ A: 142, B: 68, C: 45 });
 
-  // Debates Accordion state
-  const [expandedDebate, setExpandedDebate] = useState(null);
+  // Toggle lessons flashcards states
+  const [flippedLessons, setFlippedLessons] = useState({});
 
-  // Toggle insight text in Phần 5
-  const [showPhilosophy, setShowPhilosophy] = useState({});
-
-  const togglePhilosophy = (idx) => {
-    setShowPhilosophy(prev => ({ ...prev, [idx]: !prev[idx] }));
+  const toggleLessonFlip = (idx) => {
+    setFlippedLessons(prev => ({ ...prev, [idx]: !prev[idx] }));
   };
 
   // AI Chatbot state
@@ -372,7 +351,7 @@ export default function App() {
       }
 
       // Check which section is in view
-      const sections = ['intro', 'theory', 'truth', 'practice', 'digital', 'flashcard', 'quiz', 'debates', 'chatbot'];
+      const sections = ['intro', 'theory', 'practice', 'digital', 'flashcard', 'quiz', 'chatbot'];
       for (const section of sections) {
         const el = document.getElementById(section);
         if (el) {
@@ -583,7 +562,7 @@ export default function App() {
               <div className="w-10 h-10 rounded-xl bg-white/10 flex items-center justify-center mb-1 group-hover:bg-white/20 transition-colors">
                 <BookOpen className="w-5 h-5 text-red-200" />
               </div>
-              <div className="text-2xl font-bold">05</div>
+              <div className="text-2xl font-bold">04</div>
               <div className="text-red-200/80 text-xs uppercase tracking-wider">Phần nội dung</div>
             </div>
             <div className="text-center flex flex-col items-center gap-1 group cursor-pointer" onClick={() => scrollToSection('quiz')}>
@@ -620,12 +599,10 @@ export default function App() {
             {[
               { id: 'intro', label: 'Lý luận C.Mác', icon: ShieldAlert },
               { id: 'theory', label: 'Số liệu & Thực tiễn', icon: BrainCircuit },
-              { id: 'truth', label: 'Phản biện AI', icon: Compass },
               { id: 'practice', label: 'Case Study VN', icon: Zap },
               { id: 'digital', label: 'Bài học & Giải pháp', icon: Cpu },
               { id: 'flashcard', label: 'Flashcard 3D', icon: Layers },
               { id: 'quiz', label: 'Đố Vui & Khảo sát', icon: Trophy },
-              { id: 'debates', label: 'Phản Biện Lớp', icon: HelpCircle },
               { id: 'chatbot', label: 'Chatbot AI', icon: Bot },
             ].map((tab) => {
               const Icon = tab.icon;
@@ -786,20 +763,33 @@ export default function App() {
             </p>
           </div>
 
-          {/* Số liệu chính 3 cột */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {/* Layout danh sách kèm hình ảnh (giống trang báo) */}
+          <div className="max-w-4xl mx-auto space-y-8">
             {chaptersData.theory.principles.map((pr, idx) => (
-              <div key={idx} className="card-hover bg-gradient-to-br from-rose-50 to-rose-100 border border-rose-200/60 rounded-3xl p-6 shadow-sm flex flex-col justify-between space-y-5">
-                <div className="space-y-3">
-                  <div className="w-10 h-10 bg-red-600 rounded-xl flex items-center justify-center text-white font-bold text-sm">
-                    {idx + 1}
+              <div key={idx} className="space-y-8">
+                <div className="flex flex-col sm:flex-row gap-6 items-start">
+                  {/* Hình ảnh bên trái */}
+                  <div className="w-full sm:w-1/3 flex-shrink-0">
+                    <img 
+                      src={pr.image} 
+                      alt={pr.title} 
+                      className="w-full h-44 object-cover rounded-2xl border border-slate-200/60 shadow-md hover:scale-[1.02] transition-transform duration-300"
+                    />
                   </div>
-                  <h3 className="text-lg font-bold text-red-950">{pr.title}</h3>
-                  <p className="text-gray-700 text-sm leading-relaxed">{pr.desc}</p>
+                  {/* Nội dung bên phải */}
+                  <div className="w-full sm:w-2/3 space-y-3">
+                    <h3 className="text-xl font-bold text-slate-800 hover:text-red-700 transition-colors duration-300 leading-snug">
+                      {pr.title}
+                    </h3>
+                    <p className="text-gray-600 text-sm sm:text-base leading-relaxed">
+                      {pr.desc}
+                    </p>
+                  </div>
                 </div>
-                <div className="pt-2 border-t border-red-200/30 text-xs font-semibold text-slate-400">
-                  Số liệu thực tế
-                </div>
+                {/* Đường phân cách nét đứt (dashed) giữa các mục */}
+                {idx < chaptersData.theory.principles.length - 1 && (
+                  <div className="border-b border-dashed border-slate-200/80 pt-2"></div>
+                )}
               </div>
             ))}
           </div>
@@ -834,52 +824,13 @@ export default function App() {
 
         </section>
 
-        {/* ================= PHẦN 3: PHÂN TÍCH "AI TẠO VIỆC LÀM HAY THAY THẾ?" ================= */}
-        <section id="truth" className="scroll-mt-24 space-y-12">
-          
-          {/* Header */}
-          <div className="text-center space-y-3">
-            <span className="inline-flex h-5 w-fit items-center justify-center rounded-full bg-red-100 text-red-700 border border-red-200 px-3 py-0.5 text-xs font-bold uppercase tracking-wider">
-              Phần 3
-            </span>
-            <h2 className="text-3xl sm:text-4xl font-extrabold text-gradient-red tracking-tight">
-              AI Tạo Việc Làm Hay Thay Thế? — 3 Lớp Phân Tích
-            </h2>
-            <p className="text-gray-600 text-base sm:text-lg max-w-3xl mx-auto">
-              Trả lời dứt khoát phản biện thường gặp nhất: AI không xóa bỏ việc làm tuyệt đối, nhưng tái cấu trúc theo hướng phân cực kỹ năng với 3 loại "lệch" nguy hiểm.
-            </p>
-          </div>
-
-          {/* Phân tích 4 lớp */}
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
-            {chaptersData.truth.properties.map((prop, idx) => (
-              <div key={idx} className="bg-white border border-slate-200/60 rounded-3xl p-6 shadow-sm flex flex-col justify-between space-y-5 card-hover">
-                <div className="space-y-3">
-                  <div className="w-10 h-10 bg-rose-50 text-red-600 rounded-xl flex items-center justify-center">
-                    <Compass className="w-5 h-5" />
-                  </div>
-                  <h3 className="text-lg font-bold text-slate-800">{prop.name}</h3>
-                  <span className="inline-block px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-slate-100 text-slate-500 uppercase tracking-wider">
-                    {prop.keyword}
-                  </span>
-                  <p className="text-gray-600 text-sm leading-relaxed">{prop.desc}</p>
-                </div>
-                <div className="pt-2 border-t border-slate-100 text-xs text-slate-400 font-semibold select-none">
-                  Lệch #{idx + 1}
-                </div>
-              </div>
-            ))}
-          </div>
-
-        </section>
-
-        {/* ================= PHẦN 4: CASE STUDY DOANH NGHIỆP VIỆT NAM ================= */}
+        {/* ================= PHẦN 3: CASE STUDY DOANH NGHIỆP VIỆT NAM ================= */}
         <section id="practice" className="scroll-mt-24 space-y-12">
           
           {/* Header */}
           <div className="text-center space-y-3">
             <span className="inline-flex h-5 w-fit items-center justify-center rounded-full bg-red-100 text-red-700 border border-red-200 px-3 py-0.5 text-xs font-bold uppercase tracking-wider">
-              Phần 4
+              Phần 3
             </span>
             <h2 className="text-3xl sm:text-4xl font-extrabold text-gradient-red tracking-tight">
               Doanh nghiệp Việt Nam ứng dụng AI/Tự động hóa
@@ -935,13 +886,13 @@ export default function App() {
 
         </section>
 
-        {/* ================= PHẦN 5: BÀI HỌC & VAI TRÒ NHÀ NƯỚC ================= */}
+        {/* ================= PHẦN 4: BÀI HỌC & VAI TRÒ NHÀ NƯỚC ================= */}
         <section id="digital" className="scroll-mt-24 space-y-12">
           
           {/* Header */}
           <div className="text-center space-y-3">
             <span className="inline-flex h-5 w-fit items-center justify-center rounded-full bg-red-100 text-red-700 border border-red-200 px-3 py-0.5 text-xs font-bold uppercase tracking-wider">
-              Phần 5
+              Phần 4
             </span>
             <h2 className="text-3xl sm:text-4xl font-extrabold text-gradient-red tracking-tight">
               Bài học & Vai trò Nhà nước trong Kỷ nguyên AI
@@ -951,63 +902,87 @@ export default function App() {
             </p>
           </div>
 
-          {/* 3 Bài học hành động */}
+          {/* 3 Bài học hành động dưới dạng Flashcard lật 3D */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {chaptersData.digital.process.map((pr, idx) => (
-              <div key={idx} className="bg-white border border-slate-200/60 rounded-3xl p-6 shadow-sm flex flex-col justify-between space-y-4 card-hover transition-all duration-300 hover:shadow-md" style={{
-                borderTop: `4px solid ${idx === 0 ? '#dc2626' : idx === 1 ? '#eab308' : '#10b981'}`
-              }}>
-                <div className="space-y-4">
-                  <div className="flex justify-between items-center">
-                    <span className={`inline-flex px-2 py-0.5 text-[10px] font-bold rounded-full ${
-                      idx === 0 ? 'bg-red-50 text-red-700' : idx === 1 ? 'bg-amber-50 text-amber-700' : 'bg-emerald-50 text-emerald-700'
-                    }`}>
-                      {pr.phase}
-                    </span>
-                  </div>
-                  <div>
-                    <h4 className="font-extrabold text-slate-800 text-base leading-snug">{pr.title}</h4>
-                    <div className="text-xs font-bold text-slate-400 uppercase tracking-wider mt-1">{pr.trap}</div>
-                  </div>
-                  
-                  <div className="space-y-3 pt-3 border-t border-slate-100">
-                    <div className="space-y-1">
-                      <span className={`text-xs font-extrabold uppercase tracking-wider ${
-                        idx === 0 ? 'text-red-600' : idx === 1 ? 'text-amber-600' : 'text-emerald-600'
-                      }`}>{pr.realityLabel}:</span>
-                      <p className="text-gray-600 text-sm leading-relaxed">{pr.reality}</p>
-                    </div>
-                    <div className="space-y-2 pt-2">
-                      <button
-                        onClick={() => togglePhilosophy(idx)}
-                        className={`w-full flex items-center justify-between px-3 py-2 rounded-xl text-xs font-bold transition-all duration-300 ${
-                          showPhilosophy[idx]
-                            ? 'bg-slate-150 text-slate-800 border border-slate-200'
-                            : 'bg-red-50/50 text-red-700 hover:bg-red-50 border border-dashed border-red-200'
-                        }`}
-                      >
-                        <span className="flex items-center gap-1.5">
-                          💡 {pr.philosophyLabel}
+            {chaptersData.digital.process.map((pr, idx) => {
+              const isFlipped = !!flippedLessons[idx];
+              const themeColor = idx === 0 ? '#dc2626' : idx === 1 ? '#eab308' : '#10b981';
+              const textThemeColor = idx === 0 ? 'text-red-600' : idx === 1 ? 'text-amber-600' : 'text-emerald-600';
+              const bgThemeColor = idx === 0 ? 'bg-red-50 text-red-700 border-red-200' : idx === 1 ? 'bg-amber-50 text-amber-700 border-amber-200' : 'bg-emerald-50 text-emerald-700 border-emerald-200';
+
+              return (
+                <div 
+                  key={idx}
+                  onClick={() => toggleLessonFlip(idx)}
+                  className="flip-card h-[430px] w-full cursor-pointer group"
+                >
+                  <div className={`flip-card-inner relative w-full h-full transition-transform duration-500 rounded-3xl shadow-sm border border-slate-200/60 ${isFlipped ? 'flipped' : ''}`} style={{
+                    transform: isFlipped ? 'rotateY(180deg)' : 'rotateY(0deg)'
+                  }}>
+                    
+                    {/* Mặt trước của thẻ */}
+                    <div 
+                      className="flip-card-front absolute inset-0 bg-white rounded-3xl p-6 flex flex-col justify-between items-center text-center bg-gradient-to-br from-white to-slate-50"
+                      style={{ borderTop: `5px solid ${themeColor}` }}
+                    >
+                      <div className="space-y-4 w-full flex flex-col items-center">
+                        <span className={`inline-flex px-2.5 py-0.5 text-[10px] font-bold rounded-full border ${bgThemeColor}`}>
+                          {pr.phase}
                         </span>
-                        <ChevronDown className={`w-3.5 h-3.5 transition-transform duration-300 ${
-                          showPhilosophy[idx] ? 'rotate-180 text-slate-500' : 'text-red-500'
-                        }`} />
-                      </button>
-                      
-                      <div className={`overflow-hidden transition-all duration-300 ${
-                        showPhilosophy[idx] 
-                          ? 'max-h-72 opacity-100 mt-2' 
-                          : 'max-h-0 opacity-0 pointer-events-none'
-                      }`}>
-                        <div className="p-3 bg-slate-50/60 border border-slate-100 rounded-xl">
-                          <p className="text-gray-600 text-sm leading-relaxed italic">{pr.philosophy}</p>
+                        <div className="space-y-2">
+                          <h4 className="font-extrabold text-slate-800 text-xl sm:text-2xl leading-snug">{pr.title}</h4>
+                          <div className="text-xs font-bold text-slate-400 uppercase tracking-wider leading-relaxed">{pr.trap}</div>
                         </div>
                       </div>
+                      
+                      <div className={`w-full flex items-center justify-center gap-1.5 px-3 py-2.5 rounded-xl text-xs font-bold transition-all duration-300 border border-dashed ${idx === 0 ? 'bg-red-50/40 text-red-700 border-red-200' : idx === 1 ? 'bg-amber-50/40 text-amber-700 border-amber-200' : 'bg-emerald-50/40 text-emerald-700 border-emerald-200'}`}>
+                        <span>Nhấp để lật xem nội dung</span>
+                      </div>
                     </div>
+
+                    {/* Mặt sau của thẻ */}
+                    <div 
+                      className="flip-card-back absolute inset-0 bg-white rounded-3xl p-6 flex flex-col justify-between items-center text-center"
+                      style={{ borderTop: `5px solid ${themeColor}` }}
+                    >
+                      <div className="space-y-4 w-full text-center overflow-y-auto max-h-[330px] pr-1 flex flex-col items-center">
+                        <div className="w-full flex flex-col items-center border-b border-slate-100 pb-2 gap-1.5">
+                          <span className={`text-[10px] font-bold rounded-full px-2 py-0.5 border ${bgThemeColor}`}>
+                            {pr.phase}
+                          </span>
+                          <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider">{pr.title}</span>
+                        </div>
+                        
+                        {/* Thực trạng */}
+                        <div className="space-y-1 w-full flex flex-col items-center text-center">
+                          <span className={`text-[11px] font-black uppercase tracking-wider ${textThemeColor}`}>
+                            {pr.realityLabel}:
+                          </span>
+                          <p className="text-slate-600 text-xs sm:text-sm leading-relaxed max-w-xs text-center">
+                            {pr.reality}
+                          </p>
+                        </div>
+                        
+                        {/* Hành động cụ thể */}
+                        <div className="space-y-1 pt-2 border-t border-slate-150/40 w-full flex flex-col items-center text-center">
+                          <span className="text-[11px] font-black uppercase tracking-wider text-emerald-600">
+                            {pr.philosophyLabel}:
+                          </span>
+                          <p className="text-slate-655 text-xs sm:text-sm leading-relaxed italic max-w-xs text-center">
+                            {pr.philosophy}
+                          </p>
+                        </div>
+                      </div>
+
+                      <div className="w-full flex items-center justify-center gap-1.5 text-xs font-bold text-slate-400 hover:text-slate-600 pt-2 border-t border-slate-100 mt-auto">
+                        <span>Nhấp để lật lại</span>
+                      </div>
+                    </div>
+
                   </div>
                 </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
 
           {/* Bảng đối chiếu Có/Không có Nhà nước */}
@@ -1357,68 +1332,7 @@ export default function App() {
 
         </section>
 
-        {/* ================= PHẢN BIỆN: Q&A CMCN 4.0 ================= */}
-        <section id="debates" className="scroll-mt-24 space-y-12">
-          
-          {/* Header */}
-          <div className="text-center space-y-3">
-            <span className="inline-flex h-5 w-fit items-center justify-center rounded-full bg-red-100 text-red-700 border border-red-200 px-3 py-0.5 text-xs font-bold uppercase tracking-wider">
-              Phản Biện Lớp
-            </span>
-            <h2 className="text-3xl sm:text-4xl font-extrabold text-gradient-red tracking-tight">
-              Phản Biện Thường Gặp & Cách Đỡ Đòn
-            </h2>
-            <p className="text-gray-600 text-base sm:text-lg max-w-3xl mx-auto">
-              Trang bị sẵn lý luận sắc bén để trả lời các câu hỏi hóc búa nhất từ giảng viên và khán giả về tác động của AI và CMCN 4.0 đến lao động Việt Nam.
-            </p>
-          </div>
 
-          {/* Debates Accordion List matching docx */}
-          <div className="max-w-4xl mx-auto space-y-4">
-            {debatesData.map((deb, idx) => {
-              const isExpanded = expandedDebate === idx;
-              return (
-                <div 
-                  key={idx} 
-                  className={`border rounded-2xl overflow-hidden transition-all duration-300 ${
-                    isExpanded ? 'border-red-300 shadow-md bg-red-50/20' : 'border-slate-200 bg-white hover:border-slate-300 shadow-sm'
-                  }`}
-                >
-                  {/* Title Bar */}
-                  <div 
-                    onClick={() => setExpandedDebate(isExpanded ? null : idx)}
-                    className="p-5 flex items-center justify-between gap-4 cursor-pointer select-none"
-                  >
-                    <div className="flex items-center gap-3 text-left">
-                      <span className={`w-8 h-8 rounded-xl font-bold flex items-center justify-center text-xs flex-shrink-0 ${
-                        isExpanded ? 'bg-red-600 text-white' : 'bg-slate-100 text-slate-500'
-                      }`}>
-                        {idx + 1}
-                      </span>
-                      <h4 className={`text-sm sm:text-base font-bold ${isExpanded ? 'text-red-950' : 'text-slate-800'}`}>
-                        {deb.question}
-                      </h4>
-                    </div>
-                    <ChevronDown className={`w-5 h-5 text-slate-400 flex-shrink-0 transition-transform ${isExpanded ? 'rotate-180 text-red-600' : ''}`} />
-                  </div>
-
-                  {/* Body Content */}
-                  {isExpanded && (
-                    <div className="px-5 pb-5 pt-3 border-t border-red-200/40 text-left bg-red-50/10">
-                      <span className="text-xs uppercase font-extrabold tracking-wider text-red-700 block mb-2">
-                        🔥 Vũ khí lý luận đỡ đòn
-                      </span>
-                      <p className="text-sm text-slate-700 leading-relaxed">
-                        {deb.answer}
-                      </p>
-                    </div>
-                  )}
-                </div>
-              );
-            })}
-          </div>
-
-        </section>
 
         {/* ================= CHATBOT: AI CMCN 4.0 ================= */}
         <section id="chatbot" className="scroll-mt-24 space-y-12">
@@ -1602,7 +1516,6 @@ export default function App() {
             <div className="grid grid-cols-2 gap-2 text-xs text-slate-400">
               <span onClick={() => scrollToSection('intro')} className="hover:text-white cursor-pointer transition-colors">Lý luận C.Mác</span>
               <span onClick={() => scrollToSection('theory')} className="hover:text-white cursor-pointer transition-colors">Số liệu Thực tiễn</span>
-              <span onClick={() => scrollToSection('truth')} className="hover:text-white cursor-pointer transition-colors">Phân tích AI</span>
               <span onClick={() => scrollToSection('practice')} className="hover:text-white cursor-pointer transition-colors">Case Study VN</span>
               <span onClick={() => scrollToSection('digital')} className="hover:text-white cursor-pointer transition-colors">Bài học & Giải pháp</span>
               <span onClick={() => scrollToSection('quiz')} className="hover:text-white cursor-pointer transition-colors">Trắc Nghiệm</span>
