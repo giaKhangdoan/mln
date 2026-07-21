@@ -22,6 +22,37 @@ body {
   background: linear-gradient(135deg, #5c0808 0%, #b91c1c 50%, #3b0707 100%);
 }
 
+@keyframes gradientX {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+.bg-red-gradient-animated {
+  background: linear-gradient(-45deg, #3b0707, #7f1d1d, #991b1b, #450a0a, #2e0202);
+  background-size: 400% 400%;
+  animation: gradientX 12s ease infinite;
+}
+
+.circuit-pattern {
+  background-image: 
+    linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+@keyframes float-node {
+  0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.3; }
+  33% { transform: translate(15px, -25px) scale(1.2); opacity: 0.8; }
+  66% { transform: translate(-10px, 15px) scale(0.9); opacity: 0.5; }
+}
+
+.animate-float-node {
+  animation: float-node 10s ease-in-out infinite;
+}
+.animation-delay-2000 { animation-delay: 2s; }
+.animation-delay-4000 { animation-delay: 4s; }
+.animation-delay-6000 { animation-delay: 6s; }
+
 .text-gradient-red {
   background: linear-gradient(135deg, #991b1b 0%, #dc2626 100%);
   -webkit-background-clip: text;
@@ -163,3 +194,22 @@ body {
   animation: portrait-float-right 10s ease-in-out infinite;
 }
 
+/* Custom AOS directional overrides for inner/outer zoom effect */
+html[data-scroll-dir="up"] [data-aos="zoom-in"] {
+  transform: scale(1.15) !important; /* Zoom out (outer) effect */
+}
+html[data-scroll-dir="up"] [data-aos="zoom-in"].aos-animate {
+  transform: scale(1) !important;
+}
+html[data-scroll-dir="up"] [data-aos="zoom-in-up"] {
+  transform: translate3d(0, -100px, 0) scale(1.15) !important; /* Slide down and zoom out */
+}
+html[data-scroll-dir="up"] [data-aos="zoom-in-up"].aos-animate {
+  transform: translate3d(0, 0, 0) scale(1) !important;
+}
+html[data-scroll-dir="up"] [data-aos="fade-up"] {
+  transform: translate3d(0, -100px, 0) !important; /* Slide down naturally */
+}
+html[data-scroll-dir="up"] [data-aos="fade-up"].aos-animate {
+  transform: translate3d(0, 0, 0) !important;
+}

@@ -1,4 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 import { 
   BookOpen, 
   Sparkles, 
@@ -91,17 +93,17 @@ const chaptersData = {
       {
         title: "Ngành May mặc",
         desc: "46,3% doanh nghiệp may tại Tây Nam Bộ đã tự động hóa ít nhất một công đoạn. 78% doanh nghiệp FDI áp dụng tự động hóa so với chỉ 39,5% ở doanh nghiệp nội địa (Huỳnh và cộng sự, 2026).",
-        image: "/assets/image2.png"
+        image: "/assets/nganhmaymac.png"
       },
       {
         title: "Ngành Logistics",
         desc: "55-60% doanh nghiệp đã ứng dụng TMS/WMS nhưng chỉ 10% đạt tự động hóa vật lý toàn trình. 80-90% quy trình forwarder vừa và nhỏ vẫn thao tác bằng tay (Báo cáo Logistics VN 2024).",
-        image: "/assets/image3.png"
+        image: "/assets/nghanhlogistic.jpg"
       },
       {
         title: "Tác động ròng đến 2030",
         desc: "ADB (2021): Tác động ròng đến việc làm vẫn ở mức tích cực — số việc làm mới bù đắp được số mất đi, nhưng đòi hỏi kỹ năng thay đổi hoàn toàn từ thể chất lặp lại sang tư duy phân tích và kỹ năng số.",
-        image: "/assets/image8.jpg"
+        image: "/assets/tacdongrongden2023.jpg"
       }
     ],
     dialecticsSteps: [
@@ -342,12 +344,30 @@ export default function App() {
   const [isTyping, setIsTyping] = useState(false);
   const chatEndRef = useRef(null);
 
+  useEffect(() => {
+    AOS.init({
+      duration: 1200,
+      once: false,
+      mirror: true,
+      easing: 'cubic-bezier(0.16, 1, 0.3, 1)',
+      offset: 50,
+    });
+  }, []);
+
   // Monitor scroll for progress and active section (Scrollspy)
   useEffect(() => {
+    let lastScrollY = window.scrollY;
+
     const handleScroll = () => {
+      const scrollY = window.scrollY;
+      
+      const direction = scrollY > lastScrollY ? 'down' : 'up';
+      document.documentElement.setAttribute('data-scroll-dir', direction);
+      lastScrollY = scrollY > 0 ? scrollY : 0;
+
       const totalScroll = document.documentElement.scrollHeight - window.innerHeight;
       if (totalScroll > 0) {
-        setScrollProgress((window.scrollY / totalScroll) * 100);
+        setScrollProgress((scrollY / totalScroll) * 100);
       }
 
       // Check which section is in view
@@ -370,7 +390,9 @@ export default function App() {
 
   // Auto scroll to chat bottom
   useEffect(() => {
-    chatEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+    if (chatMessages.length > 1 || isTyping) {
+      chatEndRef.current?.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
   }, [chatMessages, isTyping]);
 
   const scrollToSection = (id) => {
@@ -431,62 +453,79 @@ export default function App() {
         style={{ width: `${scrollProgress}%` }}
       />
 
-      {/* ================= HERO SECTION (bg-red-gradient) ================= */}
-      <section className="relative min-h-screen bg-red-gradient overflow-hidden flex flex-col items-center justify-center text-white px-4">
+      {/* ================= HERO SECTION (bg-red-gradient-animated) ================= */}
+      <section className="relative min-h-screen bg-red-gradient-animated overflow-hidden flex flex-col items-center justify-center text-white px-4">
         
-        {/* Sphere lights */}
-        <div className="absolute top-0 right-0 w-[300px] sm:w-[700px] h-[300px] sm:h-[700px] bg-white/5 rounded-full translate-x-1/3 -translate-y-1/3 blur-3xl pointer-events-none"></div>
-        <div className="absolute bottom-0 left-0 w-[250px] sm:w-[600px] h-[250px] sm:h-[600px] bg-black/15 rounded-full -translate-x-1/3 translate-y-1/3 blur-3xl pointer-events-none"></div>
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[200px] sm:w-[500px] h-[200px] sm:h-[500px] bg-red-500/10 rounded-full blur-3xl pointer-events-none"></div>
+        {/* Animated Grid / Circuit Pattern */}
+        <div className="absolute inset-0 opacity-[0.25] circuit-pattern pointer-events-none mix-blend-overlay"></div>
+        
+        {/* Glow Spheres */}
+        <div className="absolute top-[-10%] right-[-5%] w-[400px] sm:w-[800px] h-[400px] sm:h-[800px] bg-red-500/20 rounded-full blur-[120px] pointer-events-none animate-glow-pulse"></div>
+        <div className="absolute bottom-[-10%] left-[-5%] w-[350px] sm:w-[700px] h-[350px] sm:h-[700px] bg-amber-600/10 rounded-full blur-[100px] pointer-events-none animate-glow-pulse" style={{animationDelay: '2s'}}></div>
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] sm:w-[600px] h-[300px] sm:h-[600px] bg-black/40 rounded-full blur-[80px] pointer-events-none"></div>
+
+        {/* Floating AI Data Nodes */}
+        <div className="absolute inset-0 pointer-events-none">
+          <div className="absolute top-[15%] left-[10%] flex flex-col items-center animate-float-node">
+            <div className="w-3 h-3 bg-red-300 rounded-full shadow-[0_0_15px_rgba(252,165,165,0.8)]"></div>
+            <div className="w-[1px] h-16 bg-gradient-to-b from-red-300/50 to-transparent"></div>
+          </div>
+          <div className="absolute top-[35%] right-[15%] flex flex-col items-center animate-float-node animation-delay-2000">
+            <div className="w-4 h-4 bg-amber-300 rounded-full shadow-[0_0_20px_rgba(252,211,77,0.8)]"></div>
+            <div className="w-[1px] h-24 bg-gradient-to-b from-amber-300/50 to-transparent"></div>
+          </div>
+          <div className="absolute bottom-[25%] left-[20%] flex flex-col items-center animate-float-node animation-delay-4000">
+            <div className="w-2.5 h-2.5 bg-white rounded-full shadow-[0_0_12px_rgba(255,255,255,0.8)]"></div>
+            <div className="w-[1px] h-12 bg-gradient-to-b from-white/50 to-transparent"></div>
+          </div>
+          <div className="absolute bottom-[40%] right-[25%] flex flex-col items-center animate-float-node animation-delay-6000">
+            <div className="w-3.5 h-3.5 bg-red-400 rounded-full shadow-[0_0_15px_rgba(248,113,113,0.8)]"></div>
+            <div className="w-[1px] h-20 bg-gradient-to-b from-red-400/50 to-transparent"></div>
+          </div>
+        </div>
 
         {/* Artistic decorated images at sides */}
-        <div className="absolute left-0 bottom-0 h-[70%] w-[340px] pointer-events-none select-none hidden xl:block" style={{
-          maskImage: 'linear-gradient(to right, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0.3) 50%, transparent 100%), linear-gradient(to top, transparent 0%, black 15%, black 85%, transparent 100%)',
-          WebkitMaskImage: 'linear-gradient(to right, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0.3) 50%, transparent 100%), linear-gradient(to top, transparent 0%, black 15%, black 85%, transparent 100%)',
+        <div className="absolute left-0 bottom-0 h-[75%] w-[380px] pointer-events-none select-none hidden xl:block" style={{
+          maskImage: 'linear-gradient(to right, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.6) 60%, transparent 100%), linear-gradient(to top, transparent 0%, black 15%, black 90%, transparent 100%)',
+          WebkitMaskImage: 'linear-gradient(to right, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.6) 60%, transparent 100%), linear-gradient(to top, transparent 0%, black 15%, black 90%, transparent 100%)',
           maskComposite: 'intersect',
           WebkitMaskComposite: 'source-in'
         }}>
           <img 
             src="/assets/image3.png" 
             alt="Left Side Decoration" 
-            className="h-full w-full object-cover object-top filter grayscale contrast-[0.95] brightness-[0.55] mix-blend-mode-luminosity opacity-40 hover:opacity-50 transition-opacity duration-750" 
+            className="h-full w-full object-cover object-top filter grayscale contrast-[1.15] brightness-[0.75] mix-blend-luminosity opacity-90 animate-portrait-left" 
           />
         </div>
 
-        <div className="absolute right-0 bottom-0 h-[70%] w-[340px] pointer-events-none select-none hidden xl:block" style={{
-          maskImage: 'linear-gradient(to left, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0.3) 50%, transparent 100%), linear-gradient(to top, transparent 0%, black 15%, black 85%, transparent 100%)',
-          WebkitMaskImage: 'linear-gradient(to left, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0.3) 50%, transparent 100%), linear-gradient(to top, transparent 0%, black 15%, black 85%, transparent 100%)',
+        <div className="absolute right-0 bottom-0 h-[75%] w-[380px] pointer-events-none select-none hidden xl:block" style={{
+          maskImage: 'linear-gradient(to left, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.6) 60%, transparent 100%), linear-gradient(to top, transparent 0%, black 15%, black 90%, transparent 100%)',
+          WebkitMaskImage: 'linear-gradient(to left, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.6) 60%, transparent 100%), linear-gradient(to top, transparent 0%, black 15%, black 90%, transparent 100%)',
           maskComposite: 'intersect',
           WebkitMaskComposite: 'source-in'
         }}>
           <img 
             src="/assets/image18.png" 
             alt="Right Side Decoration" 
-            className="h-full w-full object-cover object-top filter grayscale contrast-[0.95] brightness-[0.55] mix-blend-mode-luminosity opacity-40 hover:opacity-50 transition-opacity duration-750" 
+            className="h-full w-full object-cover object-top filter grayscale contrast-[1.15] brightness-[0.75] mix-blend-luminosity opacity-90 animate-portrait-right" 
           />
         </div>
 
-        {/* Lưới tọa độ chìm */}
-        <div className="absolute inset-0 opacity-[0.04] pointer-events-none" style={{
-          backgroundImage: 'linear-gradient(rgba(255,255,255,0.8) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.8) 1px, transparent 1px)',
-          backgroundSize: '60px 60px'
-        }}></div>
-
-        {/* Small floating glowing stars matching target style */}
-        <div className="absolute rounded-full bg-white/20 pointer-events-none w-1.5 h-1.5 top-[15%] left-[8%] animate-ping"></div>
-        <div className="absolute rounded-full bg-white/20 pointer-events-none w-1 h-1 top-[25%] left-[18%]"></div>
-        <div className="absolute rounded-full bg-white/20 pointer-events-none w-2 h-2 top-[60%] left-[5%] animate-pulse"></div>
-        <div className="absolute rounded-full bg-white/20 pointer-events-none w-1.5 h-1.5 top-[75%] left-[14%]"></div>
-        <div className="absolute rounded-full bg-white/20 pointer-events-none w-1.5 h-1.5 top-[12%] right-[10%]"></div>
-        <div className="absolute rounded-full bg-white/20 pointer-events-none w-1 h-1 top-[30%] right-[6%] animate-ping"></div>
-        <div className="absolute rounded-full bg-white/25 pointer-events-none w-2 h-2 top-[55%] right-[8%] animate-pulse"></div>
-        <div className="absolute rounded-full bg-white/20 pointer-events-none w-1.5 h-1.5 top-[80%] right-[15%]"></div>
+        {/* Floating particles (Stars) */}
+        <div className="absolute rounded-full bg-white/40 pointer-events-none w-1.5 h-1.5 top-[15%] left-[8%] animate-ping"></div>
+        <div className="absolute rounded-full bg-white/30 pointer-events-none w-1 h-1 top-[25%] left-[18%]"></div>
+        <div className="absolute rounded-full bg-white/50 pointer-events-none w-2 h-2 top-[60%] left-[5%] animate-pulse"></div>
+        <div className="absolute rounded-full bg-white/30 pointer-events-none w-1.5 h-1.5 top-[75%] left-[14%]"></div>
+        <div className="absolute rounded-full bg-white/40 pointer-events-none w-1.5 h-1.5 top-[12%] right-[10%]"></div>
+        <div className="absolute rounded-full bg-white/30 pointer-events-none w-1 h-1 top-[30%] right-[6%] animate-ping"></div>
+        <div className="absolute rounded-full bg-white/50 pointer-events-none w-2 h-2 top-[55%] right-[8%] animate-pulse"></div>
+        <div className="absolute rounded-full bg-white/30 pointer-events-none w-1.5 h-1.5 top-[80%] right-[15%]"></div>
 
         {/* Diagonal lines decoration */}
-        <div className="absolute bg-white/10 pointer-events-none top-[20%] left-[3%] w-10 h-[1.5px] rotate-[45deg]"></div>
-        <div className="absolute bg-white/10 pointer-events-none top-[70%] left-[10%] w-7 h-[1.5px] -rotate-[30deg]"></div>
-        <div className="absolute bg-white/10 pointer-events-none top-[35%] right-[4%] w-12 h-[1.5px] -rotate-[45deg]"></div>
-        <div className="absolute bg-white/10 pointer-events-none top-[65%] right-[12%] w-9 h-[1.5px] rotate-[20deg]"></div>
+        <div className="absolute bg-white/20 pointer-events-none top-[20%] left-[3%] w-10 h-[1px] rotate-[45deg]"></div>
+        <div className="absolute bg-white/20 pointer-events-none top-[70%] left-[10%] w-7 h-[1px] -rotate-[30deg]"></div>
+        <div className="absolute bg-white/20 pointer-events-none top-[35%] right-[4%] w-12 h-[1px] -rotate-[45deg]"></div>
+        <div className="absolute bg-white/20 pointer-events-none top-[65%] right-[12%] w-9 h-[1px] rotate-[20deg]"></div>
 
         {/* Hero Content Area */}
         <div className="relative z-10 text-center px-4 max-w-5xl mx-auto w-full space-y-8">
@@ -501,13 +540,19 @@ export default function App() {
             <div className="h-[1.5px] w-12 bg-white/30"></div>
           </div>
 
-          {/* Rotating Búa Liềm Symbol with radial gears */}
-          <div className="relative inline-flex items-center justify-center">
-            <div className="absolute w-28 h-28 rounded-full border border-white/10 animate-spin-slow" style={{
-              backgroundImage: 'repeating-conic-gradient(transparent 0deg, transparent 20deg, rgba(255,255,255,0.06) 20deg, rgba(255,255,255,0.06) 21deg)'
+          {/* Futuristic Rotating Búa Liềm Symbol with Tech Gears */}
+          <div className="relative inline-flex items-center justify-center mb-2">
+            {/* Outer Data Ring */}
+            <div className="absolute w-36 h-36 rounded-full border border-red-500/30 border-dashed animate-spin-slow opacity-60"></div>
+            {/* Inner Tech Gear */}
+            <div className="absolute w-28 h-28 rounded-full border border-white/20 animate-spin-reverse shadow-[0_0_20px_rgba(255,255,255,0.1)]" style={{
+              backgroundImage: 'repeating-conic-gradient(transparent 0deg, transparent 15deg, rgba(255,255,255,0.1) 15deg, rgba(255,255,255,0.1) 17deg)'
             }}></div>
-            <div className="absolute w-20 h-20 rounded-full border border-white/15 animate-spin-reverse"></div>
-            <span className="relative text-7xl font-black text-white/90 select-none leading-none animate-pulse drop-shadow-[0_0_15px_rgba(255,255,255,0.2)]">☭</span>
+            {/* Core Glow */}
+            <div className="absolute w-20 h-20 rounded-full bg-red-600/20 blur-xl animate-pulse"></div>
+            <div className="absolute w-16 h-16 rounded-full border border-amber-300/30 animate-spin-slow"></div>
+            {/* Symbol */}
+            <span className="relative text-7xl font-black text-white/95 select-none leading-none drop-shadow-[0_0_25px_rgba(255,255,255,0.6)]">☭</span>
           </div>
 
           {/* Epic Main Titles */}
@@ -636,7 +681,7 @@ export default function App() {
         <section id="intro" className="scroll-mt-24 space-y-12">
           
           {/* Header */}
-          <div className="text-center space-y-3">
+          <div className="text-center space-y-3" data-aos="fade-down" data-aos-duration="1000">
             <span className="inline-flex h-5 w-fit items-center justify-center rounded-full bg-red-100 text-red-700 border border-red-200 px-3 py-0.5 text-xs font-bold uppercase tracking-wider">
               Phần 1
             </span>
@@ -651,7 +696,7 @@ export default function App() {
           {/* Luận điểm chính Grid */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {chaptersData.intro.traps.map((trap, idx) => (
-              <div key={idx} className="card-hover bg-gradient-to-br from-red-50 to-red-100 border border-red-200/60 rounded-3xl p-6 shadow-sm flex flex-col justify-between space-y-5">
+              <div key={idx} data-aos="zoom-in-up" data-aos-delay={idx * 150} className="card-hover bg-gradient-to-br from-red-50 to-red-100 border border-red-200/60 rounded-3xl p-6 shadow-sm flex flex-col justify-between space-y-5">
                 <div className="space-y-3">
                   <div className="w-12 h-12 bg-red-600 rounded-2xl flex items-center justify-center text-2xl text-white shadow-md shadow-red-600/10">
                     {trap.icon}
@@ -668,7 +713,7 @@ export default function App() {
           </div>
 
           {/* Red blockquote matching target website */}
-          <div className="bg-red-gradient rounded-3xl p-8 text-white relative overflow-hidden shadow-lg shadow-red-800/10">
+          <div data-aos="flip-up" className="bg-red-gradient rounded-3xl p-8 text-white relative overflow-hidden shadow-lg shadow-red-800/10">
             <div className="text-8xl font-serif absolute -top-4 left-4 opacity-15 select-none">&quot;</div>
             <blockquote className="relative z-10 space-y-4">
               <p className="text-lg sm:text-xl italic font-light leading-relaxed">
@@ -694,7 +739,7 @@ export default function App() {
                   const isLeft = idx % 2 === 0;
                   const isExpanded = expandedTimeline[idx + 1];
                   return (
-                    <div key={idx} className="relative flex flex-col md:flex-row items-stretch md:items-center w-full">
+                    <div key={idx} data-aos={isLeft ? "fade-right" : "fade-left"} data-aos-delay={idx * 100} className="relative flex flex-col md:flex-row items-stretch md:items-center w-full">
                       
                       {/* Timeline dot */}
                       <div className="absolute left-1/2 -translate-x-1/2 top-6 w-4 h-4 rounded-full border-2 border-white shadow-md z-10 hidden md:block transition-all duration-300 bg-red-600 scale-110"></div>
@@ -751,7 +796,7 @@ export default function App() {
         <section id="theory" className="scroll-mt-24 space-y-12">
           
           {/* Header */}
-          <div className="text-center space-y-3">
+          <div className="text-center space-y-3" data-aos="fade-down" data-aos-duration="1000">
             <span className="inline-flex h-5 w-fit items-center justify-center rounded-full bg-red-100 text-red-700 border border-red-200 px-3 py-0.5 text-xs font-bold uppercase tracking-wider">
               Phần 2
             </span>
@@ -766,7 +811,7 @@ export default function App() {
           {/* Layout danh sách kèm hình ảnh (giống trang báo) */}
           <div className="max-w-4xl mx-auto space-y-8">
             {chaptersData.theory.principles.map((pr, idx) => (
-              <div key={idx} className="space-y-8">
+              <div key={idx} data-aos="fade-up" data-aos-delay={idx * 150} className="space-y-8">
                 <div className="flex flex-col sm:flex-row gap-6 items-start">
                   {/* Hình ảnh bên trái */}
                   <div className="w-full sm:w-1/3 flex-shrink-0">
@@ -795,7 +840,7 @@ export default function App() {
           </div>
 
           {/* Quote số liệu ILO */}
-          <div className="bg-red-gradient text-white rounded-3xl p-8 relative overflow-hidden shadow-lg shadow-red-800/10">
+          <div data-aos="zoom-in" className="bg-red-gradient text-white rounded-3xl p-8 relative overflow-hidden shadow-lg shadow-red-800/10">
             <div className="absolute right-0 bottom-0 w-80 h-80 bg-white/5 rounded-full blur-3xl pointer-events-none"></div>
             <div className="relative z-10 space-y-4 max-w-4xl">
               <span className="text-red-200 font-extrabold text-xs uppercase tracking-wider">Số liệu ILO — Báo động đỏ</span>
@@ -811,7 +856,7 @@ export default function App() {
             <h3 className="text-2xl font-bold text-center text-slate-800">3 Hệ quả suy ra từ số liệu thực tiễn</h3>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               {chaptersData.theory.dialecticsSteps.map((st, idx) => (
-                <div key={idx} className="bg-white border border-slate-200/60 rounded-3xl p-6 shadow-sm space-y-3 card-hover">
+                <div key={idx} data-aos="zoom-in-up" data-aos-delay={idx * 150} className="bg-white border border-slate-200/60 rounded-3xl p-6 shadow-sm space-y-3 card-hover">
                   <div className="w-10 h-10 bg-red-100 text-red-700 font-extrabold rounded-full flex items-center justify-center text-sm">
                     {st.step}
                   </div>
@@ -828,7 +873,7 @@ export default function App() {
         <section id="practice" className="scroll-mt-24 space-y-12">
           
           {/* Header */}
-          <div className="text-center space-y-3">
+          <div className="text-center space-y-3" data-aos="fade-down" data-aos-duration="1000">
             <span className="inline-flex h-5 w-fit items-center justify-center rounded-full bg-red-100 text-red-700 border border-red-200 px-3 py-0.5 text-xs font-bold uppercase tracking-wider">
               Phần 3
             </span>
@@ -843,7 +888,7 @@ export default function App() {
           {/* Case Study 3 doanh nghiệp */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {chaptersData.practice.forms.map((form, idx) => (
-              <div key={idx} className="card-hover bg-gradient-to-br from-red-50 to-orange-50 border border-orange-200/60 rounded-3xl p-6 shadow-sm flex flex-col justify-between space-y-5">
+              <div key={idx} data-aos="zoom-in-up" data-aos-delay={idx * 150} className="card-hover bg-gradient-to-br from-red-50 to-orange-50 border border-orange-200/60 rounded-3xl p-6 shadow-sm flex flex-col justify-between space-y-5">
                 <div className="space-y-3">
                   <div className="w-12 h-12 bg-orange-600 rounded-2xl flex items-center justify-center text-white text-xl">
                     {form.icon}
@@ -875,7 +920,7 @@ export default function App() {
             <h3 className="text-2xl font-bold text-center text-slate-800">Phân tích thực trạng logistics Việt Nam</h3>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               {chaptersData.practice.roles.map((role, idx) => (
-                <div key={idx} className="bg-white border border-slate-200/60 rounded-3xl p-6 shadow-sm space-y-3 card-hover">
+                <div key={idx} data-aos="zoom-in-up" data-aos-delay={idx * 150} className="bg-white border border-slate-200/60 rounded-3xl p-6 shadow-sm space-y-3 card-hover">
                   <span className="text-xs uppercase font-extrabold tracking-wider text-red-600">Phát hiện {idx+1}</span>
                   <h4 className="font-bold text-slate-800 text-base">{role.title}</h4>
                   <p className="text-gray-600 text-sm leading-relaxed">{role.desc}</p>
@@ -890,7 +935,7 @@ export default function App() {
         <section id="digital" className="scroll-mt-24 space-y-12">
           
           {/* Header */}
-          <div className="text-center space-y-3">
+          <div className="text-center space-y-3" data-aos="fade-down" data-aos-duration="1000">
             <span className="inline-flex h-5 w-fit items-center justify-center rounded-full bg-red-100 text-red-700 border border-red-200 px-3 py-0.5 text-xs font-bold uppercase tracking-wider">
               Phần 4
             </span>
@@ -913,6 +958,8 @@ export default function App() {
               return (
                 <div 
                   key={idx}
+                  data-aos="flip-left"
+                  data-aos-delay={idx * 150}
                   onClick={() => toggleLessonFlip(idx)}
                   className="flip-card h-[430px] w-full cursor-pointer group"
                 >
@@ -986,7 +1033,7 @@ export default function App() {
           </div>
 
           {/* Bảng đối chiếu Có/Không có Nhà nước */}
-          <div className="bg-white border border-slate-200/60 rounded-3xl p-6 sm:p-8 shadow-sm space-y-6 overflow-hidden">
+          <div data-aos="fade-up" className="bg-white border border-slate-200/60 rounded-3xl p-6 sm:p-8 shadow-sm space-y-6 overflow-hidden">
             <div className="text-center max-w-md mx-auto">
               <h3 className="text-lg font-bold text-slate-800">Đối chiếu: Có/Không có vai trò Nhà nước trong ứng phó CMCN 4.0</h3>
               <p className="text-xs text-slate-400 uppercase font-bold tracking-wider mt-1">Tác động lên người lao động, doanh nghiệp và cơ cấu kinh tế</p>
@@ -1023,7 +1070,7 @@ export default function App() {
           </div>
 
           {/* 3 Trường hợp thực tiễn */}
-          <div className="bg-slate-100/70 border border-slate-200/50 rounded-3xl p-8 sm:p-10 space-y-6">
+          <div data-aos="zoom-in-up" className="bg-slate-100/70 border border-slate-200/50 rounded-3xl p-8 sm:p-10 space-y-6">
             <div className="text-center max-w-2xl mx-auto space-y-2">
               <h3 className="text-2xl font-bold text-red-950">Phân tích 3 trường hợp thực tiễn tại Việt Nam</h3>
               <p className="text-slate-500 text-sm">Từ số liệu thực tế đến bài học hành động cho từng nhóm đối tượng</p>
@@ -1065,7 +1112,7 @@ export default function App() {
         <section id="flashcard" className="scroll-mt-24 space-y-12">
           
           {/* Header */}
-          <div className="text-center space-y-3">
+          <div className="text-center space-y-3" data-aos="fade-down" data-aos-duration="1000">
             <span className="inline-flex h-5 w-fit items-center justify-center rounded-full bg-red-100 text-red-700 border border-red-200 px-3 py-0.5 text-xs font-bold uppercase tracking-wider">
               Flashcard 3D
             </span>
@@ -1084,6 +1131,8 @@ export default function App() {
               return (
                 <div 
                   key={idx}
+                  data-aos="zoom-in"
+                  data-aos-delay={idx * 100}
                   onClick={() => setFlippedCard(isFlipped ? null : idx)}
                   className="flip-card h-64 w-full cursor-pointer group"
                 >
@@ -1125,7 +1174,7 @@ export default function App() {
         <section id="quiz" className="scroll-mt-24 space-y-12">
           
           {/* Header */}
-          <div className="text-center space-y-3">
+          <div className="text-center space-y-3" data-aos="fade-down" data-aos-duration="1000">
             <span className="inline-flex h-5 w-fit items-center justify-center rounded-full bg-red-100 text-red-700 border border-red-200 px-3 py-0.5 text-xs font-bold uppercase tracking-wider">
               Đố Vui & Khảo Sát
             </span>
@@ -1138,10 +1187,10 @@ export default function App() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {quizQuestions.map((qz) => {
+            {quizQuestions.map((qz, idx) => {
               const selectedOpt = answers[qz.id];
               return (
-                <div key={qz.id} className="bg-white border border-slate-200/60 rounded-3xl p-6 shadow-sm space-y-5 text-left">
+                <div key={qz.id} data-aos="fade-up" data-aos-delay={idx * 150} className="bg-white border border-slate-200/60 rounded-3xl p-6 shadow-sm space-y-5 text-left">
                   
                   {/* Title Question */}
                   <div className="flex gap-2.5">
@@ -1338,7 +1387,7 @@ export default function App() {
         <section id="chatbot" className="scroll-mt-24 space-y-12">
           
           {/* Header */}
-          <div className="text-center space-y-3">
+          <div className="text-center space-y-3" data-aos="fade-down" data-aos-duration="1000">
             <span className="inline-flex h-5 w-fit items-center justify-center rounded-full bg-red-100 text-red-700 border border-red-200 px-3 py-0.5 text-xs font-bold uppercase tracking-wider">
               Chatbot AI
             </span>
@@ -1364,6 +1413,8 @@ export default function App() {
                   {chatbotFAQ.map((faq, idx) => (
                     <button
                       key={idx}
+                      data-aos="fade-right"
+                      data-aos-delay={idx * 150}
                       onClick={() => handleSendMessage(faq.q)}
                       disabled={isTyping}
                       className="text-left p-3 rounded-xl border border-slate-200/80 bg-white hover:bg-red-50 hover:border-red-200 text-xs font-semibold text-slate-700 leading-snug transition-all duration-300 hover:text-red-800 disabled:opacity-50"
@@ -1380,7 +1431,7 @@ export default function App() {
             </div>
 
             {/* Right Chat logs display */}
-            <div className="md:w-2/3 flex flex-col h-full bg-slate-100/30">
+            <div data-aos="fade-left" className="md:w-2/3 flex flex-col h-full bg-slate-100/30">
               
               {/* Top chat bar */}
               <div className="px-6 py-4 bg-white border-b border-slate-200 flex items-center justify-between">
