@@ -202,7 +202,8 @@ const chaptersData = {
         realityLabel: "Thực trạng",
         reality: "Người lao động thủ công (mất việc do tự động hóa) không thể đáp ứng ngay các kỹ năng số của việc làm mới. Đây chính là cơ chế tạo ra 'đội quân thất nghiệp dự bị trì trệ' theo phân loại của Mác.",
         philosophyLabel: "Hành động cụ thể",
-        philosophy: "Phải chủ động tham gia các chương trình đào tạo lại (reskilling), hướng tới kỹ năng tư duy phân tích và kỹ năng số — đây là điều kiện để không bị loại khỏi thị trường lao động trong CMCN 4.0."
+        philosophy: "Phải chủ động tham gia các chương trình đào tạo lại (reskilling), hướng tới kỹ năng tư duy phân tích và kỹ năng số — đây là điều kiện để không bị loại khỏi thị trường lao động trong CMCN 4.0.",
+        image: "/assets/nguoiLaoDong.jpg"
       },
       {
         phase: "Bài học 2",
@@ -211,7 +212,8 @@ const chaptersData = {
         realityLabel: "Thực trạng",
         reality: "90,5% doanh nghiệp vẫn ở mức số hóa sơ khai. Khoảng cách với FDI ngày càng lớn (39,5% vs 78% tự động hóa trong ngành may). Nguy cơ mất đơn hàng và đào thải lao động hàng loạt.",
         philosophyLabel: "Hành động cụ thể",
-        philosophy: "Phân biệt rõ 'số hóa trên màn hình' (dùng phần mềm) với 'tự động hóa vật lý' (robot, băng chuyền). Ưu tiên đầu tư vào tự động hóa thực chất để cạnh tranh với FDI, đồng thời xây dựng lộ trình đào tạo lại lao động dôi dư."
+        philosophy: "Phân biệt rõ 'số hóa trên màn hình' (dùng phần mềm) với 'tự động hóa vật lý' (robot, băng chuyền). Ưu tiên đầu tư vào tự động hóa thực chất để cạnh tranh với FDI, đồng thời xây dựng lộ trình đào tạo lại lao động dôi dư.",
+        image: "/assets/doanhnghiepnoidia.jpg"
       },
       {
         phase: "Bài học 3",
@@ -220,7 +222,8 @@ const chaptersData = {
         realityLabel: "Luận điểm cốt lõi",
         reality: "Thị trường tự do không thể tự giải quyết 'lệch về kỹ năng' và 'lệch về thời gian' trong chuyển đổi lao động. Đây là thất bại thị trường điển hình đòi hỏi can thiệp của Nhà nước.",
         philosophyLabel: "Hành động cụ thể",
-        philosophy: "Nhà nước cần: (1) Xây dựng hệ thống đào tạo lại lao động quy mô lớn; (2) Chính sách hỗ trợ chuyển đổi cho người lao động bị thay thế; (3) Khuyến khích doanh nghiệp nội địa số hóa; (4) Điều tiết FDI gắn với trách nhiệm đào tạo lao động địa phương."
+        philosophy: "Nhà nước cần: (1) Xây dựng hệ thống đào tạo lại lao động quy mô lớn; (2) Chính sách hỗ trợ chuyển đổi cho người lao động bị thay thế; (3) Khuyến khích doanh nghiệp nội địa số hóa; (4) Điều tiết FDI gắn với trách nhiệm đào tạo lao động địa phương.",
+        image: "/assets/vớinhanuoc.jpg"
       }
     ],
     comparison: {
@@ -982,7 +985,13 @@ export default function App() {
                         </div>
                       </div>
                       
-                      <div className={`w-full flex items-center justify-center gap-1.5 px-3 py-2.5 rounded-xl text-xs font-bold transition-all duration-300 border border-dashed ${idx === 0 ? 'bg-red-50/40 text-red-700 border-red-200' : idx === 1 ? 'bg-amber-50/40 text-amber-700 border-amber-200' : 'bg-emerald-50/40 text-emerald-700 border-emerald-200'}`}>
+                      {pr.image && (
+                        <div className="flex-1 w-full flex items-center justify-center overflow-hidden my-4 px-2">
+                          <img src={pr.image} alt={pr.title} className="w-full h-full object-contain rounded-xl" />
+                        </div>
+                      )}
+                      
+                      <div className={`w-full flex items-center justify-center gap-1.5 px-3 py-2.5 rounded-xl text-xs font-bold transition-all duration-300 border border-dashed flex-shrink-0 ${idx === 0 ? 'bg-red-50/40 text-red-700 border-red-200' : idx === 1 ? 'bg-amber-50/40 text-amber-700 border-amber-200' : 'bg-emerald-50/40 text-emerald-700 border-emerald-200'}`}>
                         <span>Nhấp để lật xem nội dung</span>
                       </div>
                     </div>
