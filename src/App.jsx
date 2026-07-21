@@ -1,18 +1,18 @@
 import React, { useState, useEffect, useRef } from 'react';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
-import { 
-  BookOpen, 
-  Sparkles, 
-  ChevronDown, 
-  Compass, 
-  ShieldAlert, 
-  Cpu, 
-  Zap, 
-  Layers, 
-  Bot, 
-  Trophy, 
-  ChevronRight, 
+import {
+  BookOpen,
+  Sparkles,
+  ChevronDown,
+  Compass,
+  ShieldAlert,
+  Cpu,
+  Zap,
+  Layers,
+  Bot,
+  Trophy,
+  ChevronRight,
   RotateCcw,
   ArrowRight,
   BrainCircuit,
@@ -60,25 +60,85 @@ const chaptersData = {
       {
         school: "Luận điểm gốc của C.Mác (Tư bản, quyển I)",
         philosophers: "C.Mác — Tư bản luận",
-        desc: "Khi tư bản tích lũy, cấu tạo kỹ thuật tăng → nhu cầu tương đối về lao động giảm → hình thành 'nhân khẩu thừa tương đối'. Đây không phải thất bại của hệ thống mà là điều kiện tồn tại của nó.",
+        desc: (
+          <div className="space-y-3 mt-1">
+            <p>
+              Khi tư bản tích lũy, cấu tạo kỹ thuật của tư bản tăng → cấu tạo giá trị (tỷ lệ tư bản bất biến/tư bản khả biến) cũng tăng → nhu cầu tương đối về lao động giảm dù tổng tư bản tăng.
+            </p>
+            <div className="pl-3 border-l-2 border-orange-200 space-y-1">
+              <p>
+                <strong className="text-orange-900">Hệ quả:</strong> Hình thành nhân khẩu thừa tương đối (relative surplus population) — Mác gọi là "đội quân thất nghiệp dự bị" — tồn tại dưới 3 hình thái:
+              </p>
+              <ul className="list-disc pl-5 mt-1 space-y-1 text-gray-600">
+                <li><strong>Lưu động:</strong> mất việc tạm thời, di chuyển giữa ngành.</li>
+                <li><strong>Tiềm tàng:</strong> lao động dư ở nông nghiệp/nông thôn.</li>
+                <li><strong>Trì trệ:</strong> bán thất nghiệp kinh niên, việc làm không ổn định.</li>
+              </ul>
+            </div>
+            <p className="bg-orange-50/50 p-2.5 rounded-lg border border-orange-100 text-orange-900/90 italic">
+              <strong className="text-orange-950 not-italic">Chức năng:</strong> Không phải là "thất bại" của hệ thống mà là điều kiện tồn tại của nó — nó tạo áp lực cạnh tranh giữa những người lao động, kéo tiền lương xuống mức tối thiểu.
+            </p>
+          </div>
+        ),
         color: "from-amber-50 to-orange-100 border-orange-200 text-orange-850"
       },
       {
         school: "3 Hình thái của đội quân thất nghiệp dự bị",
         philosophers: "Phân loại theo Mác",
-        desc: "Lưu động (mất việc tạm thời, di chuyển giữa ngành), Tiềm tàng (lao động dư ở nông nghiệp/nông thôn), Trì trệ (bán thất nghiệp kinh niên, việc làm không ổn định).",
+        desc: (
+          <div className="space-y-2 mt-1">
+            <p className="text-justify">Theo Mác, nhân khẩu thừa tương đối tồn tại dưới <strong>3 hình thái</strong> tương ứng với cách tư bản vận hành:</p>
+            <ul className="space-y-2 mt-2">
+              <li className="flex gap-2 items-start">
+                <span className="mt-0.5 w-5 h-5 flex-shrink-0 rounded-full bg-indigo-100 text-indigo-700 text-[10px] font-black flex items-center justify-center">①</span>
+                <span className="text-justify"><strong>Lưu động:</strong> mất việc tạm thời, di chuyển giữa các ngành khi công nghệ thay thế.</span>
+              </li>
+              <li className="flex gap-2 items-start">
+                <span className="mt-0.5 w-5 h-5 flex-shrink-0 rounded-full bg-indigo-100 text-indigo-700 text-[10px] font-black flex items-center justify-center">②</span>
+                <span className="text-justify"><strong>Tiềm tàng:</strong> lao động dư thừa ở nông nghiệp/nông thôn, chưa bị đẩy ra thị trường nhưng dễ bị thay thế khi nông nghiệp tự động hóa.</span>
+              </li>
+              <li className="flex gap-2 items-start">
+                <span className="mt-0.5 w-5 h-5 flex-shrink-0 rounded-full bg-indigo-100 text-indigo-700 text-[10px] font-black flex items-center justify-center">③</span>
+                <span className="text-justify"><strong>Trì trệ:</strong> bán thất nghiệp kinh niên, việc làm không ổn định. AI tạo ra hình thái trì trệ <em>mới</em> — lao động không thể chuyển đổi kỹ năng kịp tốc độ công nghệ.</span>
+              </li>
+            </ul>
+          </div>
+        ),
         color: "from-blue-50 to-indigo-100 border-indigo-200 text-indigo-850"
       },
       {
         school: "AI so với Máy móc cơ khí truyền thống",
         philosophers: "Sự khác biệt về chất",
-        desc: "AI không chỉ thay thế lao động chân tay (CMCN 1-2) mà còn thay thế một phần lao động trí óc lặp lại (CMCN 3-4) — phạm vi 'đội quân dự bị' mở rộng từ công nhân sang cả lao động văn phòng kỹ năng thấp/trung.",
+        desc: (
+          <div className="space-y-2 mt-1">
+            <p className="text-justify">Các cuộc CMCN trước (1–2) chủ yếu thay thế <strong>lao động chân tay</strong>. AI của CMCN 4.0 mang tính chất khác biệt về chất:</p>
+            <div className="grid grid-cols-2 gap-2 mt-2">
+              <div className="bg-rose-50 border border-rose-100 rounded-lg p-2.5">
+                <div className="text-[10px] font-black uppercase text-rose-500 tracking-wider mb-1">CMCN 1–3</div>
+                <p className="text-xs text-gray-600 text-justify">Thay thế cơ bắp, lao động thủ công lặp lại. Phạm vi: công nhân nhà máy, nông dân.</p>
+              </div>
+              <div className="bg-red-50 border border-red-100 rounded-lg p-2.5">
+                <div className="text-[10px] font-black uppercase text-red-600 tracking-wider mb-1">CMCN 4.0 / AI</div>
+                <p className="text-xs text-gray-600 text-justify">Thay thế cả lao động trí óc lặp lại. Phạm vi mở rộng sang văn phòng kỹ năng thấp/trung.</p>
+              </div>
+            </div>
+            <p className="text-justify text-gray-600">"Đội quân dự bị" không còn giới hạn ở công nhân mà bao gồm cả kế toán, nhân viên dữ liệu, lái xe, nhân viên bán hàng...</p>
+          </div>
+        ),
         color: "from-rose-50 to-red-100 border-red-200 text-red-850"
       },
       {
         school: "Kết nối với CNH, HĐH Việt Nam",
         philosophers: "Giáo trình Chương 6, mục 6.1",
-        desc: "Mô hình CNH của Việt Nam dựa vào lợi thế lao động giá rẻ, gia công xuất khẩu. Chính lợi thế này lại là điểm dễ tổn thương nhất trước CMCN 4.0 — đây đúng là các ngành dễ tự động hóa nhất.",
+        desc: (
+          <div className="space-y-2 mt-1">
+            <p className="text-justify">Mô hình công nghiệp hóa Việt Nam trong 20–30 năm qua dựa vào <strong>lợi thế lao động giá rẻ</strong>, gia công xuất khẩu — đặc biệt ở dệt may, da giày, lắp ráp điện tử.</p>
+            <div className="bg-emerald-50/70 border border-emerald-200 rounded-lg p-3">
+              <p className="text-[11px] font-black text-emerald-700 uppercase tracking-wider mb-1">⚠ Nghịch lý cốt lõi</p>
+              <p className="text-xs text-gray-700 text-justify">Chính lợi thế đã giúp Việt Nam CNH thành công lại là <strong>điểm dễ tổn thương nhất</strong> trước CMCN 4.0 — đây đúng là các ngành dễ tự động hóa nhất. Theo ILO (2016), <strong>86%</strong> lao động dệt may và da giày đối mặt nguy cơ mất việc cao.</p>
+            </div>
+          </div>
+        ),
         color: "from-teal-50 to-emerald-100 border-emerald-200 text-emerald-850"
       }
     ]
@@ -363,7 +423,7 @@ export default function App() {
 
     const handleScroll = () => {
       const scrollY = window.scrollY;
-      
+
       const direction = scrollY > lastScrollY ? 'down' : 'up';
       document.documentElement.setAttribute('data-scroll-dir', direction);
       lastScrollY = scrollY > 0 ? scrollY : 0;
@@ -428,7 +488,7 @@ export default function App() {
     // AI logic response simulation
     setTimeout(() => {
       let reply = "Tôi đã ghi nhận câu hỏi của bạn. Theo lý luận Mác-Lênin về kinh tế chính trị, CMCN 4.0 đang tái cấu trúc lực lượng lao động theo hướng phân cực kỹ năng. Bạn có thể làm rõ thêm khía cạnh bạn đang quan tâm không?";
-      
+
       const lowerText = text.toLowerCase();
       if (lowerText.includes('đội quân') || lowerText.includes('thất nghiệp dự bị') || lowerText.includes('mác')) {
         reply = "Theo C.Mác (Tư bản, quyển I): Khi tư bản tích lũy, cấu tạo kỹ thuật tăng → tỷ lệ tư bản bất biến/khả biến tăng → nhu cầu tương đối về lao động giảm → hình thành 'nhân khẩu thừa tương đối'. Đội quân này tồn tại dưới 3 hình thái: (1) Lưu động — mất việc tạm thời, di chuyển giữa ngành; (2) Tiềm tàng — lao động dư ở nông nghiệp/nông thôn; (3) Trì trệ — bán thất nghiệp kinh niên. AI chính là phiên bản công nghệ cao nhất của quy luật này sau 150 năm.";
@@ -449,22 +509,22 @@ export default function App() {
 
   return (
     <div className="min-h-screen bg-white flex flex-col text-slate-850 antialiased selection:bg-red-500 selection:text-white">
-      
+
       {/* Scroll Progress Bar at very top */}
-      <div 
-        className="fixed top-0 left-0 h-1 bg-gradient-to-r from-red-700 via-red-500 to-amber-500 z-50 transition-all duration-100 shadow-sm" 
+      <div
+        className="fixed top-0 left-0 h-1 bg-gradient-to-r from-red-700 via-red-500 to-amber-500 z-50 transition-all duration-100 shadow-sm"
         style={{ width: `${scrollProgress}%` }}
       />
 
       {/* ================= HERO SECTION (bg-red-gradient-animated) ================= */}
       <section className="relative min-h-screen bg-red-gradient-animated overflow-hidden flex flex-col items-center justify-center text-white px-4">
-        
+
         {/* Animated Grid / Circuit Pattern */}
         <div className="absolute inset-0 opacity-[0.25] circuit-pattern pointer-events-none mix-blend-overlay"></div>
-        
+
         {/* Glow Spheres */}
         <div className="absolute top-[-10%] right-[-5%] w-[400px] sm:w-[800px] h-[400px] sm:h-[800px] bg-red-500/20 rounded-full blur-[120px] pointer-events-none animate-glow-pulse"></div>
-        <div className="absolute bottom-[-10%] left-[-5%] w-[350px] sm:w-[700px] h-[350px] sm:h-[700px] bg-amber-600/10 rounded-full blur-[100px] pointer-events-none animate-glow-pulse" style={{animationDelay: '2s'}}></div>
+        <div className="absolute bottom-[-10%] left-[-5%] w-[350px] sm:w-[700px] h-[350px] sm:h-[700px] bg-amber-600/10 rounded-full blur-[100px] pointer-events-none animate-glow-pulse" style={{ animationDelay: '2s' }}></div>
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] sm:w-[600px] h-[300px] sm:h-[600px] bg-black/40 rounded-full blur-[80px] pointer-events-none"></div>
 
         {/* Floating AI Data Nodes */}
@@ -494,10 +554,10 @@ export default function App() {
           maskComposite: 'intersect',
           WebkitMaskComposite: 'source-in'
         }}>
-          <img 
-            src="/assets/image3.png" 
-            alt="Left Side Decoration" 
-            className="h-full w-full object-cover object-top filter grayscale contrast-[1.15] brightness-[0.75] mix-blend-luminosity opacity-90 animate-portrait-left" 
+          <img
+            src="/assets/image3.png"
+            alt="Left Side Decoration"
+            className="h-full w-full object-cover object-top filter grayscale contrast-[1.15] brightness-[0.75] mix-blend-luminosity opacity-90 animate-portrait-left"
           />
         </div>
 
@@ -507,10 +567,10 @@ export default function App() {
           maskComposite: 'intersect',
           WebkitMaskComposite: 'source-in'
         }}>
-          <img 
-            src="/assets/image18.png" 
-            alt="Right Side Decoration" 
-            className="h-full w-full object-cover object-top filter grayscale contrast-[1.15] brightness-[0.75] mix-blend-luminosity opacity-90 animate-portrait-right" 
+          <img
+            src="/assets/image18.png"
+            alt="Right Side Decoration"
+            className="h-full w-full object-cover object-top filter grayscale contrast-[1.15] brightness-[0.75] mix-blend-luminosity opacity-90 animate-portrait-right"
           />
         </div>
 
@@ -532,7 +592,7 @@ export default function App() {
 
         {/* Hero Content Area */}
         <div className="relative z-10 text-center px-4 max-w-5xl mx-auto w-full space-y-8">
-          
+
           {/* Badge */}
           <div className="flex items-center justify-center gap-3 animate-float">
             <div className="h-[1.5px] w-12 bg-white/30"></div>
@@ -581,14 +641,14 @@ export default function App() {
 
           {/* Action CTAs */}
           <div className="flex flex-col sm:flex-row gap-3 justify-center">
-            <button 
+            <button
               onClick={() => scrollToSection('intro')}
               className="px-8 py-4 bg-white text-red-800 rounded-full font-bold text-lg hover:bg-red-50 hover:shadow-xl hover:shadow-white/10 hover:-translate-y-0.5 active:translate-y-0 transition-all flex items-center justify-center gap-2 group"
             >
               Khám phá ngay
               <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
             </button>
-            <button 
+            <button
               onClick={() => scrollToSection('quiz')}
               className="px-8 py-4 bg-transparent text-white border-2 border-white/40 rounded-full font-bold text-lg hover:bg-white/10 hover:border-white/60 hover:-translate-y-0.5 active:translate-y-0 transition-all"
             >
@@ -637,7 +697,7 @@ export default function App() {
       <div className="sticky top-0 z-40 bg-white/95 backdrop-blur-sm border-b border-red-100 shadow-sm transition-all duration-300">
         <div className="max-w-7xl mx-auto px-4">
           <div className="flex overflow-x-auto gap-1 py-2.5 scrollbar-none items-center">
-            
+
             {/* Logo */}
             <div className="pr-4 border-r border-slate-200 font-extrabold text-sm text-red-700 select-none flex items-center gap-1.5 flex-shrink-0 cursor-pointer" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
               <span className="text-lg">☭</span> TRANG CHỦ
@@ -659,11 +719,10 @@ export default function App() {
                 <button
                   key={tab.id}
                   onClick={() => scrollToSection(tab.id)}
-                  className={`relative flex items-center gap-1.5 px-4 py-2 rounded-xl font-semibold text-sm whitespace-nowrap transition-all duration-300 flex-shrink-0 ${
-                    isActive 
-                      ? 'text-white' 
-                      : 'text-gray-600 hover:text-red-600 hover:bg-red-50'
-                  }`}
+                  className={`relative flex items-center gap-1.5 px-4 py-2 rounded-xl font-semibold text-sm whitespace-nowrap transition-all duration-300 flex-shrink-0 ${isActive
+                    ? 'text-white'
+                    : 'text-gray-600 hover:text-red-600 hover:bg-red-50'
+                    }`}
                 >
                   {isActive && (
                     <div className="absolute inset-0 bg-red-gradient rounded-xl -z-10 shadow-sm shadow-red-700/25"></div>
@@ -682,7 +741,7 @@ export default function App() {
 
         {/* ================= PHẦN 1: LÝ LUẬN C.MÁC & ĐỘI QUÂN THẤT NGHIỆP DỰ BỊ ================= */}
         <section id="intro" className="scroll-mt-24 space-y-12">
-          
+
           {/* Header */}
           <div className="text-center space-y-3" data-aos="fade-down" data-aos-duration="1000">
             <span className="inline-flex h-5 w-fit items-center justify-center rounded-full bg-red-100 text-red-700 border border-red-200 px-3 py-0.5 text-xs font-bold uppercase tracking-wider">
@@ -696,23 +755,75 @@ export default function App() {
             </p>
           </div>
 
-          {/* Luận điểm chính Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {chaptersData.intro.traps.map((trap, idx) => (
-              <div key={idx} data-aos="zoom-in-up" data-aos-delay={idx * 150} className="card-hover bg-gradient-to-br from-red-50 to-red-100 border border-red-200/60 rounded-3xl p-6 shadow-sm flex flex-col justify-between space-y-5">
-                <div className="space-y-3">
-                  <div className="w-12 h-12 bg-red-600 rounded-2xl flex items-center justify-center text-2xl text-white shadow-md shadow-red-600/10">
-                    {trap.icon}
-                  </div>
-                  <h3 className="text-lg font-bold text-red-950">{trap.title}</h3>
-                  <p className="text-gray-700 text-sm leading-relaxed">{trap.desc}</p>
-                </div>
-                <div className="pt-2 border-t border-red-200/30 flex items-center text-xs font-bold text-red-700 hover:text-red-900 cursor-pointer" onClick={() => scrollToSection('digital')}>
-                  <span>Xem phân tích</span>
-                  <ChevronRight className="w-4 h-4 ml-1" />
-                </div>
+
+
+
+          {/* Timeline vận dụng lý luận Mác */}
+          <div className="space-y-8">
+            <div className="text-center space-y-1">
+              <h3 className="text-2xl font-bold text-slate-800">Vận dụng lý luận Mác vào bối cảnh CMCN 4.0</h3>
+              <p className="text-sm text-gray-400">Nhấp vào từng thẻ để xem phân tích chuyên sâu</p>
+            </div>
+
+            <div className="relative">
+              {/* Vertical timeline line */}
+              <div className="absolute left-1/2 -translate-x-1/2 top-4 bottom-4 w-[2px] bg-red-100 hidden md:block"></div>
+
+              <div className="space-y-8">
+                {chaptersData.intro.historicalSchools.map((school, idx) => {
+                  const isLeft = idx % 2 === 0;
+                  const isExpanded = expandedTimeline[idx + 1];
+                  const expandedAnalysis = [
+                    "Đây là quy luật tích lũy tư bản phổ quát của Mác. AI chính là phiên bản công nghệ cao nhất thực hiện quy luật này sau 150 năm — với tốc độ và phạm vi chưa từng có trong lịch sử kinh tế.",
+                    "Hình thái 'trì trệ' đang biến đổi trong kỷ nguyên AI: không chỉ là lao động thời vụ mà còn là toàn bộ nhóm lao động kỹ năng trung bình không thể cạnh tranh với tự động hóa về tốc độ và chi phí.",
+                    "Đây là điểm mấu chốt: khi cả kỹ năng tư duy lặp lại cũng bị thay thế, rào cản để gia nhập 'đội quân dự bị' trở nên thấp hơn bao giờ hết — ngay cả lao động tri thức cũng không còn an toàn tuyệt đối.",
+                    "Đây là nghịch lý phát triển của Việt Nam: mô hình thành công trong quá khứ lại trở thành điểm yếu trong tương lai. Giải pháp không phải là từ bỏ CNH mà là chuyển đổi nhanh lên chuỗi giá trị cao hơn.",
+                  ];
+                  return (
+                    <div key={idx} data-aos={isLeft ? "fade-right" : "fade-left"} data-aos-delay={idx * 100} className="relative flex flex-col md:flex-row items-stretch md:items-start w-full">
+
+                      {/* Timeline dot */}
+                      <div className="absolute left-1/2 -translate-x-1/2 top-6 w-4 h-4 rounded-full border-2 border-white shadow-md z-10 hidden md:block bg-red-600"></div>
+
+                      {/* Card container — alternates left/right */}
+                      <div className={`w-full md:w-1/2 ${isLeft ? 'md:pr-10 flex justify-end' : 'md:pl-10 md:order-last flex justify-start'}`}>
+                        <div
+                          className={`w-full max-w-xl rounded-2xl border overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 cursor-pointer ${isExpanded ? 'border-red-300 bg-red-50/60' : 'border-slate-200 bg-white'}`}
+                          onClick={() => setExpandedTimeline(prev => ({ ...prev, [idx + 1]: !prev[idx + 1] }))}
+                        >
+                          {/* Header */}
+                          <div className={`p-5 space-y-2 transition-colors duration-300 ${isExpanded ? 'bg-red-50/80' : ''}`}>
+                            <div className="flex items-center justify-between gap-2">
+                              <span className={`inline-flex px-2 py-0.5 text-[10px] font-extrabold uppercase rounded-full ${isExpanded ? 'bg-red-600 text-white' : 'bg-slate-100 text-slate-500'}`}>
+                                {school.philosophers}
+                              </span>
+                              <ChevronDown className={`w-4 h-4 text-slate-400 transition-transform duration-300 ${isExpanded ? 'rotate-180 text-red-600' : ''}`} />
+                            </div>
+                            <h4 className={`font-bold text-base leading-snug ${isExpanded ? 'text-red-950' : 'text-slate-800'}`}>{school.school}</h4>
+                            <div className="text-gray-600 text-sm leading-relaxed">
+                              {school.desc}
+                            </div>
+                          </div>
+
+                          {/* Expanded Analysis */}
+                          {isExpanded && (
+                            <div className="px-5 pb-5 pt-4 border-t border-red-200/50 bg-red-50/40 text-left">
+                              <p className="text-[10px] font-black text-red-700 uppercase tracking-widest mb-2">📌 Phân tích sâu & Ý nghĩa thực tiễn</p>
+                              <p className="text-xs text-slate-700 leading-relaxed text-justify">
+                                {expandedAnalysis[idx]}
+                              </p>
+                            </div>
+                          )}
+                        </div>
+                      </div>
+
+                      {/* Empty spacer for the opposite side */}
+                      <div className="hidden md:block w-1/2"></div>
+                    </div>
+                  );
+                })}
               </div>
-            ))}
+            </div>
           </div>
 
           {/* Red blockquote matching target website */}
@@ -723,81 +834,16 @@ export default function App() {
                 &quot;Chính lợi thế cạnh tranh đã giúp Việt Nam CNH thành công trong 20-30 năm qua (lao động rẻ, dồi dào) lại chính là điểm dễ tổn thương nhất trước CMCN 4.0 — vì đây đúng là các ngành dễ tự động hóa nhất.&quot;
               </p>
               <footer className="font-semibold text-red-200/90 text-sm flex items-center gap-1.5">
-                <Info className="w-4 h-4" /> 
+                <Info className="w-4 h-4" />
                 — Nghịch lý cốt lõi trong quá trình CNH của Việt Nam
               </footer>
             </blockquote>
           </div>
-
-          {/* Timeline vận dụng lý luận Mác */}
-          <div className="space-y-8">
-            <h3 className="text-2xl font-bold text-center text-slate-800">Vận dụng lý luận Mác vào bối cảnh CMCN 4.0</h3>
-            <div className="relative">
-              
-              {/* Vertical timeline line */}
-              <div className="absolute left-1/2 -translate-x-1/2 top-4 bottom-4 w-[2px] bg-red-100 hidden md:block"></div>
-
-              <div className="space-y-8">
-                {chaptersData.intro.historicalSchools.map((school, idx) => {
-                  const isLeft = idx % 2 === 0;
-                  const isExpanded = expandedTimeline[idx + 1];
-                  return (
-                    <div key={idx} data-aos={isLeft ? "fade-right" : "fade-left"} data-aos-delay={idx * 100} className="relative flex flex-col md:flex-row items-stretch md:items-center w-full">
-                      
-                      {/* Timeline dot */}
-                      <div className="absolute left-1/2 -translate-x-1/2 top-6 w-4 h-4 rounded-full border-2 border-white shadow-md z-10 hidden md:block transition-all duration-300 bg-red-600 scale-110"></div>
-
-                      {/* Left container */}
-                      <div className={`w-full md:w-1/2 ${isLeft ? 'md:pr-10 md:text-right flex justify-end' : 'md:pl-10 order-last flex justify-start'}`}>
-                        <div className={`w-full max-w-xl rounded-2xl border transition-all duration-300 overflow-hidden shadow-sm hover:shadow-md ${
-                          isExpanded 
-                            ? 'border-red-300 bg-red-50/70' 
-                            : 'border-slate-200 bg-white'
-                        }`}>
-                          <div className="p-5 space-y-3 cursor-pointer" onClick={() => setExpandedTimeline(prev => ({ ...prev, [idx+1]: !prev[idx+1] }))}>
-                            <div className="flex items-center justify-between gap-2">
-                              <span className={`inline-flex px-2 py-0.5 text-[10px] font-extrabold uppercase rounded-full ${
-                                isExpanded ? 'bg-red-600 text-white' : 'bg-slate-100 text-slate-500'
-                              }`}>
-                                {school.philosophers}
-                              </span>
-                              <ChevronDown className={`w-4 h-4 text-slate-400 transition-transform ${isExpanded ? 'rotate-180 text-red-600' : ''}`} />
-                            </div>
-                            <h4 className={`font-bold text-base ${isExpanded ? 'text-red-950' : 'text-slate-800'}`}>{school.school}</h4>
-                            <p className="text-gray-600 text-sm leading-relaxed line-clamp-2">{school.desc}</p>
-                          </div>
-                          
-                          {/* Expanded Content */}
-                          {isExpanded && (
-                            <div className="px-5 pb-5 border-t border-red-200/40 pt-4 bg-red-50/40 text-left">
-                    <h5 className="text-xs font-bold text-red-800 uppercase tracking-wider mb-2">Phân tích sâu & Ý nghĩa thực tiễn</h5>
-                              <p className="text-xs text-slate-700 leading-relaxed">
-                                {idx === 0 && "Luận điểm gốc: Cấu tạo kỹ thuật tăng → nhu cầu tương đối về lao động giảm → hình thành nhân khẩu thừa tương đối. AI là phiên bản công nghệ cao nhất thực hiện quy luật này sau 150 năm."}
-                                {idx === 1 && "3 hình thái: Lưu động (di chuyển tạm thời), Tiềm tàng (lao động dư nông nghiệp), Trì trệ (bán thất nghiệp kinh niên). AI tạo ra loại trì trệ mới — lao động không thể chuyển đổi kỹ năng kịp tốc độ công nghệ."}
-                                {idx === 2 && "Điểm khác biệt về chất: AI thay thế cả lao động trí óc lặp lại, không chỉ lao động chân tay như CMCN 1-2. Điều này mở rộng phạm vi 'đội quân dự bị' sang cả văn phòng kỹ năng thấp/trung."}
-                                {idx === 3 && "Giáo trình mục 6.1.2.2: CMCN 4.0 làm mất lợi thế sản xuất truyền thống. Mô hình CNH của Việt Nam dựa trên lao động giá rẻ chính là điểm dễ bị tổn thương nhất trước tự động hóa."}
-                              </p>
-                            </div>
-                          )}
-                        </div>
-                      </div>
-
-                      {/* Right empty placeholder container for large screens to balance layout */}
-                      <div className="hidden md:block w-1/2"></div>
-
-                    </div>
-                  );
-                })}
-              </div>
-
-            </div>
-          </div>
-
         </section>
 
         {/* ================= PHẦN 2: SỐ LIỆU & THỰC TIỄN VIỆT NAM ================= */}
         <section id="theory" className="scroll-mt-24 space-y-12">
-          
+
           {/* Header */}
           <div className="text-center space-y-3" data-aos="fade-down" data-aos-duration="1000">
             <span className="inline-flex h-5 w-fit items-center justify-center rounded-full bg-red-100 text-red-700 border border-red-200 px-3 py-0.5 text-xs font-bold uppercase tracking-wider">
@@ -818,9 +864,9 @@ export default function App() {
                 <div className="flex flex-col sm:flex-row gap-6 items-start">
                   {/* Hình ảnh bên trái */}
                   <div className="w-full sm:w-1/3 flex-shrink-0">
-                    <img 
-                      src={pr.image} 
-                      alt={pr.title} 
+                    <img
+                      src={pr.image}
+                      alt={pr.title}
                       className="w-full h-44 object-cover rounded-2xl border border-slate-200/60 shadow-md hover:scale-[1.02] transition-transform duration-300"
                     />
                   </div>
@@ -874,7 +920,7 @@ export default function App() {
 
         {/* ================= PHẦN 3: CASE STUDY DOANH NGHIỆP VIỆT NAM ================= */}
         <section id="practice" className="scroll-mt-24 space-y-12">
-          
+
           {/* Header */}
           <div className="text-center space-y-3" data-aos="fade-down" data-aos-duration="1000">
             <span className="inline-flex h-5 w-fit items-center justify-center rounded-full bg-red-100 text-red-700 border border-red-200 px-3 py-0.5 text-xs font-bold uppercase tracking-wider">
@@ -924,7 +970,7 @@ export default function App() {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               {chaptersData.practice.roles.map((role, idx) => (
                 <div key={idx} data-aos="zoom-in-up" data-aos-delay={idx * 150} className="bg-white border border-slate-200/60 rounded-3xl p-6 shadow-sm space-y-3 card-hover">
-                  <span className="text-xs uppercase font-extrabold tracking-wider text-red-600">Phát hiện {idx+1}</span>
+                  <span className="text-xs uppercase font-extrabold tracking-wider text-red-600">Phát hiện {idx + 1}</span>
                   <h4 className="font-bold text-slate-800 text-base">{role.title}</h4>
                   <p className="text-gray-600 text-sm leading-relaxed">{role.desc}</p>
                 </div>
@@ -936,7 +982,7 @@ export default function App() {
 
         {/* ================= PHẦN 4: BÀI HỌC & VAI TRÒ NHÀ NƯỚC ================= */}
         <section id="digital" className="scroll-mt-24 space-y-12">
-          
+
           {/* Header */}
           <div className="text-center space-y-3" data-aos="fade-down" data-aos-duration="1000">
             <span className="inline-flex h-5 w-fit items-center justify-center rounded-full bg-red-100 text-red-700 border border-red-200 px-3 py-0.5 text-xs font-bold uppercase tracking-wider">
@@ -959,7 +1005,7 @@ export default function App() {
               const bgThemeColor = idx === 0 ? 'bg-red-50 text-red-700 border-red-200' : idx === 1 ? 'bg-amber-50 text-amber-700 border-amber-200' : 'bg-emerald-50 text-emerald-700 border-emerald-200';
 
               return (
-                <div 
+                <div
                   key={idx}
                   data-aos="flip-left"
                   data-aos-delay={idx * 150}
@@ -969,9 +1015,9 @@ export default function App() {
                   <div className={`flip-card-inner relative w-full h-full transition-transform duration-500 rounded-3xl shadow-sm border border-slate-200/60 ${isFlipped ? 'flipped' : ''}`} style={{
                     transform: isFlipped ? 'rotateY(180deg)' : 'rotateY(0deg)'
                   }}>
-                    
+
                     {/* Mặt trước của thẻ */}
-                    <div 
+                    <div
                       className="flip-card-front absolute inset-0 bg-white rounded-3xl p-6 flex flex-col justify-between items-center text-center bg-gradient-to-br from-white to-slate-50"
                       style={{ borderTop: `5px solid ${themeColor}` }}
                     >
@@ -984,20 +1030,20 @@ export default function App() {
                           <div className="text-xs font-bold text-slate-400 uppercase tracking-wider leading-relaxed">{pr.trap}</div>
                         </div>
                       </div>
-                      
+
                       {pr.image && (
                         <div className="flex-1 w-full flex items-center justify-center overflow-hidden my-4 px-2">
                           <img src={pr.image} alt={pr.title} className="w-full h-full object-contain rounded-xl" />
                         </div>
                       )}
-                      
+
                       <div className={`w-full flex items-center justify-center gap-1.5 px-3 py-2.5 rounded-xl text-xs font-bold transition-all duration-300 border border-dashed flex-shrink-0 ${idx === 0 ? 'bg-red-50/40 text-red-700 border-red-200' : idx === 1 ? 'bg-amber-50/40 text-amber-700 border-amber-200' : 'bg-emerald-50/40 text-emerald-700 border-emerald-200'}`}>
                         <span>Nhấp để lật xem nội dung</span>
                       </div>
                     </div>
 
                     {/* Mặt sau của thẻ */}
-                    <div 
+                    <div
                       className="flip-card-back absolute inset-0 bg-white rounded-3xl p-6 flex flex-col justify-between items-center text-center"
                       style={{ borderTop: `5px solid ${themeColor}` }}
                     >
@@ -1008,7 +1054,7 @@ export default function App() {
                           </span>
                           <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider">{pr.title}</span>
                         </div>
-                        
+
                         {/* Thực trạng */}
                         <div className="space-y-1 w-full flex flex-col items-center text-center">
                           <span className={`text-[11px] font-black uppercase tracking-wider ${textThemeColor}`}>
@@ -1018,7 +1064,7 @@ export default function App() {
                             {pr.reality}
                           </p>
                         </div>
-                        
+
                         {/* Hành động cụ thể */}
                         <div className="space-y-1 pt-2 border-t border-slate-150/40 w-full flex flex-col items-center text-center">
                           <span className="text-[11px] font-black uppercase tracking-wider text-emerald-600">
@@ -1084,7 +1130,7 @@ export default function App() {
               <h3 className="text-2xl font-bold text-red-950">Phân tích 3 trường hợp thực tiễn tại Việt Nam</h3>
               <p className="text-slate-500 text-sm">Từ số liệu thực tế đến bài học hành động cho từng nhóm đối tượng</p>
             </div>
-            
+
             <div className="space-y-4">
               <div className="p-5 bg-white rounded-2xl shadow-sm border border-slate-200/40">
                 <h4 className="font-bold text-red-700 text-sm uppercase tracking-wider mb-2">Trường hợp 1: Người lao động kỹ năng thấp — Nhóm dễ tổn thương nhất</h4>
@@ -1119,7 +1165,7 @@ export default function App() {
 
         {/* ================= FLASHCARD: 4 KHÁI NIỆM CỐT LÕI ================= */}
         <section id="flashcard" className="scroll-mt-24 space-y-12">
-          
+
           {/* Header */}
           <div className="text-center space-y-3" data-aos="fade-down" data-aos-duration="1000">
             <span className="inline-flex h-5 w-fit items-center justify-center rounded-full bg-red-100 text-red-700 border border-red-200 px-3 py-0.5 text-xs font-bold uppercase tracking-wider">
@@ -1138,7 +1184,7 @@ export default function App() {
             {chaptersData.truth.properties.map((prop, idx) => {
               const isFlipped = flippedCard === idx;
               return (
-                <div 
+                <div
                   key={idx}
                   data-aos="zoom-in"
                   data-aos-delay={idx * 100}
@@ -1148,7 +1194,7 @@ export default function App() {
                   <div className={`flip-card-inner relative w-full h-full text-center transition-transform duration-500 rounded-3xl shadow-sm border border-slate-200/60 ${isFlipped ? 'flipped' : ''}`} style={{
                     transform: isFlipped ? 'rotateY(180deg)' : 'rotateY(0deg)'
                   }}>
-                    
+
                     {/* Front Side */}
                     <div className="flip-card-front absolute inset-0 bg-white rounded-3xl p-6 flex flex-col justify-between items-center bg-gradient-to-br from-white to-slate-50">
                       <div className="w-12 h-12 rounded-full bg-red-50 flex items-center justify-center text-red-600 group-hover:scale-110 transition-transform duration-300">
@@ -1181,7 +1227,7 @@ export default function App() {
 
         {/* ================= QUIZ: TRẮC NGHIỆM CMCN 4.0 ================= */}
         <section id="quiz" className="scroll-mt-24 space-y-12">
-          
+
           {/* Header */}
           <div className="text-center space-y-3" data-aos="fade-down" data-aos-duration="1000">
             <span className="inline-flex h-5 w-fit items-center justify-center rounded-full bg-red-100 text-red-700 border border-red-200 px-3 py-0.5 text-xs font-bold uppercase tracking-wider">
@@ -1200,7 +1246,7 @@ export default function App() {
               const selectedOpt = answers[qz.id];
               return (
                 <div key={qz.id} data-aos="fade-up" data-aos-delay={idx * 150} className="bg-white border border-slate-200/60 rounded-3xl p-6 shadow-sm space-y-5 text-left">
-                  
+
                   {/* Title Question */}
                   <div className="flex gap-2.5">
                     <span className="w-6 h-6 rounded-full bg-red-100 text-red-700 font-bold flex items-center justify-center text-xs flex-shrink-0 mt-0.5">
@@ -1216,7 +1262,7 @@ export default function App() {
                     {qz.options.map((opt) => {
                       const isSelected = selectedOpt === opt.key;
                       const isCorrectOpt = opt.key === qz.correct;
-                      
+
                       let cardStyle = 'border-slate-200/80 hover:bg-slate-50 hover:border-slate-300';
                       let letterStyle = 'bg-slate-100 text-slate-600';
 
@@ -1252,11 +1298,10 @@ export default function App() {
 
                   {/* Explanation feedback */}
                   {selectedOpt && (
-                    <div className={`p-3.5 rounded-xl flex items-start gap-2.5 border text-xs ${
-                      selectedOpt === qz.correct 
-                        ? 'bg-emerald-50/50 border-emerald-200 text-emerald-800' 
-                        : 'bg-red-50/50 border-red-200 text-red-800'
-                    }`}>
+                    <div className={`p-3.5 rounded-xl flex items-start gap-2.5 border text-xs ${selectedOpt === qz.correct
+                      ? 'bg-emerald-50/50 border-emerald-200 text-emerald-800'
+                      : 'bg-red-50/50 border-red-200 text-red-800'
+                      }`}>
                       {selectedOpt === qz.correct ? (
                         <CheckCircle2 className="w-4 h-4 flex-shrink-0 text-emerald-600 mt-0.5" />
                       ) : (
@@ -1349,8 +1394,8 @@ export default function App() {
                               <span>{pct}% ({opt.count} bình chọn)</span>
                             </div>
                             <div className="w-full h-3 bg-slate-100 rounded-full overflow-hidden">
-                              <div 
-                                className={`h-full ${opt.color} transition-all duration-1000 ease-out`} 
+                              <div
+                                className={`h-full ${opt.color} transition-all duration-1000 ease-out`}
                                 style={{ width: `${pct}%` }}
                               />
                             </div>
@@ -1374,7 +1419,7 @@ export default function App() {
           {/* Reset quiz button */}
           {(Object.values(answers).some(a => a !== null) || pollVote !== null) && (
             <div className="text-center">
-              <button 
+              <button
                 onClick={() => {
                   setAnswers({ 1: null, 2: null, 3: null, 4: null, 5: null });
                   setPollVote(null);
@@ -1394,7 +1439,7 @@ export default function App() {
 
         {/* ================= CHATBOT: AI CMCN 4.0 ================= */}
         <section id="chatbot" className="scroll-mt-24 space-y-12">
-          
+
           {/* Header */}
           <div className="text-center space-y-3" data-aos="fade-down" data-aos-duration="1000">
             <span className="inline-flex h-5 w-fit items-center justify-center rounded-full bg-red-100 text-red-700 border border-red-200 px-3 py-0.5 text-xs font-bold uppercase tracking-wider">
@@ -1410,7 +1455,7 @@ export default function App() {
 
           {/* Chat Container */}
           <div className="max-w-4xl mx-auto bg-white border border-slate-200 rounded-3xl shadow-md overflow-hidden flex flex-col md:flex-row items-stretch h-[600px] border-red-100">
-            
+
             {/* Left FAQs sidebar */}
             <div className="md:w-1/3 bg-slate-50 border-r border-slate-200 p-6 flex flex-col justify-between">
               <div className="space-y-4">
@@ -1433,7 +1478,7 @@ export default function App() {
                   ))}
                 </div>
               </div>
-              
+
               <div className="pt-4 border-t border-slate-200 text-slate-400 text-xs text-center font-medium">
                 Mô phỏng Phân tích Kinh tế Chính trị
               </div>
@@ -1441,7 +1486,7 @@ export default function App() {
 
             {/* Right Chat logs display */}
             <div data-aos="fade-left" className="md:w-2/3 flex flex-col h-full bg-slate-100/30">
-              
+
               {/* Top chat bar */}
               <div className="px-6 py-4 bg-white border-b border-slate-200 flex items-center justify-between">
                 <div className="flex items-center gap-2">
@@ -1464,31 +1509,30 @@ export default function App() {
               {/* Message scroll log */}
               <div className="flex-grow p-6 overflow-y-auto space-y-4 flex flex-col scrollbar-thin">
                 {chatMessages.map((msg, idx) => (
-                  <div 
-                    key={idx} 
-                    className={`max-w-[85%] rounded-2xl px-4 py-3 text-sm leading-relaxed shadow-sm ${
-                      msg.sender === 'user'
-                        ? 'bg-red-600 text-white self-end rounded-tr-none'
-                        : 'bg-white text-slate-700 border border-slate-200/80 self-start rounded-tl-none'
-                    }`}
+                  <div
+                    key={idx}
+                    className={`max-w-[85%] rounded-2xl px-4 py-3 text-sm leading-relaxed shadow-sm ${msg.sender === 'user'
+                      ? 'bg-red-600 text-white self-end rounded-tr-none'
+                      : 'bg-white text-slate-700 border border-slate-200/80 self-start rounded-tl-none'
+                      }`}
                   >
                     {msg.text}
                   </div>
                 ))}
-                
+
                 {isTyping && (
                   <div className="bg-white border border-slate-200/80 rounded-2xl rounded-tl-none px-4 py-3 text-sm text-slate-400 self-start animate-pulse flex items-center gap-1.5">
                     <Bot className="w-4 h-4 animate-spin text-red-600" />
                     <span>AI đang phân tích dữ liệu...</span>
                   </div>
                 )}
-                
+
                 <div ref={chatEndRef} />
               </div>
 
               {/* Message Input box */}
               <div className="p-4 bg-white border-t border-slate-200">
-                <form 
+                <form
                   onSubmit={(e) => {
                     e.preventDefault();
                     handleSendMessage();
@@ -1561,7 +1605,7 @@ export default function App() {
         <div className="absolute bottom-0 right-0 w-80 h-80 bg-red-700/10 rounded-full blur-3xl pointer-events-none"></div>
 
         <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 relative z-10">
-          
+
           <div className="space-y-4">
             <h3 className="text-lg font-bold text-white flex items-center gap-1.5">
               <span className="text-red-500">☭</span> CMCN 4.0 & THẤT NGHIỆP
