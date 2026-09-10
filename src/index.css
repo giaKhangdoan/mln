@@ -1,129 +1,164 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&display=swap');
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 :root {
-  --primary-red: #dc2626;
-  --bg-gradient: linear-gradient(135deg, #450a0a 0%, #991b1b 50%, #7f1d1d 100%);
+  --primary-red: #991b1b;
+  --primary-dark: #450a0a;
+  --accent-gold: #b45309;
 }
 
 body {
-  font-family: 'Inter', sans-serif;
+  font-family: 'Be Vietnam Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   overflow-x: hidden;
   scroll-behavior: smooth;
-  background-color: #fafafa;
-  color: #1f2937;
+  background-color: #fafaf9;
+  color: #1e293b;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-/* Custom classes matching the target website aesthetics */
-.bg-red-gradient {
-  background: linear-gradient(135deg, #5c0808 0%, #b91c1c 50%, #3b0707 100%);
+/* Editorial Serif for citations and historical quotes */
+.font-editorial {
+  font-family: 'Newsreader', Georgia, Cambria, 'Times New Roman', serif;
 }
 
-@keyframes gradientX {
-  0%, 100% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
+/* Rich Animated Heritage Red Background */
+@keyframes bg-glow-shift {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
 }
 
-.bg-red-gradient-animated {
-  background: linear-gradient(-45deg, #3b0707, #7f1d1d, #991b1b, #450a0a, #2e0202);
-  background-size: 400% 400%;
-  animation: gradientX 12s ease infinite;
+.bg-heritage-red-animated {
+  background: linear-gradient(135deg, #2a0303 0%, #4a0606 20%, #700c0c 45%, #881337 70%, #400505 100%);
+  background-size: 240% 240%;
+  animation: bg-glow-shift 14s ease infinite;
 }
 
-.circuit-pattern {
-  background-image: 
-    linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
-  background-size: 40px 40px;
+.bg-heritage-subtle {
+  background: linear-gradient(180deg, #fcfbf9 0%, #f7f5f0 100%);
 }
 
-@keyframes float-node {
-  0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.3; }
-  33% { transform: translate(15px, -25px) scale(1.2); opacity: 0.8; }
-  66% { transform: translate(-10px, 15px) scale(0.9); opacity: 0.5; }
+/* Waving Flag Animation (Bay phất phới) */
+@keyframes flag-wave-3d {
+  0% {
+    transform: perspective(700px) rotateY(-8deg) rotateX(3deg) skewY(-1.5deg) scale(1);
+    filter: drop-shadow(0 15px 25px rgba(0, 0, 0, 0.45));
+  }
+  25% {
+    transform: perspective(700px) rotateY(6deg) rotateX(-2deg) skewY(1.5deg) scale(1.02);
+    filter: drop-shadow(5px 20px 30px rgba(0, 0, 0, 0.55));
+  }
+  50% {
+    transform: perspective(700px) rotateY(-5deg) rotateX(4deg) skewY(-2deg) scale(0.99);
+    filter: drop-shadow(-5px 12px 20px rgba(0, 0, 0, 0.4));
+  }
+  75% {
+    transform: perspective(700px) rotateY(7deg) rotateX(-3deg) skewY(1deg) scale(1.01);
+    filter: drop-shadow(6px 18px 28px rgba(0, 0, 0, 0.5));
+  }
+  100% {
+    transform: perspective(700px) rotateY(-8deg) rotateX(3deg) skewY(-1.5deg) scale(1);
+    filter: drop-shadow(0 15px 25px rgba(0, 0, 0, 0.45));
+  }
 }
 
-.animate-float-node {
-  animation: float-node 10s ease-in-out infinite;
+.animate-flag-wave {
+  animation: flag-wave-3d 7s ease-in-out infinite;
+  transform-origin: left center;
 }
-.animation-delay-2000 { animation-delay: 2s; }
-.animation-delay-4000 { animation-delay: 4s; }
-.animation-delay-6000 { animation-delay: 6s; }
 
-.text-gradient-red {
-  background: linear-gradient(135deg, #991b1b 0%, #dc2626 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+/* Moving Light Sheen across Flag */
+@keyframes flag-sheen-move {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.flag-sheen-overlay {
+  background: linear-gradient(
+    105deg,
+    transparent 20%,
+    rgba(255, 255, 255, 0.22) 45%,
+    rgba(254, 240, 138, 0.35) 50%,
+    rgba(255, 255, 255, 0.15) 55%,
+    transparent 75%
+  );
+  background-size: 250% 100%;
+  animation: flag-sheen-move 4.5s infinite ease-in-out;
+}
+
+/* Sparkling Golden & Red Stars Animation (Lấp lánh xung quanh) */
+@keyframes star-sparkle {
+  0%, 100% {
+    opacity: 0.2;
+    transform: scale(0.6) rotate(0deg);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.25) rotate(90deg);
+    filter: drop-shadow(0 0 10px rgba(254, 240, 138, 0.95)) drop-shadow(0 0 20px rgba(239, 68, 68, 0.8));
+  }
+}
+
+.animate-sparkle-1 {
+  animation: star-sparkle 2.6s ease-in-out infinite;
+}
+.animate-sparkle-2 {
+  animation: star-sparkle 3.2s ease-in-out infinite 0.8s;
+}
+.animate-sparkle-3 {
+  animation: star-sparkle 2.2s ease-in-out infinite 1.5s;
+}
+.animate-sparkle-4 {
+  animation: star-sparkle 3.8s ease-in-out infinite 0.4s;
+}
+
+/* Portrait Gentle Breathing Float */
+@keyframes portrait-float {
+  0%, 100% {
+    transform: translateY(0px) scale(1);
+  }
+  50% {
+    transform: translateY(-8px) scale(1.015);
+  }
+}
+
+.animate-portrait {
+  animation: portrait-float 8s ease-in-out infinite;
 }
 
 /* Smooth custom scrollbar */
 ::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
+  width: 7px;
+  height: 7px;
 }
 ::-webkit-scrollbar-track {
-  background: #f1f1f1;
+  background: #f1f5f9;
 }
 ::-webkit-scrollbar-thumb {
-  background: #dc2626;
+  background: #cbd5e1;
   border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #991b1b;
+  background: #94a3b8;
 }
 
-/* Card Hover micro-interactions */
-.card-hover {
-  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+/* Subtle, refined card hover */
+.card-subtle {
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s cubic-bezier(0.16, 1, 0.3, 1);
 }
-.card-hover:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 20px 25px -5px rgba(220, 38, 38, 0.1), 0 10px 10px -5px rgba(220, 38, 38, 0.04);
-}
-
-/* Rotate Animation */
-@keyframes spin-slow {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
-}
-.animate-spin-slow {
-  animation: spin-slow 20s linear infinite;
-}
-
-@keyframes spin-reverse {
-  from { transform: rotate(360deg); }
-  to { transform: rotate(0deg); }
-}
-.animate-spin-reverse {
-  animation: spin-reverse 15s linear infinite;
-}
-
-/* Pulse Glow Animation */
-@keyframes glow-pulse {
-  0%, 100% {
-    opacity: 0.6;
-    transform: scale(1);
-  }
-  50% {
-    opacity: 0.9;
-    transform: scale(1.08);
-  }
-}
-.animate-glow-pulse {
-  animation: glow-pulse 4s ease-in-out infinite;
-}
-
-/* Float animation */
-@keyframes float {
-  0%, 100% { transform: translateY(0px) rotate(0deg); }
-  50% { transform: translateY(-12px) rotate(3deg); }
-}
-.animate-float {
-  animation: float 6s ease-in-out infinite;
+.card-subtle:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px -5px rgba(15, 23, 42, 0.06), 0 8px 10px -6px rgba(15, 23, 42, 0.04);
 }
 
 /* Hide scrollbar for elements */
@@ -135,81 +170,87 @@ body {
   scrollbar-width: none;
 }
 
-/* Timeline vertical line custom styles */
-.timeline-line::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 50%;
-  width: 2px;
-  background: #fee2e2;
-  transform: translateX(-50%);
+/* Animated Flowing Dashes for Diagram Connection Lines */
+@keyframes flow-line-dash {
+  from {
+    stroke-dashoffset: 0;
+  }
+  to {
+    stroke-dashoffset: -20;
+  }
+}
+.animate-flow-dash {
+  stroke-dasharray: 6 4;
+  animation: flow-line-dash 1.4s linear infinite;
 }
 
-/* 3D Flip Card Styles for Flashcard module */
+/* 3D Flip Card Styles with bulletproof cross-browser support */
 .flip-card {
-  perspective: 1000px;
+  perspective: 1200px;
+  -webkit-perspective: 1200px;
 }
 .flip-card-inner {
-  transition: transform 0.6s;
-  transform-style: preserve-3d;
-}
-.flip-card.flipped .flip-card-inner {
-  transform: rotateY(180deg);
-}
-.flip-card-front, .flip-card-back {
-  backface-visibility: hidden;
-  position: absolute;
-  top: 0;
-  left: 0;
+  position: relative;
   width: 100%;
   height: 100%;
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  transform-style: preserve-3d;
+  -webkit-transform-style: preserve-3d;
+}
+.flip-card.flipped .flip-card-inner,
+.flip-card-inner.flipped {
+  transform: rotateY(180deg);
+  -webkit-transform: rotateY(180deg);
+}
+.flip-card-front,
+.flip-card-back {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden !important;
+  backface-visibility: hidden !important;
+  transform-style: preserve-3d;
+  -webkit-transform-style: preserve-3d;
+  border-radius: 1rem;
+}
+.flip-card-front {
+  transform: rotateY(0deg);
+  -webkit-transform: rotateY(0deg);
+  z-index: 2;
 }
 .flip-card-back {
   transform: rotateY(180deg);
+  -webkit-transform: rotateY(180deg);
+  z-index: 1;
+}
+.flip-card.flipped .flip-card-front,
+.flip-card-inner.flipped .flip-card-front {
+  z-index: 1;
+}
+.flip-card.flipped .flip-card-back,
+.flip-card-inner.flipped .flip-card-back {
+  z-index: 2;
 }
 
-/* Background portraits slow float animation */
-@keyframes portrait-float-left {
-  0%, 100% {
-    transform: translateY(0px) scale(1);
+/* Cute Pop-in Animation for Vietnam Flag Tick Icon */
+@keyframes flag-pop {
+  0% {
+    transform: scale(0.3) rotate(-18deg);
+    opacity: 0.2;
   }
-  50% {
-    transform: translateY(-10px) scale(1.03);
+  65% {
+    transform: scale(1.2) rotate(4deg);
+    opacity: 1;
   }
-}
-@keyframes portrait-float-right {
-  0%, 100% {
-    transform: translateY(0px) scale(1);
+  100% {
+    transform: scale(1.05) rotate(-3deg);
+    opacity: 1;
   }
-  50% {
-    transform: translateY(-10px) scale(1.03);
-  }
-}
-.animate-portrait-left {
-  animation: portrait-float-left 10s ease-in-out infinite;
-}
-.animate-portrait-right {
-  animation: portrait-float-right 10s ease-in-out infinite;
 }
 
-/* Custom AOS directional overrides for inner/outer zoom effect */
-html[data-scroll-dir="up"] [data-aos="zoom-in"] {
-  transform: scale(1.15) !important; /* Zoom out (outer) effect */
+.animate-flag-pop {
+  animation: flag-pop 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
 }
-html[data-scroll-dir="up"] [data-aos="zoom-in"].aos-animate {
-  transform: scale(1) !important;
-}
-html[data-scroll-dir="up"] [data-aos="zoom-in-up"] {
-  transform: translate3d(0, -100px, 0) scale(1.15) !important; /* Slide down and zoom out */
-}
-html[data-scroll-dir="up"] [data-aos="zoom-in-up"].aos-animate {
-  transform: translate3d(0, 0, 0) scale(1) !important;
-}
-html[data-scroll-dir="up"] [data-aos="fade-up"] {
-  transform: translate3d(0, -100px, 0) !important; /* Slide down naturally */
-}
-html[data-scroll-dir="up"] [data-aos="fade-up"].aos-animate {
-  transform: translate3d(0, 0, 0) !important;
-}
+
+

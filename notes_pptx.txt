@@ -1,0 +1,95 @@
+﻿==========================================
+NOTE: ppt/notesSlides/notesSlide1.xml
+==========================================
+Mở đầu: Nhóm không trình bày ba từ như ba khẩu hiệu đứng cạnh nhau. Nhóm đặt một câu hỏi: trong tư tưởng Hồ Chí Minh, ba giá trị liên hệ với nhau như thế nào?
+Luận đề trung tâm của nhóm: độc lập dân tộc không chỉ được xem như một trạng thái chính trị; ý nghĩa đầy đủ của độc lập cần được phân tích trong mối liên hệ với tự do, hạnh phúc và đời sống nhân dân. Đây là cách phân tích của nhóm, gợi ra từ Giáo trình 2019, tr.43 và Hồ Chí Minh Toàn tập, Tập 4, tr.64; không phải câu trích nguyên văn.
+Nguồn lý luận chính: Giáo trình Tư tưởng Hồ Chí Minh (Bộ GD&ĐT, 2019), Chương III, tr.41–44; Hồ Chí Minh Toàn tập, Tập 4, tr.64, 175, 187.
+
+==========================================
+NOTE: ppt/notesSlides/notesSlide2.xml
+==========================================
+Mở bài nên nói như sau: “Nếu độc lập chỉ được hiểu là một trạng thái chính trị, chúng ta có thể dừng lại rất sớm. Nhưng trong hai văn bản năm 1945 và 1946, câu chuyện được kéo về với đời sống của nhân dân. Vì vậy, nhóm không bắt đầu bằng việc đọc ba định nghĩa rời rạc; nhóm bắt đầu bằng một câu hỏi.”
+Đọc ngắn hai trích dẫn. Sau đó hỏi người nghe: “Theo các bạn, câu hỏi này đang phủ nhận độc lập hay đang yêu cầu chúng ta làm rõ ý nghĩa của độc lập?” Câu trả lời sẽ dẫn sang phần lý luận.
+
+==========================================
+NOTE: ppt/notesSlides/notesSlide3.xml
+==========================================
+Đây là slide “chốt thesis”. Nói chậm: “Trong phạm vi các nguồn được chọn, nhóm cho rằng độc lập dân tộc không nên được hiểu chỉ như một trạng thái chính trị đã hoàn tất. Độc lập có ý nghĩa đầy đủ khi được gắn với tự do và hạnh phúc của nhân dân.”
+Nhấn mạnh đây là cách phân tích của nhóm, không phải câu trích nguyên văn. Ba thẻ bên dưới giúp tránh ba lỗi: tách rời giá trị, suy diễn nhân quả tự động, và nói không có nguồn.
+
+==========================================
+NOTE: ppt/notesSlides/notesSlide4.xml
+==========================================
+Context — nguồn lịch sử: Tập 4, tr.64 là “Thư gửi Ủy ban nhân dân các kỳ, tỉnh, huyện và làng”, ngày 17-10-1945. Tập 4, tr.175 là diễn văn ngày 10-01-1946.
+Scenario — tình huống giả định do nhóm tạo để kiểm tra tính nhất quán của lập luận; không phải số liệu thực tế và không đại diện cho một quốc gia cụ thể.
+Câu hỏi phản biện: nếu người nghe nói “độc lập là độc lập, không cần điều kiện khác”, nhóm trả lời rằng nguồn T4 tr.64 đặt chính câu hỏi về ý nghĩa của độc lập trong quan hệ với hạnh phúc, tự do của nhân dân.
+
+==========================================
+NOTE: ppt/notesSlides/notesSlide5.xml
+==========================================
+Đọc quote 1: câu ở Tập 4, tr.64 là trục chính của bài. Khi trình bày, không cắt phần điều kiện “nếu nước độc lập mà dân không hưởng hạnh phúc tự do” để biến thành khẩu hiệu rời khỏi văn cảnh.
+Đọc quote 2: Tập 4, tr.175 cho thấy các mục tiêu đời sống cụ thể. Không gọi bốn điều kiện này là định nghĩa toàn bộ hạnh phúc; chỉ gọi là một phương diện thực tiễn.
+Nếu bị hỏi “tại sao không dùng tr.187 để định nghĩa hạnh phúc?”, trả lời: tr.187 hỗ trợ việc cụ thể hóa đời sống, nhưng nhóm không gán cho trang này một định nghĩa trực tiếp nếu nguồn không nói như vậy.
+
+==========================================
+NOTE: ppt/notesSlides/notesSlide6.xml
+==========================================
+Đây là slide Concept.
+Cần nói chính xác: tr.41 và tr.44 là các tiêu đề/khung luận điểm của Giáo trình 2019, không phải câu nói trực tiếp của Hồ Chí Minh. Tr.43 là khung “độc lập dân tộc phải gắn liền với tự do, hạnh phúc của nhân dân”.
+“Nhân dân” xuất hiện trong slide như trung tâm tham chiếu của bản đồ, không phải giá trị thứ tư. “Hạnh phúc” được mở bằng một phương diện đời sống từ T4 tr.175, không tuyên bố đây là định nghĩa đầy đủ.
+
+==========================================
+NOTE: ppt/notesSlides/notesSlide7.xml
+==========================================
+Slide này vá lỗ hổng “mục A nói độc lập là chủ quyền, mục D lại nói độc lập là hạnh phúc”. Hai cách dùng không mâu thuẫn nếu nhóm nói rõ đây là hai phương diện phân tích.
+Không nói “hạnh phúc là thước đo duy nhất” hay “chưa hạnh phúc thì chưa độc lập”. Nói chính xác hơn: tự do, hạnh phúc và đời sống nhân dân là những phương diện giúp đọc ý nghĩa thực chất của nền độc lập.
+
+==========================================
+NOTE: ppt/notesSlides/notesSlide8.xml
+==========================================
+Đây là sản phẩm sáng tạo cốt lõi.
+Giải thích trực tiếp: “Nhân dân” không phải một giá trị thứ tư; đó là trung tâm tham chiếu để hỏi ba giá trị có ý nghĩa gì và hướng tới ai. Các đường nối không có mũi tên vì nhóm không tuyên bố quan hệ nhân quả tự động.
+Chú thích hạnh phúc*: tr.175 cho phép nhóm đưa ăn, mặc, ở, học hành vào một lớp thực tiễn; nhưng không được nói bốn điều này là toàn bộ định nghĩa hạnh phúc.
+
+==========================================
+NOTE: ppt/notesSlides/notesSlide9.xml
+==========================================
+Đây là phần trình bày cho rubric 1.3. Đừng nói “web đẹp nên sáng tạo”. Hãy nói: “Hình thức web phục vụ một hành vi học tập: người xem chọn một giá trị, mở nguồn, rồi thử phản biện đường nối.”
+Khi demo, chọn một node “Hạnh phúc*”, mở chú thích ăn–mặc–ở–học hành, sau đó hỏi: “Đây có phải toàn bộ định nghĩa hạnh phúc không?” Người xem sẽ thấy ngay cách sản phẩm tự chứa cơ chế kiểm tra giới hạn.
+
+==========================================
+NOTE: ppt/notesSlides/notesSlide10.xml
+==========================================
+Nguồn thực tiễn và cách dùng:
+1) VTV: https://vtv.vn/hang-van-nguoi-dan-hanh-phuc-xuc-dong-xem-dieu-binh-dieu-hanh-100250902143432491.htm — dùng để mô tả sự tham gia của hàng chục nghìn người, không nói đây là khảo sát đại diện hay tất cả người dân đều hạnh phúc.
+2) VTV: https://vtv.vn/thtt-concert-quoc-gia-80-nam-hanh-trinh-doc-lap-tu-do-hanh-phuc-20h00-vtv1-100250901001944295.htm — tên đúng là “80 năm Hành trình Độc lập – Tự do – Hạnh phúc”, không gọi nhầm thành “Âm vang Tổ quốc” của năm 2025.
+3) VietnamPlus/TTXVN: https://www.vietnamplus.vn/mua-do-la-ong-vua-moi-cua-dien-anh-viet-ky-luc-chua-tung-co-voi-phim-nha-nuoc-post1060417.vnp — doanh thu hơn 552 tỷ đồng tại thời điểm bài đăng, dùng như chỉ báo tiếp nhận thị trường.
+“Âm vang Tổ quốc” là chương trình năm 2026 nên không dùng làm ví dụ A80 2025.
+
+==========================================
+NOTE: ppt/notesSlides/notesSlide11.xml
+==========================================
+Đây là slide để bảo vệ rubric 1.2. Nói theo ba bước: dữ kiện — diễn giải — giới hạn.
+Ví dụ: A80 cho thấy sự tham gia công cộng được VTV ghi nhận; không thể biến một bài báo thành khảo sát đại diện. Doanh thu Mưa đỏ cho thấy tiếp nhận thị trường; không thể dùng doanh thu để khẳng định mọi người xem đều có cùng cảm xúc.
+Kết luận chuyển tiếp: thực tiễn làm câu hỏi nổi bật, nhưng không thay thế nguồn lý luận.
+
+==========================================
+NOTE: ppt/notesSlides/notesSlide12.xml
+==========================================
+Đây là Conflict của 3C.
+Câu trả lời phải nói đủ ba lớp: (1) không phủ nhận độc lập chính trị; (2) không chấp nhận cách hiểu độc lập chỉ là hình thức; (3) không đưa ra phán xét tuyệt đối về một quốc gia.
+Nếu bị hỏi “vậy tiêu chuẩn hạnh phúc cụ thể là gì?”, trả lời: bài này không xây dựng một chỉ số hạnh phúc; T4 tr.175 chỉ được dùng như một phương diện đời sống cụ thể.
+
+==========================================
+NOTE: ppt/notesSlides/notesSlide13.xml
+==========================================
+Mời bạn học chọn một câu hỏi, không hỏi toàn bộ cùng lúc.
+Nếu câu hỏi ngoài phạm vi hai nguồn lý luận, nhóm nói rõ giới hạn và quay về source log. Đây là phần Interaction Matters: người nghe không chỉ xem sản phẩm mà còn kiểm tra đường nối của Meaning Map.
+
+==========================================
+NOTE: ppt/notesSlides/notesSlide14.xml
+==========================================
+Kết luận cuối: đọc lại luận đề đúng phạm vi.
+Nhóm không nói ba giá trị là một khái niệm duy nhất. Nhóm cũng không nói tự do và hạnh phúc là kết quả tự động của độc lập. Nhóm chỉ kết luận rằng trong các nguồn đã chọn, độc lập được đặt trong mối liên hệ với tự do, hạnh phúc và đời sống nhân dân; đó là cơ sở để Meaning Map dùng “nhân dân” làm trung tâm tham chiếu.
+AI transparency: AI chỉ hỗ trợ nhóm brainstorm cấu trúc, gợi câu hỏi phản biện và hỗ trợ lọc nguồn; mọi trích dẫn lý luận và dữ liệu thực tiễn được nhóm kiểm tra lại bằng tài liệu gốc/nguồn chính thống.
+
