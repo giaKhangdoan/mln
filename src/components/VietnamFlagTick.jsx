@@ -1,5 +1,3 @@
-import React from 'react';
-
 /**
  * Cute micro-interaction component:
  * When checked/ticked, displays an animated mini Vietnamese Red Flag with Golden Star

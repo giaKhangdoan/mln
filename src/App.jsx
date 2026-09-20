@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import { lazy, Suspense, useState, useEffect, useRef } from 'react';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import {
@@ -9,208 +9,116 @@ import {
   XCircle,
   Send
 } from 'lucide-react';
-import VietnamFlag3D from './components/VietnamFlag3D';
 import VietnamFlagTick from './components/VietnamFlagTick';
+import MeaningMap from './components/MeaningMap';
+
+const VietnamFlag3D = lazy(() => import('./components/VietnamFlag3D'));
 
 
 // ===== HỆ THỐNG DỮ LIỆU HỌC THUẬT: HCM202 • SPST • C3-02 =====
 const chaptersData = {
   intro: {
     chapterNum: "Phần 1",
-    title: "Lộ trình Lập luận & Luận đề Trung tâm",
-    desc: "Một nền độc lập có đủ ý nghĩa nếu người dân chưa được hưởng tự do và hạnh phúc? Nhóm không bắt đầu bằng việc đọc định nghĩa rời rạc, mà bắt đầu bằng một vấn đề cần được lý giải trong tư tưởng Hồ Chí Minh.",
+    title: "Lý luận và phân tích",
+    desc: "Ba giá trị độc lập, tự do và hạnh phúc liên hệ với nhau trong một lập luận thống nhất: độc lập tạo điều kiện chính trị để nhân dân tự quyết; tự do thể hiện nền độc lập trong quyền làm chủ; hạnh phúc đưa thành quả ấy về đời sống cụ thể của con người.",
     traps: [
-      {
-        title: "Có quan hệ nội dung",
-        desc: "Ba giá trị Độc lập – Tự do – Hạnh phúc không tách rời khi đọc ý nghĩa của độc lập. Độc lập dân tộc phải gắn liền với tự do, hạnh phúc của nhân dân (Giáo trình 2019, tr.43)."
-      },
-      {
-        title: "Không có nhân quả tự động",
-        desc: "Bản đồ không phải chuỗi nhân quả tự động. Độc lập chính trị không tự động tạo ra mọi kết quả; hạnh phúc không thể quy giản thành một chỉ số định lượng đơn lẻ."
-      },
-      {
-        title: "Quay về nguồn kiểm chứng",
-        desc: "Mọi đường nối lập luận đều phải giải thích và đối chiếu được bằng văn bản gốc: Giáo trình TTHCM 2019 (tr.41–44) hoặc Hồ Chí Minh Toàn tập, Tập 4 (tr.64, 175)."
-      }
+      { title: "Độc lập là tiền đề chính trị", desc: "Trong bối cảnh thuộc địa, giành độc lập và quyền tự quyết là nhiệm vụ trước tiên. Độc lập bao hàm chủ quyền, thống nhất, toàn vẹn lãnh thổ và nền độc lập thật sự, hoàn toàn." },
+      { title: "Không có quan hệ nhân quả tự động", desc: "Độc lập không tự động làm xuất hiện mọi thành quả xã hội. Nhà nước và nhân dân phải tiếp tục xây dựng dân chủ, kinh tế, văn hóa và các điều kiện sống để thành quả độc lập đi vào thực tế." },
+      { title: "Nhân dân là trung tâm của lập luận", desc: "Giá trị của nền độc lập được xem xét qua khả năng bảo đảm quyền làm chủ, tự do và cải thiện đời sống của nhân dân; nhân dân vừa là chủ thể vừa là người thụ hưởng thành quả." }
     ],
     historicalSchools: [
       {
-        school: "Văn bản 1945: Độc lập được hỏi bằng đời sống của dân",
-        sourceTag: "Hồ Chí Minh Toàn tập • Tập 4, tr.64",
-        date: "Thư ngày 17-10-1945",
-        quote: "“...nếu nước độc lập mà dân không hưởng hạnh phúc tự do, thì độc lập cũng chẳng có nghĩa lý gì.”",
-        context: "Trích từ “Thư gửi Ủy ban nhân dân các kỳ, tỉnh, huyện và làng” (17-10-1945). Vấn đề được đặt ra ở cấp độ ý nghĩa: độc lập không thể bị xem như một chủ quyền hình thức tách khỏi con người thực tế.",
-        analysis: "Ý nghĩa cốt lõi: Câu hỏi không phủ nhận độc lập; câu hỏi yêu cầu làm rõ ý nghĩa của độc lập đối với nhân dân. Nhóm dùng trích đoạn này để chứng minh mối quan hệ nội dung, không suy ra thước đo định lượng cho hạnh phúc."
+        school: "Độc lập là nhiệm vụ trước tiên của dân tộc thuộc địa",
+        sourceTag: "Hồ Chí Minh Toàn tập • Tập 15, tr.131; Giáo trình 2019, tr.42",
+        date: "Bối cảnh kháng chiến chống Mỹ",
+        quote: "“Không có gì quý hơn độc lập, tự do.”",
+        context: "Độc lập và quyền tự quyết là nhiệm vụ trước tiên của dân tộc bị đặt dưới ách thống trị thực dân.",
+        analysis: "Ở tầng chính trị, độc lập bao hàm chủ quyền, quyền tự quyết, thống nhất và toàn vẹn lãnh thổ; đó phải là nền độc lập thật sự, hoàn toàn."
       },
       {
-        school: "Văn bản 1946: Mục tiêu chính trị đi vào điều kiện cụ thể",
-        sourceTag: "Hồ Chí Minh Toàn tập • Tập 4, tr.175",
-        date: "Diễn văn ngày 10-01-1946",
-        quote: "“Làm cho dân có ăn. Làm cho dân có mặc. Làm cho dân có chỗ ở. Làm cho dân có học hành.”",
-        context: "Trích diễn văn ngày 10-01-1946. Từ giá trị chính trị cao cả, văn bản chỉ rõ hướng đi vào các điều kiện đời sống thiết thực của nhân dân.",
-        analysis: "Ý nghĩa cốt lõi: Đời sống nhân dân là một phương diện cụ thể của mục tiêu chính trị. Nhóm gắn dấu sao (*) cho Hạnh phúc để nhắc nhở: ăn, mặc, ở, học hành là phương diện đời sống thực tế, không phải toàn bộ định nghĩa duy nhất về hạnh phúc."
+        school: "Độc lập gắn với tự do và hạnh phúc của nhân dân",
+        sourceTag: "Hồ Chí Minh Toàn tập • Tập 4, tr.64; Giáo trình 2019, tr.43",
+        date: "Sau Cách mạng Tháng Tám",
+        quote: "“Nước độc lập mà dân không hưởng hạnh phúc tự do, thì độc lập cũng chẳng có nghĩa lý gì.”",
+        context: "Câu nói đặt nhiệm vụ làm cho thành quả độc lập trở thành quyền lợi thực tế của dân bên cạnh việc giữ vững nền độc lập.",
+        analysis: "Không có độc lập thì thiếu cơ sở chính trị để nhân dân làm chủ; có độc lập rồi vẫn phải tiếp tục tạo điều kiện để người dân được tự do, sống ấm no và phát triển."
       },
       {
-        school: "Khung Giáo trình 2019: Độc lập dân tộc gắn liền tự do, hạnh phúc",
-        sourceTag: "Giáo trình TTHCM 2019 • Chương III, tr.41–44",
-        date: "Bộ GD&ĐT (2019)",
-        quote: "“Độc lập dân tộc phải gắn liền với tự do, hạnh phúc của nhân dân.”",
-        context: "Trang 41 và 44 xác định độc lập dân tộc là quyền thiêng liêng, bất khả xâm phạm, phải là nền độc lập thật sự, hoàn toàn và triệt để.",
-        analysis: "Ý nghĩa cốt lõi: Câu chữ tại trang 43 là tiêu đề khung luận điểm do ban biên soạn Giáo trình khái quát hóa, không phải câu trích nguyên văn của Chủ tịch Hồ Chí Minh. Khung lý luận giúp giữ vững ranh giới khái niệm trong khi phân tích mối liên hệ nội dung."
+        school: "Ba tầng mục tiêu trong một lập luận thống nhất",
+        sourceTag: "Hồ Chí Minh Toàn tập • Tập 7, tr.434; Tập 13, tr.10; Giáo trình 2019, tr.56",
+        date: "Độc lập – Tự do – Hạnh phúc",
+        quote: "“Chế độ ta là chế độ dân chủ. Tức là nhân dân làm chủ.”",
+        context: "Độc lập ở tầng chính trị tạo khả năng tự quyết; tự do ở tầng xã hội được hiện thực hóa trong quyền làm chủ; hạnh phúc ở tầng con người là mục tiêu mà hai tầng trước phải hướng tới.",
+        analysis: "“Nước ta là nước dân chủ, địa vị cao nhất là dân, vì dân là chủ.” Tự do không đồng nhất với việc cá nhân tùy ý làm mọi việc mà gắn với dân chủ, quyền và lợi ích của nhân dân."
       },
       {
-        school: "Luận đề Trung tâm: Độc lập trong mối liên hệ với Nhân dân",
-        sourceTag: "Luận đề của Nhóm HCM / SPST / C3-02",
-        date: "Fall 2026",
-        quote: "“Độc lập dân tộc có ý nghĩa đầy đủ khi được đặt trong mối liên hệ với tự do, hạnh phúc và đời sống nhân dân.”",
-        context: "Nhóm không xếp ba giá trị thành một khẩu hiệu tuyến tính. Nhóm đề xuất một cách đọc có điều kiện và có giới hạn.",
-        analysis: "Ý nghĩa cốt lõi: Độc lập dân tộc là điều kiện tiên quyết, nhưng để độc lập có ý nghĩa thực chất và trọn vẹn, phải hướng về tự do và chất lượng đời sống của nhân dân. Nhân dân là trung tâm tham chiếu tối hậu."
+        school: "Nhân dân và quan hệ với chủ nghĩa xã hội",
+        sourceTag: "Giáo trình 2019, tr.51–58; Hồ Chí Minh Toàn tập, Tập 15, tr.391",
+        date: "Chương III",
+        quote: "“Độc lập là tiền đề; tự do là nội dung xã hội của nền độc lập; hạnh phúc là thước đo ở đời sống con người.”",
+        context: "Giành chính quyền và giữ chủ quyền mở ra khả năng tiếp tục xây dựng một xã hội nhằm nâng cao đời sống nhân dân.",
+        analysis: "Nhân dân vừa là chủ thể của sự nghiệp cách mạng, vừa là người mà thành quả cách mạng phải phục vụ; quá trình này gắn với xây dựng chủ nghĩa xã hội và vai trò lãnh đạo của Đảng."
       }
     ]
   },
   theory: {
     chapterNum: "Phần 2",
-    title: "Khung Khái Niệm & Phân Tích Hai Phương Diện",
-    desc: "Ba giá trị được đọc cùng nhau — nhưng không xóa ranh giới khái niệm. Giáo trình 2019 cung cấp khung khái niệm; Tập 4 cung cấp văn bản để kiểm tra ý nghĩa trong đời sống.",
+    title: "Khung khái niệm và ba tầng mục tiêu",
+    desc: "Meaning Map đọc ba giá trị theo ba tầng liên hệ: chính trị, xã hội và con người. Mỗi tầng có câu hỏi kiểm chứng riêng, nhưng không tách rời khỏi các tầng còn lại.",
     principles: [
-      {
-        title: "01. Độc Lập (Điều kiện chính trị)",
-        aspect: "Chính trị • Nền tảng",
-        desc: "Quyền thiêng liêng, bất khả xâm phạm của các dân tộc; đồng thời phải là nền độc lập thật sự, hoàn toàn và triệt để trên mọi phương diện chủ quyền lãnh thổ và quyền tự quyết.",
-        source: "Giáo trình TTHCM 2019, tr.41 và tr.44"
-      },
-      {
-        title: "02. Tự Do (Giá trị con người)",
-        aspect: "Con người • Quyền làm chủ",
-        desc: "Trong câu hỏi trung tâm của nhóm, tự do được đọc như giá trị phải gắn với nhân dân — không tách khỏi câu hỏi “ai được hưởng?”. Nhân dân thoát ách nô lệ và thực sự làm chủ vận mệnh.",
-        source: "Giáo trình 2019, tr.43; Hồ Chí Minh Toàn tập, T4, tr.64"
-      },
-      {
-        title: "03. Hạnh Phúc* (Phương diện đời sống)",
-        aspect: "Đời sống • Ăn, mặc, ở, học hành",
-        desc: "Không thu hẹp thành cảm xúc cá nhân trừu tượng. Tập 4, tr.175 gợi một phương diện cụ thể: ăn, mặc, ở, học hành. Dấu * nhắc nhở đây là phương diện đời sống thực tiễn, không phải toàn bộ định nghĩa.",
-        source: "Hồ Chí Minh Toàn tập, T4, tr.175"
-      }
+      { title: "01. Độc lập ở tầng chính trị", aspect: "Chủ quyền • Quyền tự quyết", desc: "Độc lập giải quyết sự lệ thuộc về chính trị, bảo đảm chủ quyền, thống nhất và toàn vẹn lãnh thổ, đồng thời tạo khả năng tự lựa chọn con đường phát triển.", source: "Giáo trình Tư tưởng Hồ Chí Minh 2019, tr.42–44; Hồ Chí Minh Toàn tập, Tập 15, tr.131" },
+      { title: "02. Tự do ở tầng xã hội", aspect: "Dân chủ • Quyền làm chủ", desc: "Tự do gắn với dân chủ, quyền và lợi ích của nhân dân, cùng các điều kiện xã hội để con người tham gia, làm chủ và phát triển.", source: "Giáo trình 2019, tr.56; Hồ Chí Minh Toàn tập, Tập 7, tr.434; Tập 13, tr.10" },
+      { title: "03. Hạnh phúc ở tầng con người", aspect: "Đời sống • Phát triển", desc: "Hạnh phúc có nội dung vật chất và tinh thần: mức sống, học hành, việc làm, sức khỏe, khả năng tham gia và phát triển. Ăn, mặc, ở, học hành là những phương diện thiết thực, không phải toàn bộ định nghĩa duy nhất.", source: "Hồ Chí Minh Toàn tập, Tập 4, tr.175 và 187; Giáo trình 2019, tr.43" }
     ],
     dialecticsSteps: [
-      {
-        step: "A",
-        name: "Phương diện A: Điều kiện chính trị",
-        desc: "Chủ quyền quốc gia, quyền tự quyết dân tộc, toàn vẹn lãnh thổ; không đồng nhất với một cảm xúc cá nhân. Đây là nền tảng tối thượng cần được xác lập và kiên quyết bảo vệ."
-      },
-      {
-        step: "B",
-        name: "Phương diện B: Ý nghĩa trong đời sống",
-        desc: "Người dân có được tự do, hạnh phúc? Các điều kiện sống thiết yếu có được quan tâm? Nền độc lập có chạm tới đời sống không? Đây là thước đọc giá trị thực chất."
-      },
-      {
-        step: "C",
-        name: "Cầu nối biện chứng của nhóm",
-        desc: "Phương diện B không hề phủ định Phương diện A. Phương diện B giúp giải thích ý nghĩa chiều sâu và mục đích phụng sự của Phương diện A đối với nhân dân."
-      }
+      { step: "A", name: "Tầng chính trị: Độc lập", desc: "Dân tộc có quyền tự quyết định vận mệnh của mình hay không? Độc lập là tiền đề cần thiết, nhưng không tự động làm xuất hiện mọi thành quả xã hội." },
+      { step: "B", name: "Tầng xã hội: Tự do", desc: "Trong đất nước đã độc lập, nhân dân có thực sự làm chủ hay không? Quyền tự quyết của quốc gia cần được hiện thực hóa trong dân chủ và quyền làm chủ của nhân dân." },
+      { step: "C", name: "Tầng con người: Hạnh phúc", desc: "Thành quả cách mạng đến với đời sống mỗi người thế nào? Hạnh phúc là mục tiêu để độc lập và tự do hướng tới, được xem xét qua những điều kiện sống cụ thể." }
     ]
   },
   practice: {
     chapterNum: "Phần 3",
-    title: "Bản Đồ Ý Nghĩa (Meaning Map) & Trải Nghiệm Tương Tác",
-    desc: "Sản phẩm không chỉ kể lại lý thuyết — giao diện cho phép người xem tự kiểm tra đường nối. Meaning Map biến bài thuyết trình tuyến tính thành trải nghiệm có lựa chọn, bằng chứng và phản biện.",
+    title: "Meaning Map và cách đọc có kiểm soát",
+    desc: "Bản đồ giúp chuyển bài thuyết trình thành một hệ thống câu hỏi: dân tộc có quyền tự quyết, nhân dân có làm chủ và đời sống mỗi người có được cải thiện hay không?",
     forms: [
-      {
-        step: "01 / Khám phá",
-        name: "Chạm vào từng Node",
-        desc: "Người xem chọn Độc lập, Tự do hoặc Hạnh phúc. Mỗi node mở ra một lớp giải thích cô đọng, tránh việc nhồi nhét cả chương sách vào một màn hình duy nhất."
-      },
-      {
-        step: "02 / Đối chiếu",
-        name: "Mở Bằng chứng (Evidence)",
-        desc: "Mỗi luận điểm đều đính kèm trích dẫn, số tập và số trang in cụ thể (T4 tr.64, T4 tr.175, GT tr.43). Phân biệt rành mạch lời văn của nguồn với phần nhóm diễn giải."
-      },
-      {
-        step: "03 / Phản biện",
-        name: "Thử thách Bẻ gãy Đường nối",
-        desc: "Người xem tương tác với các câu hỏi C–C–C: Bối cảnh nào? Lý luận nào? Mâu thuẫn nào? Nếu không chứng minh được bằng nguồn, đường nối lập luận phải được xem lại."
-      }
+      { step: "01 / Tầng chính trị", name: "Độc lập", desc: "Câu hỏi trung tâm: Dân tộc có quyền tự quyết định vận mệnh của mình hay không? Bằng chứng cần tập trung vào chủ quyền, độc lập thực chất, thống nhất và toàn vẹn lãnh thổ." },
+      { step: "02 / Tầng xã hội", name: "Tự do", desc: "Câu hỏi trung tâm: Trong đất nước đã độc lập, nhân dân có thực sự làm chủ hay không? Phân tích dân chủ, quyền và lợi ích của nhân dân, cùng điều kiện tham gia xã hội." },
+      { step: "03 / Tầng con người", name: "Hạnh phúc", desc: "Câu hỏi trung tâm: Đời sống mỗi người được cải thiện thế nào? Đặt cạnh nhau các chỉ báo về ăn, mặc, ở, học hành, việc làm, sức khỏe và phát triển." }
     ],
     roles: [
-      {
-        title: "Nhân dân: Trung tâm tham chiếu",
-        desc: "Nhân dân nằm ở trung tâm sơ đồ để định vị: Độc lập phục vụ ai? Tự do hướng về ai? Hạnh phúc mang lại cho ai? Nhân dân là thước đo giá trị cao nhất."
-      },
-      {
-        title: "Không có mũi tên nhân quả tự động",
-        desc: "Các đường nối biểu thị mối quan hệ gắn bó hữu cơ do nhóm tổng hợp — tuyệt đối không vẽ mũi tên một chiều vì độc lập không tự động tạo ra hạnh phúc."
-      },
-      {
-        title: "Chú thích dấu sao Hạnh phúc*",
-        desc: "Tập 4, tr.175 cho phép nhóm đưa ăn, mặc, ở, học hành vào tầng thực tiễn; nhưng không được đồng nhất bốn điều kiện này là định nghĩa đầy đủ duy nhất của hạnh phúc."
-      }
+      { title: "Nhân dân là chủ thể", desc: "Nhân dân tham gia xây dựng xã hội, làm chủ trong đời sống chính trị và thụ hưởng những thành quả của công cuộc xây dựng đất nước." },
+      { title: "Thực tiễn không thay thế lý luận", desc: "Một sự kiện văn hóa hay một con số kinh tế chỉ minh họa một phương diện. Không được dùng chúng để thay thế cho việc giải thích khái niệm và chứng minh bằng nguồn lý luận." },
+      { title: "Đọc dữ kiện trong đúng phạm vi", desc: "Phân biệt rõ dữ kiện, diễn giải và giới hạn. Không suy ra hạnh phúc của toàn xã hội từ một concert, một sự kiện cộng đồng hoặc một chỉ số thu nhập." }
     ]
   },
   digital: {
     chapterNum: "Phần 4",
-    title: "Dẫn Chứng Thực Tiễn & Đọc Có Kiểm Soát",
-    desc: "Từ ý nghĩa chính trị đến cách công chúng cùng trải nghiệm hòa bình trong đời sống hiện đại. Nguyên tắc học thuật: Thực tiễn làm bật câu hỏi — không thay thế chứng minh lý luận.",
+    title: "Liên hệ thực tiễn và giới hạn diễn giải",
+    desc: "Thực tiễn làm bật câu hỏi lý luận, nhưng không tự mình trả lời trọn vẹn câu hỏi về tự do hay hạnh phúc.",
     process: [
-      {
-        phase: "Sự kiện 1",
-        title: "A80 / Không Gian Chung",
-        subtitle: "Sự tham gia cộng đồng và biểu tượng quốc gia",
-        date: "02/09/2025 • VTV News",
-        reality: "VTV ghi nhận hàng chục nghìn người dân từ nhiều tỉnh, thành có mặt tại các tuyến phố trung tâm Hà Nội theo dõi diễu binh, diễu hành kỷ niệm 80 năm Quốc khánh (A80).",
-        boundary: "Minh họa biểu tượng độc lập có không gian tiếp nhận công cộng thời bình; không biến phóng sự thành khảo sát đại diện, không khẳng định tất cả mọi người đều có cùng mức độ cảm xúc."
-      },
-      {
-        phase: "Sự kiện 2",
-        title: "Concert Quốc Gia 80 Năm",
-        subtitle: "Ba giá trị kể lại trong văn hóa đại chúng",
-        date: "01/09/2025 • VTV1 THTT",
-        reality: "Chương trình nghệ thuật quy mô quốc gia “80 năm Hành trình Độc lập – Tự do – Hạnh phúc” quy tụ các thế hệ nghệ sĩ, tái hiện chiều dài lịch sử dựng nước và giữ nước.",
-        boundary: "Minh họa cách ba giá trị lập quốc tiếp tục là nguồn cảm hứng nghệ thuật thời bình; không đánh đồng buổi diễn với sự đồng thuận cảm xúc của toàn thể công chúng."
-      },
-      {
-        phase: "Sự kiện 3",
-        title: "Mưa Đỏ / Ký Ức Lịch Sử",
-        subtitle: "Chỉ báo tiếp nhận thị trường với phim bảo vệ độc lập",
-        date: "07/09/2025 • VietnamPlus / TTXVN",
-        reality: "VietnamPlus/TTXVN đưa tin doanh thu phim điện ảnh “Mưa đỏ” vượt 552 tỷ đồng sau 17 ngày chiếu — kỷ lục phòng vé đối với tác phẩm đề tài chiến tranh bảo vệ Tổ quốc.",
-        boundary: "Chỉ phản ánh mức độ quan tâm của thị trường và giới trẻ với ký ức lịch sử; không dùng doanh thu để đo lường nhận thức tư tưởng hay chất lượng cảm xúc từng khán giả."
-      }
+      { phase: "Sự kiện 1", title: "A80 và ký ức về độc lập", subtitle: "Ý thức quốc gia và lịch sử giành độc lập", date: "02/09/2025 • Báo Điện tử Chính phủ", reality: "Lễ diễu binh, diễu hành kỷ niệm 80 năm Cách mạng Tháng Tám thành công và Quốc khánh 2/9 tại Quảng trường Ba Đình gợi lại lịch sử giành độc lập và sự ra đời của nhà nước Việt Nam độc lập.", boundary: "A80 minh họa ký ức lịch sử và ý thức quốc gia về độc lập; không thể dùng riêng sự kiện này để kết luận về hạnh phúc của toàn bộ nhân dân." },
+      { phase: "Sự kiện 2", title: "Tổ quốc trong tim", subtitle: "Độc lập trong đời sống văn hóa", date: "10/08/2025 • Báo Nhân Dân", reality: "Chương trình nghệ thuật chính luận tại Sân vận động Quốc gia Mỹ Đình thu hút hơn 50.000 khán giả trực tiếp và hàng triệu người theo dõi qua truyền thông.", boundary: "Chương trình cho thấy ký ức lịch sử được truyền tải qua không gian văn hóa và sự tham gia của công chúng; niềm tự hào tại concert không phải bằng chứng trực tiếp rằng mục tiêu hạnh phúc đã được thực hiện." },
+      { phase: "Sự kiện 3", title: "Hạnh phúc và điều kiện sống hiện nay", subtitle: "Một chỉ báo vật chất cần đọc đúng phạm vi", date: "Tháng 01/2026 • Cục Thống kê", reality: "Theo thông cáo tình hình kinh tế – xã hội năm 2025, thu nhập bình quân của lao động đạt khoảng 8,4 triệu đồng một tháng, tăng 8,9% so với năm trước.", boundary: "Đây là số đo đối với lao động, không phải thu nhập bình quân của toàn bộ dân cư hay chỉ số hạnh phúc. Cần đặt cùng dữ liệu về học hành, sức khỏe, mức sống và an sinh." }
     ],
     comparison: {
-      headers: ["Tiêu chí kiểm soát", "Cách đọc sai lệch / Suy diễn quá mức", "Cách đọc có kiểm soát của Nhóm SPST"],
+      headers: ["Tiêu chí kiểm soát", "Cách đọc sai lệch / Suy diễn quá mức", "Cách đọc có kiểm soát"],
       rows: [
-        ["Dữ kiện (Fact)", "Biến một phóng sự thời sự thành khảo sát đại diện xã hội học", "Ghi nhận đúng điều đã diễn ra theo nguồn thông tấn chính thống (VTV, TTXVN)"],
-        ["Diễn giải (Interpretation)", "Khẳng định 100% người dân cả nước đều đạt tới hạnh phúc tuyệt đối", "Chỉ ra biểu tượng độc lập và ký ức lịch sử có không gian tiếp nhận công cộng"],
-        ["Giới hạn (Boundary)", "Dùng con số doanh thu 552 tỷ để đo lường giác ngộ tư tưởng", "Phân định rõ: Doanh thu phản ánh sức hút thị trường, không đo cảm xúc cá nhân"],
-        ["Vai trò học thuật", "Lấy dẫn chứng thời sự thay thế cho việc chứng minh lý luận", "Tuân thủ nguyên tắc: Dữ kiện thực tiễn làm bật câu hỏi, nguồn lý luận mới trả lời"]
+        ["Dữ kiện", "Biến một sự kiện văn hóa thành bằng chứng đại diện cho hạnh phúc toàn xã hội", "Ghi nhận đúng sự kiện và phạm vi mà nguồn cho phép"],
+        ["Diễn giải", "Khẳng định một chỉ số thu nhập hoặc niềm tự hào tập thể đã đo được hạnh phúc", "Xem đó là một phương diện hoặc chỉ báo cần đặt trong hệ thống dữ liệu rộng hơn"],
+        ["Giới hạn", "Dùng sự tán thành của số đông để kiểm tra đúng sai", "Phân biệt đồng thuận chủ quan với điều kiện đời sống và thực tiễn khách quan"],
+        ["Vai trò học thuật", "Lấy dẫn chứng thời sự thay thế cho việc chứng minh lý luận", "Dùng thực tiễn làm bật câu hỏi, rồi quay về khái niệm và nguồn giáo trình"]
       ]
     }
   },
   truth: {
     chapterNum: "Khái niệm",
-    title: "4 Khái Niệm Cốt Lõi Trên Meaning Map",
-    desc: "Khám phá 4 node trung tâm của bản đồ ý nghĩa. Nhấp vào mỗi thẻ để lật xem cơ sở trích dẫn và giới hạn học thuật.",
+    title: "4 khái niệm cốt lõi trên Meaning Map",
+    desc: "Bốn node trung tâm giúp người xem ghi nhớ lập luận từ độc lập đến tự do, hạnh phúc và vai trò của nhân dân.",
     properties: [
-      {
-        name: "Độc Lập Dân Tộc",
-        role: "Điều kiện chính trị tiên quyết",
-        desc: "Quyền thiêng liêng, bất khả xâm phạm của mọi dân tộc; phải là nền độc lập thật sự, hoàn toàn và triệt để (Giáo trình 2019, tr.41, 44). Đây là tiền đề cần xác lập và bảo vệ."
-      },
-      {
-        name: "Tự Do Nhân Dân",
-        role: "Giá trị giải phóng con người",
-        desc: "Tự do gắn liền với nhân dân — không tách khỏi câu hỏi “ai được hưởng tự do?”. Độc lập dân tộc phải gắn với quyền tự do và quyền làm chủ thực chất của đồng bào (T4 tr.64, GT tr.43)."
-      },
-      {
-        name: "Hạnh Phúc*",
-        role: "Phương diện đời sống cụ thể",
-        desc: "Không thu hẹp thành cảm xúc trừu tượng. Tập 4, tr.175 chỉ ra phương diện cụ thể: ăn, mặc, ở, học hành. Dấu * nhắc nhở đây là phương diện đời sống thực tiễn, không phải toàn bộ định nghĩa."
-      },
-      {
-        name: "Nhân Dân",
-        role: "Trung tâm tham chiếu tối hậu",
-        desc: "Nhân dân không phải giá trị thứ tư bổ sung vào khẩu hiệu; Nhân dân là trung tâm tham chiếu để hỏi: Độc lập cho ai? Tự do cho ai? Hạnh phúc cho ai?"
-      }
+      { name: "Độc Lập Dân Tộc", role: "Tầng chính trị", desc: "Quyền tự quyết, chủ quyền, thống nhất và toàn vẹn lãnh thổ. Độc lập là tiền đề chính trị để dân tộc trở thành chủ thể của vận mệnh quốc gia." },
+      { name: "Tự Do Nhân Dân", role: "Tầng xã hội", desc: "Quyền làm chủ được hiện thực hóa trong dân chủ, quyền và lợi ích của nhân dân, cùng các điều kiện xã hội để con người tham gia và phát triển." },
+      { name: "Hạnh Phúc", role: "Tầng con người", desc: "Mục tiêu đưa thành quả độc lập và tự do về đời sống cụ thể: mức sống, học hành, việc làm, sức khỏe, ăn, mặc, ở và khả năng phát triển." },
+      { name: "Nhân Dân", role: "Chủ thể và người thụ hưởng", desc: "Nhân dân vừa là chủ thể của sự nghiệp cách mạng, vừa là người mà thành quả cách mạng phải phục vụ; đây là trung tâm để kiểm tra ý nghĩa của ba giá trị." }
     ]
   }
 };
@@ -218,76 +126,76 @@ const chaptersData = {
 const quizQuestions = [
   {
     id: 1,
-    category: "Bối cảnh lịch sử (Context)",
-    question: "Câu nói “...nếu nước độc lập mà dân không hưởng hạnh phúc tự do, thì độc lập cũng chẳng có nghĩa lý gì” xuất hiện trong văn bản nào của Hồ Chí Minh?",
+    category: "Tính khách quan",
+    question: "Đặc tính nào khẳng định nội dung của chân lý không phụ thuộc vào con người, loài người, lợi ích hay sự quy ước của đám đông?",
     options: [
-      { key: "A", text: "Tuyên ngôn Độc lập (02-09-1945)" },
-      { key: "B", text: "Thư gửi Ủy ban nhân dân các kỳ, tỉnh, huyện và làng (17-10-1945, Tập 4, tr.64)" },
-      { key: "C", text: "Lời kêu gọi toàn quốc kháng chiến (19-12-1946)" },
-      { key: "D", text: "Diễn văn bế mạc kỳ họp thứ nhất Quốc hội khóa I (1946)" }
+      { key: "A", text: "Tính cụ thể" },
+      { key: "B", text: "Tính khách quan" },
+      { key: "C", text: "Tính tuyệt đối" },
+      { key: "D", text: "Tính tương đối" }
     ],
     correct: "B",
-    explain: "Trích trong “Thư gửi Ủy ban nhân dân các kỳ, tỉnh, huyện và làng” ngày 17-10-1945, in trong Hồ Chí Minh Toàn tập, Tập 4, tr.64. Câu nói đặt ra yêu cầu làm rõ ý nghĩa của độc lập trong đời sống nhân dân."
+    explain: "Tính khách quan khẳng định chân lý không phụ thuộc vào con người, loài người hay sự quy ước của số đông."
   },
   {
     id: 2,
-    category: "Khung lý luận (Concept)",
-    question: "Luận điểm “Độc lập dân tộc phải gắn liền với tự do, hạnh phúc của nhân dân” ở trang 43 của tài liệu tham khảo là gì?",
+    category: "Thực tiễn và chân lý",
+    question: "Điền từ còn thiếu: “Vấn đề tìm hiểu xem tư duy của con người có thể đạt tới chân lý khách quan không, hoàn toàn không phải là một vấn đề lý luận mà là...”?",
     options: [
-      { key: "A", text: "Câu trích nguyên văn lời nói của Chủ tịch Hồ Chí Minh trong kháng chiến" },
-      { key: "B", text: "Tiêu đề khung luận điểm trong Giáo trình Tư tưởng Hồ Chí Minh (Bộ GD&ĐT, 2019)" },
-      { key: "C", text: "Trích đoạn lời nói đầu của Hiến pháp năm 1946" },
-      { key: "D", text: "Khẩu hiệu tuyên truyền của Mặt trận Việt Minh" }
+      { key: "A", text: "Một vấn đề thực tiễn" },
+      { key: "B", text: "Một sự đồng thuận của số đông" },
+      { key: "C", text: "Sự cảm nhận chủ quan" },
+      { key: "D", text: "Lợi ích trước mắt" }
     ],
-    correct: "B",
-    explain: "Trang 43 là tiêu đề khung luận điểm do ban biên soạn Giáo trình Tư tưởng Hồ Chí Minh (Bộ GD&ĐT, 2019) khái quát hóa, không phải câu trích nguyên văn của Chủ tịch Hồ Chí Minh."
+    correct: "A",
+    explain: "C. Mác dùng câu này để khẳng định thực tiễn là nơi kiểm tra khả năng đạt tới chân lý khách quan."
   },
   {
     id: 3,
-    category: "Khung lý luận (Concept)",
-    question: "Trong sơ đồ Meaning Map của nhóm, tại sao “Nhân dân” được đặt ở vị trí trung tâm tham chiếu?",
+    category: "Độc lập – Tự do – Hạnh phúc",
+    question: "Theo nội dung thuyết trình, mối liên hệ giữa ba giá trị được trình bày như thế nào?",
     options: [
-      { key: "A", text: "Vì nhân dân được bổ sung làm giá trị thứ tư vào khẩu hiệu" },
-      { key: "B", text: "Vì nhân dân là trung tâm tham chiếu để hỏi: Độc lập cho ai, tự do cho ai, hạnh phúc cho ai?" },
-      { key: "C", text: "Vì bố cục mỹ thuật đòi hỏi phải có 4 góc đối xứng nhau" },
-      { key: "D", text: "Vì nhân dân thay thế hoàn toàn cho khái niệm độc lập chính trị" }
+      { key: "A", text: "Độc lập tự động tạo ra mọi thành quả xã hội" },
+      { key: "B", text: "Độc lập là tiền đề; tự do là quyền làm chủ; hạnh phúc là mục tiêu ở đời sống con người" },
+      { key: "C", text: "Hạnh phúc chỉ là cảm xúc trong các sự kiện văn hóa" },
+      { key: "D", text: "Tự do tách rời khỏi dân chủ và quyền lợi của nhân dân" }
     ],
     correct: "B",
-    explain: "Nhân dân không phải giá trị thứ tư; nhân dân là trung tâm tham chiếu để đo lường ý nghĩa thực chất của ba giá trị Độc lập - Tự do - Hạnh phúc."
+    explain: "Ba giá trị tạo thành một lập luận thống nhất nhưng không phải lịch trình nhân quả cứng nhắc: độc lập tạo tiền đề chính trị, tự do thể hiện quyền làm chủ và hạnh phúc đưa thành quả về đời sống."
   },
   {
     id: 4,
-    category: "Phương pháp luận (Methodology)",
-    question: "Khi sử dụng văn bản 1946 (T4 tr.175) nói về “ăn, mặc, ở, học hành”, vì sao nhóm gắn dấu sao (*) cho khái niệm Hạnh phúc?",
+    category: "Con đường nhận thức",
+    question: "V.I. Lênin khái quát con đường biện chứng của sự nhận thức chân lý theo trình tự nào?",
     options: [
-      { key: "A", text: "Để khẳng định 4 điều kiện này là định nghĩa đầy đủ, duy nhất của hạnh phúc" },
-      { key: "B", text: "Để nhắc nhở đây là một phương diện đời sống thực tiễn cụ thể, không phải toàn bộ định nghĩa" },
-      { key: "C", text: "Để báo hiệu rằng trích dẫn này chưa được kiểm chứng trong tài liệu gốc" },
-      { key: "D", text: "Để chỉ ra rằng khái niệm hạnh phúc không có giá trị học thuật" }
+      { key: "A", text: "Từ tư duy trừu tượng đến thực tiễn, rồi quay lại trực quan sinh động" },
+      { key: "B", text: "Từ nhận thức cảm tính đến sự tung hô của số đông" },
+      { key: "C", text: "Từ trực quan sinh động đến thực tiễn, bỏ qua tư duy trừu tượng" },
+      { key: "D", text: "Từ trực quan sinh động đến tư duy trừu tượng, và từ tư duy trừu tượng đến thực tiễn" }
     ],
-    correct: "B",
-    explain: "Quy tắc đọc nguồn: T4 tr.175 cho thấy các điều kiện đời sống cụ thể (ăn, mặc, ở, học hành). Nhóm gắn dấu * để tránh đồng nhất 4 điều kiện này là toàn bộ định nghĩa khái niệm hạnh phúc."
+    correct: "D",
+    explain: "Đây là con đường biện chứng của sự nhận thức chân lý: từ trực quan sinh động đến tư duy trừu tượng, rồi từ tư duy trừu tượng đến thực tiễn."
   },
   {
     id: 5,
-    category: "Vấn đề phản biện (Conflict)",
-    question: "Nếu một quốc gia đã có độc lập chính trị nhưng một bộ phận nhân dân chưa được bảo đảm tự do và đời sống, bản đồ lập luận trả lời thế nào?",
+    category: "Tính cụ thể của chân lý",
+    question: "Triết học Mác – Lênin khẳng định: “Không có chân lý trừu tượng, chung chung, chân lý luôn là...”?",
     options: [
-      { key: "A", text: "Phủ nhận hoàn toàn nền độc lập chính trị của quốc gia đó" },
-      { key: "B", text: "Độc lập chính trị là nền tảng cần bảo vệ, nhưng ý nghĩa đầy đủ cần được tiếp tục hoàn thiện trong gắn kết với tự do và đời sống nhân dân" },
-      { key: "C", text: "Tuyên bố độc lập và hạnh phúc là hai phạm trù mâu thuẫn triệt tiêu lẫn nhau" },
-      { key: "D", text: "Cho rằng chỉ cần độc lập chính trị là tự động có được tự do và hạnh phúc" }
+      { key: "A", text: "Số đông" },
+      { key: "B", text: "Cụ thể" },
+      { key: "C", text: "Bất biến" },
+      { key: "D", text: "Lợi ích" }
     ],
     correct: "B",
-    explain: "Công thức tự bảo vệ của nhóm: Không phủ nhận nền độc lập chính trị; không đồng nhất độc lập với trạng thái hình thức khép kín; và khẳng định ý nghĩa đầy đủ của độc lập nằm ở đời sống nhân dân."
+    explain: "Chân lý luôn gắn với những điều kiện không gian, thời gian và hoàn cảnh lịch sử cụ thể."
   }
 ];
 
 const chatbotFAQ = [
-  { q: "Luận đề trung tâm của Meaning Map là gì?", a: "Độc lập dân tộc có ý nghĩa đầy đủ khi gắn với tự do, hạnh phúc và đời sống nhân dân." },
-  { q: "Ý nghĩa học thuật của câu trích T4 tr.64?", a: "Độc lập được hỏi bằng đời sống của dân, không phải chủ quyền hình thức tách rời." },
-  { q: "Phân biệt Phương diện A và B ra sao?", a: "Phương diện A: Điều kiện chính trị; Phương diện B: Ý nghĩa trong đời sống nhân dân." },
-  { q: "Vì sao 'Nhân dân' là trung tâm tham chiếu?", a: "Nhân dân là trung tâm tham chiếu để hỏi: Độc lập, Tự do, Hạnh phúc hướng tới ai?" }
+  { q: "Luận điểm xuyên suốt của bài là gì?", a: "Độc lập tạo điều kiện chính trị để nhân dân tự quyết; tự do thể hiện nền độc lập trong quyền làm chủ; hạnh phúc đưa thành quả ấy về đời sống cụ thể của con người." },
+  { q: "Vì sao độc lập không tự động tạo ra hạnh phúc?", a: "Độc lập là tiền đề chính trị. Nhà nước và nhân dân vẫn phải tiếp tục xây dựng dân chủ, kinh tế, văn hóa và các điều kiện sống để thành quả độc lập đi vào thực tế." },
+  { q: "Nhân dân có vai trò gì trong lập luận?", a: "Nhân dân vừa là chủ thể của sự nghiệp cách mạng, vừa là người mà thành quả cách mạng phải phục vụ. Quyền làm chủ và đời sống của nhân dân là cách kiểm tra ý nghĩa của ba giá trị." },
+  { q: "A80 hoặc một concert có chứng minh hạnh phúc không?", a: "Không thể suy ra như vậy. Các sự kiện này minh họa ký ức lịch sử và đời sống văn hóa; muốn phân tích hạnh phúc cần kết hợp dữ liệu về mức sống, học hành, y tế, việc làm và an sinh." }
 ];
 
 export default function App() {
@@ -323,7 +231,7 @@ export default function App() {
   const [chatMessages, setChatMessages] = useState([
     {
       sender: 'bot',
-      text: 'Kính chào bạn. Tôi là Trợ lý AI học phần HCM202, hỗ trợ đối chiếu nguồn tài liệu và phản biện đề tài "Độc lập · Tự do · Hạnh phúc" (Meaning Map / SPST Fall 2026). Bạn có thể chọn câu hỏi mẫu bên trái hoặc nhập nội dung cần giải đáp.'
+      text: 'Kính chào bạn. Tôi là Trợ lý AI học phần HCM202, hỗ trợ đối chiếu nội dung thuyết trình về mối liên hệ giữa độc lập, tự do và hạnh phúc trong tư tưởng Hồ Chí Minh. Bạn có thể chọn câu hỏi mẫu bên trái hoặc nhập nội dung cần giải đáp.'
     }
   ]);
   const [userMsg, setUserMsg] = useState('');
@@ -398,23 +306,23 @@ export default function App() {
     setIsTyping(true);
 
     setTimeout(() => {
-      let reply = "Trong phạm vi các nguồn được chọn (Giáo trình 2019 và Hồ Chí Minh Toàn tập T4), độc lập dân tộc có ý nghĩa đầy đủ khi được đặt trong mối liên hệ với tự do, hạnh phúc và đời sống nhân dân. Bạn có muốn đi sâu vào văn bản trích dẫn cụ thể hay cách phân tích hai phương diện không?";
+      let reply = "Trong phạm vi nội dung thuyết trình, độc lập tạo điều kiện chính trị để nhân dân tự quyết; tự do thể hiện nền độc lập trong quyền làm chủ; hạnh phúc đưa thành quả ấy về đời sống cụ thể của con người. Bạn có thể hỏi thêm về ba tầng phân tích, nguồn trích dẫn hoặc các dẫn chứng thực tiễn.";
 
       const lowerText = text.toLowerCase();
-      if (lowerText.includes('luận đề') || lowerText.includes('trung tâm') || lowerText.includes('central argument')) {
-        reply = "Luận đề trung tâm: 'Độc lập dân tộc có ý nghĩa đầy đủ khi được đặt trong mối liên hệ với tự do, hạnh phúc và đời sống nhân dân'. Nhóm khẳng định có quan hệ nội dung (ba giá trị không tách rời); không khẳng định quan hệ nhân quả tự động; và mỗi đường nối phải kiểm chứng được từ nguồn văn bản gốc.";
-      } else if (lowerText.includes('tr.64') || lowerText.includes('1945') || lowerText.includes('nghĩa lý gì')) {
-        reply = "Văn bản 1945: Trích 'Thư gửi Ủy ban nhân dân các kỳ, tỉnh, huyện và làng' ngày 17-10-1945 (Tập 4, tr.64): '...nếu nước độc lập mà dân không hưởng hạnh phúc tự do, thì độc lập cũng chẳng có nghĩa lý gì.' Trích đoạn này được dùng để chứng minh độc lập không thể bị đọc như chủ quyền hình thức tách khỏi người dân; câu hỏi yêu cầu làm rõ ý nghĩa của độc lập trong đời sống.";
-      } else if (lowerText.includes('tr.175') || lowerText.includes('ăn') || lowerText.includes('mặc') || lowerText.includes('ở') || lowerText.includes('học hành') || lowerText.includes('1946')) {
-        reply = "Văn bản 1946: Diễn văn ngày 10-01-1946 (Tập 4, tr.175): 'Làm cho dân có ăn. Làm cho dân có mặc. Làm cho dân có chỗ ở. Làm cho dân có học hành.' Từ giá trị chính trị, văn bản chỉ ra hướng đi vào đời sống thiết thực. Dấu * trên từ Hạnh phúc nhằm nhấn mạnh đây là một phương diện đời sống cụ thể, không phải toàn bộ định nghĩa duy nhất của hạnh phúc.";
-      } else if (lowerText.includes('tr.43') || lowerText.includes('giáo trình') || lowerText.includes('2019')) {
-        reply = "Giáo trình Tư tưởng Hồ Chí Minh 2019 (Bộ GD&ĐT), Chương III, tr.41-44: Xác định độc lập là quyền thiêng liêng, bất khả xâm phạm và phải là nền độc lập thật sự, hoàn toàn và triệt để. Tại trang 43, tiêu đề khung luận điểm là: 'Độc lập dân tộc phải gắn liền với tự do, hạnh phúc của nhân dân' — đây là tiêu đề luận điểm của Giáo trình, không phải câu trích nguyên văn.";
-      } else if (lowerText.includes('phương diện') || lowerText.includes('phương diện a') || lowerText.includes('phương diện b') || lowerText.includes('mâu thuẫn')) {
-        reply = "Phân tích hai phương diện để tránh mâu thuẫn nội bộ: Phương diện A là Độc lập như điều kiện chính trị (chủ quyền, quyền tự quyết, nền độc lập của dân tộc) — đây là nền tảng tối thượng cần xác lập và bảo vệ. Phương diện B là Độc lập như ý nghĩa trong đời sống (dân có tự do, hạnh phúc, ăn mặc ở học hành). Cầu nối: B không phủ định A; B giúp giải thích ý nghĩa chiều sâu của A đối với nhân dân.";
-      } else if (lowerText.includes('nhân dân') || lowerText.includes('tham chiếu')) {
-        reply = "Nhân dân nằm ở vị trí trung tâm vì nhân dân là trung tâm tham chiếu của bản đồ, không phải giá trị thứ tư bổ sung vào khẩu hiệu. Bản đồ đặt nhân dân ở giữa để hỏi: Độc lập cho ai? Tự do cho ai? Hạnh phúc cho ai? Mọi giá trị đều hướng tới và lấy đời sống nhân dân làm thước đo thực chất.";
-      } else if (lowerText.includes('a80') || lowerText.includes('mưa đỏ') || lowerText.includes('concert') || lowerText.includes('thực tiễn')) {
-        reply = "Đọc dẫn chứng có kiểm soát (Rubric 1.2): Các sự kiện A80 (02/09/2025), Concert quốc gia (01/09/2025) và Mưa đỏ (>552 tỷ, 07/09/2025) minh chứng biểu tượng độc lập có không gian tiếp nhận công cộng thời bình. Nhóm không gọi đây là khảo sát đại diện, không nói toàn bộ người dân đều đạt hạnh phúc viên mãn, và không dùng doanh thu đo chất lượng tư tưởng. Thực tiễn làm bật câu hỏi — lý luận mới trả lời câu hỏi.";
+      if (lowerText.includes('luận điểm') || lowerText.includes('trung tâm') || lowerText.includes('ba giá trị')) {
+        reply = "Luận điểm xuyên suốt: độc lập dân tộc tạo điều kiện chính trị để nhân dân tự quyết; tự do thể hiện nền độc lập trong quyền làm chủ; hạnh phúc là mục tiêu ở đời sống con người. Giá trị của nền độc lập được xem xét qua khả năng bảo đảm tự do và cải thiện đời sống của nhân dân.";
+      } else if (lowerText.includes('tr.64') || lowerText.includes('nghĩa lý gì')) {
+        reply = "Hồ Chí Minh viết: ‘Nước độc lập mà dân không hưởng hạnh phúc tự do, thì độc lập cũng chẳng có nghĩa lý gì.’ Câu nói đặt yêu cầu làm cho thành quả độc lập trở thành quyền lợi thực tế của nhân dân, nhưng không phủ nhận vai trò nền tảng của chủ quyền quốc gia.";
+      } else if (lowerText.includes('tr.175') || lowerText.includes('tr.187') || lowerText.includes('ăn') || lowerText.includes('mặc') || lowerText.includes('học hành')) {
+        reply = "Hạnh phúc được liên hệ với các nhu cầu thiết thực như ăn, mặc, ở, học hành, cùng mức sống, việc làm, sức khỏe, khả năng tham gia và phát triển. Đây là những phương diện cụ thể, không phải một định nghĩa duy nhất hay một chỉ số đơn lẻ.";
+      } else if (lowerText.includes('ba tầng') || lowerText.includes('tầng chính trị') || lowerText.includes('tầng xã hội') || lowerText.includes('tầng con người')) {
+        reply = "Ba tầng phân tích gồm: chính trị — độc lập, quyền tự quyết và chủ quyền; xã hội — tự do, dân chủ và quyền làm chủ; con người — hạnh phúc, đời sống và phát triển. Ba tầng liên hệ với nhau nhưng không phải một chuỗi nhân quả tự động.";
+      } else if (lowerText.includes('nhân dân') || lowerText.includes('đảng')) {
+        reply = "Nhân dân vừa là chủ thể của sự nghiệp cách mạng, vừa là người mà thành quả cách mạng phải phục vụ. Theo nội dung Chương III, quá trình xây dựng chủ nghĩa xã hội gắn với sự tham gia, quyền làm chủ của nhân dân và sự lãnh đạo của Đảng Cộng sản Việt Nam.";
+      } else if (lowerText.includes('a80') || lowerText.includes('tổ quốc trong tim') || lowerText.includes('concert') || lowerText.includes('thu nhập')) {
+        reply = "A80 minh họa ký ức lịch sử và ý thức quốc gia về độc lập. Chương trình ‘Tổ quốc trong tim’ minh họa đời sống văn hóa và sự tham gia của công chúng. Thu nhập bình quân của lao động là một chỉ báo vật chất, không phải thu nhập của toàn dân hay chỉ số hạnh phúc; các dẫn chứng này không thể thay thế phân tích lý luận.";
+      } else if (lowerText.includes('thực tiễn') || lowerText.includes('kiểm chứng') || lowerText.includes('đúng sai')) {
+        reply = "Thực tiễn làm bật câu hỏi lý luận, nhưng không tự mình trả lời trọn vẹn câu hỏi về tự do hay hạnh phúc. Cần phân biệt dữ kiện, diễn giải và giới hạn; không suy ra kết luận toàn xã hội từ một sự kiện văn hóa hoặc một chỉ số kinh tế.";
       }
 
       setChatMessages(prev => [...prev, { sender: 'bot', text: reply }]);
@@ -499,7 +407,9 @@ export default function App() {
                 WebkitMaskImage: 'radial-gradient(ellipse at center, rgba(0,0,0,1) 62%, rgba(0,0,0,0.7) 82%, transparent 100%)'
               }}
             >
-              <VietnamFlag3D />
+              <Suspense fallback={<div className="h-full w-full" aria-label="Đang tải mô phỏng cờ 3D" />}>
+                <VietnamFlag3D />
+              </Suspense>
             </div>
 
             {/* Flag Caption */}
@@ -547,20 +457,20 @@ export default function App() {
           <div className="max-w-xl mx-auto bg-black/30 border border-white/15 rounded-2xl p-5 text-left space-y-2 backdrop-blur-md shadow-xl">
             <p className="text-xs text-amber-300 font-semibold uppercase tracking-wide">Câu hỏi trung tâm của bài nghiên cứu</p>
             <p className="text-base sm:text-lg text-white font-medium leading-snug">
-              “Ba giá trị này liên hệ với nhau thế nào trong tư tưởng Hồ Chí Minh?”
+              “Ba giá trị độc lập, tự do và hạnh phúc liên hệ với nhau thế nào trong tư tưởng Hồ Chí Minh?”
             </p>
             <p className="text-xs text-red-200/80">
-              * Bản đồ xác lập quan hệ nội dung, không phải chuỗi nhân quả tự động.
+              * Giá trị của nền độc lập được xem xét qua khả năng bảo đảm tự do và cải thiện đời sống của nhân dân.
             </p>
           </div>
 
           {/* Foundational Quote */}
           <div className="max-w-2xl mx-auto pt-1">
             <blockquote className="font-editorial text-lg sm:text-xl text-red-100 italic leading-relaxed">
-              “...nếu nước độc lập mà dân không hưởng hạnh phúc tự do, thì độc lập cũng chẳng có nghĩa lý gì.”
+              “Không có gì quý hơn độc lập, tự do.”
             </blockquote>
             <p className="text-xs text-amber-300/90 mt-2 font-medium">
-              — Hồ Chí Minh Toàn tập, Tập 4, tr.64 (Thư ngày 17-10-1945)
+              — Hồ Chí Minh, Toàn tập, Tập 15, tr.131; Giáo trình Tư tưởng Hồ Chí Minh, 2019, tr.42
             </p>
           </div>
 
@@ -774,14 +684,14 @@ export default function App() {
             ))}
           </div>
 
-          {/* Trích dẫn Giáo trình 2019 tr.43 - Khung luận điểm nền tảng (Nền Đỏ theo yêu cầu) */}
+          {/* Trích dẫn và khung luận điểm từ Chương III */}
           <div className="bg-gradient-to-r from-red-900 via-red-950 to-red-900 border-2 border-red-700/60 text-white rounded-2xl p-6 sm:p-8 space-y-3 shadow-xl relative overflow-hidden">
             <div className="absolute -right-6 -bottom-6 text-white/5 text-9xl font-black select-none pointer-events-none">★</div>
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-red-800/80 border border-amber-400/40 text-xs font-bold text-amber-300 uppercase tracking-wide">
               <span>★</span> Khung luận điểm nền tảng
             </div>
             <blockquote className="font-editorial text-xl sm:text-2xl italic text-amber-100 font-medium leading-relaxed drop-shadow-sm">
-              “Độc lập dân tộc phải gắn liền với tự do, hạnh phúc của nhân dân.”
+              “Độc lập dân tộc phải gắn liền tự do, hạnh phúc của nhân dân.”
             </blockquote>
             <p className="text-xs text-red-200/90 font-medium">
               — Giáo trình Tư tưởng Hồ Chí Minh (Bộ GD&ĐT, 2019), Chương III, tr.43
@@ -836,8 +746,10 @@ export default function App() {
             ))}
           </div>
 
-          {/* Sơ đồ Meaning Map trực quan */}
-          <div className="bg-white border border-slate-200 rounded-3xl p-6 sm:p-10 shadow-sm space-y-8">
+          <MeaningMap />
+
+          {/* Sơ đồ cũ được giữ tạm để bảo toàn bố cục lịch sử, nhưng không hiển thị */}
+          <div className="hidden bg-white border border-slate-200 rounded-3xl p-6 sm:p-10 shadow-sm space-y-8">
             <div className="text-center space-y-1">
               <h3 className="text-lg font-bold text-slate-900">Sơ đồ Lập luận: Nhân Dân là Trung Tâm Tham Chiếu</h3>
               <p className="text-xs text-slate-500">Các đường nối thể hiện mối quan hệ gắn bó hữu cơ, không phải quan hệ nhân quả một chiều</p>
@@ -1163,10 +1075,10 @@ export default function App() {
               Peer Challenge C-C-C
             </span>
             <h2 className="text-2xl sm:text-3xl font-bold text-slate-900 tracking-tight">
-              Thử Thách Bẻ Gãy Bản Đồ Bằng 6 Câu Hỏi
+              Kiểm Tra Nội Dung Bằng 5 Câu Hỏi Và 1 Khảo Sát
             </h2>
             <p className="text-slate-600 text-sm sm:text-base leading-relaxed">
-              Kiểm tra tính nhất quán của Meaning Map qua 3 khía cạnh: Bối cảnh (Context) — Khung lý luận (Concept) — Vấn đề phản biện (Conflict).
+              Ôn lại ba tầng phân tích: độc lập ở tầng chính trị, tự do ở tầng xã hội và hạnh phúc ở tầng con người.
             </p>
           </div>
 
@@ -1242,16 +1154,16 @@ export default function App() {
               <div className="space-y-1">
                 <span className="text-[11px] font-bold text-amber-700 uppercase">Khảo sát ý kiến tương tác</span>
                 <h3 className="text-sm sm:text-base font-bold text-slate-900 leading-snug">
-                  Câu 6. Trong bản đồ Meaning Map, bạn thấy đường nối nào đòi hỏi chứng minh bằng nguồn và mang nhiều thử thách học thuật nhất?
+                  Câu 6. Dẫn chứng thực tiễn nào cần được đọc thận trọng nhất để không suy diễn quá mức về hạnh phúc?
                 </h3>
               </div>
 
               {!pollVote ? (
                 <div className="space-y-2">
                   {[
-                    { key: 'A', text: 'Độc lập ↔ Tự do (Từ điều kiện chính trị đến giá trị con người)' },
-                    { key: 'B', text: 'Độc lập ↔ Hạnh phúc* (Từ chủ quyền đến điều kiện sống cụ thể: ăn, mặc, ở, học)' },
-                    { key: 'C', text: 'Tự do ↔ Hạnh phúc* (Từ quyền tự do đến trải nghiệm đời sống của nhân dân)' }
+                    { key: 'A', text: 'Sự kiện A80 và ký ức về độc lập' },
+                    { key: 'B', text: 'Chương trình Tổ quốc trong tim và niềm tự hào văn hóa' },
+                    { key: 'C', text: 'Thu nhập bình quân của lao động và điều kiện sống' }
                   ].map((opt) => (
                     <div
                       key={opt.key}
@@ -1277,9 +1189,9 @@ export default function App() {
                     const totalVotes = pollResults.A + pollResults.B + pollResults.C;
                     const getPercent = (val) => Math.round((val / totalVotes) * 100);
                     return [
-                      { key: 'A', text: 'Độc lập ↔ Tự do', count: pollResults.A },
-                      { key: 'B', text: 'Độc lập ↔ Hạnh phúc*', count: pollResults.B },
-                      { key: 'C', text: 'Tự do ↔ Hạnh phúc*', count: pollResults.C }
+                      { key: 'A', text: 'A80 và ký ức độc lập', count: pollResults.A },
+                      { key: 'B', text: 'Tổ quốc trong tim', count: pollResults.B },
+                      { key: 'C', text: 'Thu nhập và điều kiện sống', count: pollResults.C }
                     ].map((opt) => {
                       const pct = getPercent(opt.count);
                       return (
@@ -1296,7 +1208,7 @@ export default function App() {
                     });
                   })()}
                   <p className="text-xs text-slate-500 italic pt-1">
-                    Cảm ơn bạn đã tham gia. Nhóm luôn sẵn sàng bảo vệ đường nối bạn vừa chọn bằng các trích dẫn chính xác trong Giáo trình 2019 và Hồ Chí Minh Toàn tập (Tập 4).
+                    Cảm ơn bạn đã tham gia. Mỗi dẫn chứng chỉ minh họa một phương diện và cần được đọc cùng khái niệm, phạm vi dữ liệu và nguồn lý luận tương ứng.
                   </p>
                 </div>
               )}
@@ -1358,7 +1270,7 @@ export default function App() {
                   ))}
                 </div>
               </div>
-              <p className="text-[11px] text-slate-400 pt-4">Nguồn dữ liệu: Giáo trình 2019 & Hồ Chí Minh Toàn tập T4</p>
+              <p className="text-[11px] text-slate-400 pt-4">Nguồn dữ liệu: Giáo trình 2019, Hồ Chí Minh Toàn tập và các nguồn thực tiễn trong tài liệu</p>
             </div>
 
             {/* Cột phải: Khung hội thoại */}
@@ -1404,7 +1316,7 @@ export default function App() {
                   type="text"
                   value={userMsg}
                   onChange={(e) => setUserMsg(e.target.value)}
-                  placeholder="Đặt câu hỏi về T4 tr.64, tr.175, Phương diện A/B..."
+                  placeholder="Hỏi về ba tầng phân tích, T4 tr.64, A80, Tổ quốc trong tim..."
                   disabled={isTyping}
                   className="flex-1 px-3.5 py-2 text-xs sm:text-sm rounded-xl border border-slate-200 focus:outline-none focus:border-red-800"
                 />
@@ -1430,28 +1342,19 @@ export default function App() {
           </h3>
           <ul className="space-y-2 text-xs sm:text-sm text-slate-600 leading-relaxed list-disc pl-5">
             <li>
-              Giáo trình Tư tưởng Hồ Chí Minh — Bộ Giáo dục và Đào tạo (NXB Chính trị quốc gia Sự thật, 2019), Chương III, tr.41–44.
+              Bộ Giáo dục và Đào tạo, Giáo trình Tư tưởng Hồ Chí Minh dành cho bậc đại học không chuyên ngành Lý luận chính trị, Hà Nội, 2019, Chương III, tr.41–68.
             </li>
             <li>
-              Hồ Chí Minh Toàn tập, Tập 4 — <em>“Thư gửi Ủy ban nhân dân các kỳ, tỉnh, huyện và làng”</em> (17-10-1945), tr.64.
+              Hồ Chí Minh, Toàn tập, Nxb Chính trị quốc gia, Hà Nội, 2011: Tập 4, tr.64, 175, 187; Tập 7, tr.434; Tập 13, tr.10; Tập 15, tr.131, 391.
             </li>
             <li>
-              Hồ Chí Minh Toàn tập, Tập 4 — Diễn văn ngày 10-01-1946 về điều kiện ăn, mặc, ở, học hành của dân, tr.175.
+              Báo Điện tử Chính phủ — “Chùm ảnh Cận cảnh khối diễu binh hùng hậu của lực lượng Công an tại A80”, 02/09/2025.
             </li>
             <li>
-              Hồ Chí Minh Toàn tập, Tập 4 — <em>“Thư gửi đồng bào toàn quốc”</em> (1946), tr.187.
+              Báo Nhân Dân — “Thư cảm ơn của Báo Nhân Dân về thành công của chương trình Tổ quốc trong tim”, 14/08/2025.
             </li>
             <li>
-              VTV — Phóng sự <em>“Hàng vạn người dân hạnh phúc, xúc động xem diễu binh, diễu hành”</em> (A80, 02/09/2025).
-            </li>
-            <li>
-              VTV — Truyền hình trực tiếp Concert quốc gia <em>“80 năm Hành trình Độc lập – Tự do – Hạnh phúc”</em> (01/09/2025).
-            </li>
-            <li>
-              VietnamPlus / Thông tấn xã Việt Nam (TTXVN) — Doanh thu phim điện ảnh <em>“Mưa đỏ”</em> vượt 552 tỷ đồng (07/09/2025).
-            </li>
-            <li>
-              Quy chế học thuật: Toàn bộ nguồn và trích dẫn được lưu trữ và kiểm chứng trong Source Log của nhóm HCM / SPST / C3-02.
+              Cục Thống kê — “Thông cáo báo chí tình hình kinh tế – xã hội quý IV và năm 2025”, công bố tháng 01/2026.
             </li>
           </ul>
         </section>
