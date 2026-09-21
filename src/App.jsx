@@ -94,7 +94,7 @@ const chaptersData = {
   digital: {
     chapterNum: "Phần 4",
     title: "Liên hệ thực tiễn và giới hạn diễn giải",
-    desc: "Thực tiễn làm bật câu hỏi lý luận, nhưng không tự mình trả lời trọn vẹn câu hỏi về tự do hay hạnh phúc.",
+    desc: "Thực tiễn làm bật câu hỏi lý luận.",
     process: [
       { phase: "Sự kiện 1", title: "A80 và ký ức về độc lập", subtitle: "Ý thức quốc gia và lịch sử giành độc lập", date: "02/09/2025 • Báo Điện tử Chính phủ", reality: "Lễ diễu binh, diễu hành kỷ niệm 80 năm Cách mạng Tháng Tám thành công và Quốc khánh 2/9 tại Quảng trường Ba Đình gợi lại lịch sử giành độc lập và sự ra đời của nhà nước Việt Nam độc lập.", boundary: "A80 minh họa ký ức lịch sử và ý thức quốc gia về độc lập; không thể dùng riêng sự kiện này để kết luận về hạnh phúc của toàn bộ nhân dân." },
       { phase: "Sự kiện 2", title: "Tổ quốc trong tim", subtitle: "Độc lập trong đời sống văn hóa", date: "10/08/2025 • Báo Nhân Dân", reality: "Chương trình nghệ thuật chính luận tại Sân vận động Quốc gia Mỹ Đình thu hút hơn 50.000 khán giả trực tiếp và hàng triệu người theo dõi qua truyền thông.", boundary: "Chương trình cho thấy ký ức lịch sử được truyền tải qua không gian văn hóa và sự tham gia của công chúng; niềm tự hào tại concert không phải bằng chứng trực tiếp rằng mục tiêu hạnh phúc đã được thực hiện." },
