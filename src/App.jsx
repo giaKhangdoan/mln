@@ -33,7 +33,8 @@ const chaptersData = {
         date: "Bối cảnh kháng chiến chống Mỹ",
         quote: "“Không có gì quý hơn độc lập, tự do.”",
         context: "Độc lập và quyền tự quyết là nhiệm vụ trước tiên của dân tộc bị đặt dưới ách thống trị thực dân.",
-        analysis: "Ở tầng chính trị, độc lập bao hàm chủ quyền, quyền tự quyết, thống nhất và toàn vẹn lãnh thổ; đó phải là nền độc lập thật sự, hoàn toàn."
+        analysis: "Ở tầng chính trị, độc lập bao hàm chủ quyền, quyền tự quyết, thống nhất và toàn vẹn lãnh thổ; đó phải là nền độc lập thật sự, hoàn toàn.",
+        inference: "Độc lập tạo cơ sở để nhân dân trở thành chủ thể của đất nước và tự tổ chức đời sống chính trị, kinh tế, văn hóa."
       },
       {
         school: "Độc lập gắn với tự do và hạnh phúc của nhân dân",
@@ -41,34 +42,34 @@ const chaptersData = {
         date: "Sau Cách mạng Tháng Tám",
         quote: "“Nước độc lập mà dân không hưởng hạnh phúc tự do, thì độc lập cũng chẳng có nghĩa lý gì.”",
         context: "Câu nói đặt nhiệm vụ làm cho thành quả độc lập trở thành quyền lợi thực tế của dân bên cạnh việc giữ vững nền độc lập.",
-        analysis: "Không có độc lập thì thiếu cơ sở chính trị để nhân dân làm chủ; có độc lập rồi vẫn phải tiếp tục tạo điều kiện để người dân được tự do, sống ấm no và phát triển."
+        analysis: "Không có độc lập thì thiếu cơ sở chính trị để nhân dân làm chủ; có độc lập rồi vẫn phải tiếp tục tạo điều kiện để người dân được tự do, sống ấm no và phát triển.",
+        inference: "Độc lập là tiền đề cần thiết; quyền làm chủ và đời sống của nhân dân là nội dung mà nền độc lập ấy phải phục vụ."
       },
       {
-        school: "Ba tầng mục tiêu trong một lập luận thống nhất",
-        sourceTag: "Hồ Chí Minh Toàn tập • Tập 7, tr.434; Tập 13, tr.10; Giáo trình 2019, tr.56",
-        date: "Độc lập – Tự do – Hạnh phúc",
-        quote: "“Chế độ ta là chế độ dân chủ. Tức là nhân dân làm chủ.”",
-        context: "Độc lập ở tầng chính trị tạo khả năng tự quyết; tự do ở tầng xã hội được hiện thực hóa trong quyền làm chủ; hạnh phúc ở tầng con người là mục tiêu mà hai tầng trước phải hướng tới.",
-        analysis: "“Nước ta là nước dân chủ, địa vị cao nhất là dân, vì dân là chủ.” Tự do không đồng nhất với việc cá nhân tùy ý làm mọi việc mà gắn với dân chủ, quyền và lợi ích của nhân dân."
+        school: "Quan hệ với chủ nghĩa xã hội trong Chương III",
+        sourceTag: "Giáo trình 2019, tr.51–58",
+        date: "Mục 1.5",
+        quote: "Độc lập là tiền đề; tự do là nội dung xã hội của nền độc lập; hạnh phúc là thước đo ở đời sống con người.",
+        context: "Chương III chuyển từ cách mạng giải phóng dân tộc sang tư tưởng về chủ nghĩa xã hội và xây dựng chủ nghĩa xã hội ở Việt Nam. --> Cách chuyển này làm rõ rằng giành chính quyền và giữ chủ quyền mới mở ra khả năng tiếp tục xây dựng một xã hội nhằm nâng cao đời sống nhân dân.",
+        analysis: "Giành chính quyền và giữ chủ quyền mở ra khả năng tiếp tục xây dựng một xã hội nhằm nâng cao đời sống nhân dân; quá trình này gắn với dân chủ, việc làm, đời sống ấm no, tự do và hạnh phúc."
       },
       {
-        school: "Nhân dân và quan hệ với chủ nghĩa xã hội",
-        sourceTag: "Giáo trình 2019, tr.51–58; Hồ Chí Minh Toàn tập, Tập 15, tr.391",
-        date: "Chương III",
-        quote: "“Độc lập là tiền đề; tự do là nội dung xã hội của nền độc lập; hạnh phúc là thước đo ở đời sống con người.”",
-        context: "Giành chính quyền và giữ chủ quyền mở ra khả năng tiếp tục xây dựng một xã hội nhằm nâng cao đời sống nhân dân.",
-        analysis: "Nhân dân vừa là chủ thể của sự nghiệp cách mạng, vừa là người mà thành quả cách mạng phải phục vụ; quá trình này gắn với xây dựng chủ nghĩa xã hội và vai trò lãnh đạo của Đảng."
+        school: "Nhân dân là chủ thể và vai trò lãnh đạo của Đảng",
+        sourceTag: "Giáo trình 2019, tr.55–58; Hồ Chí Minh Toàn tập, Tập 15, tr.391",
+        date: "Mục 1.6",
+        quote: "Nhân dân vừa là chủ thể của sự nghiệp cách mạng, vừa là người mà thành quả cách mạng phải phục vụ.",
+        context: "Quá trình xây dựng chủ nghĩa xã hội là công trình tập thể của nhân dân dưới sự lãnh đạo của Đảng Cộng sản.",
+        analysis: "Trong các mục tiêu chính trị, kinh tế, văn hóa và quan hệ xã hội, nhân dân giữ vị trí làm chủ, tham gia xây dựng xã hội và thụ hưởng những thành quả của công cuộc ấy."
       }
     ]
   },
   theory: {
     chapterNum: "Phần 2",
     title: "Khung khái niệm và ba tầng mục tiêu",
-    desc: "Meaning Map đọc ba giá trị theo ba tầng liên hệ: chính trị, xã hội và con người. Mỗi tầng có câu hỏi kiểm chứng riêng, nhưng không tách rời khỏi các tầng còn lại.",
     principles: [
-      { title: "01. Độc lập ở tầng chính trị", aspect: "Chủ quyền • Quyền tự quyết", desc: "Độc lập giải quyết sự lệ thuộc về chính trị, bảo đảm chủ quyền, thống nhất và toàn vẹn lãnh thổ, đồng thời tạo khả năng tự lựa chọn con đường phát triển.", source: "Giáo trình Tư tưởng Hồ Chí Minh 2019, tr.42–44; Hồ Chí Minh Toàn tập, Tập 15, tr.131" },
-      { title: "02. Tự do ở tầng xã hội", aspect: "Dân chủ • Quyền làm chủ", desc: "Tự do gắn với dân chủ, quyền và lợi ích của nhân dân, cùng các điều kiện xã hội để con người tham gia, làm chủ và phát triển.", source: "Giáo trình 2019, tr.56; Hồ Chí Minh Toàn tập, Tập 7, tr.434; Tập 13, tr.10" },
-      { title: "03. Hạnh phúc ở tầng con người", aspect: "Đời sống • Phát triển", desc: "Hạnh phúc có nội dung vật chất và tinh thần: mức sống, học hành, việc làm, sức khỏe, khả năng tham gia và phát triển. Ăn, mặc, ở, học hành là những phương diện thiết thực, không phải toàn bộ định nghĩa duy nhất.", source: "Hồ Chí Minh Toàn tập, Tập 4, tr.175 và 187; Giáo trình 2019, tr.43" }
+      { title: "01. Độc lập", aspect: "Chủ quyền • Quyền tự quyết", desc: "Độc lập giải quyết sự lệ thuộc về chính trị, bảo đảm chủ quyền, thống nhất và toàn vẹn lãnh thổ, đồng thời tạo khả năng tự lựa chọn con đường phát triển.", source: "Giáo trình Tư tưởng Hồ Chí Minh 2019, tr.42–44; Hồ Chí Minh Toàn tập, Tập 15, tr.131" },
+      { title: "02. Tự do", aspect: "Dân chủ • Quyền làm chủ", desc: "Tự do gắn với dân chủ, quyền và lợi ích của nhân dân, cùng các điều kiện xã hội để con người tham gia, làm chủ và phát triển.", source: "Giáo trình 2019, tr.56; Hồ Chí Minh Toàn tập, Tập 7, tr.434; Tập 13, tr.10" },
+      { title: "03. Hạnh phúc", aspect: "Đời sống • Phát triển", desc: "Hạnh phúc có nội dung vật chất và tinh thần: mức sống, học hành, việc làm, sức khỏe, khả năng tham gia và phát triển. Ăn, mặc, ở, học hành là những phương diện thiết thực, không phải toàn bộ định nghĩa duy nhất.", source: "Hồ Chí Minh Toàn tập, Tập 4, tr.175 và 187; Giáo trình 2019, tr.43" }
     ],
     dialecticsSteps: [
       { step: "A", name: "Tầng chính trị: Độc lập", desc: "Dân tộc có quyền tự quyết định vận mệnh của mình hay không? Độc lập là tiền đề cần thiết, nhưng không tự động làm xuất hiện mọi thành quả xã hội." },
@@ -79,7 +80,6 @@ const chaptersData = {
   practice: {
     chapterNum: "Phần 3",
     title: "Meaning Map và cách đọc có kiểm soát",
-    desc: "Bản đồ giúp chuyển bài thuyết trình thành một hệ thống câu hỏi: dân tộc có quyền tự quyết, nhân dân có làm chủ và đời sống mỗi người có được cải thiện hay không?",
     forms: [
       { step: "01 / Tầng chính trị", name: "Độc lập", desc: "Câu hỏi trung tâm: Dân tộc có quyền tự quyết định vận mệnh của mình hay không? Bằng chứng cần tập trung vào chủ quyền, độc lập thực chất, thống nhất và toàn vẹn lãnh thổ." },
       { step: "02 / Tầng xã hội", name: "Tự do", desc: "Câu hỏi trung tâm: Trong đất nước đã độc lập, nhân dân có thực sự làm chủ hay không? Phân tích dân chủ, quyền và lợi ích của nhân dân, cùng điều kiện tham gia xã hội." },
@@ -123,7 +123,7 @@ const chaptersData = {
   }
 };
 
-const quizQuestions = [
+const docxQuizQuestions = [
   {
     id: 1,
     category: "Tính khách quan",
@@ -188,6 +188,76 @@ const quizQuestions = [
     ],
     correct: "B",
     explain: "Chân lý luôn gắn với những điều kiện không gian, thời gian và hoàn cảnh lịch sử cụ thể."
+  }
+];
+
+void docxQuizQuestions;
+
+const quizQuestions = [
+  {
+    id: 1,
+    category: "Bối cảnh lịch sử",
+    question: "Câu nói “...nếu nước độc lập mà dân không hưởng hạnh phúc tự do, thì độc lập cũng chẳng có nghĩa lý gì” xuất hiện trong văn bản nào của Hồ Chí Minh?",
+    options: [
+      { key: "A", text: "Tuyên ngôn Độc lập (02-09-1945)" },
+      { key: "B", text: "Thư gửi Ủy ban nhân dân các kỳ, tỉnh, huyện và làng (17-10-1945, Tập 4, tr.64)" },
+      { key: "C", text: "Lời kêu gọi toàn quốc kháng chiến (19-12-1946)" },
+      { key: "D", text: "Diễn văn bế mạc kỳ họp thứ nhất Quốc hội khóa I (1946)" }
+    ],
+    correct: "B",
+    explain: "Trích trong Thư gửi Ủy ban nhân dân các kỳ, tỉnh, huyện và làng ngày 17-10-1945, in trong Hồ Chí Minh Toàn tập, Tập 4, tr.64."
+  },
+  {
+    id: 2,
+    category: "Khung lý luận",
+    question: "Luận điểm “Độc lập dân tộc phải gắn liền tự do, hạnh phúc của nhân dân” ở trang 43 của tài liệu tham khảo là gì?",
+    options: [
+      { key: "A", text: "Câu trích nguyên văn lời nói của Chủ tịch Hồ Chí Minh trong kháng chiến" },
+      { key: "B", text: "Tiêu đề khung luận điểm trong Giáo trình Tư tưởng Hồ Chí Minh (Bộ GD&ĐT, 2019)" },
+      { key: "C", text: "Trích đoạn lời nói đầu của Hiến pháp năm 1946" },
+      { key: "D", text: "Khẩu hiệu tuyên truyền của Mặt trận Việt Minh" }
+    ],
+    correct: "B",
+    explain: "Đây là tiêu đề khung luận điểm do ban biên soạn Giáo trình năm 2019 khái quát hóa, không phải câu trích nguyên văn của Chủ tịch Hồ Chí Minh."
+  },
+  {
+    id: 3,
+    category: "Khung lý luận",
+    question: "Trong sơ đồ Meaning Map của nhóm, tại sao “Nhân dân” được đặt ở vị trí trung tâm tham chiếu?",
+    options: [
+      { key: "A", text: "Vì nhân dân được bổ sung làm giá trị thứ tư vào khẩu hiệu" },
+      { key: "B", text: "Vì nhân dân là trung tâm tham chiếu để hỏi: Độc lập cho ai, tự do cho ai, hạnh phúc cho ai?" },
+      { key: "C", text: "Vì bố cục mỹ thuật đòi hỏi phải có 4 góc đối xứng nhau" },
+      { key: "D", text: "Vì nhân dân thay thế hoàn toàn cho khái niệm độc lập chính trị" }
+    ],
+    correct: "B",
+    explain: "Nhân dân không phải giá trị thứ tư; nhân dân là trung tâm tham chiếu để kiểm tra ý nghĩa thực chất của ba giá trị."
+  },
+  {
+    id: 4,
+    category: "Phương pháp luận",
+    question: "Khi sử dụng văn bản 1946 (Tập 4, tr.175) nói về “ăn, mặc, ở, học hành”, vì sao nhóm gắn dấu sao (*) cho khái niệm Hạnh phúc?",
+    options: [
+      { key: "A", text: "Để khẳng định 4 điều kiện này là định nghĩa đầy đủ, duy nhất của hạnh phúc" },
+      { key: "B", text: "Để nhắc nhở đây là một phương diện đời sống thực tiễn cụ thể, không phải toàn bộ định nghĩa" },
+      { key: "C", text: "Để báo hiệu rằng trích dẫn này chưa được kiểm chứng trong tài liệu gốc" },
+      { key: "D", text: "Để chỉ ra rằng khái niệm hạnh phúc không có giá trị học thuật" }
+    ],
+    correct: "B",
+    explain: "Ăn, mặc, ở, học hành là những phương diện đời sống cụ thể; dấu sao giúp tránh đồng nhất chúng với toàn bộ định nghĩa hạnh phúc."
+  },
+  {
+    id: 5,
+    category: "Vấn đề phản biện",
+    question: "Nếu một quốc gia đã có độc lập chính trị nhưng một bộ phận nhân dân chưa được bảo đảm tự do và đời sống, bản đồ lập luận trả lời thế nào?",
+    options: [
+      { key: "A", text: "Phủ nhận hoàn toàn nền độc lập chính trị của quốc gia đó" },
+      { key: "B", text: "Độc lập chính trị là nền tảng cần bảo vệ, nhưng ý nghĩa đầy đủ cần được tiếp tục hoàn thiện trong gắn kết với tự do và đời sống nhân dân" },
+      { key: "C", text: "Tuyên bố độc lập và hạnh phúc là hai phạm trù mâu thuẫn triệt tiêu lẫn nhau" },
+      { key: "D", text: "Cho rằng chỉ cần độc lập chính trị là tự động có được tự do và hạnh phúc" }
+    ],
+    correct: "B",
+    explain: "Không phủ nhận nền độc lập chính trị, nhưng cũng không đồng nhất độc lập với trạng thái hình thức khép kín; ý nghĩa đầy đủ nằm ở đời sống nhân dân."
   }
 ];
 
@@ -256,7 +326,7 @@ export default function App() {
         setScrollProgress((scrollY / totalScroll) * 100);
       }
 
-      const sections = ['intro', 'theory', 'practice', 'digital', 'flashcard', 'quiz', 'chatbot'];
+      const sections = ['intro', 'theory', 'practice', 'digital', 'flashcard', 'quiz', 'chatbot', 'sources'];
       for (const section of sections) {
         const el = document.getElementById(section);
         if (el) {
@@ -376,10 +446,6 @@ export default function App() {
               <div className="absolute inset-0 bg-gradient-to-tr from-red-950/20 via-transparent to-amber-300/10 pointer-events-none" />
             </div>
 
-            <div className="mt-2.5 text-center bg-red-950/80 px-3.5 py-1.5 rounded-full border border-amber-400/30 backdrop-blur-md shadow-md">
-              <p className="text-xs font-bold text-amber-200 tracking-wider uppercase drop-shadow-sm">Chủ tịch Hồ Chí Minh</p>
-              <p className="text-[10px] text-red-200/90 font-light drop-shadow-sm">Chân dung lịch sử (1946) • Rõ nét ngũ quan</p>
-            </div>
           </div>
         </div>
 
@@ -412,12 +478,6 @@ export default function App() {
               </Suspense>
             </div>
 
-            {/* Flag Caption */}
-            <div className="mt-1 text-center">
-              <span className="inline-block px-3 py-1 rounded-full bg-red-950/85 border border-amber-400/40 text-[11px] font-medium text-amber-200/90 shadow-md backdrop-blur-md">
-                Quốc kỳ Việt Nam • Mô phỏng 3D uốn lượn
-              </span>
-            </div>
           </div>
         </div>
 
@@ -450,17 +510,6 @@ export default function App() {
             </h1>
             <p className="text-base sm:text-lg md:text-xl text-red-100/95 font-light max-w-2xl mx-auto leading-relaxed">
               Bản đồ lập luận về ý nghĩa của độc lập trong mối liên hệ với tự do, hạnh phúc và đời sống nhân dân trong tư tưởng Hồ Chí Minh
-            </p>
-          </div>
-
-          {/* Central Research Question */}
-          <div className="max-w-xl mx-auto bg-black/30 border border-white/15 rounded-2xl p-5 text-left space-y-2 backdrop-blur-md shadow-xl">
-            <p className="text-xs text-amber-300 font-semibold uppercase tracking-wide">Câu hỏi trung tâm của bài nghiên cứu</p>
-            <p className="text-base sm:text-lg text-white font-medium leading-snug">
-              “Ba giá trị độc lập, tự do và hạnh phúc liên hệ với nhau thế nào trong tư tưởng Hồ Chí Minh?”
-            </p>
-            <p className="text-xs text-red-200/80">
-              * Giá trị của nền độc lập được xem xét qua khả năng bảo đảm tự do và cải thiện đời sống của nhân dân.
             </p>
           </div>
 
@@ -525,11 +574,12 @@ export default function App() {
               {[
                 { id: 'intro', label: 'Lộ trình' },
                 { id: 'theory', label: 'Khung lý luận' },
-                { id: 'practice', label: 'Bản đồ ý nghĩa' },
+                { id: 'practice', label: 'Meaning Map' },
                 { id: 'digital', label: 'Dẫn chứng thực tiễn' },
                 { id: 'flashcard', label: 'Khái niệm' },
-                { id: 'quiz', label: 'Phản biện C-C-C' },
+                { id: 'quiz', label: 'Trắc nghiệm' },
                 { id: 'chatbot', label: 'Trợ lý AI' },
+                { id: 'sources', label: 'Tài liệu tham khảo' },
               ].map((tab) => {
                 const isActive = activeSection === tab.id;
                 return (
@@ -552,7 +602,6 @@ export default function App() {
         </div>
       </nav>
 
-      {/* ================= MAIN CONTENT ================= */}
       <main className="max-w-5xl mx-auto px-4 sm:px-6 py-16 space-y-28 w-full">
 
         {/* ================= PHẦN 1: LỘ TRÌNH LẬP LUẬN ================= */}
@@ -568,17 +617,6 @@ export default function App() {
             <p className="text-slate-600 text-sm sm:text-base leading-relaxed">
               {chaptersData.intro.desc}
             </p>
-          </div>
-
-          {/* 3 Nguyên tắc nền tảng */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
-            {chaptersData.intro.traps.map((item, idx) => (
-              <div key={idx} className="bg-white border border-slate-200/80 rounded-2xl p-5 shadow-sm space-y-2 card-subtle">
-                <span className="text-xs font-bold text-red-800 uppercase">Nguyên tắc {idx + 1}</span>
-                <h3 className="text-base font-bold text-slate-900 leading-snug">{item.title}</h3>
-                <p className="text-slate-600 text-sm leading-relaxed">{item.desc}</p>
-              </div>
-            ))}
           </div>
 
           {/* 4 Bước phát triển lộ trình */}
@@ -632,6 +670,12 @@ export default function App() {
                           <strong className="text-red-900">Phân tích học thuật của nhóm: </strong>
                           {item.analysis}
                         </div>
+                        {item.inference && (
+                          <div className="flex items-start gap-2 text-red-900 font-semibold">
+                            <span aria-hidden="true" className="text-red-800">→</span>
+                            <span>{item.inference}</span>
+                          </div>
+                        )}
                       </div>
                     )}
                   </div>
@@ -649,6 +693,17 @@ export default function App() {
             <p className="text-xs text-slate-500">
               — Phân tích của nhóm HCM / SPST / C3-02, dựa trên Giáo trình 2019, tr.43 và Hồ Chí Minh Toàn tập, Tập 4, tr.64.
             </p>
+          </div>
+
+          {/* 3 Nguyên tắc nền tảng - đặt ở cuối phần lý luận và phân tích */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+            {chaptersData.intro.traps.map((item, idx) => (
+              <div key={idx} className="bg-white border border-slate-200/80 rounded-2xl p-5 shadow-sm space-y-2 card-subtle">
+                <span className="text-xs font-bold text-red-800 uppercase">Nguyên tắc {idx + 1}</span>
+                <h3 className="text-base font-bold text-slate-900 leading-snug">{item.title}</h3>
+                <p className="text-slate-600 text-sm leading-relaxed">{item.desc}</p>
+              </div>
+            ))}
           </div>
 
         </section>
@@ -701,8 +756,8 @@ export default function App() {
           {/* Phân biệt Phương diện A & B */}
           <div className="space-y-4">
             <div className="border-b border-slate-200 pb-3">
-              <h3 className="text-lg font-bold text-slate-900">Tách hai phương diện để tránh mâu thuẫn nội bộ</h3>
-              <p className="text-slate-500 text-xs">Phân tích học thuật giúp làm rõ giữa điều kiện chính trị và ý nghĩa trải nghiệm trong đời sống</p>
+              <h3 className="text-lg font-bold text-slate-900">Ba Tầng Mục Tiêu</h3>
+              <p className="text-slate-500 text-xs">Phân tích làm rõ giữa điều kiện chính trị và ý nghĩa trải nghiệm trong đời sống</p>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
@@ -733,17 +788,6 @@ export default function App() {
             <p className="text-slate-600 text-sm sm:text-base leading-relaxed">
               {chaptersData.practice.desc}
             </p>
-          </div>
-
-          {/* 3 Khâu trải nghiệm của sản phẩm */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
-            {chaptersData.practice.forms.map((item, idx) => (
-              <div key={idx} className="bg-white border border-slate-200/80 rounded-2xl p-5 shadow-sm space-y-2 card-subtle">
-                <span className="text-xs font-bold text-red-800 uppercase">{item.step}</span>
-                <h3 className="text-base font-bold text-slate-900 leading-snug">{item.name}</h3>
-                <p className="text-slate-600 text-sm leading-relaxed">{item.desc}</p>
-              </div>
-            ))}
           </div>
 
           <MeaningMap />
@@ -953,12 +997,12 @@ export default function App() {
                         <h4 className="text-sm font-bold text-slate-900 leading-snug">{item.title}</h4>
 
                         <div className="space-y-1 bg-slate-50 p-3 rounded-xl border border-slate-200/70">
-                          <p className="text-[11px] font-bold text-slate-500 uppercase tracking-wide">Dữ kiện (Fact):</p>
+                          <p className="text-[11px] font-bold text-slate-500 uppercase tracking-wide">Dữ kiện:</p>
                           <p className="text-xs text-slate-700 leading-relaxed font-normal">{item.reality}</p>
                         </div>
 
                         <div className="space-y-1 bg-amber-50/80 p-3 rounded-xl border border-amber-200/70">
-                          <p className="text-[11px] font-bold text-amber-900 uppercase tracking-wide">Giới hạn học thuật (Boundary):</p>
+                          <p className="text-[11px] font-bold text-amber-900 uppercase tracking-wide">Ý nghĩa:</p>
                           <p className="text-xs text-amber-950/90 leading-relaxed font-normal">{item.boundary}</p>
                         </div>
                       </div>
@@ -980,8 +1024,8 @@ export default function App() {
           {/* Bảng đối chiếu chuẩn mực đọc dẫn chứng */}
           <div className="bg-white border border-slate-200/80 rounded-2xl p-6 shadow-sm space-y-4 overflow-hidden">
             <div>
-              <h3 className="text-base font-bold text-slate-900">Bảng Đối Chiếu: Cách Đọc Có Kiểm Soát vs. Suy Diễn Quá Mức</h3>
-              <p className="text-xs text-slate-500">Nguyên tắc phương pháp luận giúp bài làm đạt chuẩn Rubric 1.2</p>
+              <h3 className="text-base font-bold text-slate-900">Cách Đọc Có Kiểm Soát vs Suy Diễn Quá Mức</h3>
+              <p className="text-xs text-slate-500">Nguyên tắc phương pháp luận</p>
             </div>
 
             <div className="overflow-x-auto">
