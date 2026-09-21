@@ -1,4 +1,5 @@
 import { useMemo, useState } from 'react';
+import { BookOpen, Link2, RotateCcw } from 'lucide-react';
 import { meaningMapEdges, meaningMapNodes } from '../data/meaningMap';
 
 const filters = [
@@ -52,18 +53,29 @@ export default function MeaningMap() {
   };
 
   return (
-    <div className="bg-white border border-slate-200 rounded-3xl p-6 sm:p-10 shadow-sm space-y-7">
-      <div className="text-center space-y-1">
-        <h3 className="text-lg font-bold text-slate-900">Meaning Map tương tác</h3>
-        <p className="text-xs text-slate-500">Chọn node hoặc đường nối để xem lập luận, nguồn bằng chứng và giới hạn diễn giải.</p>
+    <div className="bg-white border border-slate-200 rounded-3xl p-5 sm:p-8 shadow-sm space-y-6">
+      <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 border-b border-slate-100 pb-5">
+        <div className="space-y-2">
+          <div className="inline-flex items-center gap-2 text-[11px] font-bold uppercase tracking-[0.14em] text-red-800">
+            <BookOpen className="w-3.5 h-3.5" /> Cách đọc bản đồ
+          </div>
+          <h3 className="text-xl font-bold text-slate-900">Meaning Map tương tác</h3>
+          <p className="max-w-2xl text-sm text-slate-600 leading-relaxed">
+            Nhân dân là trung tâm tham chiếu. Chọn một node để đọc khái niệm, hoặc chọn đường nối để kiểm tra quan hệ và giới hạn diễn giải.
+          </p>
+        </div>
+        <div className="shrink-0 rounded-xl bg-slate-50 border border-slate-200 px-3 py-2 text-xs text-slate-600">
+          <span className="font-semibold text-slate-900">{visibleEdges.length}</span> quan hệ đang hiển thị
+        </div>
       </div>
 
-      <div className="flex flex-wrap items-center justify-center gap-2">
+      <div className="flex flex-wrap items-center gap-2" role="group" aria-label="Lọc quan hệ Meaning Map">
         {filters.map(item => (
           <button
             key={item.id}
             type="button"
             onClick={() => setFilter(item.id)}
+            aria-pressed={filter === item.id}
             className={`px-3 py-1.5 rounded-full text-xs font-semibold border transition-colors ${
               filter === item.id
                 ? 'bg-red-800 text-white border-red-800'
@@ -73,12 +85,14 @@ export default function MeaningMap() {
             {item.label}
           </button>
         ))}
-        <button type="button" onClick={resetMap} className="px-3 py-1.5 rounded-full text-xs font-semibold text-slate-500 hover:text-red-800">
+        <button type="button" onClick={resetMap} className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold text-slate-500 hover:text-red-800" title="Đặt lại bản đồ">
+          <RotateCcw className="w-3.5 h-3.5" />
           Đặt lại
         </button>
       </div>
 
-      <div className="relative max-w-3xl mx-auto h-[430px] hidden sm:block" aria-label="Sơ đồ Meaning Map">
+      <div className="rounded-2xl border border-slate-200 bg-[#fcfcfb] p-3 sm:p-5">
+      <div className="relative max-w-3xl mx-auto h-[360px] hidden sm:block" aria-label="Sơ đồ Meaning Map">
         <svg className="absolute inset-0 w-full h-full z-0" viewBox="0 0 680 340" preserveAspectRatio="none" aria-hidden="true">
           {meaningMapEdges.map(edge => {
             const isVisible = visibleEdges.some(item => item.id === edge.id);
@@ -102,9 +116,9 @@ export default function MeaningMap() {
               type="button"
               onClick={() => selectNode(node.id)}
               aria-pressed={isSelected}
-              className={`absolute z-10 ${nodePositions[node.id]} w-44 rounded-2xl p-4 text-center shadow-sm border-2 transition-all ${
+              className={`absolute z-10 ${nodePositions[node.id]} w-44 rounded-2xl p-4 text-center shadow-sm border-2 transition-all duration-200 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-red-100 ${
                 isPeople ? 'bg-red-800 text-white border-amber-400/60' : 'bg-white text-slate-900 border-slate-200'
-              } ${isSelected ? 'ring-4 ring-red-100 scale-[1.03]' : 'hover:border-red-300'} ${isVisible ? 'opacity-100' : 'opacity-40'}`}
+              } ${isSelected ? 'ring-4 ring-red-100 scale-[1.03] shadow-md' : 'hover:-translate-y-0.5 hover:border-red-300'} ${isVisible ? 'opacity-100' : 'opacity-40'}`}
             >
               <span className={`block text-[10px] font-bold uppercase tracking-wide ${isPeople ? 'text-amber-300' : 'text-red-800'}`}>{node.layer}</span>
               <span className="block text-sm font-bold mt-1">{node.label}</span>
@@ -145,8 +159,15 @@ export default function MeaningMap() {
         </div>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pt-5 border-t border-slate-100">
-        <div className="bg-slate-50 rounded-2xl p-5 space-y-3 min-h-[210px]">
+      <div className="mt-3 flex flex-wrap items-center justify-center gap-x-5 gap-y-2 text-[11px] text-slate-500">
+        <span className="inline-flex items-center gap-1.5"><span className="h-2 w-5 rounded-full bg-red-700" /> Quan hệ lý luận</span>
+        <span className="inline-flex items-center gap-1.5"><span className="h-2 w-5 rounded-full bg-amber-600" /> Quan hệ thực tiễn</span>
+        <span className="inline-flex items-center gap-1.5"><Link2 className="w-3.5 h-3.5" /> Nhấp node hoặc đường nối</span>
+      </div>
+      </div>
+
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pt-1">
+        <div className="bg-slate-50 rounded-2xl p-5 space-y-3 min-h-[230px] border border-slate-100">
           {selectedEdge ? (
             <>
               <div className="flex items-center justify-between gap-3">
@@ -162,6 +183,12 @@ export default function MeaningMap() {
               <span className="text-[10px] font-bold uppercase tracking-wide text-red-800">{selectedNode.layer}</span>
               <h4 className="text-lg font-bold text-slate-900">{selectedNode.label}</h4>
               <p className="text-sm text-slate-700 leading-relaxed">{selectedNode.summary}</p>
+              {selectedNode.quote && (
+                <blockquote className="border-l-2 border-red-700 pl-3 text-xs italic text-slate-700 leading-relaxed">
+                  {selectedNode.quote}
+                  <cite className="block not-italic text-[11px] text-red-800 font-semibold mt-1">{selectedNode.quoteSource}</cite>
+                </blockquote>
+              )}
               <p className="text-xs text-slate-600"><strong>Câu hỏi:</strong> {selectedNode.question}</p>
             </>
           ) : (
@@ -169,7 +196,7 @@ export default function MeaningMap() {
           )}
         </div>
 
-        <div className="bg-white rounded-2xl p-5 border border-slate-200 space-y-3 min-h-[210px]">
+        <div className="bg-white rounded-2xl p-5 border border-slate-200 space-y-3 min-h-[230px]">
           <h4 className="text-sm font-bold text-slate-900">Bằng chứng liên quan</h4>
           <ul className="space-y-2 text-xs text-slate-600 leading-relaxed list-disc pl-4">
             {(selectedEdge?.sources || selectedNode?.sources || []).map(source => <li key={source}>{source}</li>)}

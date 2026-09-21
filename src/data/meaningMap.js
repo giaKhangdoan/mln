@@ -6,6 +6,8 @@ export const meaningMapNodes = [
     short: 'Tiền đề chính trị',
     summary: 'Độc lập giải quyết sự lệ thuộc về chính trị, bảo đảm chủ quyền, thống nhất và toàn vẹn lãnh thổ, đồng thời tạo khả năng tự lựa chọn con đường phát triển.',
     question: 'Dân tộc có quyền tự quyết định vận mệnh của mình hay không?',
+    quote: '“Không có gì quý hơn độc lập, tự do.”',
+    quoteSource: 'Hồ Chí Minh Toàn tập, Tập 15, tr.131',
     sources: ['Giáo trình 2019, tr.42–44', 'Hồ Chí Minh Toàn tập, Tập 15, tr.131']
   },
   {
@@ -24,6 +26,8 @@ export const meaningMapNodes = [
     short: 'Quyền làm chủ',
     summary: 'Tự do gắn với dân chủ, quyền và lợi ích của nhân dân, cùng các điều kiện xã hội để con người tham gia, làm chủ và phát triển.',
     question: 'Trong đất nước đã độc lập, nhân dân có thực sự làm chủ hay không?',
+    quote: '“Chế độ ta là chế độ dân chủ. Tức là nhân dân làm chủ.” “Nước ta là nước dân chủ, địa vị cao nhất là dân, vì dân là chủ.”',
+    quoteSource: 'Hồ Chí Minh Toàn tập, Tập 13, tr.10; Tập 7, tr.434',
     sources: ['Giáo trình 2019, tr.56', 'Hồ Chí Minh Toàn tập, Tập 7, tr.434', 'Hồ Chí Minh Toàn tập, Tập 13, tr.10']
   },
   {
@@ -33,6 +37,8 @@ export const meaningMapNodes = [
     short: 'Đời sống và phát triển',
     summary: 'Hạnh phúc đưa thành quả độc lập và tự do về đời sống cụ thể: mức sống, học hành, việc làm, sức khỏe và khả năng phát triển.',
     question: 'Đời sống mỗi người được cải thiện thế nào?',
+    quote: '“Làm cho dân có ăn. Làm cho dân có mặc. Làm cho dân có chỗ ở. Làm cho dân có học hành.”',
+    quoteSource: 'Hồ Chí Minh Toàn tập, Tập 4, tr.175 và 187',
     sources: ['Giáo trình 2019, tr.43', 'Hồ Chí Minh Toàn tập, Tập 4, tr.175 và 187']
   }
 ];

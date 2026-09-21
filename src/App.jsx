@@ -7,7 +7,9 @@ import {
   ArrowRight,
   CheckCircle2,
   XCircle,
-  Send
+  Send,
+  LockKeyhole,
+  UnlockKeyhole
 } from 'lucide-react';
 import VietnamFlagTick from './components/VietnamFlagTick';
 import MeaningMap from './components/MeaningMap';
@@ -79,7 +81,7 @@ const chaptersData = {
   },
   practice: {
     chapterNum: "Phần 3",
-    title: "Meaning Map và cách đọc có kiểm soát",
+    title: "Meaning Map",
     forms: [
       { step: "01 / Tầng chính trị", name: "Độc lập", desc: "Câu hỏi trung tâm: Dân tộc có quyền tự quyết định vận mệnh của mình hay không? Bằng chứng cần tập trung vào chủ quyền, độc lập thực chất, thống nhất và toàn vẹn lãnh thổ." },
       { step: "02 / Tầng xã hội", name: "Tự do", desc: "Câu hỏi trung tâm: Trong đất nước đã độc lập, nhân dân có thực sự làm chủ hay không? Phân tích dân chủ, quyền và lợi ích của nhân dân, cùng điều kiện tham gia xã hội." },
@@ -96,7 +98,7 @@ const chaptersData = {
     title: "Liên hệ thực tiễn và giới hạn diễn giải",
     desc: "Thực tiễn làm bật câu hỏi lý luận.",
     process: [
-      { phase: "Sự kiện 1", title: "A80 và ký ức về độc lập", subtitle: "Ý thức quốc gia và lịch sử giành độc lập", date: "02/09/2025 • Báo Điện tử Chính phủ", reality: "Lễ diễu binh, diễu hành kỷ niệm 80 năm Cách mạng Tháng Tám thành công và Quốc khánh 2/9 tại Quảng trường Ba Đình gợi lại lịch sử giành độc lập và sự ra đời của nhà nước Việt Nam độc lập.", boundary: "A80 minh họa ký ức lịch sử và ý thức quốc gia về độc lập; không thể dùng riêng sự kiện này để kết luận về hạnh phúc của toàn bộ nhân dân." },
+      { phase: "Sự kiện 1", title: "A80 và ký ức về độc lập", subtitle: "Ý thức quốc gia và lịch sử giành độc lập", date: "02/09/2025 • 06:30 • Báo Điện tử Chính phủ", reality: "Lễ diễu binh, diễu hành kỷ niệm 80 năm Cách mạng Tháng Tám thành công và Quốc khánh 2/9 bắt đầu lúc 6 giờ 30 tại Quảng trường Ba Đình, gợi lại lịch sử giành độc lập và sự ra đời của nhà nước Việt Nam độc lập.", boundary: "A80 minh họa ký ức lịch sử và ý thức quốc gia về độc lập; không thể dùng riêng sự kiện này để kết luận về hạnh phúc của toàn bộ nhân dân." },
       { phase: "Sự kiện 2", title: "Tổ quốc trong tim", subtitle: "Độc lập trong đời sống văn hóa", date: "10/08/2025 • Báo Nhân Dân", reality: "Chương trình nghệ thuật chính luận tại Sân vận động Quốc gia Mỹ Đình thu hút hơn 50.000 khán giả trực tiếp và hàng triệu người theo dõi qua truyền thông.", boundary: "Chương trình cho thấy ký ức lịch sử được truyền tải qua không gian văn hóa và sự tham gia của công chúng; niềm tự hào tại concert không phải bằng chứng trực tiếp rằng mục tiêu hạnh phúc đã được thực hiện." },
       { phase: "Sự kiện 3", title: "Hạnh phúc và điều kiện sống hiện nay", subtitle: "Một chỉ báo vật chất cần đọc đúng phạm vi", date: "Tháng 01/2026 • Cục Thống kê", reality: "Theo thông cáo tình hình kinh tế – xã hội năm 2025, thu nhập bình quân của lao động đạt khoảng 8,4 triệu đồng một tháng, tăng 8,9% so với năm trước.", boundary: "Đây là số đo đối với lao động, không phải thu nhập bình quân của toàn bộ dân cư hay chỉ số hạnh phúc. Cần đặt cùng dữ liệu về học hành, sức khỏe, mức sống và an sinh." }
     ],
@@ -285,10 +287,40 @@ export default function App() {
 
   // Quiz states
   const [answers, setAnswers] = useState({ 1: null, 2: null, 3: null, 4: null, 5: null });
+  const [isQuizUnlocked, setIsQuizUnlocked] = useState(false);
+  const [quizPassword, setQuizPassword] = useState('');
+  const [quizPasswordError, setQuizPasswordError] = useState(false);
 
   // Poll states for question 6
   const [pollVote, setPollVote] = useState(null);
   const [pollResults, setPollResults] = useState({ A: 138, B: 156, C: 92 });
+
+  const unlockQuiz = (event) => {
+    event.preventDefault();
+    const now = new Date();
+    const hours = new Set([
+      now.getHours(),
+      ((now.getHours() + 11) % 12) + 1
+    ]);
+    const minutes = [now.getMinutes(), (now.getMinutes() + 59) % 60, (now.getMinutes() + 1) % 60];
+    const acceptedPasswords = [...hours].flatMap((hourValue) => minutes.flatMap((minuteValue) => {
+      const hour = String(hourValue).padStart(2, '0');
+      const minute = String(minuteValue).padStart(2, '0');
+      const timeDigits = `${hour}${minute}`;
+      return [
+        timeDigits.split('').reverse().join(''),
+        `${minute}${hour}`,
+        `${hour.split('').reverse().join('')}${minute.split('').reverse().join('')}`
+      ];
+    }));
+    const isCorrect = acceptedPasswords.includes(quizPassword);
+
+    setQuizPasswordError(!isCorrect);
+    if (isCorrect) {
+      setIsQuizUnlocked(true);
+      setQuizPassword('');
+    }
+  };
 
   // Toggle practical lessons flashcards states
   const [flippedLessons, setFlippedLessons] = useState({});
@@ -1015,34 +1047,7 @@ export default function App() {
             })}
           </div>
 
-          {/* Bảng đối chiếu chuẩn mực đọc dẫn chứng */}
-          <div className="bg-white border border-slate-200/80 rounded-2xl p-6 shadow-sm space-y-4 overflow-hidden">
-            <div>
-              <h3 className="text-base font-bold text-slate-900">Cách Đọc Có Kiểm Soát vs Suy Diễn Quá Mức</h3>
-              <p className="text-xs text-slate-500">Nguyên tắc phương pháp luận</p>
-            </div>
 
-            <div className="overflow-x-auto">
-              <table className="min-w-full divide-y divide-slate-200 text-sm">
-                <thead>
-                  <tr className="bg-slate-50 text-left text-xs font-bold text-slate-700">
-                    {chaptersData.digital.comparison.headers.map((h, idx) => (
-                      <th key={idx} className="px-4 py-3">{h}</th>
-                    ))}
-                  </tr>
-                </thead>
-                <tbody className="divide-y divide-slate-100">
-                  {chaptersData.digital.comparison.rows.map((row, rIdx) => (
-                    <tr key={rIdx} className="hover:bg-slate-50/50">
-                      <td className="px-4 py-3 font-semibold text-slate-800 whitespace-nowrap">{row[0]}</td>
-                      <td className="px-4 py-3 text-red-900/80">{row[1]}</td>
-                      <td className="px-4 py-3 text-slate-700 font-medium">{row[2]}</td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-          </div>
 
         </section>
 
@@ -1117,6 +1122,47 @@ export default function App() {
             </p>
           </div>
 
+          {!isQuizUnlocked ? (
+            <div className="max-w-md mx-auto w-full bg-white border border-slate-200/80 rounded-2xl p-6 sm:p-8 shadow-sm text-center space-y-5">
+              <div className="mx-auto w-12 h-12 rounded-full bg-red-50 text-red-800 flex items-center justify-center">
+                <LockKeyhole className="w-6 h-6" />
+              </div>
+              <div className="space-y-2">
+                <h3 className="text-lg font-bold text-slate-900">Nội dung đang được khóa</h3>
+                <p className="text-sm text-slate-600 leading-relaxed">
+                  Nhập mật khẩu gồm giờ và phút hiện tại theo thứ tự đảo ngược để xem 5 câu hỏi và khảo sát.
+                </p>
+              </div>
+              <form onSubmit={unlockQuiz} className="space-y-3 text-left">
+                <label htmlFor="quiz-password" className="block text-xs font-semibold text-slate-700">Mật khẩu</label>
+                <div className="flex gap-2">
+                  <input
+                    id="quiz-password"
+                    type="password"
+                    inputMode="numeric"
+                    pattern="[0-9]*"
+                    maxLength={7}
+                    value={quizPassword}
+                    onChange={(event) => {
+                      setQuizPassword(event.target.value.replace(/\D/g, '').slice(0, 4));
+                      setQuizPasswordError(false);
+                    }}
+                    placeholder="4 chữ số"
+                    autoComplete="off"
+                    className="min-w-0 flex-1 rounded-xl border border-slate-300 px-3 py-2.5 text-sm tracking-[0.25em] outline-none focus:border-red-700 focus:ring-2 focus:ring-red-100"
+                    aria-invalid={quizPasswordError}
+                  />
+                  <button type="submit" className="inline-flex items-center justify-center gap-2 rounded-xl bg-red-800 px-4 py-2.5 text-xs font-semibold text-white transition-colors hover:bg-red-900">
+                    <UnlockKeyhole className="w-4 h-4" /> Mở khóa
+                  </button>
+                </div>
+                {quizPasswordError && (
+                  <p className="text-xs text-red-700" role="alert">Mật khẩu chưa đúng </p>
+                )}
+              </form>
+            </div>
+          ) : (
+            <>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {quizQuestions.map((qz) => {
               const selectedOpt = answers[qz.id];
@@ -1267,6 +1313,9 @@ export default function App() {
                 Làm lại bộ câu hỏi
               </button>
             </div>
+          )}
+
+            </>
           )}
 
         </section>
