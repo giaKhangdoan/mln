@@ -532,12 +532,6 @@ export default function App() {
               Khám phá Lộ trình Lập luận
               <ArrowRight className="w-4 h-4" />
             </button>
-            <button
-              onClick={() => scrollToSection('quiz')}
-              className="px-6 py-3 bg-red-950/70 text-white border border-red-600/60 rounded-xl font-semibold text-sm hover:bg-red-900/80 hover:border-amber-400/40 transition-all cursor-pointer backdrop-blur-sm shadow-sm"
-            >
-              Thử thách Phản biện C-C-C
-            </button>
           </div>
 
         </div>
@@ -663,11 +657,11 @@ export default function App() {
                     {isExpanded && (
                       <div className="px-5 pb-5 pt-2 border-t border-slate-100 bg-slate-50/60 space-y-3 text-sm text-slate-700 leading-relaxed">
                         <div>
-                          <strong className="text-slate-900">Ngữ cảnh văn bản: </strong>
+                          <strong className="text-slate-900">Theo trích dẫn: </strong>
                           {item.context}
                         </div>
                         <div>
-                          <strong className="text-red-900">Phân tích học thuật của nhóm: </strong>
+                          <strong className="text-red-900">Theo nhóm: </strong>
                           {item.analysis}
                         </div>
                         {item.inference && (
@@ -1115,9 +1109,6 @@ export default function App() {
         <section id="quiz" className="scroll-mt-20 space-y-10">
 
           <div className="text-center space-y-2.5 max-w-3xl mx-auto">
-            <span className="inline-block px-3 py-1 rounded-full bg-red-50 text-red-800 text-xs font-semibold">
-              Peer Challenge C-C-C
-            </span>
             <h2 className="text-2xl sm:text-3xl font-bold text-slate-900 tracking-tight">
               Kiểm Tra Nội Dung Bằng 5 Câu Hỏi Và 1 Khảo Sát
             </h2>
