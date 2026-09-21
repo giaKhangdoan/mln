@@ -682,7 +682,7 @@ export default function App() {
           <div className="bg-white border border-red-200 rounded-2xl p-6 sm:p-8 shadow-sm space-y-3">
             <span className="text-xs font-bold text-red-800 uppercase">Luận đề cốt lõi</span>
             <p className="font-editorial text-lg sm:text-xl text-slate-900 leading-relaxed italic">
-              “Chúng tôi không xếp ba giá trị thành một khẩu hiệu tuyến tính. Chúng tôi đề xuất một cách đọc có điều kiện và có giới hạn: Độc lập dân tộc có ý nghĩa đầy đủ khi được đặt trong mối liên hệ với tự do, hạnh phúc và đời sống nhân dân.”
+              “Chúng tôi không xem Độc lập - Tự do - Hạnh phúc là một chuỗi tiến trình tuyến tính rời rạc, mà là một hệ giá trị có điều kiện ràng buộc biện chứng: Độc lập chỉ thực sự có giá trị khi mang lại tự do và hạnh phúc thực tế cho nhân dân; ngược lại, tự do và hạnh phúc của nhân dân chính là gốc rễ bền vững nhất để bảo vệ nền độc lập quốc gia”
             </p>
             <p className="text-xs text-slate-500">
               — Phân tích của nhóm HCM / SPST / C3-02, dựa trên Giáo trình 2019, tr.43 và Hồ Chí Minh Toàn tập, Tập 4, tr.64.
