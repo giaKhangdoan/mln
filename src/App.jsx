@@ -50,7 +50,6 @@ const chaptersData = {
       {
         school: "Quan hệ với chủ nghĩa xã hội trong Chương III",
         sourceTag: "Giáo trình 2019, tr.51–58",
-        date: "Mục 1.5",
         quote: "Độc lập là tiền đề; tự do là nội dung xã hội của nền độc lập; hạnh phúc là thước đo ở đời sống con người.",
         context: "Chương III chuyển từ cách mạng giải phóng dân tộc sang tư tưởng về chủ nghĩa xã hội và xây dựng chủ nghĩa xã hội ở Việt Nam. --> Cách chuyển này làm rõ rằng giành chính quyền và giữ chủ quyền mới mở ra khả năng tiếp tục xây dựng một xã hội nhằm nâng cao đời sống nhân dân.",
         analysis: "Giành chính quyền và giữ chủ quyền mở ra khả năng tiếp tục xây dựng một xã hội nhằm nâng cao đời sống nhân dân; quá trình này gắn với dân chủ, việc làm, đời sống ấm no, tự do và hạnh phúc."
@@ -58,7 +57,6 @@ const chaptersData = {
       {
         school: "Nhân dân là chủ thể và vai trò lãnh đạo của Đảng",
         sourceTag: "Giáo trình 2019, tr.55–58; Hồ Chí Minh Toàn tập, Tập 15, tr.391",
-        date: "Mục 1.6",
         quote: "Nhân dân vừa là chủ thể của sự nghiệp cách mạng, vừa là người mà thành quả cách mạng phải phục vụ.",
         context: "Quá trình xây dựng chủ nghĩa xã hội là công trình tập thể của nhân dân dưới sự lãnh đạo của Đảng Cộng sản.",
         analysis: "Trong các mục tiêu chính trị, kinh tế, văn hóa và quan hệ xã hội, nhân dân giữ vị trí làm chủ, tham gia xây dựng xã hội và thụ hưởng những thành quả của công cuộc ấy."
@@ -669,7 +667,7 @@ export default function App() {
                           <span className="px-2 py-0.5 rounded bg-slate-100 text-slate-700 text-xs font-semibold">
                             {item.sourceTag}
                           </span>
-                          <span className="text-xs text-slate-400">{item.date}</span>
+                          {item.date && <span className="text-xs text-slate-400">{item.date}</span>}
                         </div>
                         <h4 className="text-base font-bold text-slate-900 leading-snug">{item.school}</h4>
                         <p className="font-editorial text-sm sm:text-base text-red-900 italic bg-red-50/50 p-2.5 rounded-lg border border-red-100">
