@@ -24,7 +24,7 @@ const chaptersData = {
     title: "Lý luận và phân tích",
     desc: "Ba giá trị độc lập, tự do và hạnh phúc liên hệ với nhau trong một lập luận thống nhất: độc lập tạo điều kiện chính trị để nhân dân tự quyết; tự do thể hiện nền độc lập trong quyền làm chủ; hạnh phúc đưa thành quả ấy về đời sống cụ thể của con người.",
     traps: [
-      { title: "Độc lập là tiền đề chính trị", desc: "Trong bối cảnh thuộc địa, giành độc lập và quyền tự quyết là nhiệm vụ trước tiên. Độc lập bao hàm chủ quyền, thống nhất, toàn vẹn lãnh thổ và nền độc lập thật sự, hoàn toàn." },
+      { title: "Độc lập là tiền đề chính", desc: "Trong bối cảnh thuộc địa, giành độc lập và quyền tự quyết là nhiệm vụ trước tiên. Độc lập bao hàm chủ quyền, thống nhất, toàn vẹn lãnh thổ và nền độc lập thật sự, hoàn toàn." },
       { title: "Không có quan hệ nhân quả tự động", desc: "Độc lập không tự động làm xuất hiện mọi thành quả xã hội. Nhà nước và nhân dân phải tiếp tục xây dựng dân chủ, kinh tế, văn hóa và các điều kiện sống để thành quả độc lập đi vào thực tế." },
       { title: "Nhân dân là trung tâm của lập luận", desc: "Giá trị của nền độc lập được xem xét qua khả năng bảo đảm quyền làm chủ, tự do và cải thiện đời sống của nhân dân; nhân dân vừa là chủ thể vừa là người thụ hưởng thành quả." }
     ],
