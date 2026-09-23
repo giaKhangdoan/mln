@@ -1127,9 +1127,6 @@ export default function App() {
               </div>
               <div className="space-y-2">
                 <h3 className="text-lg font-bold text-slate-900">Nội dung đang được khóa</h3>
-                <p className="text-sm text-slate-600 leading-relaxed">
-                  Nhập mật khẩu gồm giờ và phút hiện tại theo thứ tự đảo ngược để xem 5 câu hỏi và khảo sát.
-                </p>
               </div>
               <form onSubmit={unlockQuiz} className="space-y-3 text-left">
                 <label htmlFor="quiz-password" className="block text-xs font-semibold text-slate-700">Mật khẩu</label>
