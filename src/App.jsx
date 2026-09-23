@@ -32,7 +32,7 @@ const chaptersData = {
       {
         school: "Độc lập là nhiệm vụ trước tiên của dân tộc thuộc địa",
         sourceTag: "Hồ Chí Minh Toàn tập • Tập 15, tr.131; Giáo trình 2019, tr.42",
-        date: "Bối cảnh kháng chiến chống Mỹ",
+        date: "",
         quote: "“Không có gì quý hơn độc lập, tự do.”",
         context: "Độc lập và quyền tự quyết là nhiệm vụ trước tiên của dân tộc bị đặt dưới ách thống trị thực dân.",
         analysis: "Ở tầng chính trị, độc lập bao hàm chủ quyền, quyền tự quyết, thống nhất và toàn vẹn lãnh thổ; đó phải là nền độc lập thật sự, hoàn toàn.",
@@ -41,7 +41,7 @@ const chaptersData = {
       {
         school: "Độc lập gắn với tự do và hạnh phúc của nhân dân",
         sourceTag: "Hồ Chí Minh Toàn tập • Tập 4, tr.64; Giáo trình 2019, tr.43",
-        date: "Sau Cách mạng Tháng Tám",
+        date: "",
         quote: "“Nước độc lập mà dân không hưởng hạnh phúc tự do, thì độc lập cũng chẳng có nghĩa lý gì.”",
         context: "Câu nói đặt nhiệm vụ làm cho thành quả độc lập trở thành quyền lợi thực tế của dân bên cạnh việc giữ vững nền độc lập.",
         analysis: "Không có độc lập thì thiếu cơ sở chính trị để nhân dân làm chủ; có độc lập rồi vẫn phải tiếp tục tạo điều kiện để người dân được tự do, sống ấm no và phát triển.",
