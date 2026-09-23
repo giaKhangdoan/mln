@@ -1455,7 +1455,7 @@ export default function App() {
               </p>
             </div>
             <p className="text-xs text-slate-500">
-              Bộ môn Lý luận Chính trị và Kỹ năng mềm • Fall 2026
+              Fall 2026
             </p>
           </div>
 
