@@ -647,7 +647,7 @@ export default function App() {
           <div className="space-y-4">
             <div className="border-b border-slate-200 pb-3">
               <h3 className="text-lg font-bold text-slate-900">4 Mốc phát triển lập luận của đề tài</h3>
-              <p className="text-slate-500 text-xs">Nhấp vào từng thẻ để đối chiếu ngữ cảnh văn bản và phân tích sâu</p>
+
             </div>
 
             <div className="space-y-3">
