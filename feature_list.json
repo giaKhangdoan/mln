@@ -1,0 +1,22 @@
+[
+  {
+    "id": "phase-01-replace-presentation-content",
+    "title": "Replace presentation content",
+    "status": "passing-unverified",
+    "evidence": "Fast mode — no test evidence; source content and citations reviewed manually in code.",
+    "user_visible_behavior": "Trang hiện thị đủ chín slide thành ba chặng, đúng nội dung và nguồn trong tài liệu.",
+    "verification_command": "Đối chiếu thủ công 9/9 slide, số liệu và citation với hai DOCX; không chạy test.",
+    "notes": "Covers stories: US-01, US-02, US-03",
+    "priority": "P1"
+  },
+  {
+    "id": "phase-02-update-page-identity-and-review",
+    "title": "Update page identity and review",
+    "status": "passing-unverified",
+    "evidence": "Fast mode — manual live-page review; CSS viewport 360 px measured innerWidth/clientWidth/scrollWidth = 360; no automated test evidence.",
+    "user_visible_behavior": "Trang dùng metadata/nhận diện FPT + VNR202 và đọc được trên viewport 360 px.",
+    "verification_command": "Rà soát metadata, điều hướng, nguồn và bố cục ở viewport 360 px; không chạy test.",
+    "notes": "Covers stories: US-01, US-03, US-04",
+    "priority": "P1"
+  }
+]
