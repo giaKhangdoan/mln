@@ -1,3 +1,5 @@
+import { historicalPhotos } from './historicalPhotos';
+
 const textbookSource =
   'Giáo trình Lịch sử Đảng Cộng sản Việt Nam, Chương 2, mục II, phần 3, tr. 113–114.';
 
@@ -8,6 +10,7 @@ export const chapters = [
   {
     id: 'chang-1',
     number: '01',
+    shortTitle: 'Bối cảnh',
     title: 'Bối cảnh, ý nghĩa và nhân tố thắng lợi',
     intro: 'Từ nhiệm vụ chiến lược của hai miền đến ý nghĩa của thắng lợi năm 1975 và những nhân tố tạo nên thắng lợi.',
     slides: [
@@ -21,6 +24,7 @@ export const chapters = [
         ],
         highlightLabel: 'Luận điểm trung tâm',
         highlight: 'Thắng lợi hình thành từ đường lối phù hợp, sức mạnh toàn dân tộc và sự kết hợp giữa nội lực với quốc tế.',
+        photo: historicalPhotos.thirdCongress,
         source: textbookSource
       },
       {
@@ -51,6 +55,7 @@ export const chapters = [
   {
     id: 'chang-2',
     number: '02',
+    shortTitle: 'Bài học',
     title: 'Bài học lãnh đạo và kinh nghiệm thực tiễn',
     intro: 'Bốn bài học về mục tiêu, phương pháp, tổ chức lực lượng và phát huy sức mạnh; đồng thời nhìn nhận những hạn chế để rút kinh nghiệm.',
     slides: [
@@ -75,6 +80,7 @@ export const chapters = [
         highlightKind: 'sequence',
         highlightLead: 'Cuộc Tổng tiến công và nổi dậy mùa Xuân 1975.',
         highlight: 'Tây Nguyên → Huế–Đà Nẵng → Chiến dịch Hồ Chí Minh → 30/4/1975',
+        photo: historicalPhotos.saigonWelcomes,
         source: textbookSource
       },
       {
@@ -93,6 +99,7 @@ export const chapters = [
   {
     id: 'chang-3',
     number: '03',
+    shortTitle: 'Vận dụng',
     title: 'Vận dụng vào phát triển hôm nay',
     intro: 'Đặt các liên hệ kinh tế, khoa học – công nghệ và đời sống trong đúng phạm vi số liệu và giới hạn diễn giải.',
     slides: [
@@ -107,7 +114,7 @@ export const chapters = [
           { value: '19,42', unit: 'tỷ USD', label: 'Nhập siêu' },
           { value: '94,1%', label: 'Giá trị nhập khẩu là tư liệu sản xuất' }
         ],
-        conclusion: 'Đọc nhập siêu cùng cơ cấu hàng hóa: 94,1% giá trị nhập khẩu là tư liệu sản xuất, có thể phục vụ sản xuất và xuất khẩu. Liên hệ bài học phát huy nội lực: về dài hạn, cần nâng năng lực cung ứng trong nước, phát triển doanh nghiệp hỗ trợ và tăng giá trị nội địa.',
+        conclusion: 'Đặt mức nhập siêu bên cạnh cơ cấu hàng hóa: 94,1% giá trị nhập khẩu là tư liệu sản xuất, có thể phục vụ sản xuất và xuất khẩu. Liên hệ bài học phát huy nội lực: về dài hạn, cần nâng năng lực cung ứng trong nước, phát triển doanh nghiệp hỗ trợ và tăng giá trị nội địa.',
         source: statisticsSource
       },
       {

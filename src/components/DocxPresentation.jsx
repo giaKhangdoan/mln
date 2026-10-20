@@ -25,7 +25,7 @@ function Block({ block }) {
   }
 
   if (block.startsWith('“') || block.startsWith('"')) {
-    return <blockquote className="font-editorial text-lg text-red-900 italic leading-relaxed border-l-4 border-amber-400 pl-5">{block}</blockquote>;
+    return <blockquote className="text-lg text-red-900 italic leading-relaxed border-l-4 border-amber-400 pl-5">{block}</blockquote>;
   }
 
   if (block.startsWith('Nguồn:') || block.startsWith('Bản giáo trình')) {
