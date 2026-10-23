@@ -1,22 +1,72 @@
 import { vietnamOutlinePath } from '../data/vietnamMapOutline';
 
-const islandOutlines = [
-  // Hoàng Sa — visible locator shapes, enlarged for legibility at presentation size.
-  'M421 218l3-4 3 2 1 4-4 3-3-2z M432 222l3-3 4 2 1 4-4 2-3-2z M442 216l2-3 3 2 1 3-3 2-3-1z M427 232l2-2 3 1 1 3-3 2-3-1z M438 235l3-2 3 2-1 3-4 1z M449 229l2-2 3 1 1 3-3 2-3-1z',
-  // Trường Sa — locator shapes are also enlarged so the group remains visible.
-  'M467 405l3-3 4 1 1 3-4 3-4-1z M480 412l2-3 4 1 1 3-3 3-4-1z M493 405l3-2 3 2-1 3-3 1-3-1z M458 421l2-2 3 1 1 3-3 2-3-1z M473 428l3-3 3 1 1 3-3 3-4-1z M488 434l2-2 4 1 1 3-3 2-4-1z M503 420l2-3 4 1 1 3-3 2-4-1z M461 441l2-2 3 1 1 3-3 2-3-1z M480 447l2-2 4 1 1 3-4 2-3-1z M500 442l2-2 3 1 1 3-3 2-3-1z'
-].join(' ');
+// Offshore points use published geographic coordinates. Their markers are
+// enlarged for this locator map and are not to scale.
+const dms = (degrees, minutes, seconds) => degrees + minutes / 60 + seconds / 3600;
 
-const completeOutlinePath = `${vietnamOutlinePath} ${islandOutlines}`;
+const islandFeatures = [
+  {
+    group: 'hoang-sa',
+    points: [
+      [dms(17, 6, 0), dms(111, 30, 8)], // Đá Bắc
+      [dms(16, 32, 0), dms(111, 36, 7)], // Hoàng Sa
+      [dms(16, 30, 3), dms(111, 35, 3)], // Hữu Nhật
+      [dms(16, 27, 6), dms(111, 35, 3)], // Duy Mộng
+      [dms(16, 26, 9), dms(111, 42, 7)], // Quang Hòa
+      [dms(16, 27, 0), dms(111, 30, 8)], // Quang Ảnh
+      [dms(16, 3, 5), dms(111, 46, 9)], // Bạch Quy
+      [dms(15, 47, 2), dms(111, 11, 8)], // Tri Tôn
+      [dms(15, 44, 0), dms(112, 14, 1)], // Ốc Tai Voi
+      [dms(16, 34, 0), dms(111, 40, 0)], // Ốc Hoa
+      [dms(16, 33, 8), dms(111, 41, 5)], // Ba Ba
+      [dms(16, 30, 5), dms(111, 46, 2)], // Lưỡi Liềm
+      [dms(16, 28, 0), dms(111, 35, 5)], // Hải Sâm
+      [dms(16, 15, 0), dms(111, 41, 0)], // Đá Lồi
+      [dms(16, 20, 8), dms(112, 2, 6)], // Đá Chim Én
+      [dms(16, 34, 9), dms(111, 42, 9)], // Xà Cừ
+      [dms(16, 27, 5), dms(111, 39, 0)] // Ngự Bình
+    ]
+  },
+  {
+    group: 'truong-sa',
+    points: [
+      [dms(11, 25, 48), dms(114, 19, 47)], // Song Tử Tây
+      [dms(10, 10, 48), dms(114, 21, 54)], // Nam Yết
+      [dms(9, 53, 9), dms(114, 19, 45)], // Sinh Tồn
+      [dms(8, 38, 48), dms(111, 55, 6)], // Trường Sa
+      [dms(8, 40, 15), dms(111, 40, 18)], // Đá Lát
+      [dms(8, 51, 30), dms(112, 13, 6)], // Đá Tây
+      [dms(8, 56, 6), dms(112, 20, 54)], // Trường Sa Đông
+      [dms(7, 53, 36), dms(112, 55, 11)], // An Bang
+      [dms(9, 46, 24), dms(114, 15, 12)], // Cô Lin
+      [dms(8, 49, 42), dms(112, 35, 48)], // Đá Đông
+      [dms(9, 54, 18), dms(115, 32, 18)], // Vành Khăn
+      [dms(9, 36, 8), dms(116, 9, 53)], // Long Điền
+      [dms(9, 31, 12), dms(116, 21, 30)] // Bồ Đề
+    ]
+  }
+];
+
+const projectCoordinates = ([latitude, longitude]) => ({
+  x: 40 + (longitude - 100) * 32,
+  y: 22 + (24 - latitude) * 27
+});
+
+const getFeatureCenter = ({ points }) => {
+  const projected = points.map(projectCoordinates);
+  const totals = projected.reduce((result, point) => ({ x: result.x + point.x, y: result.y + point.y }), { x: 0, y: 0 });
+  return { x: totals.x / projected.length, y: totals.y / projected.length };
+};
+
+const completeOutlinePath = vietnamOutlinePath;
 
 function IslandCluster({ label, x, y, labelX, labelY, anchor = 'start' }) {
-  const lineEndX = anchor === 'start' ? labelX - 7 : labelX + 7;
+  const lineEndX = anchor === 'start' ? labelX - 7 : labelX - 64;
   const lineEndY = labelY - 4;
 
   return (
     <g className="vietnam-map__island-label">
       <path d={`M${x} ${y} L${lineEndX} ${lineEndY}`} />
-      <circle cx={x} cy={y} r="3.4" />
       <text x={labelX} y={labelY} textAnchor={anchor}>
         <tspan x={labelX} dy="0">QUẦN ĐẢO</tspan>
         <tspan className="vietnam-map__island-name" x={labelX} dy="15">{label}</tspan>
@@ -46,15 +96,15 @@ export default function VietnamMapSection() {
         </ul>
       </div>
 
-      <figure data-reveal className="vietnam-map-card min-w-0 overflow-hidden rounded-3xl border border-[#e9d8ba] bg-[#5b191f] p-2 shadow-[0_24px_64px_-38px_rgba(53,15,20,0.75)] sm:p-3">
+      <figure data-reveal className="vietnam-map-card min-w-0 overflow-hidden">
         <svg
           className="block h-auto w-full"
-          viewBox="0 0 560 500"
+          viewBox="0 0 620 500"
           role="img"
           aria-labelledby="vietnam-map-svg-title vietnam-map-svg-desc"
         >
           <title id="vietnam-map-svg-title">Bản đồ Việt Nam với Hà Nội, Thành phố Hồ Chí Minh, Hoàng Sa và Trường Sa</title>
-          <desc id="vietnam-map-svg-desc">Bản đồ định hướng, có các nhãn thành phố và quần đảo. Ký hiệu quần đảo được phóng lớn để dễ quan sát.</desc>
+          <desc id="vietnam-map-svg-desc">Bản đồ định hướng, có các nhãn thành phố và các điểm đảo được đặt theo tọa độ, phóng lớn để dễ quan sát; không theo tỷ lệ.</desc>
           <defs>
             <linearGradient id="vietnam-map-bg" x1="0" y1="0" x2="1" y2="1">
               <stop offset="0" stopColor="#70232b" />
@@ -68,16 +118,22 @@ export default function VietnamMapSection() {
               </feMerge>
             </filter>
           </defs>
-          <rect width="560" height="500" rx="22" fill="url(#vietnam-map-bg)" />
-          <path d="M22 72H538 M22 166H538 M22 260H538 M22 354H538 M22 448H538" className="vietnam-map__grid" />
+          <rect width="620" height="500" rx="22" fill="url(#vietnam-map-bg)" />
+          <path d="M22 72H598 M22 166H598 M22 260H598 M22 354H598 M22 448H598" className="vietnam-map__grid" />
           <path d={vietnamOutlinePath} className="vietnam-map__land" />
-          <path d={islandOutlines} className="vietnam-map__land" />
+          {islandFeatures.map(({ group, points }) => (
+            <g key={group} className="vietnam-map__island-points" aria-hidden="true">
+              {points.map((coordinate, index) => {
+                const { x, y } = projectCoordinates(coordinate);
+                return <circle key={`${group}-${index}`} cx={x} cy={y} r="2.1" />;
+              })}
+            </g>
+          ))}
           <path d={completeOutlinePath} pathLength="1000" className="vietnam-map__outline-base" />
           <path d={completeOutlinePath} pathLength="1000" className="vietnam-map__outline-run" filter="url(#vietnam-map-glow)" />
 
           <g className="vietnam-map__city vietnam-map__city--hanoi">
-            <path d="M227 102 L176 86 L144 86" />
-            <rect className="vietnam-map__city-tag" x="52" y="68" width="92" height="36" rx="8" />
+            <path d="M227 102 L176 86 L112 86" />
             <circle cx="227" cy="102" r="7" className="vietnam-map__city-halo" />
             <circle cx="227" cy="102" r="3.5" className="vietnam-map__city-dot" />
             <text x="63" y="84" className="vietnam-map__city-name">HÀ NỘI</text>
@@ -86,25 +142,32 @@ export default function VietnamMapSection() {
 
           <g className="vietnam-map__city vietnam-map__city--hcmc">
             <path d="M252 378 L268 397 L278 397" />
-            <rect className="vietnam-map__city-tag" x="278" y="382" width="154" height="38" rx="8" />
             <circle cx="252" cy="378" r="7" className="vietnam-map__city-halo" />
             <circle cx="252" cy="378" r="3.5" className="vietnam-map__city-dot" />
-            <text x="289" y="398" className="vietnam-map__city-name">TP. HỒ CHÍ MINH</text>
-            <text x="289" y="412" className="vietnam-map__city-caption">THÀNH PHỐ</text>
+            <text x="287" y="396" className="vietnam-map__city-name">TP. HỒ CHÍ MINH</text>
+            <text x="287" y="410" className="vietnam-map__city-caption">THÀNH PHỐ</text>
           </g>
 
-          <IslandCluster label="HOÀNG SA" x={435} y={226} labelX={465} labelY={206} />
-          <IslandCluster label="TRƯỜNG SA" x={486} y={428} labelX={460} labelY={462} anchor="end" />
+          <IslandCluster label="HOÀNG SA" {...getFeatureCenter(islandFeatures[0])} labelX={446} labelY={195} />
+          <IslandCluster label="TRƯỜNG SA" {...getFeatureCenter(islandFeatures[1])} labelX={590} labelY={467} anchor="end" />
 
-          <text x="28" y="474" className="vietnam-map__map-note">BẢN ĐỒ ĐỊNH HƯỚNG</text>
+          <text x="28" y="474" className="vietnam-map__map-note">SƠ ĐỒ ĐỊNH HƯỚNG · KHÔNG THEO TỶ LỆ</text>
         </svg>
-        <figcaption className="px-3 pb-3 pt-2 text-xs leading-5 text-[#f3e5cf]/80 sm:px-4 sm:text-sm">
-          Ký hiệu quần đảo được phóng lớn để dễ nhận biết. Đường bao khái quát từ{' '}
-          <a href="https://www.naturalearthdata.com/downloads/50m-cultural-vectors/" target="_blank" rel="noreferrer" className="underline decoration-current/50 underline-offset-2 hover:text-white">
+        <figcaption className="mt-2 text-xs leading-5 text-stone-500 sm:text-sm">
+          Vị trí điểm đảo theo{' '}
+          <a href="https://mae.gov.vn/noidung/Lists/VBQPPL/Attachments/514/1_DanhMuc_TT_DiaDanh_BanHanh.pdf" target="_blank" rel="noreferrer" className="text-[#741e25] underline decoration-current/40 underline-offset-2 hover:text-[#a1383d]">
+            danh mục địa danh của Bộ Tài nguyên và Môi trường
+          </a>
+          {' '}và{' '}
+          <a href="https://danang.gov.vn/vi/web/dng/w/ubnd-huyen-hoang-sa-i" target="_blank" rel="noreferrer" className="text-[#741e25] underline decoration-current/40 underline-offset-2 hover:text-[#a1383d]">
+            Cổng thông tin thành phố Đà Nẵng
+          </a>
+          ; đường bao đất liền khái quát từ{' '}
+          <a href="https://www.naturalearthdata.com/downloads/50m-cultural-vectors/" target="_blank" rel="noreferrer" className="text-[#741e25] underline decoration-current/40 underline-offset-2 hover:text-[#a1383d]">
             Natural Earth
           </a>
-          ; địa danh đối chiếu với{' '}
-          <a href="https://thongtin.diagioi.gov.vn/tracuubando.aspx?mapid=11" target="_blank" rel="noreferrer" className="underline decoration-current/50 underline-offset-2 hover:text-white">
+          ; địa giới đối chiếu với{' '}
+          <a href="https://thongtin.diagioi.gov.vn/tracuubando.aspx?mapid=11" target="_blank" rel="noreferrer" className="text-[#741e25] underline decoration-current/40 underline-offset-2 hover:text-[#a1383d]">
             Hệ thống quản lý CSDL địa giới hành chính Việt Nam
           </a>
           .

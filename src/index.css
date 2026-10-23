@@ -153,37 +153,36 @@ body {
 
 .vietnam-map__city path {
   fill: none;
-  stroke: #741e25;
-  stroke-width: 1.5;
+  stroke: #f3dfbd;
+  stroke-width: 1.2;
   stroke-linecap: round;
   stroke-linejoin: round;
+  opacity: 0.78;
 }
 
 .vietnam-map__city text {
-  fill: #56181e;
+  fill: #fff4e2;
   font-family: inherit;
   font-size: 12px;
   font-weight: 700;
   letter-spacing: 0.35px;
-}
-
-.vietnam-map__city-tag {
-  fill: #741e25;
-  stroke: #f1d18a;
-  stroke-width: 0.8;
+  paint-order: stroke;
+  stroke: #55181e;
+  stroke-width: 3px;
+  stroke-linejoin: round;
 }
 
 .vietnam-map__city .vietnam-map__city-name {
   fill: #fff4e2;
-  font-size: 11px;
+  font-size: 12.5px;
   font-weight: 700;
   letter-spacing: 0.45px;
 }
 
 .vietnam-map__city-caption {
-  fill: #f1d18a !important;
-  font-size: 9px !important;
-  letter-spacing: 1.05px !important;
+  fill: #e9d9c4 !important;
+  font-size: 10px !important;
+  letter-spacing: 0.8px !important;
 }
 
 .vietnam-map__city-halo {
@@ -203,23 +202,27 @@ body {
   stroke-linecap: round;
 }
 
-.vietnam-map__island-label circle {
-  fill: #ffd04d;
-  stroke: #fff1cc;
-  stroke-width: 1;
+.vietnam-map__island-points circle {
+  fill: #f1e5d1;
+  stroke: #ffd04d;
+  stroke-width: 0.8;
 }
 
 .vietnam-map__island-label text {
   fill: #f7e9cf;
   font-family: inherit;
-  font-size: 10px;
+  font-size: 11px;
   font-weight: 600;
   letter-spacing: 0.8px;
+  paint-order: stroke;
+  stroke: #55181e;
+  stroke-width: 3px;
+  stroke-linejoin: round;
 }
 
 .vietnam-map__island-name {
   fill: #ffd66b;
-  font-size: 12px;
+  font-size: 13px;
   font-weight: 700;
   letter-spacing: 1px;
 }
