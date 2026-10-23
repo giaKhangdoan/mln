@@ -155,19 +155,19 @@ export default function VietnamMapSection() {
         </svg>
         <figcaption className="mt-2 text-xs leading-5 text-stone-500 sm:text-sm">
           Vị trí điểm đảo theo{' '}
-          <a href="https://mae.gov.vn/noidung/Lists/VBQPPL/Attachments/514/1_DanhMuc_TT_DiaDanh_BanHanh.pdf" target="_blank" rel="noreferrer" className="text-[#741e25] underline decoration-current/40 underline-offset-2 hover:text-[#a1383d]">
+          <a href="https://mae.gov.vn/noidung/Lists/VBQPPL/Attachments/514/1_DanhMuc_TT_DiaDanh_BanHanh.pdf" target="_blank" rel="noreferrer" className="text-[#741e25] no-underline hover:text-[#a1383d]">
             danh mục địa danh của Bộ Tài nguyên và Môi trường
           </a>
           {' '}và{' '}
-          <a href="https://danang.gov.vn/vi/web/dng/w/ubnd-huyen-hoang-sa-i" target="_blank" rel="noreferrer" className="text-[#741e25] underline decoration-current/40 underline-offset-2 hover:text-[#a1383d]">
+          <a href="https://danang.gov.vn/vi/web/dng/w/ubnd-huyen-hoang-sa-i" target="_blank" rel="noreferrer" className="text-[#741e25] no-underline hover:text-[#a1383d]">
             Cổng thông tin thành phố Đà Nẵng
           </a>
           ; đường bao đất liền khái quát từ{' '}
-          <a href="https://www.naturalearthdata.com/downloads/50m-cultural-vectors/" target="_blank" rel="noreferrer" className="text-[#741e25] underline decoration-current/40 underline-offset-2 hover:text-[#a1383d]">
+          <a href="https://www.naturalearthdata.com/downloads/50m-cultural-vectors/" target="_blank" rel="noreferrer" className="text-[#741e25] no-underline hover:text-[#a1383d]">
             Natural Earth
           </a>
           ; địa giới đối chiếu với{' '}
-          <a href="https://thongtin.diagioi.gov.vn/tracuubando.aspx?mapid=11" target="_blank" rel="noreferrer" className="text-[#741e25] underline decoration-current/40 underline-offset-2 hover:text-[#a1383d]">
+          <a href="https://thongtin.diagioi.gov.vn/tracuubando.aspx?mapid=11" target="_blank" rel="noreferrer" className="text-[#741e25] no-underline hover:text-[#a1383d]">
             Hệ thống quản lý CSDL địa giới hành chính Việt Nam
           </a>
           .

@@ -9,18 +9,21 @@ import { chapters } from './data/history1954-1975';
 import { historicalPhotos } from './data/historicalPhotos';
 import QuizSection from './components/QuizSection';
 import VietnamMapSection from './components/VietnamMapSection';
+import AIAppendix from './components/AIAppendix';
 
 const quizSectionId = 'quiz';
+const aiAppendixSectionId = 'phu-luc-ai';
 const navigationItems = [
   ...chapters.map((chapter) => ({ ...chapter, navTitle: chapter.shortTitle })),
-  { id: quizSectionId, number: '04', shortTitle: 'Trắc nghiệm', navTitle: 'Trắc nghiệm' }
+  { id: quizSectionId, number: '04', shortTitle: 'Trắc nghiệm', navTitle: 'Trắc nghiệm' },
+  { id: aiAppendixSectionId, number: '05', shortTitle: 'Phụ lục AI', navTitle: 'Phụ lục AI' }
 ];
 
 function ChapterNav({ activeChapter }) {
   return (
     <nav aria-label="Điều hướng nội dung" className="sticky top-0 z-30 w-full border-b border-white/15 bg-[#651d24]">
       <div className="mx-auto flex max-w-6xl items-center px-3 py-2 sm:px-8">
-        <div className="grid min-w-0 flex-1 grid-cols-2 gap-2 sm:grid-cols-4 md:flex md:items-center md:justify-between">
+        <div className="grid min-w-0 flex-1 grid-cols-3 gap-2 md:flex md:items-center md:justify-between">
           {navigationItems.map((chapter) => (
             <a
               key={chapter.id}
@@ -83,7 +86,7 @@ function HistoricalPhoto({ photo, hero = false, priority = false }) {
           href={photo.sourceUrl}
           target="_blank"
           rel="noreferrer"
-          className={`inline-flex min-h-11 shrink-0 items-center gap-1 font-semibold underline decoration-current/40 underline-offset-4 transition-colors hover:decoration-current focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 ${hero ? 'text-[#f0d9b8] focus-visible:outline-[#f0d9b8]' : 'text-[#741e25] focus-visible:outline-[#741e25]'}`}
+          className={`inline-flex min-h-11 shrink-0 items-center gap-1 font-semibold no-underline transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 ${hero ? 'text-[#f0d9b8] focus-visible:outline-[#f0d9b8]' : 'text-[#741e25] focus-visible:outline-[#741e25]'}`}
         >
           Nguồn ảnh: Báo Điện tử Chính phủ <ArrowUpRight size={14} aria-hidden="true" />
         </a>
@@ -211,20 +214,30 @@ export default function App() {
 
   useEffect(() => {
     if (!('IntersectionObserver' in window)) return undefined;
+    const sectionIds = [...chapters.map((chapter) => chapter.id), quizSectionId, aiAppendixSectionId];
+    const sections = sectionIds.map((sectionId) => document.getElementById(sectionId)).filter(Boolean);
+    const activeLine = () => window.innerHeight * 0.42;
     const observer = new IntersectionObserver(
       (entries) => {
+        const activeSection = sections.find((section) => {
+          const bounds = section.getBoundingClientRect();
+          return bounds.top <= activeLine() && bounds.bottom >= activeLine();
+        });
+
+        if (activeSection) {
+          setActiveChapter(activeSection.id);
+          return;
+        }
+
         const visible = entries
           .filter((entry) => entry.isIntersecting)
-          .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+          .sort((a, b) => Math.abs(a.boundingClientRect.top - activeLine()) - Math.abs(b.boundingClientRect.top - activeLine()))[0];
         if (visible) setActiveChapter(visible.target.id);
       },
-      { rootMargin: '-18% 0px -68% 0px', threshold: [0, 0.15, 0.35, 0.6] }
+      { rootMargin: '-38% 0px -52% 0px', threshold: 0 }
     );
 
-    [...chapters.map((chapter) => chapter.id), quizSectionId].forEach((sectionId) => {
-      const section = document.getElementById(sectionId);
-      if (section) observer.observe(section);
-    });
+    sections.forEach((section) => observer.observe(section));
     return () => observer.disconnect();
   }, []);
 
@@ -304,6 +317,7 @@ export default function App() {
           <VietnamMapSection />
           {chapters.map((chapter) => <ChapterSection key={chapter.id} chapter={chapter} />)}
           <QuizSection />
+          <AIAppendix />
         </div>
       </main>
 
