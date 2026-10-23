@@ -18,5 +18,35 @@
     "verification_command": "Rà soát metadata, điều hướng, nguồn và bố cục ở viewport 360 px; không chạy test.",
     "notes": "Covers stories: US-01, US-03, US-04",
     "priority": "P1"
+  },
+  {
+    "id": "phase-01-source-locked-content-model",
+    "title": "Build source-locked 1945–1946 content model",
+    "status": "passing",
+    "evidence": "Manually compared the eight ordered slides, dates, historical claims, four labor statistics, interpretation limits, and citations against the slide-content DOCX. No candidate image source documented reuse permission; selected the agreed typography hero fallback and did not copy or hotlink an image.",
+    "user_visible_behavior": "The web presentation has eight accurately ordered Chapter 2 slides with three groups and source-backed historical and labor data.",
+    "verification_command": "Manually compare all eight slides, dates, claims, statistics and citations against both DOCX files; document the image reuse decision and use the approved typography fallback if permission is not established.",
+    "notes": "Covers stories: P1 eight source-ordered slides, P1 source traceability, P2 defer 3C questions",
+    "priority": "P1"
+  },
+  {
+    "id": "phase-02-chapter-two-page-integration",
+    "title": "Integrate Chapter 2 into the existing presentation page",
+    "status": "passing",
+    "evidence": "Manual browser review: correct 1945–1946 hero and scope block; 8 ordered cards in 2/3/3 groups, 3 matching nav links, all slide sources present; no legacy/map/quiz/AI content rendered; desktop and 360 px layouts fit; active nav updates on click and keyboard. No automated tests/build run.",
+    "user_visible_behavior": "The existing presentation UI displays the new 1945–1946 hero, scope block and eight cards in three navigation groups, with quiz and AI appendix absent from the rendered page.",
+    "verification_command": "Manually inspect the hero, 2/3/3 navigation and cards, active-section behavior, absence of quiz/AI/map content from the DOM, metadata, and layout at 360 px and desktop.",
+    "notes": "Covers stories: P1 preserve existing UX/UI, P1 hide quiz and AI, P1 update hero and historical imagery/scope",
+    "priority": "P1"
+  },
+  {
+    "id": "phase-03-manual-presentation-acceptance",
+    "title": "Manually accept the Chapter 2 presentation",
+    "status": "passing",
+    "evidence": "Manual acceptance: source-locked 8-slide content and all 4 labor metrics verified; metadata and Cục Thống kê link correct; no unapproved images or old-topic content; keyboard focus/active nav and click-star work; reduced-motion disables animations; 1440 px and 360 px layouts reviewed without horizontal overflow. No automated tests/build run.",
+    "user_visible_behavior": "The finished site presents only the source-accurate Chapter 2 material and retains the expected responsive navigation and interactions.",
+    "verification_command": "Manually trace all displayed facts to the DOCX files, inspect source links and any image reuse evidence, verify no old topic or hidden sections are rendered, and review keyboard, reduced-motion and responsive behavior.",
+    "notes": "Covers stories: all P1 stories; P2 3C Q&A remains deferred",
+    "priority": "P1"
   }
 ]

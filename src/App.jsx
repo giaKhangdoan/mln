@@ -5,21 +5,11 @@ import {
   BookOpenText,
   Landmark
 } from 'lucide-react';
-import { chapters } from './data/history1954-1975';
-import { historicalPhotos } from './data/historicalPhotos';
-import QuizSection from './components/QuizSection';
-import VietnamMapSection from './components/VietnamMapSection';
-import AIAppendix from './components/AIAppendix';
+import { chapters } from './data/history1945-1946';
 
-const quizSectionId = 'quiz';
-const aiAppendixSectionId = 'phu-luc-ai';
-const navigationItems = [
-  ...chapters.map((chapter) => ({ ...chapter, navTitle: chapter.shortTitle })),
-  { id: quizSectionId, number: '04', shortTitle: 'Trắc nghiệm', navTitle: 'Trắc nghiệm' },
-  { id: aiAppendixSectionId, number: '05', shortTitle: 'Phụ lục AI', navTitle: 'Phụ lục AI' }
-];
+const navigationItems = chapters.map((chapter) => ({ ...chapter, navTitle: chapter.shortTitle }));
 
-function ChapterNav({ activeChapter }) {
+function ChapterNav({ activeChapter, onNavigate }) {
   return (
     <nav aria-label="Điều hướng nội dung" className="sticky top-0 z-30 w-full border-b border-white/15 bg-[#651d24]">
       <div className="mx-auto flex max-w-6xl items-center px-3 py-2 sm:px-8">
@@ -28,6 +18,12 @@ function ChapterNav({ activeChapter }) {
             <a
               key={chapter.id}
               href={`#${chapter.id}`}
+              onClick={(event) => {
+                if (event.button === 0 && !event.metaKey && !event.ctrlKey && !event.shiftKey && !event.altKey) {
+                  onNavigate(chapter.id);
+                }
+              }}
+              aria-label={`Chặng ${chapter.number}: ${chapter.title}`}
               aria-current={activeChapter === chapter.id ? 'location' : undefined}
               className={`flex min-h-11 w-full min-w-0 items-center justify-center gap-1 truncate rounded-lg px-2 text-xs font-semibold transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#f0d9b8] active:scale-[0.98] md:w-auto md:shrink-0 md:gap-1.5 md:px-4 md:text-sm ${
                 activeChapter === chapter.id
@@ -68,7 +64,7 @@ function HistoricalPhoto({ photo, hero = false, priority = false }) {
         href={photo.sourceUrl}
         target="_blank"
         rel="noreferrer"
-        aria-label={`Mở nguồn ảnh chính thức: ${photo.caption}`}
+        aria-label={`Mở nguồn ảnh ${photo.sourceName || 'Trang nguồn'}: ${photo.caption}`}
         className={`historical-photo__link group block overflow-hidden rounded-2xl border focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 ${hero ? 'border-white/20 focus-visible:outline-[#f0d9b8]' : 'border-stone-300 focus-visible:outline-[#741e25]'}`}
       >
         <img
@@ -88,7 +84,7 @@ function HistoricalPhoto({ photo, hero = false, priority = false }) {
           rel="noreferrer"
           className={`inline-flex min-h-11 shrink-0 items-center gap-1 font-semibold no-underline transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 ${hero ? 'text-[#f0d9b8] focus-visible:outline-[#f0d9b8]' : 'text-[#741e25] focus-visible:outline-[#741e25]'}`}
         >
-          Nguồn ảnh: Báo Điện tử Chính phủ <ArrowUpRight size={14} aria-hidden="true" />
+          Nguồn ảnh: {photo.sourceName || 'Trang nguồn'} <ArrowUpRight size={14} aria-hidden="true" />
         </a>
       </figcaption>
     </figure>
@@ -163,7 +159,19 @@ function SlideCard({ slide, index }) {
 
           <div className={`mt-6 flex gap-2 border-t border-stone-200 pt-4 text-sm leading-6 text-stone-700 ${slide.photo ? 'lg:col-span-2' : ''}`}>
             <BookOpenText size={15} className="mt-1 shrink-0 text-[#a43b3c]" aria-hidden="true" />
-          <p><span className="font-semibold text-stone-800">Nguồn:</span> {slide.source}</p>
+          <div className="min-w-0">
+            <p><span className="font-semibold text-stone-800">Nguồn:</span> {slide.source}</p>
+            {slide.sourceUrl && (
+              <a
+                href={slide.sourceUrl}
+                target="_blank"
+                rel="noreferrer"
+                className="mt-1 inline-flex min-h-11 items-center gap-1 font-semibold text-[#741e25] no-underline transition-colors hover:text-[#a43b3c] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#741e25]"
+              >
+                {slide.sourceLinkText || 'Mở nguồn'} <ArrowUpRight size={14} aria-hidden="true" />
+              </a>
+            )}
+          </div>
           </div>
         </div>
       </div>
@@ -180,7 +188,7 @@ function ChapterSection({ chapter }) {
       </div>
       <div data-reveal className="mb-8 max-w-4xl border-t border-stone-300 pt-5">
         <h2 className="min-w-0 w-full max-w-full break-words text-3xl font-semibold leading-[1.15] text-stone-900 sm:text-4xl">
-          {chapter.number === '01' ? <><span className="sm:inline">Bối cảnh, ý nghĩa</span><br className="sm:hidden" /><span> và nhân tố thắng lợi</span></> : chapter.title}
+          {chapter.title}
         </h2>
         <p className="mt-4 max-w-[68ch] text-lg leading-8 text-stone-700">{chapter.intro}</p>
       </div>
@@ -214,7 +222,7 @@ export default function App() {
 
   useEffect(() => {
     if (!('IntersectionObserver' in window)) return undefined;
-    const sectionIds = [...chapters.map((chapter) => chapter.id), quizSectionId, aiAppendixSectionId];
+    const sectionIds = chapters.map((chapter) => chapter.id);
     const sections = sectionIds.map((sectionId) => document.getElementById(sectionId)).filter(Boolean);
     const activeLine = () => window.innerHeight * 0.42;
     const observer = new IntersectionObserver(
@@ -290,41 +298,64 @@ export default function App() {
       </header>
 
       <main id="main-content" className="min-w-0 w-full max-w-full">
-        <ChapterNav activeChapter={activeChapter} />
+        <ChapterNav activeChapter={activeChapter} onNavigate={setActiveChapter} />
         <section className="relative isolate overflow-hidden bg-[#711f27] text-white">
           <div className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_76%_18%,rgba(193,126,72,0.2),transparent_33%),linear-gradient(125deg,transparent_42%,rgba(35,10,14,0.45))]" />
           <div className="mx-auto grid max-w-6xl grid-cols-1 items-center gap-10 px-5 pb-12 pt-10 sm:px-8 sm:pb-16 sm:pt-14 lg:grid-cols-[1.05fr_.95fr] lg:gap-12">
             <div data-reveal className="min-w-0">
               <p className="text-sm font-bold text-[#f0d9b8]">Lịch sử Đảng Cộng sản Việt Nam</p>
               <h1 className="mt-5 min-w-0 w-full max-w-full break-words text-4xl font-semibold leading-[1.14] sm:text-5xl md:text-6xl">
-                <span className="block sm:inline">Ý nghĩa lịch sử</span>{' '}
-                <span className="block sm:inline">và kinh nghiệm</span>{' '}
-                <span className="block sm:inline">lãnh đạo của Đảng</span>
+                Xây dựng và bảo vệ chính quyền cách mạng (1945–1946)
               </h1>
-              <p className="mt-4 text-2xl italic text-[#f0d9b8] sm:text-3xl">thời kỳ 1954–1975</p>
-              <p className="mt-7 w-full max-w-[60ch] whitespace-normal break-words text-base leading-8 text-white/90">
-                Từ thắng lợi năm 1975, nhìn lại những nhân tố quyết định, bài học lãnh đạo và cách vận dụng vào phát triển hôm nay.
+              <p className="mt-7 w-full max-w-[60ch] whitespace-normal break-words text-lg leading-8 text-white/90 sm:text-xl">
+                Từ giành chính quyền đến giữ vững nền độc lập non trẻ
               </p>
               <a href="#chang-1" className="mt-8 inline-flex min-h-11 items-center gap-2 rounded-full bg-[#f0d9b8] px-5 py-3 text-sm font-bold text-[#54171d] transition-colors hover:bg-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#f0d9b8] active:scale-[0.98]">
                 Khám phá nội dung <ArrowDown size={15} aria-hidden="true" />
               </a>
             </div>
-            <HistoricalPhoto photo={historicalPhotos.liberationTank} hero priority />
+            <div
+              role="img"
+              aria-label="1945–1946 · Kháng chiến, kiến quốc"
+              className="hero-photo mx-auto grid aspect-[1.5/1] w-full max-w-[42rem] place-items-center overflow-hidden rounded-2xl bg-[#641c23]/85 px-6 py-8 text-center shadow-[0_24px_60px_-30px_rgba(28,8,12,0.75)] sm:px-10 lg:mx-0 lg:max-w-none"
+            >
+              <div>
+                <p className="text-5xl leading-none tracking-tight text-[#f0d9b8] sm:text-6xl">1945–1946</p>
+                <span className="mx-auto mt-6 block h-px w-16 bg-[#f0d9b8]/65" aria-hidden="true" />
+                <p className="mt-5 text-xl font-semibold uppercase leading-snug tracking-[0.12em] text-white sm:text-2xl">Kháng chiến, kiến quốc</p>
+              </div>
+            </div>
           </div>
         </section>
 
         <div className="mx-auto max-w-6xl px-5 pb-10 sm:px-8 sm:pb-16">
-          <VietnamMapSection />
+          <section aria-labelledby="scope-title" className="grid items-center gap-8 border-b border-stone-200 py-12 sm:py-16 lg:grid-cols-[.9fr_1.1fr] lg:gap-12">
+            <div data-reveal className="min-w-0">
+              <p className="text-sm font-bold uppercase tracking-[0.12em] text-[#741e25]">Phạm vi trình bày</p>
+              <h2 id="scope-title" className="mt-3 text-3xl font-semibold leading-tight text-stone-900 sm:text-4xl">1945–1946</h2>
+              <p className="mt-4 max-w-[60ch] text-base leading-7 text-stone-700">
+                Từ sau ngày 2/9/1945 đến khi cuộc kháng chiến toàn quốc bùng nổ ngày 19/12/1946.
+              </p>
+              <p className="mt-4 max-w-[60ch] text-base leading-7 text-stone-700">
+                Hai nhiệm vụ gắn bó: xây dựng chính quyền và giải quyết khủng hoảng đời sống; bảo vệ chính quyền trước nguy cơ tái xâm lược và chống phá.
+              </p>
+            </div>
+            <aside data-reveal aria-label="Luận điểm trung tâm" className="rounded-2xl bg-[#651d24] px-6 py-7 text-[#f0d9b8] shadow-[0_24px_60px_-38px_rgba(28,8,12,0.75)] sm:px-8 sm:py-9">
+              <p className="text-xs font-bold uppercase tracking-[0.16em] text-white/75">Luận điểm trung tâm</p>
+              <p className="mt-4 text-2xl font-semibold leading-snug sm:text-3xl">“Kháng chiến, kiến quốc”</p>
+              <p className="mt-3 max-w-[58ch] text-base leading-7 text-white/90">
+                Kết hợp củng cố nội lực, tập hợp đoàn kết và sách lược đối ngoại linh hoạt để giữ nền độc lập.
+              </p>
+            </aside>
+          </section>
           {chapters.map((chapter) => <ChapterSection key={chapter.id} chapter={chapter} />)}
-          <QuizSection />
-          <AIAppendix />
         </div>
       </main>
 
       <footer className="border-t border-stone-200 bg-[#f2f0eb]">
         <div className="mx-auto flex max-w-6xl flex-col gap-2 px-5 py-7 text-sm text-stone-700 sm:flex-row sm:items-center sm:justify-between sm:px-8">
           <p className="font-semibold text-stone-700">Trường Đại học FPT <span className="mx-1 text-stone-400">·</span> VNR202</p>
-          <p>Ý nghĩa lịch sử và kinh nghiệm lãnh đạo của Đảng thời kỳ 1954–1975</p>
+          <p>Xây dựng và bảo vệ chính quyền cách mạng thời kỳ 1945–1946</p>
         </div>
       </footer>
     </div>
