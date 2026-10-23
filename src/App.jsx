@@ -30,9 +30,6 @@ function ChapterNav({ activeChapter }) {
             </a>
           ))}
         </div>
-        <a href="#chang-1" aria-label="Về đầu trang" className="ml-2 hidden min-h-11 min-w-11 items-center justify-center rounded-lg text-[#f0dfd4] transition-colors hover:bg-[#7a262d] hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#f0d9b8] sm:flex">
-          <ArrowUpRight size={16} aria-hidden="true" />
-        </a>
       </div>
     </nav>
   );
@@ -101,7 +98,8 @@ function SlideCard({ slide, index }) {
           <span className="text-4xl leading-none text-[#a43b3c] sm:text-5xl">{slide.number}</span>
         </div>
 
-        <div className="min-w-0">
+        <div className={`min-w-0 ${slide.photo ? 'grid gap-6 lg:grid-cols-[minmax(0,1fr)_minmax(15rem,0.68fr)] lg:items-start' : ''}`}>
+          <div className="min-w-0">
           <h3 className="min-w-0 break-words text-2xl font-semibold leading-[1.18] text-stone-900 sm:text-3xl">
             {slide.title}
           </h3>
@@ -149,9 +147,11 @@ function SlideCard({ slide, index }) {
             </div>
           )}
 
+          </div>
+
           {slide.photo && <HistoricalPhoto photo={slide.photo} />}
 
-          <div className="mt-6 flex gap-2 border-t border-stone-200 pt-4 text-sm leading-6 text-stone-700">
+          <div className={`mt-6 flex gap-2 border-t border-stone-200 pt-4 text-sm leading-6 text-stone-700 ${slide.photo ? 'lg:col-span-2' : ''}`}>
             <BookOpenText size={15} className="mt-1 shrink-0 text-[#a43b3c]" aria-hidden="true" />
           <p><span className="font-semibold text-stone-800">Nguồn:</span> {slide.source}</p>
           </div>

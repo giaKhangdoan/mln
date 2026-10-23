@@ -115,6 +115,7 @@ export const chapters = [
           { value: '94,1%', label: 'Giá trị nhập khẩu là tư liệu sản xuất' }
         ],
         conclusion: 'Đặt mức nhập siêu bên cạnh cơ cấu hàng hóa: 94,1% giá trị nhập khẩu là tư liệu sản xuất, có thể phục vụ sản xuất và xuất khẩu. Liên hệ bài học phát huy nội lực: về dài hạn, cần nâng năng lực cung ứng trong nước, phát triển doanh nghiệp hỗ trợ và tăng giá trị nội địa.',
+        photo: historicalPhotos.tradePort,
         source: statisticsSource
       },
       {
@@ -129,6 +130,7 @@ export const chapters = [
         ],
         metricNote: 'Số doanh nghiệp và trung tâm tính đến cuối tháng 5/2026.',
         conclusion: 'Số lượng tổ chức phản ánh một phần đầu vào của hệ sinh thái đổi mới sáng tạo. Hiệu quả cần được nhìn qua năng suất, mức độ ứng dụng và khả năng đưa kết quả nghiên cứu vào sản xuất, đời sống.',
+        photo: historicalPhotos.digitalBusiness,
         source: 'Báo Điện tử Chính phủ, thông tin về triển khai Nghị quyết 57-NQ/TW, 02/01/2026 và 09/06/2026. Nguồn bổ sung.'
       },
       {
@@ -140,6 +142,7 @@ export const chapters = [
           { value: '9,1', unit: 'triệu đồng/tháng', label: 'Thu nhập bình quân của người lao động' }
         ],
         conclusion: 'Mức bình quân chưa phản ánh đầy đủ khác biệt giữa ngành nghề, vùng miền và chất lượng việc làm. Tăng trưởng cần gắn với việc làm ổn định, kỹ năng và thu nhập thực tế của người lao động. Từ kinh nghiệm 1954–1975, phát huy nội lực, tổ chức thực hiện sát thực tiễn và gắn thành quả phát triển với lợi ích của nhân dân.',
+        photo: historicalPhotos.jobFair,
         source: statisticsSource
       }
     ]
