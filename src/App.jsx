@@ -8,6 +8,7 @@ import {
 import { chapters } from './data/history1954-1975';
 import { historicalPhotos } from './data/historicalPhotos';
 import QuizSection from './components/QuizSection';
+import VietnamMapSection from './components/VietnamMapSection';
 
 const quizSectionId = 'quiz';
 const navigationItems = [
@@ -300,6 +301,7 @@ export default function App() {
         </section>
 
         <div className="mx-auto max-w-6xl px-5 pb-10 sm:px-8 sm:pb-16">
+          <VietnamMapSection />
           {chapters.map((chapter) => <ChapterSection key={chapter.id} chapter={chapter} />)}
           <QuizSection />
         </div>
