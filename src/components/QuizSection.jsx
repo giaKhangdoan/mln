@@ -13,9 +13,9 @@ export default function QuizSection() {
   const [unlocked, setUnlocked] = useState(false);
   const [passwordError, setPasswordError] = useState('');
   const [answers, setAnswers] = useState({});
-  const [submitted, setSubmitted] = useState(false);
   const answeredCount = Object.keys(answers).length;
   const correctCount = historyQuizQuestions.filter((question) => answers[question.id] === question.answer).length;
+  const quizComplete = answeredCount === historyQuizQuestions.length;
 
   function unlockQuiz(event) {
     event.preventDefault();
@@ -28,14 +28,8 @@ export default function QuizSection() {
     setUnlocked(true);
   }
 
-  function submitAnswers(event) {
-    event.preventDefault();
-    if (answeredCount === historyQuizQuestions.length) setSubmitted(true);
-  }
-
   function resetQuiz() {
     setAnswers({});
-    setSubmitted(false);
   }
 
   return (
@@ -59,9 +53,6 @@ export default function QuizSection() {
             </span>
             <div className="min-w-0 flex-1">
               <h3 className="text-xl font-semibold text-stone-900 sm:text-2xl">Mở khóa phần trắc nghiệm</h3>
-              <p id="quiz-password-hint" className="mt-2 text-base leading-7 text-stone-700">
-                Gợi ý mật khẩu: viết ngược ngày 30/04/1975.
-              </p>
             </div>
           </div>
 
@@ -79,7 +70,7 @@ export default function QuizSection() {
                 setPasswordError('');
               }}
               aria-invalid={Boolean(passwordError)}
-              aria-describedby={passwordError ? 'quiz-password-hint quiz-password-error' : 'quiz-password-hint'}
+              aria-describedby={passwordError ? 'quiz-password-error' : undefined}
               placeholder="Nhập mật khẩu"
               className="min-h-12 min-w-0 flex-1 rounded-xl border border-stone-300 bg-white px-4 text-base text-stone-900 placeholder:text-stone-600 focus:border-[#741e25] focus:outline-none focus:ring-2 focus:ring-[#741e25]/20"
             />
@@ -96,9 +87,11 @@ export default function QuizSection() {
         <div className="quiz-feedback-enter rounded-2xl border border-stone-200 bg-white p-5 shadow-[0_14px_50px_-38px_rgba(41,37,36,0.3)] sm:p-8">
           <div className="mb-7 grid gap-4 rounded-xl bg-[#f4f1eb] p-4 sm:grid-cols-[1fr_auto] sm:items-center sm:p-5">
             <div>
-              <p className="text-sm font-semibold text-stone-700">{submitted ? 'Kết quả của bạn' : 'Tiến độ'}</p>
+              <p className="text-sm font-semibold text-stone-700">{quizComplete ? 'Hoàn thành' : 'Tiến độ'}</p>
               <p aria-live="polite" className="mt-1 text-lg font-semibold text-stone-900">
-                {submitted ? `Bạn trả lời đúng ${correctCount} / ${historyQuizQuestions.length} câu` : `Đã chọn ${answeredCount} / ${historyQuizQuestions.length} câu`}
+                {quizComplete
+                  ? `Bạn trả lời đúng ${correctCount} / ${historyQuizQuestions.length} câu`
+                  : `Đã trả lời ${answeredCount} / ${historyQuizQuestions.length} câu · đúng ${correctCount}`}
               </p>
             </div>
             <div
@@ -113,81 +106,78 @@ export default function QuizSection() {
             </div>
           </div>
 
-          <form onSubmit={submitAnswers}>
-            <ol className="space-y-7">
-              {historyQuizQuestions.map((question, index) => {
-                const selectedAnswer = answers[question.id];
-                const isCorrect = selectedAnswer === question.answer;
+          <ol className="space-y-7">
+            {historyQuizQuestions.map((question, index) => {
+              const selectedAnswer = answers[question.id];
+              const isAnswered = Boolean(selectedAnswer);
+              const isCorrect = selectedAnswer === question.answer;
 
-                return (
-                  <li key={question.id} className="border-t border-stone-200 pt-6 first:border-t-0 first:pt-0">
-                    <fieldset disabled={submitted}>
-                      <legend className="text-lg font-semibold leading-7 text-stone-900 sm:text-xl">
-                        <span className="mr-2 text-[#741e25]">{index + 1}.</span>{question.question}
-                      </legend>
-                      <div className="mt-4 grid gap-3">
-                        {question.options.map((option) => {
-                          const selected = selectedAnswer === option.id;
-                          const correctOption = submitted && question.answer === option.id;
-                          let optionState = 'border-stone-300 bg-white hover:border-[#a43b3c] hover:bg-[#fcfaf7]';
-                          if (selected) optionState = 'border-[#741e25] bg-[#f8f1ee]';
-                          if (submitted && correctOption) optionState = 'border-[#487252] bg-[#f0f6f0]';
-                          if (submitted && selected && !isCorrect) optionState = 'border-[#a33a3a] bg-[#fbf1ef]';
+              return (
+                <li key={question.id} className="border-t border-stone-200 pt-6 first:border-t-0 first:pt-0">
+                  <fieldset disabled={isAnswered}>
+                    <legend className="text-lg font-semibold leading-7 text-stone-900 sm:text-xl">
+                      <span className="mr-2 text-[#741e25]">{index + 1}.</span>{question.question}
+                    </legend>
+                    <div className="mt-4 grid gap-3">
+                      {question.options.map((option) => {
+                        const selected = selectedAnswer === option.id;
+                        const correctOption = isAnswered && question.answer === option.id;
+                        let optionState = 'border-stone-300 bg-white hover:border-[#a43b3c] hover:bg-[#fcfaf7]';
+                        if (selected && isCorrect) optionState = 'border-[#487252] bg-[#f0f6f0]';
+                        if (selected && !isCorrect) optionState = 'border-[#a33a3a] bg-[#fbf1ef]';
+                        if (correctOption) optionState = 'border-[#487252] bg-[#f0f6f0]';
 
-                          return (
-                            <label key={option.id} className={`flex min-h-12 cursor-pointer items-start gap-3 rounded-xl border px-4 py-3 text-base leading-7 text-stone-800 transition-colors focus-within:outline focus-within:outline-2 focus-within:outline-offset-2 focus-within:outline-[#741e25] has-[:disabled]:cursor-default ${optionState}`}>
-                              <input
-                                type="radio"
-                                name={`question-${question.id}`}
-                                value={option.id}
-                                checked={selected}
-                                onChange={() => setAnswers((current) => ({ ...current, [question.id]: option.id }))}
-                                className="mt-1.5 h-4 w-4 shrink-0 accent-[#741e25]"
-                              />
-                              <span className="min-w-0"><span className="mr-2 font-semibold">{option.id}.</span>{option.text}</span>
-                            </label>
-                          );
-                        })}
-                      </div>
-                    </fieldset>
+                        return (
+                          <label key={option.id} className={`flex min-h-12 cursor-pointer items-start gap-3 rounded-xl border px-4 py-3 text-base leading-7 text-stone-800 transition-colors focus-within:outline focus-within:outline-2 focus-within:outline-offset-2 focus-within:outline-[#741e25] has-[:disabled]:cursor-default ${optionState}`}>
+                            <input
+                              type="radio"
+                              name={`question-${question.id}`}
+                              value={option.id}
+                              checked={selected === true}
+                              onChange={() => setAnswers((current) => (
+                                current[question.id]
+                                  ? current
+                                  : { ...current, [question.id]: option.id }
+                              ))}
+                              className="mt-1.5 h-4 w-4 shrink-0 accent-[#741e25]"
+                            />
+                            <span className="min-w-0"><span className="mr-2 font-semibold">{option.id}.</span>{option.text}</span>
+                          </label>
+                        );
+                      })}
+                    </div>
+                  </fieldset>
 
-                    {submitted && (
-                      <div className="quiz-feedback-enter mt-4 rounded-xl bg-[#f5f3ef] p-4">
-                        <p className={`flex items-center gap-2 text-sm font-semibold ${isCorrect ? 'text-[#365d3f]' : 'text-[#8b272d]'}`}>
-                          {isCorrect ? <CheckCircle2 size={17} aria-hidden="true" /> : <XCircle size={17} aria-hidden="true" />}
-                          {isCorrect ? 'Bạn chọn đúng.' : `Đáp án đúng: ${question.answer}.`}
-                        </p>
-                        <p className="mt-2 text-base leading-7 text-stone-700">{question.explanation}</p>
-                      </div>
-                    )}
-                  </li>
-                );
-              })}
-            </ol>
+                  {isAnswered && (
+                    <div role="status" aria-live="polite" className="quiz-feedback-enter mt-4 rounded-xl bg-[#f5f3ef] p-4">
+                      <p className={`flex items-center gap-2 text-sm font-semibold ${isCorrect ? 'text-[#365d3f]' : 'text-[#8b272d]'}`}>
+                        {isCorrect ? <CheckCircle2 size={17} aria-hidden="true" /> : <XCircle size={17} aria-hidden="true" />}
+                        {isCorrect ? 'Chính xác!' : `Chưa đúng. Đáp án đúng là ${question.answer}.`}
+                      </p>
+                      <p className="mt-2 text-base leading-7 text-stone-700">{question.explanation}</p>
+                    </div>
+                  )}
+                </li>
+              );
+            })}
+          </ol>
 
-            <div className="mt-8 flex flex-col gap-3 border-t border-stone-200 pt-6 sm:flex-row sm:items-center sm:justify-between">
-              <p className="text-sm leading-6 text-stone-700">
-                {submitted ? 'Bạn có thể làm lại bài để thử thêm lần nữa.' : 'Trả lời đủ năm câu để xem kết quả và phần giải thích.'}
-              </p>
-              {submitted ? (
-                <button
-                  type="button"
-                  onClick={resetQuiz}
-                  className="inline-flex min-h-12 shrink-0 items-center justify-center gap-2 rounded-xl border border-stone-300 bg-white px-5 text-base font-semibold text-stone-800 transition-colors hover:bg-stone-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#741e25]"
-                >
-                  <RotateCcw size={16} aria-hidden="true" /> Làm lại
-                </button>
-              ) : (
-                <button
-                  type="submit"
-                  disabled={answeredCount !== historyQuizQuestions.length}
-                  className="inline-flex min-h-12 shrink-0 items-center justify-center gap-2 rounded-xl bg-[#741e25] px-5 text-base font-semibold text-white transition-colors hover:bg-[#5f1820] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#741e25] active:scale-[0.99] disabled:cursor-not-allowed disabled:bg-stone-300 disabled:text-stone-700"
-                >
-                  Xem kết quả <ArrowRight size={17} aria-hidden="true" />
-                </button>
-              )}
-            </div>
-          </form>
+          <div className="mt-8 flex flex-col gap-3 border-t border-stone-200 pt-6 sm:flex-row sm:items-center sm:justify-between">
+            <p className="text-sm leading-6 text-stone-700">
+              {quizComplete
+                ? 'Bạn đã hoàn thành cả năm câu.'
+                : 'Kết quả và phần giải thích hiện ngay sau mỗi lựa chọn.'}
+            </p>
+            {answeredCount > 0 && (
+              <button
+                type="button"
+                onClick={resetQuiz}
+                className="inline-flex min-h-12 shrink-0 items-center justify-center gap-2 rounded-xl border border-stone-300 bg-white px-5 text-base font-semibold text-stone-800 transition-colors hover:bg-stone-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#741e25]"
+              >
+                <RotateCcw size={16} aria-hidden="true" /> Làm lại cả 5 câu
+              </button>
+            )}
+          </div>
         </div>
       )}
     </section>

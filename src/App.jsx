@@ -245,7 +245,7 @@ export default function App() {
   }, []);
 
   return (
-    <div onClickCapture={handlePageClick} className="min-h-screen w-full min-w-0 max-w-[100vw] overflow-x-clip bg-[#faf9f6] text-stone-800">
+    <div onClick={handlePageClick} className="min-h-screen w-full min-w-0 max-w-[100vw] overflow-x-clip bg-[#faf9f6] text-stone-800">
       {clickStars.map((star) => (
         <svg
           key={star.id}

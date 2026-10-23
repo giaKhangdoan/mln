@@ -11,8 +11,8 @@ Add a fourth, clearly labeled trắc nghiệm section with five multiple-choice 
 ## Phase 01 — Add the password-gated quiz
 
 - [x] Add five questions covering the historical context, meaning, victory factors, campaign sequence, and present-day application.
-- [x] Add an accessible password form and a useful hint.
-- [x] Let viewers answer all five questions, submit for a score, see explanations, and retry.
+- [x] Add an accessible password form without showing the password hint.
+- [x] Show correctness and explanation as soon as each answer is selected; keep questions independent and allow a full retry.
 - [x] Add a fourth navigation item and active-section tracking.
 - [x] Keep the existing Vietnamese typeface, palette, mobile layout, and reduced-motion support.
 - [x] Build the site successfully.
