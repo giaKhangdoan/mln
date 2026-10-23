@@ -1,132 +1,195 @@
 import { useState } from 'react';
-import { CheckCircle2, RotateCcw, XCircle } from 'lucide-react';
+import { ArrowRight, CheckCircle2, LockKeyhole, RotateCcw, XCircle } from 'lucide-react';
+import { historyQuizQuestions } from '../data/historyQuiz';
 
-const questions = [
-  {
-    id: 1,
-    category: 'Bối cảnh lịch sử',
-    question: 'Câu nói “...nếu nước độc lập mà dân không hưởng hạnh phúc tự do, thì độc lập cũng chẳng có nghĩa lý gì” xuất hiện trong văn bản nào của Hồ Chí Minh?',
-    options: [
-      ['A', 'Tuyên ngôn Độc lập (02-09-1945)'],
-      ['B', 'Thư gửi Ủy ban nhân dân các kỳ, tỉnh, huyện và làng (17-10-1945, Tập 4, tr.64)'],
-      ['C', 'Lời kêu gọi toàn quốc kháng chiến (19-12-1946)'],
-      ['D', 'Diễn văn bế mạc kỳ họp thứ nhất Quốc hội khóa I (1946)']
-    ],
-    correct: 'B',
-    explain: 'Câu nói được trích từ Thư gửi Ủy ban nhân dân các kỳ, tỉnh, huyện và làng ngày 17-10-1945, in trong Hồ Chí Minh Toàn tập, Tập 4, tr.64.'
-  },
-  {
-    id: 2,
-    category: 'Khung lý luận',
-    question: 'Luận điểm “Độc lập dân tộc phải gắn liền tự do, hạnh phúc của nhân dân” ở trang 43 của tài liệu tham khảo là gì?',
-    options: [
-      ['A', 'Câu trích nguyên văn lời nói của Chủ tịch Hồ Chí Minh trong kháng chiến'],
-      ['B', 'Tiêu đề khung luận điểm trong Giáo trình Tư tưởng Hồ Chí Minh (Bộ GD&ĐT, 2019)'],
-      ['C', 'Trích đoạn lời nói đầu của Hiến pháp năm 1946'],
-      ['D', 'Khẩu hiệu tuyên truyền của Mặt trận Việt Minh']
-    ],
-    correct: 'B',
-    explain: 'Trang 43 là tiêu đề khung luận điểm do ban biên soạn Giáo trình Tư tưởng Hồ Chí Minh năm 2019 khái quát hóa, không phải câu trích nguyên văn của Chủ tịch Hồ Chí Minh.'
-  },
-  {
-    id: 3,
-    category: 'Khung lý luận',
-    question: 'Trong sơ đồ Meaning Map, tại sao “Nhân dân” được đặt ở vị trí trung tâm tham chiếu?',
-    options: [
-      ['A', 'Vì nhân dân được bổ sung làm giá trị thứ tư vào khẩu hiệu'],
-      ['B', 'Vì nhân dân là trung tâm tham chiếu để hỏi: Độc lập cho ai, tự do cho ai, hạnh phúc cho ai?'],
-      ['C', 'Vì bố cục mỹ thuật đòi hỏi phải có 4 góc đối xứng nhau'],
-      ['D', 'Vì nhân dân thay thế hoàn toàn cho khái niệm độc lập chính trị']
-    ],
-    correct: 'B',
-    explain: 'Nhân dân không phải giá trị thứ tư; nhân dân là trung tâm tham chiếu để kiểm tra ý nghĩa thực chất của ba giá trị.'
-  },
-  {
-    id: 4,
-    category: 'Phương pháp luận',
-    question: 'Khi sử dụng văn bản 1946 (Tập 4, tr.175) nói về “ăn, mặc, ở, học hành”, vì sao nhóm gắn dấu sao (*) cho khái niệm Hạnh phúc?',
-    options: [
-      ['A', 'Để khẳng định 4 điều kiện này là định nghĩa đầy đủ, duy nhất của hạnh phúc'],
-      ['B', 'Để nhắc nhở đây là một phương diện đời sống thực tiễn cụ thể, không phải toàn bộ định nghĩa'],
-      ['C', 'Để báo hiệu rằng trích dẫn này chưa được kiểm chứng trong tài liệu gốc'],
-      ['D', 'Để chỉ ra rằng khái niệm hạnh phúc không có giá trị học thuật']
-    ],
-    correct: 'B',
-    explain: 'Các điều kiện ăn, mặc, ở, học hành là phương diện đời sống cụ thể; dấu sao giúp tránh đồng nhất chúng với toàn bộ định nghĩa hạnh phúc.'
-  },
-  {
-    id: 5,
-    category: 'Vấn đề phản biện',
-    question: 'Nếu một quốc gia đã có độc lập chính trị nhưng một bộ phận nhân dân chưa được bảo đảm tự do và đời sống, bản đồ lập luận trả lời thế nào?',
-    options: [
-      ['A', 'Phủ nhận hoàn toàn nền độc lập chính trị của quốc gia đó'],
-      ['B', 'Độc lập chính trị là nền tảng cần bảo vệ, nhưng ý nghĩa đầy đủ cần được tiếp tục hoàn thiện trong gắn kết với tự do và đời sống nhân dân'],
-      ['C', 'Tuyên bố độc lập và hạnh phúc là hai phạm trù mâu thuẫn triệt tiêu lẫn nhau'],
-      ['D', 'Cho rằng chỉ cần độc lập chính trị là tự động có được tự do và hạnh phúc']
-    ],
-    correct: 'B',
-    explain: 'Không phủ nhận nền độc lập chính trị, nhưng cũng không đồng nhất độc lập với trạng thái hình thức khép kín; ý nghĩa đầy đủ nằm ở đời sống nhân dân.'
-  }
-];
+const quizPassword = '30/04/1975'.split('').reverse().join('');
+
+function normalizePassword(value) {
+  return value.replace(/\D/g, '');
+}
 
 export default function QuizSection() {
+  const [password, setPassword] = useState('');
+  const [unlocked, setUnlocked] = useState(false);
+  const [passwordError, setPasswordError] = useState('');
   const [answers, setAnswers] = useState({});
+  const [submitted, setSubmitted] = useState(false);
+  const answeredCount = Object.keys(answers).length;
+  const correctCount = historyQuizQuestions.filter((question) => answers[question.id] === question.answer).length;
 
-  const reset = () => setAnswers({});
+  function unlockQuiz(event) {
+    event.preventDefault();
+    if (normalizePassword(password) !== normalizePassword(quizPassword)) {
+      setPasswordError('Mật khẩu chưa đúng. Hãy thử lại.');
+      return;
+    }
+
+    setPasswordError('');
+    setUnlocked(true);
+  }
+
+  function submitAnswers(event) {
+    event.preventDefault();
+    if (answeredCount === historyQuizQuestions.length) setSubmitted(true);
+  }
+
+  function resetQuiz() {
+    setAnswers({});
+    setSubmitted(false);
+  }
 
   return (
-    <section id="quiz" className="scroll-mt-20 max-w-5xl mx-auto px-4 sm:px-6 pb-16 w-full space-y-8">
-      <div className="bg-white border border-slate-200 rounded-3xl p-6 sm:p-10 shadow-sm space-y-7">
-        <div className="text-center space-y-2">
-          <p className="text-xs font-bold uppercase tracking-wider text-red-800">Ôn tập tương tác</p>
-          <h2 className="text-2xl sm:text-3xl font-bold text-slate-900">Trắc nghiệm nội dung Meaning Map</h2>
-          <p className="text-sm text-slate-600">Kiểm tra khả năng đối chiếu nguồn, khái niệm và giới hạn của lập luận.</p>
-        </div>
+    <section id="quiz" className="scroll-mt-32 py-12 sm:py-16">
+      <div className="mb-3 flex items-center gap-3">
+        <span className="h-px w-8 bg-[#a43b3c]" aria-hidden="true" />
+        <p className="text-sm font-semibold text-[#741e25]">Phần 04</p>
+      </div>
+      <div data-reveal className="mb-8 max-w-4xl border-t border-stone-300 pt-5">
+        <h2 className="text-3xl font-semibold leading-[1.15] text-stone-900 sm:text-4xl">Trắc nghiệm</h2>
+        <p className="mt-4 max-w-[68ch] text-lg leading-8 text-stone-700">
+          Năm câu hỏi ôn lại nội dung vừa trình bày. Chọn một đáp án cho mỗi câu.
+        </p>
+      </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-          {questions.map(question => {
-            const selected = answers[question.id];
-            return (
-              <article key={question.id} className="border border-slate-200 rounded-2xl p-5 space-y-4">
-                <div className="space-y-1">
-                  <p className="text-[11px] font-bold uppercase text-slate-500">{question.category}</p>
-                  <h3 className="text-sm font-bold text-slate-900 leading-snug">Câu {question.id}. {question.question}</h3>
-                </div>
-                <div className="space-y-2">
-                  {question.options.map(([key, text]) => {
-                    const isSelected = selected === key;
-                    const isCorrect = key === question.correct;
-                    const style = selected
-                      ? isSelected
-                        ? isCorrect ? 'border-emerald-500 bg-emerald-50 text-emerald-950' : 'border-red-500 bg-red-50 text-red-950'
-                        : isCorrect ? 'border-emerald-300 bg-emerald-50/50 text-emerald-900' : 'border-slate-200 text-slate-500'
-                      : 'border-slate-200 text-slate-700 hover:bg-slate-50';
-                    return (
-                      <button key={key} type="button" disabled={Boolean(selected)} onClick={() => setAnswers(prev => ({ ...prev, [question.id]: key }))} className={`w-full text-left p-3 rounded-xl border text-xs leading-relaxed transition-colors ${style}`}>
-                        <span className="font-bold mr-2">{key}.</span>{text}
-                      </button>
-                    );
-                  })}
-                </div>
-                {selected && (
-                  <div className={`p-3 rounded-xl text-xs leading-relaxed flex gap-2 ${selected === question.correct ? 'bg-emerald-50 text-emerald-900' : 'bg-red-50 text-red-900'}`}>
-                    {selected === question.correct ? <CheckCircle2 className="w-4 h-4 shrink-0" /> : <XCircle className="w-4 h-4 shrink-0" />}
-                    <span><strong>{selected === question.correct ? 'Chính xác. ' : 'Chưa chính xác. '}</strong>{question.explain}</span>
-                  </div>
-                )}
-              </article>
-            );
-          })}
-        </div>
+      {!unlocked ? (
+        <form onSubmit={unlockQuiz} className="rounded-2xl border border-stone-200 bg-white p-5 shadow-[0_14px_50px_-38px_rgba(41,37,36,0.3)] sm:p-8">
+          <div className="flex items-start gap-4">
+            <span className="grid h-11 w-11 shrink-0 place-items-center rounded-full bg-[#f4eee6] text-[#741e25]">
+              <LockKeyhole size={20} aria-hidden="true" />
+            </span>
+            <div className="min-w-0 flex-1">
+              <h3 className="text-xl font-semibold text-stone-900 sm:text-2xl">Mở khóa phần trắc nghiệm</h3>
+              <p id="quiz-password-hint" className="mt-2 text-base leading-7 text-stone-700">
+                Gợi ý mật khẩu: viết ngược ngày 30/04/1975.
+              </p>
+            </div>
+          </div>
 
-        {Object.keys(answers).length > 0 && (
-          <div className="text-center">
-            <button type="button" onClick={reset} className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-slate-100 text-slate-700 text-xs font-semibold hover:bg-slate-200">
-              <RotateCcw className="w-3.5 h-3.5" /> Làm lại bộ câu hỏi
+          <label htmlFor="quiz-password" className="mt-6 block text-sm font-semibold text-stone-800">Mật khẩu</label>
+          <div className="mt-2 flex flex-col gap-3 sm:flex-row">
+            <input
+              id="quiz-password"
+              type="password"
+              inputMode="numeric"
+              autoComplete="off"
+              maxLength={10}
+              value={password}
+              onChange={(event) => {
+                setPassword(event.target.value);
+                setPasswordError('');
+              }}
+              aria-invalid={Boolean(passwordError)}
+              aria-describedby={passwordError ? 'quiz-password-hint quiz-password-error' : 'quiz-password-hint'}
+              placeholder="Nhập mật khẩu"
+              className="min-h-12 min-w-0 flex-1 rounded-xl border border-stone-300 bg-white px-4 text-base text-stone-900 placeholder:text-stone-600 focus:border-[#741e25] focus:outline-none focus:ring-2 focus:ring-[#741e25]/20"
+            />
+            <button
+              type="submit"
+              className="inline-flex min-h-12 items-center justify-center gap-2 rounded-xl bg-[#741e25] px-5 text-base font-semibold text-white transition-colors hover:bg-[#5f1820] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#741e25] active:scale-[0.99]"
+            >
+              Mở phần trắc nghiệm <ArrowRight size={17} aria-hidden="true" />
             </button>
           </div>
-        )}
-      </div>
+          {passwordError && <p id="quiz-password-error" role="alert" className="mt-3 text-sm font-semibold text-[#9b252d]">{passwordError}</p>}
+        </form>
+      ) : (
+        <div className="quiz-feedback-enter rounded-2xl border border-stone-200 bg-white p-5 shadow-[0_14px_50px_-38px_rgba(41,37,36,0.3)] sm:p-8">
+          <div className="mb-7 grid gap-4 rounded-xl bg-[#f4f1eb] p-4 sm:grid-cols-[1fr_auto] sm:items-center sm:p-5">
+            <div>
+              <p className="text-sm font-semibold text-stone-700">{submitted ? 'Kết quả của bạn' : 'Tiến độ'}</p>
+              <p aria-live="polite" className="mt-1 text-lg font-semibold text-stone-900">
+                {submitted ? `Bạn trả lời đúng ${correctCount} / ${historyQuizQuestions.length} câu` : `Đã chọn ${answeredCount} / ${historyQuizQuestions.length} câu`}
+              </p>
+            </div>
+            <div
+              className="h-2 w-full overflow-hidden rounded-full bg-stone-300 sm:w-40"
+              role="progressbar"
+              aria-label="Số câu đã trả lời"
+              aria-valuemin={0}
+              aria-valuemax={historyQuizQuestions.length}
+              aria-valuenow={answeredCount}
+            >
+              <div className="quiz-progress-fill h-full rounded-full bg-[#741e25]" style={{ width: `${(answeredCount / historyQuizQuestions.length) * 100}%` }} />
+            </div>
+          </div>
+
+          <form onSubmit={submitAnswers}>
+            <ol className="space-y-7">
+              {historyQuizQuestions.map((question, index) => {
+                const selectedAnswer = answers[question.id];
+                const isCorrect = selectedAnswer === question.answer;
+
+                return (
+                  <li key={question.id} className="border-t border-stone-200 pt-6 first:border-t-0 first:pt-0">
+                    <fieldset disabled={submitted}>
+                      <legend className="text-lg font-semibold leading-7 text-stone-900 sm:text-xl">
+                        <span className="mr-2 text-[#741e25]">{index + 1}.</span>{question.question}
+                      </legend>
+                      <div className="mt-4 grid gap-3">
+                        {question.options.map((option) => {
+                          const selected = selectedAnswer === option.id;
+                          const correctOption = submitted && question.answer === option.id;
+                          let optionState = 'border-stone-300 bg-white hover:border-[#a43b3c] hover:bg-[#fcfaf7]';
+                          if (selected) optionState = 'border-[#741e25] bg-[#f8f1ee]';
+                          if (submitted && correctOption) optionState = 'border-[#487252] bg-[#f0f6f0]';
+                          if (submitted && selected && !isCorrect) optionState = 'border-[#a33a3a] bg-[#fbf1ef]';
+
+                          return (
+                            <label key={option.id} className={`flex min-h-12 cursor-pointer items-start gap-3 rounded-xl border px-4 py-3 text-base leading-7 text-stone-800 transition-colors focus-within:outline focus-within:outline-2 focus-within:outline-offset-2 focus-within:outline-[#741e25] has-[:disabled]:cursor-default ${optionState}`}>
+                              <input
+                                type="radio"
+                                name={`question-${question.id}`}
+                                value={option.id}
+                                checked={selected}
+                                onChange={() => setAnswers((current) => ({ ...current, [question.id]: option.id }))}
+                                className="mt-1.5 h-4 w-4 shrink-0 accent-[#741e25]"
+                              />
+                              <span className="min-w-0"><span className="mr-2 font-semibold">{option.id}.</span>{option.text}</span>
+                            </label>
+                          );
+                        })}
+                      </div>
+                    </fieldset>
+
+                    {submitted && (
+                      <div className="quiz-feedback-enter mt-4 rounded-xl bg-[#f5f3ef] p-4">
+                        <p className={`flex items-center gap-2 text-sm font-semibold ${isCorrect ? 'text-[#365d3f]' : 'text-[#8b272d]'}`}>
+                          {isCorrect ? <CheckCircle2 size={17} aria-hidden="true" /> : <XCircle size={17} aria-hidden="true" />}
+                          {isCorrect ? 'Bạn chọn đúng.' : `Đáp án đúng: ${question.answer}.`}
+                        </p>
+                        <p className="mt-2 text-base leading-7 text-stone-700">{question.explanation}</p>
+                      </div>
+                    )}
+                  </li>
+                );
+              })}
+            </ol>
+
+            <div className="mt-8 flex flex-col gap-3 border-t border-stone-200 pt-6 sm:flex-row sm:items-center sm:justify-between">
+              <p className="text-sm leading-6 text-stone-700">
+                {submitted ? 'Bạn có thể làm lại bài để thử thêm lần nữa.' : 'Trả lời đủ năm câu để xem kết quả và phần giải thích.'}
+              </p>
+              {submitted ? (
+                <button
+                  type="button"
+                  onClick={resetQuiz}
+                  className="inline-flex min-h-12 shrink-0 items-center justify-center gap-2 rounded-xl border border-stone-300 bg-white px-5 text-base font-semibold text-stone-800 transition-colors hover:bg-stone-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#741e25]"
+                >
+                  <RotateCcw size={16} aria-hidden="true" /> Làm lại
+                </button>
+              ) : (
+                <button
+                  type="submit"
+                  disabled={answeredCount !== historyQuizQuestions.length}
+                  className="inline-flex min-h-12 shrink-0 items-center justify-center gap-2 rounded-xl bg-[#741e25] px-5 text-base font-semibold text-white transition-colors hover:bg-[#5f1820] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#741e25] active:scale-[0.99] disabled:cursor-not-allowed disabled:bg-stone-300 disabled:text-stone-700"
+                >
+                  Xem kết quả <ArrowRight size={17} aria-hidden="true" />
+                </button>
+              )}
+            </div>
+          </form>
+        </div>
+      )}
     </section>
   );
 }

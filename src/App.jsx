@@ -7,13 +7,20 @@ import {
 } from 'lucide-react';
 import { chapters } from './data/history1954-1975';
 import { historicalPhotos } from './data/historicalPhotos';
+import QuizSection from './components/QuizSection';
+
+const quizSectionId = 'quiz';
+const navigationItems = [
+  ...chapters.map((chapter) => ({ ...chapter, navTitle: chapter.shortTitle })),
+  { id: quizSectionId, number: '04', shortTitle: 'Trắc nghiệm', navTitle: 'Trắc nghiệm' }
+];
 
 function ChapterNav({ activeChapter }) {
   return (
-    <nav aria-label="Điều hướng các chặng" className="sticky top-0 z-30 w-full border-b border-white/15 bg-[#651d24]">
+    <nav aria-label="Điều hướng nội dung" className="sticky top-0 z-30 w-full border-b border-white/15 bg-[#651d24]">
       <div className="mx-auto flex max-w-6xl items-center px-3 py-2 sm:px-8">
-        <div className="grid min-w-0 flex-1 grid-cols-3 gap-2 md:flex md:items-center md:justify-between">
-          {chapters.map((chapter) => (
+        <div className="grid min-w-0 flex-1 grid-cols-2 gap-2 sm:grid-cols-4 md:flex md:items-center md:justify-between">
+          {navigationItems.map((chapter) => (
             <a
               key={chapter.id}
               href={`#${chapter.id}`}
@@ -24,9 +31,8 @@ function ChapterNav({ activeChapter }) {
                   : 'text-[#f0dfd4] hover:bg-[#7a262d] hover:text-white'
               }`}
             >
-              <span className="hidden text-base md:inline">{chapter.number}</span>
-              <span className="hidden md:inline">{chapter.title}</span>
-              <span className="md:hidden">{chapter.shortTitle}</span>
+              <span className="shrink-0">{chapter.number}</span>
+              <span className="truncate">{chapter.navTitle}</span>
             </a>
           ))}
         </div>
@@ -163,7 +169,7 @@ function SlideCard({ slide, index }) {
 
 function ChapterSection({ chapter }) {
   return (
-    <section id={chapter.id} className="scroll-mt-24 py-12 sm:py-16">
+    <section id={chapter.id} className="scroll-mt-32 py-12 sm:py-16">
       <div className="mb-3 flex items-center gap-3">
         <span className="h-px w-8 bg-[#a43b3c]" aria-hidden="true" />
         <p className="text-sm font-semibold text-[#741e25]">Chặng {chapter.number}</p>
@@ -214,8 +220,8 @@ export default function App() {
       { rootMargin: '-18% 0px -68% 0px', threshold: [0, 0.15, 0.35, 0.6] }
     );
 
-    chapters.forEach((chapter) => {
-      const section = document.getElementById(chapter.id);
+    [...chapters.map((chapter) => chapter.id), quizSectionId].forEach((sectionId) => {
+      const section = document.getElementById(sectionId);
       if (section) observer.observe(section);
     });
     return () => observer.disconnect();
@@ -295,6 +301,7 @@ export default function App() {
 
         <div className="mx-auto max-w-6xl px-5 pb-10 sm:px-8 sm:pb-16">
           {chapters.map((chapter) => <ChapterSection key={chapter.id} chapter={chapter} />)}
+          <QuizSection />
         </div>
       </main>
 
