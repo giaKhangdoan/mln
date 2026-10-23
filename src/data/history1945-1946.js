@@ -1,8 +1,29 @@
+import baDinhPhoto from '../assets/history1945-1946/ba-dinh-platform-1945.jpg';
+import coalitionGovernmentPhoto from '../assets/history1945-1946/coalition-government-1946.jpg';
+import dongXuanPhoto from '../assets/history1945-1946/dong-xuan-self-defense-1946.jpg';
+
 const textbookSource =
   'Giáo trình Lịch sử Đảng Cộng sản Việt Nam (sử dụng trong các trường đại học, hệ không chuyên lý luận chính trị), 2019, tr. 60–70.';
 
 const statisticsSource =
   'Liên hệ hiện nay: Cục Thống kê, Thông cáo báo chí về tình hình lao động, việc làm quý III và 9 tháng năm 2026, công bố ngày 03/10/2026.';
+
+const baDinhSourceUrl = 'https://commons.wikimedia.org/wiki/File:To%C3%A0n_c%E1%BA%A3nh_l%E1%BB%85_%C4%91%C3%A0i_t%E1%BA%A1i_Qu%E1%BA%A3ng_tr%C6%B0%E1%BB%9Dng_Ba_%C4%90%C3%ACnh_-_H%C3%A0_N%E1%BB%99i,_ng%C3%A0y_02-09-1945.jpg';
+const baDinhOfficialImageUrl = 'https://dms.luutru.gov.vn/files/ecm/source_files/2020/08/13/6-143758-130820-95.jpg';
+const coalitionGovernmentSourceUrl = 'https://commons.wikimedia.org/wiki/File:L%C3%A2m-th%E1%BB%9Di_Li%C3%AAn-hi%E1%BB%87p_Ch%C3%ADnh-ph%E1%BB%A7_Vi%E1%BB%87t-nam_D%C3%A2n-ch%E1%BB%A7_C%E1%BB%99ng-h%C3%B2a_ra_m%E1%BA%AFt_Qu%E1%BB%91c-h%E1%BB%99i_ng%C3%A0y_02_th%C3%A1ng_03_n%C4%83m_1946.jpg';
+const dongXuanSourceUrl = 'https://commons.wikimedia.org/wiki/File:Hanoi_guards_in_1946.jpg';
+const ccBySaLicenseUrl = 'https://creativecommons.org/licenses/by-sa/4.0/deed.vi';
+
+export const heroPhoto = {
+  src: baDinhPhoto,
+  alt: 'Toàn cảnh lễ đài và người dân tại Quảng trường Ba Đình ngày 2/9/1945',
+  caption: 'Quảng trường Ba Đình, ngày 2/9/1945. Tư liệu Phông Nghệ sĩ nhiếp ảnh Nguyễn Bá Khoản.',
+  sourceName: 'Trung tâm Lưu trữ quốc gia III',
+  sourceUrl: baDinhOfficialImageUrl,
+  licenseLabel: 'Phạm vi công cộng tại Việt Nam',
+  licenseUrl: `${baDinhSourceUrl}#Licensing`,
+  fit: 'contain'
+};
 
 export const chapters = [
   {
@@ -65,6 +86,16 @@ export const chapters = [
         number: '04',
         title: 'Củng cố nền tảng chính trị – pháp lý của chính quyền',
         lead: 'Mở rộng sự tham gia của nhân dân, đồng thời xử lý sức ép chính trị.',
+        photo: {
+          src: coalitionGovernmentPhoto,
+          alt: 'Chính phủ Liên hiệp Việt Nam Dân chủ Cộng hòa ra mắt Quốc hội ngày 2/3/1946',
+          caption: 'Chính phủ Liên hiệp ra mắt Quốc hội, ngày 2/3/1946.',
+          sourceName: 'Musée Annam',
+          sourceUrl: coalitionGovernmentSourceUrl,
+          licenseLabel: 'CC BY-SA 4.0 · ảnh không chỉnh sửa',
+          licenseUrl: ccBySaLicenseUrl,
+          fit: 'contain'
+        },
         points: [
           'Tổng tuyển cử ngày 6/1/1946: hơn 89% cử tri tham gia, bầu 333 đại biểu vào Quốc hội khóa I.',
           'Sau tổng tuyển cử, bổ sung 70 ghế Quốc hội không qua bầu cử cho một số đảng viên Việt Quốc, Việt Cách; có thể phân tích đây là một nhượng bộ chính trị nhằm giảm đối đầu và mở rộng khối đoàn kết, không phải kết quả lá phiếu.',
@@ -113,6 +144,16 @@ export const chapters = [
         number: '07',
         title: 'Từ hòa hoãn có nguyên tắc đến toàn quốc kháng chiến',
         lead: 'Duy trì nỗ lực hòa bình trong khi bảo vệ an ninh và chuẩn bị tự vệ.',
+        photo: {
+          src: dongXuanPhoto,
+          alt: 'Tổ tự vệ chợ Đồng Xuân tại Hà Nội vào mùa đông năm 1946',
+          caption: 'Tổ tự vệ chợ Đồng Xuân, mùa đông năm 1946.',
+          sourceName: 'Musée Annam',
+          sourceUrl: dongXuanSourceUrl,
+          licenseLabel: 'CC BY-SA 4.0 · ảnh không chỉnh sửa',
+          licenseUrl: ccBySaLicenseUrl,
+          fit: 'contain'
+        },
         points: [
           'Vụ Ôn Như Hầu, tháng 7/1946: chính quyền phát hiện và ngăn chặn kế hoạch đảo chính dự kiến ngày 14/7 của một số tổ chức Đại Việt–Quốc dân đảng có sự hậu thuẫn của Pháp; không đồng nhất toàn bộ lực lượng đối lập với nhóm tham gia âm mưu.',
           'Tạm ước 14/9/1946: được ký sau khi đàm phán Fontainebleau thất bại, với thiện chí hòa bình và để bảo đảm phái đoàn Việt Nam rời Pháp an toàn; hai bên đình chỉ chiến sự ở Nam Bộ, tiếp tục đàm phán, đồng thời có thêm nhượng bộ kinh tế, văn hóa.',

@@ -5,15 +5,21 @@ import {
   BookOpenText,
   Landmark
 } from 'lucide-react';
-import { chapters } from './data/history1945-1946';
+import { chapters, heroPhoto } from './data/history1945-1946';
+import QuizSection from './components/QuizSection';
+import AIAppendix from './components/AIAppendix';
 
-const navigationItems = chapters.map((chapter) => ({ ...chapter, navTitle: chapter.shortTitle }));
+const navigationItems = [
+  ...chapters.map((chapter) => ({ ...chapter, navTitle: chapter.shortTitle, navType: 'Chặng' })),
+  { id: 'quiz', number: '04', title: 'Trắc nghiệm', navTitle: 'Trắc nghiệm', navType: 'Phần' },
+  { id: 'phu-luc-ai', number: '05', title: 'Phụ lục AI', navTitle: 'Phụ lục AI', navType: 'Phần' }
+];
 
 function ChapterNav({ activeChapter, onNavigate }) {
   return (
     <nav aria-label="Điều hướng nội dung" className="sticky top-0 z-30 w-full border-b border-white/15 bg-[#651d24]">
       <div className="mx-auto flex max-w-6xl items-center px-3 py-2 sm:px-8">
-        <div className="grid min-w-0 flex-1 grid-cols-3 gap-2 md:flex md:items-center md:justify-between">
+        <div className="grid min-w-0 flex-1 grid-cols-3 gap-1.5 sm:grid-cols-5 sm:gap-2 md:flex md:items-center md:justify-between">
           {navigationItems.map((chapter) => (
             <a
               key={chapter.id}
@@ -23,7 +29,7 @@ function ChapterNav({ activeChapter, onNavigate }) {
                   onNavigate(chapter.id);
                 }
               }}
-              aria-label={`Chặng ${chapter.number}: ${chapter.title}`}
+              aria-label={`${chapter.navType} ${chapter.number}: ${chapter.title}`}
               aria-current={activeChapter === chapter.id ? 'location' : undefined}
               className={`flex min-h-11 w-full min-w-0 items-center justify-center gap-1 truncate rounded-lg px-2 text-xs font-semibold transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#f0d9b8] active:scale-[0.98] md:w-auto md:shrink-0 md:gap-1.5 md:px-4 md:text-sm ${
                 activeChapter === chapter.id
@@ -58,6 +64,8 @@ function MetricGrid({ metrics }) {
 }
 
 function HistoricalPhoto({ photo, hero = false, priority = false }) {
+  const fitClass = photo.fit === 'contain' ? 'object-contain bg-[#f2f0eb]' : 'object-cover';
+
   return (
     <figure className={`historical-photo ${hero ? 'hero-photo mx-auto w-full max-w-[42rem] text-white lg:mx-0 lg:max-w-none lg:justify-self-end' : 'inline-photo text-stone-700'}`}>
       <a
@@ -65,7 +73,7 @@ function HistoricalPhoto({ photo, hero = false, priority = false }) {
         target="_blank"
         rel="noreferrer"
         aria-label={`Mở nguồn ảnh ${photo.sourceName || 'Trang nguồn'}: ${photo.caption}`}
-        className={`historical-photo__link group block overflow-hidden rounded-2xl border focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 ${hero ? 'border-white/20 focus-visible:outline-[#f0d9b8]' : 'border-stone-300 focus-visible:outline-[#741e25]'}`}
+        className={`historical-photo__link group block overflow-hidden rounded-2xl border focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 ${hero ? 'border-white/20 shadow-[0_24px_60px_-30px_rgba(28,8,12,0.75)] focus-visible:outline-[#f0d9b8]' : 'border-stone-300 focus-visible:outline-[#741e25]'}`}
       >
         <img
           src={photo.src}
@@ -73,19 +81,31 @@ function HistoricalPhoto({ photo, hero = false, priority = false }) {
           loading={priority ? 'eager' : 'lazy'}
           fetchPriority={priority ? 'high' : undefined}
           decoding="async"
-          className={`historical-photo__image block w-full object-cover ${hero ? 'aspect-[1.5/1]' : 'aspect-[4/3]'}`}
+          className={`historical-photo__image block w-full ${fitClass} ${hero ? 'aspect-[1.5/1]' : 'aspect-[4/3]'}`}
         />
       </a>
       <figcaption className={`mt-3 flex min-w-0 flex-col gap-1.5 text-sm leading-6 sm:flex-row sm:items-start sm:justify-between sm:gap-4 ${hero ? 'text-white/90' : 'text-stone-700'}`}>
         <span className="min-w-0">{photo.caption}</span>
-        <a
-          href={photo.sourceUrl}
-          target="_blank"
-          rel="noreferrer"
-          className={`inline-flex min-h-11 shrink-0 items-center gap-1 font-semibold no-underline transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 ${hero ? 'text-[#f0d9b8] focus-visible:outline-[#f0d9b8]' : 'text-[#741e25] focus-visible:outline-[#741e25]'}`}
-        >
-          Nguồn ảnh: {photo.sourceName || 'Trang nguồn'} <ArrowUpRight size={14} aria-hidden="true" />
-        </a>
+        <span className="flex min-w-0 flex-wrap items-center gap-x-3 sm:justify-end">
+          <a
+            href={photo.sourceUrl}
+            target="_blank"
+            rel="noreferrer"
+            className={`inline-flex min-h-11 items-center gap-1 font-semibold no-underline transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 ${hero ? 'text-[#f0d9b8] focus-visible:outline-[#f0d9b8]' : 'text-[#741e25] focus-visible:outline-[#741e25]'}`}
+          >
+            Nguồn ảnh: {photo.sourceName || 'Trang nguồn'} <ArrowUpRight size={14} aria-hidden="true" />
+          </a>
+          {photo.licenseUrl && photo.licenseLabel && (
+            <a
+              href={photo.licenseUrl}
+              target="_blank"
+              rel="noreferrer"
+              className={`inline-flex min-h-11 items-center gap-1 font-semibold no-underline transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 ${hero ? 'text-white/80 focus-visible:outline-[#f0d9b8]' : 'text-stone-600 focus-visible:outline-[#741e25]'}`}
+            >
+              {photo.licenseLabel} <ArrowUpRight size={14} aria-hidden="true" />
+            </a>
+          )}
+        </span>
       </figcaption>
     </figure>
   );
@@ -222,7 +242,7 @@ export default function App() {
 
   useEffect(() => {
     if (!('IntersectionObserver' in window)) return undefined;
-    const sectionIds = chapters.map((chapter) => chapter.id);
+    const sectionIds = navigationItems.map((item) => item.id);
     const sections = sectionIds.map((sectionId) => document.getElementById(sectionId)).filter(Boolean);
     const activeLine = () => window.innerHeight * 0.42;
     const observer = new IntersectionObserver(
@@ -314,17 +334,7 @@ export default function App() {
                 Khám phá nội dung <ArrowDown size={15} aria-hidden="true" />
               </a>
             </div>
-            <div
-              role="img"
-              aria-label="1945–1946 · Kháng chiến, kiến quốc"
-              className="hero-photo mx-auto grid aspect-[1.5/1] w-full max-w-[42rem] place-items-center overflow-hidden rounded-2xl bg-[#641c23]/85 px-6 py-8 text-center shadow-[0_24px_60px_-30px_rgba(28,8,12,0.75)] sm:px-10 lg:mx-0 lg:max-w-none"
-            >
-              <div>
-                <p className="text-5xl leading-none tracking-tight text-[#f0d9b8] sm:text-6xl">1945–1946</p>
-                <span className="mx-auto mt-6 block h-px w-16 bg-[#f0d9b8]/65" aria-hidden="true" />
-                <p className="mt-5 text-xl font-semibold uppercase leading-snug tracking-[0.12em] text-white sm:text-2xl">Kháng chiến, kiến quốc</p>
-              </div>
-            </div>
+            <HistoricalPhoto photo={heroPhoto} hero priority />
           </div>
         </section>
 
@@ -349,6 +359,8 @@ export default function App() {
             </aside>
           </section>
           {chapters.map((chapter) => <ChapterSection key={chapter.id} chapter={chapter} />)}
+          <QuizSection />
+          <AIAppendix />
         </div>
       </main>
 

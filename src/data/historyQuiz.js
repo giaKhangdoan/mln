@@ -1,62 +1,68 @@
-export const historyQuizQuestions = [
+export const chapter2QuizQuestions = [
   {
-    id: 'context',
-    question: 'Trong giai đoạn 1954–1975, nhiệm vụ chiến lược của hai miền được trình bày như thế nào?',
+    id: 'khang-chien-kien-quoc',
+    question: 'Cách hiểu nào diễn đạt đúng mối liên hệ giữa “kháng chiến” và “kiến quốc” trong đường lối giai đoạn đầu?',
     options: [
-      { id: 'A', text: 'Miền Bắc xây dựng chủ nghĩa xã hội; miền Nam tiếp tục cách mạng dân tộc dân chủ nhân dân.' },
-      { id: 'B', text: 'Cả hai miền cùng tập trung xây dựng chủ nghĩa xã hội.' },
-      { id: 'C', text: 'Miền Bắc tiếp tục cách mạng dân tộc dân chủ nhân dân; miền Nam xây dựng chủ nghĩa xã hội.' },
-      { id: 'D', text: 'Hai miền có cùng một nhiệm vụ và không có sự chi viện giữa hai miền.' }
-    ],
-    answer: 'A',
-    explanation: 'Nội dung trình bày nêu miền Bắc xây dựng chủ nghĩa xã hội, miền Nam tiếp tục cách mạng dân tộc dân chủ nhân dân; miền Bắc đồng thời là hậu phương chi viện cho miền Nam.'
-  },
-  {
-    id: 'meaning',
-    question: 'Ý nghĩa trong nước nào gắn với thắng lợi năm 1975?',
-    options: [
-      { id: 'A', text: 'Chỉ kết thúc một chiến dịch quân sự, không làm thay đổi tình trạng đất nước.' },
-      { id: 'B', text: 'Giải phóng miền Nam, thống nhất đất nước, hoàn thành cách mạng dân tộc dân chủ nhân dân trong cả nước và mở ra thời kỳ hòa bình, đi lên chủ nghĩa xã hội.' },
-      { id: 'C', text: 'Mở đầu thời kỳ đất nước tiếp tục bị chia cắt.' },
-      { id: 'D', text: 'Chỉ có ý nghĩa trong nước, không có ảnh hưởng quốc tế.' }
+      { id: 'A', text: 'Hai nhiệm vụ loại trừ nhau; chỉ bảo vệ chính quyền sau khi giải quyết xong nạn đói và nạn dốt.' },
+      { id: 'B', text: 'Xây dựng chính quyền, giải quyết nhu cầu cấp bách và bảo vệ độc lập được xử lý gắn bó trong hoàn cảnh cụ thể.' },
+      { id: 'C', text: 'Chỉ công tác ngoại giao mới tạo nền tảng cho độc lập.' },
+      { id: 'D', text: 'Khôi phục kinh tế là mục tiêu duy nhất của Chỉ thị ngày 25/11/1945.' }
     ],
     answer: 'B',
-    explanation: 'Bài trình bày nêu việc chấm dứt chia cắt, giải phóng miền Nam, thống nhất đất nước, hoàn thành cách mạng dân tộc dân chủ nhân dân và mở ra thời kỳ hòa bình, cả nước đi lên chủ nghĩa xã hội.'
+    explanation: 'Đây là cách tổng hợp luận điểm trong hai tài liệu; cần đọc cùng phần bối cảnh và Chỉ thị “Kháng chiến, kiến quốc” trong giáo trình.',
+    source: 'Giáo trình, tr. 60–62.'
   },
   {
-    id: 'factors',
-    question: 'Tổ hợp nào phản ánh đầy đủ các nhân tố tạo nên thắng lợi?',
+    id: 'tong-tuyen-cu',
+    question: 'Phát biểu nào phân biệt đúng kết quả Tổng tuyển cử với việc bổ sung ghế Quốc hội?',
     options: [
-      { id: 'A', text: 'Chỉ dựa vào viện trợ quốc tế, không cần sự tham gia của nhân dân.' },
-      { id: 'B', text: 'Chỉ dựa vào hậu phương miền Bắc, không cần đường lối lãnh đạo thống nhất.' },
-      { id: 'C', text: 'Sự lãnh đạo của Đảng, sức mạnh đoàn kết của nhân dân, hậu phương miền Bắc, đoàn kết khu vực và sự ủng hộ quốc tế.' },
-      { id: 'D', text: 'Chỉ dựa vào một chiến dịch cuối cùng.' }
+      { id: 'A', text: 'Hơn 89% cử tri tham gia và bầu 333 đại biểu; 70 ghế bổ sung sau đó không phải kết quả lá phiếu.' },
+      { id: 'B', text: 'Toàn bộ 403 ghế đều được bầu trực tiếp ngày 6/1/1946.' },
+      { id: 'C', text: '70 ghế bổ sung là số đại biểu được bầu tại Nam Bộ.' },
+      { id: 'D', text: 'Giáo trình nêu cử tri không tham gia cuộc Tổng tuyển cử.' }
+    ],
+    answer: 'A',
+    explanation: 'Cần tách số đại biểu được bầu trong Tổng tuyển cử khỏi số ghế được bổ sung sau đó không qua bầu cử.',
+    source: 'Giáo trình, tr. 63–65.'
+  },
+  {
+    id: 'hiep-dinh-so-bo',
+    question: 'Mô tả nào phù hợp với Hiệp định Sơ bộ ngày 6/3/1946 theo giáo trình?',
+    options: [
+      { id: 'A', text: 'Pháp công nhận Việt Nam độc lập hoàn toàn và thống nhất; quân Pháp rút ngay khỏi Việt Nam.' },
+      { id: 'B', text: 'Việt Nam đồng ý để 200.000 quân Pháp ra miền Bắc thay quân Tưởng.' },
+      { id: 'C', text: 'Pháp công nhận Việt Nam là quốc gia tự do trong Liên bang Đông Dương thuộc Liên hiệp Pháp; 15.000 quân Pháp ra Bắc thay quân Tưởng và sẽ rút dần trong 5 năm.' },
+      { id: 'D', text: 'Hiệp định lập tức chấm dứt kháng chiến ở Nam Bộ.' }
     ],
     answer: 'C',
-    explanation: 'Các nhân tố được trình bày gồm đường lối và sự lãnh đạo thống nhất của Đảng, nhân dân, hậu phương miền Bắc, đoàn kết Việt Nam–Lào–Campuchia, sự giúp đỡ của các nước xã hội chủ nghĩa và ủng hộ quốc tế.'
+    explanation: 'Các điều khoản thể hiện một bước hòa hoãn có giới hạn; không nên diễn giải thành công nhận độc lập hoàn toàn hoặc thống nhất đất nước.',
+    source: 'Giáo trình, tr. 66–67.'
   },
   {
-    id: 'campaign',
-    question: 'Trình tự các chiến dịch trong cuộc Tổng tiến công và nổi dậy mùa Xuân 1975 là gì?',
+    id: 'moc-khang-chien-toan-quoc',
+    question: 'Trình tự nào phân biệt đúng các mốc dẫn tới kháng chiến toàn quốc?',
     options: [
-      { id: 'A', text: 'Huế–Đà Nẵng → Tây Nguyên → Chiến dịch Hồ Chí Minh → 30/4/1975' },
-      { id: 'B', text: 'Tây Nguyên → Chiến dịch Hồ Chí Minh → Huế–Đà Nẵng → 30/4/1975' },
-      { id: 'C', text: 'Chiến dịch Hồ Chí Minh → Tây Nguyên → Huế–Đà Nẵng → 30/4/1975' },
-      { id: 'D', text: 'Tây Nguyên → Huế–Đà Nẵng → Chiến dịch Hồ Chí Minh → 30/4/1975' }
+      { id: 'A', text: '19/12 ra Chỉ thị; 20 giờ ngày 18/12 có Lời kêu gọi; 12/12 bắt đầu chiến đấu.' },
+      { id: 'B', text: '12/12 có Chỉ thị “Toàn dân kháng chiến”; 18/12 có quyết định phát động; 19/12 có Lời kêu gọi và từ 20 giờ chiến đấu bắt đầu.' },
+      { id: 'C', text: '18/12 bắt đầu chiến đấu; 19/12 mới họp quyết định; 12/12 ra Lời kêu gọi.' },
+      { id: 'D', text: '12/12, 18/12 và 19/12 đều là cùng một quyết định.' }
     ],
-    answer: 'D',
-    explanation: 'Bài trình bày ghi trình tự: Tây Nguyên, Huế–Đà Nẵng, Chiến dịch Hồ Chí Minh, dẫn tới thắng lợi ngày 30/4/1975.'
+    answer: 'B',
+    explanation: 'Giáo trình phân biệt chỉ thị, quyết định chính trị, lời kêu gọi và thời điểm chiến đấu bắt đầu.',
+    source: 'Giáo trình, tr. 69–70.'
   },
   {
-    id: 'application',
-    question: 'Cách liên hệ nào phù hợp với phần vận dụng vào phát triển hôm nay?',
+    id: 'so-lieu-lao-dong',
+    question: 'Phát biểu nào đọc đúng nhóm số liệu lao động của 9 tháng năm 2026?',
     options: [
-      { id: 'A', text: 'Dùng một số liệu riêng lẻ để kết luận toàn diện về nền kinh tế và đời sống.' },
-      { id: 'B', text: 'Coi mọi khoản nhập khẩu là hàng tiêu dùng và xem số lượng tổ chức đổi mới là thước đo đầy đủ hiệu quả.' },
-      { id: 'C', text: 'Đặt số liệu cạnh cơ cấu và giới hạn diễn giải; chú ý năng lực cung ứng trong nước, hiệu quả ứng dụng, chất lượng việc làm và thu nhập thực tế.' },
-      { id: 'D', text: 'Áp dụng nguyên trạng phương thức thời chiến vào mọi nhiệm vụ phát triển hiện nay.' }
+      { id: 'A', text: 'Có việc làm 52,7 triệu người; thu nhập bình quân 9,1 triệu đồng/tháng; lao động phi chính thức 32,4 triệu (61,5%); thiếu việc làm trong độ tuổi lao động 1,53%.' },
+      { id: 'B', text: '52,7 triệu là số lao động phi chính thức; 1,53% là tỷ lệ thất nghiệp cả nước.' },
+      { id: 'C', text: '9,1 triệu đồng là thu nhập cả năm; 61,5% là tỷ lệ thiếu việc làm.' },
+      { id: 'D', text: 'Các số liệu trên chứng minh trực tiếp bài học 1945–1946 làm tăng thu nhập ngày nay.' }
     ],
-    answer: 'C',
-    explanation: 'Nội dung yêu cầu đọc nhập siêu cùng cơ cấu hàng hóa, không đồng nhất số lượng tổ chức với hiệu quả, lưu ý khác biệt về việc làm và thu nhập, đồng thời vận dụng kinh nghiệm linh hoạt, sát thực tiễn.'
+    answer: 'A',
+    explanation: 'Các chỉ số đo những khía cạnh khác nhau; chúng không tự chứng minh nguyên nhân lịch sử hay phản ánh đầy đủ chất lượng việc làm.',
+    source: 'Cục Thống kê, kỳ tham chiếu 9/2026.',
+    sourceUrl: 'https://www.nso.gov.vn/tin-tuc-thong-ke/2026/10/thong-cao-bao-chi-ve-tinh-hinh-lao-dong-viec-lam-quy-iii-va-9-thang-nam-2026/'
   }
 ];
