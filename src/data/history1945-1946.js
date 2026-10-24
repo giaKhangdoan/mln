@@ -42,8 +42,6 @@ export const chapters = [
           'Hai nhiệm vụ gắn bó: xây dựng chính quyền và giải quyết khủng hoảng đời sống; bảo vệ chính quyền trước nguy cơ tái xâm lược và chống phá.',
           'Luận điểm: “Kháng chiến, kiến quốc” kết hợp củng cố nội lực, tập hợp đoàn kết và sách lược đối ngoại linh hoạt để giữ nền độc lập.'
         ],
-        highlightLabel: 'Phạm vi trình bày',
-        highlight: 'Từ sau ngày 2/9/1945 đến khi cuộc kháng chiến toàn quốc bùng nổ ngày 19/12/1946.',
         conclusion: '“Kháng chiến, kiến quốc” gắn xây dựng nội lực với bảo vệ chính quyền.',
         source: textbookSource
       },
