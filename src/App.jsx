@@ -3,11 +3,13 @@ import {
   ArrowDown,
   ArrowUpRight,
   BookOpenText,
-  Landmark
+  Landmark,
+  Presentation
 } from 'lucide-react';
 import { chapters, heroPhoto } from './data/history1945-1946';
 import QuizSection from './components/QuizSection';
 import AIAppendix from './components/AIAppendix';
+import PresentationMode from './components/PresentationMode';
 
 const navigationItems = [
   ...chapters.map((chapter) => ({ ...chapter, navTitle: chapter.shortTitle, navType: 'Chặng' })),
@@ -222,7 +224,28 @@ function ChapterSection({ chapter }) {
 export default function App() {
   const [activeChapter, setActiveChapter] = useState(chapters[0].id);
   const [clickStars, setClickStars] = useState([]);
+  const [isPresenting, setIsPresenting] = useState(false);
   const nextStarId = useRef(0);
+
+  function startPresentation() {
+    try {
+      const request = document.documentElement.requestFullscreen?.();
+      request?.catch?.(() => {});
+    } catch {
+      // Keep the fixed presentation view available when browser fullscreen is unavailable.
+    }
+    setIsPresenting(true);
+  }
+
+  function exitPresentation() {
+    setIsPresenting(false);
+    try {
+      const exit = document.fullscreenElement && document.exitFullscreen?.();
+      exit?.catch?.(() => {});
+    } catch {
+      // The presentation dialog still closes if fullscreen exit is unsupported.
+    }
+  }
 
   function handlePageClick(event) {
     const target = event.target instanceof Element ? event.target : null;
@@ -286,6 +309,15 @@ export default function App() {
     return () => observer.disconnect();
   }, []);
 
+  useEffect(() => {
+    if (!isPresenting) return undefined;
+    const handleFullscreenChange = () => {
+      if (!document.fullscreenElement) setIsPresenting(false);
+    };
+    document.addEventListener('fullscreenchange', handleFullscreenChange);
+    return () => document.removeEventListener('fullscreenchange', handleFullscreenChange);
+  }, [isPresenting]);
+
   return (
     <div onClick={handlePageClick} className="min-h-screen w-full min-w-0 max-w-[100vw] overflow-x-clip bg-[#faf9f6] text-stone-800">
       {clickStars.map((star) => (
@@ -330,9 +362,14 @@ export default function App() {
               <p className="mt-7 w-full max-w-[60ch] whitespace-normal break-words text-lg leading-8 text-white/90 sm:text-xl">
                 Từ giành chính quyền đến giữ vững nền độc lập non trẻ
               </p>
-              <a href="#chang-1" className="mt-8 inline-flex min-h-11 items-center gap-2 rounded-full bg-[#f0d9b8] px-5 py-3 text-sm font-bold text-[#54171d] transition-colors hover:bg-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#f0d9b8] active:scale-[0.98]">
-                Khám phá nội dung <ArrowDown size={15} aria-hidden="true" />
-              </a>
+              <div className="mt-8 flex flex-wrap gap-3">
+                <a href="#chang-1" className="inline-flex min-h-11 items-center gap-2 rounded-full bg-[#f0d9b8] px-5 py-3 text-sm font-bold text-[#54171d] transition-colors hover:bg-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#f0d9b8] active:scale-[0.98]">
+                  Khám phá nội dung <ArrowDown size={15} aria-hidden="true" />
+                </a>
+                <button type="button" onClick={startPresentation} className="inline-flex min-h-11 items-center gap-2 rounded-full border border-white/35 bg-white/5 px-5 py-3 text-sm font-bold text-white transition-colors hover:bg-white/15 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#f0d9b8] active:scale-[0.98]">
+                  <Presentation size={16} aria-hidden="true" /> Trình chiếu 8 slide
+                </button>
+              </div>
             </div>
             <HistoricalPhoto photo={heroPhoto} hero priority />
           </div>
@@ -370,6 +407,7 @@ export default function App() {
           <p>Xây dựng và bảo vệ chính quyền cách mạng thời kỳ 1945–1946</p>
         </div>
       </footer>
+      {isPresenting && <PresentationMode onExit={exitPresentation} />}
     </div>
   );
 }
