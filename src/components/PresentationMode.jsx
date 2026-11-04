@@ -1,11 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { ArrowLeft, ArrowRight, ArrowUpRight, X } from 'lucide-react';
-import { chapters } from '../data/history1945-1946';
-
-const presentationSlides = chapters.flatMap((chapter) =>
-  chapter.slides.map((slide) => ({ ...slide, chapter }))
-);
+import { chapter7Intro, presentationSlides } from '../data/chapter7-family';
 
 function PresentationPhoto({ photo }) {
   return (
@@ -43,6 +39,68 @@ function MetricPanel({ metrics, note }) {
   );
 }
 
+function PresentationLinks({ links }) {
+  if (!links?.length) return null;
+
+  return (
+    <ul className="mt-1 flex flex-wrap gap-x-3 gap-y-1">
+      {links.map((link) => (
+        <li key={link.url}>
+          <a
+            href={link.url}
+            target="_blank"
+            rel="noreferrer"
+            className="inline-flex min-h-11 items-center gap-1 font-semibold text-[#741e25] no-underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#741e25]"
+          >
+            {link.label} <ArrowUpRight size={13} aria-hidden="true" />
+          </a>
+        </li>
+      ))}
+    </ul>
+  );
+}
+
+function SourcePageContent({ page }) {
+  return (
+    <div className="min-w-0">
+      <div className="grid gap-4 md:grid-cols-2 md:gap-5">
+        {page.sections.map((section) => (
+          <section key={section.title} aria-label={section.title} className="min-w-0">
+            <h3 className="text-sm font-bold text-[#6c431d]">{section.title}</h3>
+            <ul className="mt-2 grid gap-2">
+              {section.items.map((item) => (
+                <li key={item} className="flex gap-2.5 text-xs leading-5 text-stone-800 sm:text-sm sm:leading-6">
+                  <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-[#a43b3c]" aria-hidden="true" />
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
+          </section>
+        ))}
+      </div>
+
+      <aside className="mt-4 rounded-xl border border-[#ead8ba] bg-[#f6efe3] p-3 sm:p-4">
+        <p className="text-xs font-bold uppercase tracking-wide text-[#6c431d]">Quy ước dẫn chứng</p>
+        <p className="mt-1 text-xs leading-5 text-stone-800 sm:text-sm sm:leading-6">{page.citationConvention}</p>
+        <p className="mt-1 text-xs leading-5 text-stone-600 sm:text-sm">{page.source}</p>
+      </aside>
+
+      <section aria-label="Nguồn đầy đủ để đối chiếu" className="mt-5 border-t border-stone-200 pt-4">
+        <h3 className="text-sm font-bold text-stone-900">Nguồn đầy đủ để đối chiếu</h3>
+        <ol className="mt-2 grid gap-3">
+          {page.fullSources.map((source) => (
+            <li key={source.id} className="min-w-0 text-xs leading-5 text-stone-800 sm:text-sm sm:leading-6">
+              <span className="mr-1.5 font-semibold text-[#741e25]">{source.id}</span>
+              {source.title}
+              <PresentationLinks links={source.links} />
+            </li>
+          ))}
+        </ol>
+      </section>
+    </div>
+  );
+}
+
 function PresentationSlide({ slide, titleRef }) {
   const hasAside = Boolean(slide.photo || slide.metrics);
   const isDense = (slide.points?.reduce((total, point) => total + point.length, 0) || 0) > 800;
@@ -52,7 +110,7 @@ function PresentationSlide({ slide, titleRef }) {
       <div className="flex min-h-0 flex-1 flex-col px-5 py-4 sm:px-8 sm:py-6 lg:px-11 lg:py-8">
         <header className="flex items-center justify-between gap-4">
           <p className="min-w-0 truncate text-sm font-semibold text-[#741e25]">
-            Chặng {slide.chapter.number} · {slide.chapter.shortTitle}
+            {slide.sectionLabel}
           </p>
           <span className="shrink-0 text-xl font-semibold leading-none text-[#a43b3c] sm:text-2xl">{slide.number}</span>
         </header>
@@ -65,32 +123,38 @@ function PresentationSlide({ slide, titleRef }) {
         </div>
 
         <div className={`presentation-content mt-4 min-h-0 flex-1 overflow-y-auto ${hasAside ? 'grid gap-4 md:grid-cols-[minmax(0,1.2fr)_minmax(15rem,0.8fr)] md:gap-6' : ''}`}>
-          <div className="min-w-0">
-            {slide.points && (
-              <ul className={`grid ${isDense ? 'gap-2' : 'gap-2.5 sm:gap-3'}`}>
-                {slide.points.map((point) => (
-                  <li key={point} className={`flex gap-3 text-stone-800 ${isDense ? 'text-sm leading-6' : 'text-sm leading-6 sm:text-base sm:leading-7'}`}>
-                    <span className="mt-[0.65rem] h-1.5 w-1.5 shrink-0 rounded-full bg-[#a43b3c]" aria-hidden="true" />
-                    <span>{point}</span>
-                  </li>
-                ))}
-              </ul>
-            )}
+          {slide.pageType === 'sources' ? (
+            <SourcePageContent page={slide.sourcePage} />
+          ) : (
+            <>
+              <div className="min-w-0">
+                {slide.points && (
+                  <ul className={`grid ${isDense ? 'gap-2' : 'gap-2.5 sm:gap-3'}`}>
+                    {slide.points.map((point) => (
+                      <li key={point} className={`flex gap-3 text-stone-800 ${isDense ? 'text-sm leading-6' : 'text-sm leading-6 sm:text-base sm:leading-7'}`}>
+                        <span className="mt-[0.65rem] h-1.5 w-1.5 shrink-0 rounded-full bg-[#a43b3c]" aria-hidden="true" />
+                        <span>{point}</span>
+                      </li>
+                    ))}
+                  </ul>
+                )}
 
-            {slide.highlight && (
-              <aside className="mt-4 rounded-xl border border-[#ead8ba] bg-[#f6efe3] p-4">
-                {slide.highlightLabel && <p className="text-sm font-bold text-[#6c431d]">{slide.highlightLabel}</p>}
-                {slide.highlightLead && <p className="mt-2 text-base font-semibold leading-6 text-stone-800">{slide.highlightLead}</p>}
-                <p className="mt-2 text-sm leading-6 text-stone-800 sm:text-base">{slide.highlight}</p>
-              </aside>
-            )}
-          </div>
+                {slide.highlight && (
+                  <aside className="mt-4 rounded-xl border border-[#ead8ba] bg-[#f6efe3] p-4">
+                    {slide.highlightLabel && <p className="text-sm font-bold text-[#6c431d]">{slide.highlightLabel}</p>}
+                    {slide.highlightLead && <p className="mt-2 text-base font-semibold leading-6 text-stone-800">{slide.highlightLead}</p>}
+                    <p className="mt-2 text-sm leading-6 text-stone-800 sm:text-base">{slide.highlight}</p>
+                  </aside>
+                )}
+              </div>
 
-          {hasAside && (
-            <aside className="min-w-0 space-y-3">
-              {slide.photo && <PresentationPhoto photo={slide.photo} />}
-              {slide.metrics && <MetricPanel metrics={slide.metrics} note={slide.metricNote} />}
-            </aside>
+              {hasAside && (
+                <aside className="min-w-0 space-y-3">
+                  {slide.photo && <PresentationPhoto photo={slide.photo} />}
+                  {slide.metrics && <MetricPanel metrics={slide.metrics} note={slide.metricNote} />}
+                </aside>
+              )}
+            </>
           )}
         </div>
 
@@ -101,12 +165,13 @@ function PresentationSlide({ slide, titleRef }) {
           </aside>
         )}
 
-        {slide.source && (
+        {slide.source && slide.pageType !== 'sources' && (
           <footer className="mt-3 flex shrink-0 flex-wrap items-center justify-between gap-x-4 gap-y-1 border-t border-stone-200 pt-2 text-xs leading-5 text-stone-600 sm:text-sm">
             <span className="min-w-0">Nguồn: {slide.source}</span>
             {slide.sourceUrl && <a href={slide.sourceUrl} target="_blank" rel="noreferrer" className="inline-flex min-h-11 shrink-0 items-center gap-1 font-semibold text-[#741e25] no-underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#741e25]">
               {slide.sourceLinkText || 'Mở nguồn'} <ArrowUpRight size={13} aria-hidden="true" />
             </a>}
+            {slide.sourceLinks?.length > 0 && <PresentationLinks links={slide.sourceLinks} />}
           </footer>
         )}
       </div>
@@ -114,7 +179,7 @@ function PresentationSlide({ slide, titleRef }) {
   );
 }
 
-export default function PresentationMode({ onExit }) {
+export default function PresentationMode({ onExit, returnFocusTarget, returnScrollY }) {
   const [slideIndex, setSlideIndex] = useState(0);
   const dialogRef = useRef(null);
   const titleRef = useRef(null);
@@ -174,8 +239,10 @@ export default function PresentationMode({ onExit }) {
       if (dialog.open) dialog.close();
       document.documentElement.style.overflow = htmlOverflow;
       document.body.style.overflow = bodyOverflow;
+      window.scrollTo(0, returnScrollY);
+      if (returnFocusTarget?.isConnected) returnFocusTarget.focus({ preventScroll: true });
     };
-  }, []);
+  }, [returnFocusTarget, returnScrollY]);
 
   useEffect(() => {
     titleRef.current?.focus({ preventScroll: true });
@@ -184,7 +251,7 @@ export default function PresentationMode({ onExit }) {
   return createPortal(
     <dialog
       ref={dialogRef}
-      aria-label="Trình chiếu nội dung Chương 2"
+      aria-label={`Trình chiếu ${chapter7Intro.chapter}`}
       onCancel={(event) => {
         event.preventDefault();
         exitPresentation();
@@ -196,7 +263,7 @@ export default function PresentationMode({ onExit }) {
         <header className="flex min-h-11 shrink-0 items-center justify-between gap-4 text-white">
           <div className="min-w-0">
             <p className="truncate text-sm font-semibold">Trường Đại học FPT <span className="mx-1 text-white/50">·</span> VNR202</p>
-            <p className="mt-0.5 truncate text-xs text-white/75">Xây dựng và bảo vệ chính quyền cách mạng (1945–1946)</p>
+            <p className="mt-0.5 truncate text-xs text-white/75">{chapter7Intro.chapter}</p>
           </div>
           <div className="flex shrink-0 items-center gap-2 sm:gap-4">
             <p aria-live="polite" className="hidden text-sm font-semibold text-[#f0d9b8] sm:block">{String(slideIndex + 1).padStart(2, '0')} / {String(presentationSlides.length).padStart(2, '0')}</p>
@@ -219,7 +286,7 @@ export default function PresentationMode({ onExit }) {
 
           <div className="order-last flex min-w-full flex-1 flex-col gap-1.5 sm:order-none sm:min-w-0 sm:px-4">
             <div className="flex items-center justify-between gap-3 text-xs text-white/80">
-              <span className="truncate">{slide.chapter.shortTitle} · {slide.title}</span>
+              <span className="truncate">{slide.sectionLabel} · {slide.title}</span>
               <span className="shrink-0 sm:hidden">{slideIndex + 1}/{presentationSlides.length}</span>
               <span className="hidden shrink-0 sm:inline">← → hoặc Space · Esc để thoát</span>
             </div>

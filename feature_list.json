@@ -48,5 +48,45 @@
     "verification_command": "Manually trace all displayed facts to the DOCX files, inspect source links and any image reuse evidence, verify no old topic or hidden sections are rendered, and review keyboard, reduced-motion and responsive behavior.",
     "notes": "Covers stories: all P1 stories; P2 3C Q&A remains deferred",
     "priority": "P1"
+  },
+  {
+    "id": "phase-01-build-chapter7-content-model",
+    "title": "Build the source-locked Chapter 7 content model",
+    "status": "passing",
+    "evidence": "Manually compared all 10 content slides and source page 11 with both DOCX files; preserved seven listed sources, metrics, page mappings and citation convention. node --check passed. Two official image candidates are documented; reuse rights remain unconfirmed, so the approved typography fallback is selected.",
+    "user_visible_behavior": "A shared Chapter 7 data module contains the 10 ordered content slides and complete source page 11, with an official hero image candidate researched.",
+    "verification_command": "Manually compare slide order, facts, statistics, legal references and sources against both DOCX files; record official image origin, credit, asset URL and reuse status.",
+    "notes": "Covers stories: US-01, US-02, US-04, US-06",
+    "priority": "P1"
+  },
+  {
+    "id": "phase-02-integrate-page-and-placeholders",
+    "title": "Integrate the Chapter 7 page and placeholders",
+    "status": "passing",
+    "evidence": "Browser review confirmed the 3/3/4 Chapter 7 groups, source page 11 with seven entries, updated metadata/footer and both placeholder anchors. Quiz/AI Ch.2 components are no longer mounted. npx eslint src/App.jsx passed; no old Chapter 2 copy remains in App.jsx or index.html.",
+    "user_visible_behavior": "The current page presents Chapter 7 in three groups, uses an officially sourced and credited hero image when reuse is confirmed, and keeps the approved 04/05 placeholders.",
+    "verification_command": "Manually review the three groups, navigation anchors, hero source/credit or typography fallback, footer, metadata, placeholders and 360 px layout.",
+    "notes": "Covers stories: US-01, US-03, US-05, US-06",
+    "priority": "P1"
+  },
+  {
+    "id": "phase-03-update-fullscreen-presentation",
+    "title": "Update the full-screen presentation",
+    "status": "passing",
+    "evidence": "Manual browser review: full-screen presents 10 shared content slides in 3/3/4 groups plus source page 11; counter/progress read 01/11–11/11 and the source page renders all seven records and their links in a scrollable card. ArrowRight/ArrowLeft/Space/Home/End, next/previous buttons, Escape and close were verified. Focus returns to the launch button and the page returns to its prior scroll position. npx eslint src/App.jsx src/components/PresentationMode.jsx, node --check src/data/chapter7-family.js and git diff --check passed.",
+    "user_visible_behavior": "Full-screen presentation uses the same 11 Chapter 7 pages as the scroll page and retains existing controls.",
+    "verification_command": "Manually advance and reverse through all 11 pages; inspect source links, keyboard controls, exit, focus and scroll restoration; run the listed lint, syntax and diff checks.",
+    "notes": "Covers stories: US-01, US-03, US-04",
+    "priority": "P1"
+  },
+  {
+    "id": "phase-04-manual-acceptance",
+    "title": "Manually accept Chapter 7 content and UX",
+    "status": "passing",
+    "evidence": "Manual acceptance: compared all 10 content slides and source page 11 against the supplied slide DOCX; checked the script DOCX only to clarify corresponding points. Browser review at 1280x900 and 360x800 found no horizontal overflow, 11 ordered pages, 3/3/4 chapter groups, no old Chapter 2 text in rendered content/metadata, and placeholders 04/05 with no controls. Presentation reached 11/11, the source pane scrolls and contains 7 links, End/Home/Escape work, and focus/scroll restore. Official image rights remain unconfirmed, so the approved typography fallback is used. No automated tests run.",
+    "user_visible_behavior": "The 10 content slides and source page 11 match the supplied files; the approved typography hero fallback remains because image reuse rights are unconfirmed; the existing responsive UI, interactions, and 04–05 placeholders remain intact.",
+    "verification_command": "Manually compare slide pages 01–11 against both DOCX files; inspect official source pages and image reuse terms; review 1280x900 and 360x800 layouts, navigation, placeholders, legacy strings, and presentation controls/focus/scroll.",
+    "notes": "Covers stories: US-01, US-02, US-03, US-04, US-05, US-06. The supplied MOJ URL for Law 52/2014 is indexed as the exact law but local CUA navigation could not resolve its domain; the original URL was retained. Reduced-motion behavior and click-star were carried forward from Phase 03 review.",
+    "priority": "P1"
   }
 ]

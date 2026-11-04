@@ -6,9 +6,7 @@ import {
   Landmark,
   Presentation
 } from 'lucide-react';
-import { chapters, heroPhoto } from './data/history1945-1946';
-import QuizSection from './components/QuizSection';
-import AIAppendix from './components/AIAppendix';
+import { chapters, chapter7Hero, chapter7Intro, sourcePage } from './data/chapter7-family';
 import PresentationMode from './components/PresentationMode';
 
 const navigationItems = [
@@ -113,6 +111,44 @@ function HistoricalPhoto({ photo, hero = false, priority = false }) {
   );
 }
 
+function HeroTypography({ hero }) {
+  return (
+    <figure className="historical-photo hero-photo mx-auto w-full min-w-0 max-w-[42rem] text-white lg:mx-0 lg:max-w-none lg:justify-self-end">
+      <div className="flex min-w-0 aspect-[1.5/1] flex-col justify-between overflow-hidden rounded-2xl border border-white/20 bg-[#651d24] p-6 shadow-[0_24px_60px_-30px_rgba(28,8,12,0.75)] sm:p-8">
+        <p className="text-xs font-bold uppercase tracking-[0.16em] text-[#f0d9b8]">{hero.eyebrow}</p>
+        <div className="min-w-0">
+          <span className="mb-4 block h-px w-12 bg-[#f0d9b8]" aria-hidden="true" />
+          <h2 className="w-full max-w-full break-words text-4xl font-semibold leading-[1.08] sm:text-5xl">{hero.title}</h2>
+          <p className="mt-4 max-w-[48ch] break-words text-base leading-7 text-white/85 sm:text-lg">{hero.subtitle}</p>
+        </div>
+        <span className="h-px w-16 bg-white/25" aria-hidden="true" />
+      </div>
+      <figcaption className="sr-only">Khối chữ mở đầu theo nội dung slide 01.</figcaption>
+    </figure>
+  );
+}
+
+function SourceLinks({ links }) {
+  if (!links?.length) return null;
+
+  return (
+    <ul className="mt-1 flex flex-wrap gap-x-4">
+      {links.map((link) => (
+        <li key={link.url}>
+          <a
+            href={link.url}
+            target="_blank"
+            rel="noreferrer"
+            className="inline-flex min-h-11 items-center gap-1 font-semibold text-[#741e25] no-underline transition-colors hover:text-[#a43b3c] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#741e25]"
+          >
+            {link.label} <ArrowUpRight size={14} aria-hidden="true" />
+          </a>
+        </li>
+      ))}
+    </ul>
+  );
+}
+
 function SlideCard({ slide, index }) {
   return (
     <article
@@ -179,10 +215,12 @@ function SlideCard({ slide, index }) {
 
           {slide.photo && <HistoricalPhoto photo={slide.photo} />}
 
+          {(slide.source || slide.sourceLinks?.length || slide.sourceUrl) && (
           <div className={`mt-6 flex gap-2 border-t border-stone-200 pt-4 text-sm leading-6 text-stone-700 ${slide.photo ? 'lg:col-span-2' : ''}`}>
             <BookOpenText size={15} className="mt-1 shrink-0 text-[#a43b3c]" aria-hidden="true" />
           <div className="min-w-0">
-            <p><span className="font-semibold text-stone-800">Nguồn:</span> {slide.source}</p>
+            {slide.source && <p><span className="font-semibold text-stone-800">Nguồn:</span> {slide.source}</p>}
+            <SourceLinks links={slide.sourceLinks} />
             {slide.sourceUrl && (
               <a
                 href={slide.sourceUrl}
@@ -195,6 +233,7 @@ function SlideCard({ slide, index }) {
             )}
           </div>
           </div>
+          )}
         </div>
       </div>
     </article>
@@ -221,13 +260,83 @@ function ChapterSection({ chapter }) {
   );
 }
 
+function SourcePageSection({ page }) {
+  return (
+    <section aria-labelledby="source-page-title" className="scroll-mt-32 py-12 sm:py-16">
+      <article
+        id={`slide-${page.number}`}
+        data-reveal
+        className="rounded-2xl border border-stone-200 bg-white/45 px-5 shadow-[0_14px_50px_-38px_rgba(41,37,36,0.3)] sm:px-8"
+      >
+        <div className="grid grid-cols-1 gap-4 py-8 md:grid-cols-[4.5rem_minmax(0,1fr)] md:gap-8 sm:py-10">
+          <div className="flex items-center md:block">
+            <span className="text-4xl leading-none text-[#a43b3c] sm:text-5xl">{page.number}</span>
+          </div>
+          <div className="min-w-0">
+            <h2 id="source-page-title" className="break-words text-2xl font-semibold leading-[1.18] text-stone-900 sm:text-3xl">
+              {page.title}
+            </h2>
+            <div className="mt-6 grid gap-6 lg:grid-cols-2">
+              {page.sections.map((section) => (
+                <section key={section.title} aria-label={section.title} className="min-w-0">
+                  <h3 className="text-sm font-bold text-[#6c431d]">{section.title}</h3>
+                  <ul className="mt-3 grid gap-2.5">
+                    {section.items.map((item) => (
+                      <li key={item} className="flex gap-3 text-sm leading-6 text-stone-800 sm:text-base">
+                        <span className="mt-[0.65rem] h-1.5 w-1.5 shrink-0 rounded-full bg-[#a43b3c]" aria-hidden="true" />
+                        <span>{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </section>
+              ))}
+            </div>
+
+            <aside aria-label="Quy ước dẫn chứng" className="mt-6 rounded-2xl border border-[#ead8ba] bg-[#f6efe3] px-4 py-4 sm:px-5 sm:py-5">
+              <p className="text-sm font-bold text-[#6c431d]">Quy ước dẫn chứng</p>
+              <p className="mt-2 text-sm leading-6 text-stone-800 sm:text-base">{page.citationConvention}</p>
+              <p className="mt-2 text-sm leading-6 text-stone-700">{page.source}</p>
+            </aside>
+
+            <div className="mt-8 border-t border-stone-200 pt-6">
+              <h3 className="text-lg font-semibold text-stone-900">Nguồn đầy đủ để đối chiếu</h3>
+              <ol className="mt-4 grid gap-4">
+                {page.fullSources.map((source) => (
+                  <li key={source.id} className="min-w-0 text-sm leading-6 text-stone-800 sm:text-base">
+                    <span className="mr-2 font-semibold text-[#741e25]">{source.id}</span>
+                    {source.title}
+                    <SourceLinks links={source.links} />
+                  </li>
+                ))}
+              </ol>
+            </div>
+          </div>
+        </div>
+      </article>
+    </section>
+  );
+}
+
+function PlaceholderSection({ id, number, title }) {
+  return (
+    <section id={id} aria-labelledby={`${id}-title`} className="scroll-mt-32 py-8 sm:py-10">
+      <h2 id={`${id}-title`} className="sr-only">{number} {title}</h2>
+      <div className="rounded-2xl border border-stone-200 bg-white/45 px-5 py-6 shadow-[0_14px_50px_-38px_rgba(41,37,36,0.3)] sm:px-8">
+        <p className="text-base leading-7 text-stone-700">Nội dung sẽ được bổ sung sau</p>
+      </div>
+    </section>
+  );
+}
+
 export default function App() {
   const [activeChapter, setActiveChapter] = useState(chapters[0].id);
   const [clickStars, setClickStars] = useState([]);
   const [isPresenting, setIsPresenting] = useState(false);
   const nextStarId = useRef(0);
+  const [presentationReturn, setPresentationReturn] = useState({ element: null, scrollY: 0 });
 
-  function startPresentation() {
+  function startPresentation(event) {
+    setPresentationReturn({ element: event.currentTarget, scrollY: window.scrollY });
     try {
       const request = document.documentElement.requestFullscreen?.();
       request?.catch?.(() => {});
@@ -353,61 +462,57 @@ export default function App() {
         <ChapterNav activeChapter={activeChapter} onNavigate={setActiveChapter} />
         <section className="relative isolate overflow-hidden bg-[#711f27] text-white">
           <div className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_76%_18%,rgba(193,126,72,0.2),transparent_33%),linear-gradient(125deg,transparent_42%,rgba(35,10,14,0.45))]" />
-          <div className="mx-auto grid max-w-6xl grid-cols-1 items-center gap-10 px-5 pb-12 pt-10 sm:px-8 sm:pb-16 sm:pt-14 lg:grid-cols-[1.05fr_.95fr] lg:gap-12">
+          <div className="mx-auto grid max-w-6xl grid-cols-1 items-center gap-10 px-5 pb-12 pt-10 sm:px-8 sm:pb-16 sm:pt-14 lg:grid-cols-[minmax(0,1.05fr)_minmax(0,0.95fr)] lg:gap-12">
             <div data-reveal className="min-w-0">
-              <p className="text-sm font-bold text-[#f0d9b8]">Lịch sử Đảng Cộng sản Việt Nam</p>
+              <p className="text-sm font-bold text-[#f0d9b8]">{chapter7Intro.chapter}</p>
               <h1 className="mt-5 min-w-0 w-full max-w-full break-words text-4xl font-semibold leading-[1.14] sm:text-5xl md:text-6xl">
-                Xây dựng và bảo vệ chính quyền cách mạng (1945–1946)
+                {chapter7Intro.title}
               </h1>
               <p className="mt-7 w-full max-w-[60ch] whitespace-normal break-words text-lg leading-8 text-white/90 sm:text-xl">
-                Từ giành chính quyền đến giữ vững nền độc lập non trẻ
+                {chapter7Intro.centralQuestion}
               </p>
               <div className="mt-8 flex flex-wrap gap-3">
                 <a href="#chang-1" className="inline-flex min-h-11 items-center gap-2 rounded-full bg-[#f0d9b8] px-5 py-3 text-sm font-bold text-[#54171d] transition-colors hover:bg-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#f0d9b8] active:scale-[0.98]">
                   Khám phá nội dung <ArrowDown size={15} aria-hidden="true" />
                 </a>
                 <button type="button" onClick={startPresentation} className="inline-flex min-h-11 items-center gap-2 rounded-full border border-white/35 bg-white/5 px-5 py-3 text-sm font-bold text-white transition-colors hover:bg-white/15 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#f0d9b8] active:scale-[0.98]">
-                  <Presentation size={16} aria-hidden="true" /> Trình chiếu 8 slide
+                  <Presentation size={16} aria-hidden="true" /> Trình chiếu 11 trang
                 </button>
               </div>
             </div>
-            <HistoricalPhoto photo={heroPhoto} hero priority />
+            <HeroTypography hero={chapter7Hero} />
           </div>
         </section>
 
         <div className="mx-auto max-w-6xl px-5 pb-10 sm:px-8 sm:pb-16">
-          <section aria-labelledby="scope-title" className="grid items-center gap-8 border-b border-stone-200 py-12 sm:py-16 lg:grid-cols-[.9fr_1.1fr] lg:gap-12">
+          <section aria-labelledby="scope-title" className="grid items-center gap-8 border-b border-stone-200 py-12 sm:py-16 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] lg:gap-12">
             <div data-reveal className="min-w-0">
-              <p className="text-sm font-bold uppercase tracking-[0.12em] text-[#741e25]">Phạm vi trình bày</p>
-              <h2 id="scope-title" className="mt-3 text-3xl font-semibold leading-tight text-stone-900 sm:text-4xl">1945–1946</h2>
-              <p className="mt-4 max-w-[60ch] text-base leading-7 text-stone-700">
-                Từ sau ngày 2/9/1945 đến khi cuộc kháng chiến toàn quốc bùng nổ ngày 19/12/1946.
-              </p>
-              <p className="mt-4 max-w-[60ch] text-base leading-7 text-stone-700">
-                Hai nhiệm vụ gắn bó: xây dựng chính quyền và giải quyết khủng hoảng đời sống; bảo vệ chính quyền trước nguy cơ tái xâm lược và chống phá.
-              </p>
+              <p className="text-sm font-bold uppercase tracking-[0.12em] text-[#741e25]">Câu hỏi trung tâm</p>
+              <h2 id="scope-title" className="mt-3 text-3xl font-semibold leading-tight text-stone-900 sm:text-4xl">Gia đình trong thời kỳ quá độ</h2>
+              <p className="mt-4 max-w-[60ch] text-base leading-7 text-stone-700">{chapter7Intro.centralQuestion}</p>
             </div>
-            <aside data-reveal aria-label="Luận điểm trung tâm" className="rounded-2xl bg-[#651d24] px-6 py-7 text-[#f0d9b8] shadow-[0_24px_60px_-38px_rgba(28,8,12,0.75)] sm:px-8 sm:py-9">
-              <p className="text-xs font-bold uppercase tracking-[0.16em] text-white/75">Luận điểm trung tâm</p>
-              <p className="mt-4 text-2xl font-semibold leading-snug sm:text-3xl">“Kháng chiến, kiến quốc”</p>
+            <aside data-reveal aria-label="Mạch trình bày" className="min-w-0 rounded-2xl bg-[#651d24] px-6 py-7 text-[#f0d9b8] shadow-[0_24px_60px_-38px_rgba(28,8,12,0.75)] sm:px-8 sm:py-9">
+              <p className="text-xs font-bold uppercase tracking-[0.16em] text-white/75">Mạch trình bày</p>
+              <p className="mt-4 text-2xl font-semibold leading-snug sm:text-3xl">{chapter7Intro.roadmap}</p>
               <p className="mt-3 max-w-[58ch] text-base leading-7 text-white/90">
-                Kết hợp củng cố nội lực, tập hợp đoàn kết và sách lược đối ngoại linh hoạt để giữ nền độc lập.
+                Từ cơ sở lý luận, qua biến đổi về cơ cấu, chức năng và quan hệ, đến các phương hướng xây dựng gia đình Việt Nam.
               </p>
             </aside>
           </section>
           {chapters.map((chapter) => <ChapterSection key={chapter.id} chapter={chapter} />)}
-          <QuizSection />
-          <AIAppendix />
+          <SourcePageSection page={sourcePage} />
+          <PlaceholderSection id="quiz" number="04" title="Trắc nghiệm" />
+          <PlaceholderSection id="phu-luc-ai" number="05" title="Phụ lục AI" />
         </div>
       </main>
 
       <footer className="border-t border-stone-200 bg-[#f2f0eb]">
         <div className="mx-auto flex max-w-6xl flex-col gap-2 px-5 py-7 text-sm text-stone-700 sm:flex-row sm:items-center sm:justify-between sm:px-8">
           <p className="font-semibold text-stone-700">Trường Đại học FPT <span className="mx-1 text-stone-400">·</span> VNR202</p>
-          <p>Xây dựng và bảo vệ chính quyền cách mạng thời kỳ 1945–1946</p>
+          <p className="min-w-0">Chương 7 · Xây dựng gia đình Việt Nam</p>
         </div>
       </footer>
-      {isPresenting && <PresentationMode onExit={exitPresentation} />}
+      {isPresenting && <PresentationMode onExit={exitPresentation} returnFocusTarget={presentationReturn.element} returnScrollY={presentationReturn.scrollY} />}
     </div>
   );
 }
