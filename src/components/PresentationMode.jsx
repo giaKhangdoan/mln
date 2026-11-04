@@ -262,7 +262,7 @@ export default function PresentationMode({ onExit, returnFocusTarget, returnScro
       <div className="flex h-[100dvh] flex-col gap-2.5 bg-[#4b181f] p-3 sm:gap-4 sm:p-5 lg:p-6">
         <header className="flex min-h-11 shrink-0 items-center justify-between gap-4 text-white">
           <div className="min-w-0">
-            <p className="truncate text-sm font-semibold">Trường Đại học FPT <span className="mx-1 text-white/50">·</span> VNR202</p>
+            <p className="truncate text-sm font-semibold">Trường Đại học FPT <span className="mx-1 text-white/50">·</span> MLN131</p>
             <p className="mt-0.5 truncate text-xs text-white/75">{chapter7Intro.chapter}</p>
           </div>
           <div className="flex shrink-0 items-center gap-2 sm:gap-4">

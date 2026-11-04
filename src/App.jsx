@@ -452,7 +452,7 @@ export default function App() {
             </span>
             <div className="min-w-0 w-full">
               <p className="truncate text-sm font-semibold">Trường Đại học FPT</p>
-              <p className="mt-0.5 text-xs font-semibold text-white/90">Học phần VNR202</p>
+              <p className="mt-0.5 text-xs font-semibold text-white/90">Học phần MLN131</p>
             </div>
           </div>
         </div>
@@ -508,7 +508,7 @@ export default function App() {
 
       <footer className="border-t border-stone-200 bg-[#f2f0eb]">
         <div className="mx-auto flex max-w-6xl flex-col gap-2 px-5 py-7 text-sm text-stone-700 sm:flex-row sm:items-center sm:justify-between sm:px-8">
-          <p className="font-semibold text-stone-700">Trường Đại học FPT <span className="mx-1 text-stone-400">·</span> VNR202</p>
+          <p className="font-semibold text-stone-700">Trường Đại học FPT <span className="mx-1 text-stone-400">·</span> MLN131</p>
           <p className="min-w-0">Chương 7 · Xây dựng gia đình Việt Nam</p>
         </div>
       </footer>
