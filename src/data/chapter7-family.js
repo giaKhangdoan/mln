@@ -136,13 +136,13 @@ export const chapters = [
           'Giáo trình: “gia đình quá độ”, phổ biến là “gia đình hạt nhân quy mô nhỏ”.',
           'Tích cực: Bình đẳng nam nữ, tôn trọng đời sống riêng tư.',
           'Phản chức năng: Ít thời gian bên nhau, khó giữ gắn kết.',
-          'Số liệu: Quy mô hộ 4,6 người (1999) → 3,6 người (2019); hộ một người 10,4% (2019).'
+          'Số liệu: Quy mô hộ 3,6 người (1999: 4,6); hộ một người tăng lên 13,5% (2025).'
         ],
-        source: 'GT mục 3.1.1, tr.137–138; TCTK 2019',
+        source: 'GT mục 3.1.1, tr.137–138; Cục Thống kê 2025',
         sourceLinks: [
           {
-            label: 'Tổng cục Thống kê · Kết quả toàn bộ Tổng điều tra dân số và nhà ở năm 2019',
-            url: 'https://www.gso.gov.vn/wp-content/uploads/2019/12/TDT-Dan-so-2019-1.pdf'
+            label: 'Cục Thống kê · Kết quả chủ yếu Điều tra biến động dân số 01/4/2025',
+            url: 'https://www.nso.gov.vn/wp-content/uploads/2026/08/Sach-ket-qua-chu-yeu-dieu-tra-bien-dong-dan-so-2025.-pdf.pdf'
           }
         ]
       },
@@ -162,12 +162,12 @@ export const chapters = [
         photo: chapter7Photos.generations,
         title: 'Quan hệ gia đình: Bình đẳng, chăm sóc và an toàn',
         points: [
-          'Vợ chồng: Thêm mô hình vợ hoặc cả hai cùng làm chủ; ly hôn, ly thân 2,1% (2019).',
-          'Bạo lực: 62,9% phụ nữ từng bị chồng/bạn tình bạo lực; 90,4% không tìm trợ giúp.',
+          'Vợ chồng: Thêm mô hình vợ hoặc cả hai cùng làm chủ; ly hôn, ly thân 3,0% (2025).',
+          'Bạo lực: 62,9% phụ nữ từng bị chồng/bạn tình bạo lực; 90,4% nạn nhân không tìm trợ giúp nhà nước.',
           'Cha mẹ – con: Giáo dục con dễ phó mặc cho nhà trường.',
           'Các thế hệ: Người cao tuổi cô đơn; mâu thuẫn thế hệ.'
         ],
-        source: 'GT mục 3.1.3, tr.140–142; Bộ VHTTDL; TCTK 2019',
+        source: 'GT mục 3.1.3, tr.140–142; Bộ VHTTDL; Cục Thống kê 2025',
         sourceLinks: [
           {
             label: 'Vụ Gia đình, Bộ VHTTDL · Tình hình bạo lực gia đình ở nước ta thời gian qua (01/11/2022)',
@@ -280,6 +280,7 @@ export const sourcePage = {
         'Cục Thống kê, Thông cáo 05/01/2026, tr.1, 3.',
         'Quyết định 2238/QĐ-TTg ngày 30/12/2021.',
         'TCTK, Kết quả toàn bộ Tổng điều tra dân số và nhà ở 2019, tr.55–56, 66–67.',
+        'Cục Thống kê, Kết quả chủ yếu Điều tra biến động dân số 01/4/2025, tr.26–27, 33.',
         'Bộ VHTTDL: số liệu Điều tra quốc gia về bạo lực đối với phụ nữ 2019 (bài 01/11/2022 và 05/12/2024).'
       ]
     },
@@ -348,6 +349,13 @@ export const sourcePage = {
       title: 'Tổng cục Thống kê, Kết quả toàn bộ Tổng điều tra dân số và nhà ở thời điểm 0 giờ ngày 01/4/2019: quy mô hộ bình quân 3,6 người (1999: 4,6), 26.870.079 hộ, hộ một người 10,4% (2009: 7,2%) – tr.55–56; dân số từ 15 tuổi trở lên ly hôn hoặc ly thân 2,1% (2009: 1,4%) – tr.66–67.',
       links: [
         { label: 'Toàn văn PDF', url: 'https://www.gso.gov.vn/wp-content/uploads/2019/12/TDT-Dan-so-2019-1.pdf' }
+      ]
+    },
+    {
+      id: 'S-10',
+      title: 'Cục Thống kê, Kết quả chủ yếu Điều tra biến động dân số và kế hoạch hóa gia đình thời điểm 01/4/2025: quy mô hộ bình quân 3,6 người, hộ một người 13,5% (2024: 12,1%) – tr.26–27; dân số từ 15 tuổi trở lên ly hôn hoặc ly thân 3,0% (tăng 0,9 điểm % so với 2019) – tr.33.',
+      links: [
+        { label: 'Toàn văn PDF', url: 'https://www.nso.gov.vn/wp-content/uploads/2026/08/Sach-ket-qua-chu-yeu-dieu-tra-bien-dong-dan-so-2025.-pdf.pdf' }
       ]
     },
     {

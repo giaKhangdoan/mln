@@ -5,51 +5,56 @@
     {
       "id": "AI-01",
       "title": "Xác định phần lý thuyết trong giáo trình",
-      "input": "Giáo trình học phần Chủ nghĩa xã hội khoa học – Chương 7 (bản PDF); file nội dung slide; file lời thuyết trình",
-      "prompt": "Tôi gửi kèm giáo trình Chủ nghĩa xã hội khoa học (Chương 7) và hai file của nhóm: nội dung slide và lời thuyết trình về mục “Xây dựng gia đình Việt Nam trong thời kỳ quá độ lên chủ nghĩa xã hội”. Hãy: (1) chỉ ra mục và số trang trong giáo trình của các phần: cơ sở xây dựng gia đình, biến đổi cơ cấu, biến đổi chức năng, biến đổi quan hệ, phương hướng xây dựng; (2) đối chiếu từng slide với giáo trình, đánh dấu ý đúng, ý còn thiếu và ý không có trong giáo trình; (3) đề xuất cách sửa để bám đúng giáo trình.",
-      "output": "Xác định vị trí lý thuyết: cơ sở xây dựng gia đình (mục 2, tr.133–137); biến đổi cơ cấu (3.1.1, tr.137–138); chức năng (3.1.2, tr.138–140); quan hệ (3.1.3, tr.140–142); phương hướng (3.2, tr.142–143). Chỉ ra cần bổ sung lập luận về sở hữu xã hội chủ nghĩa ở slide 3, bỏ các ý ngoài giáo trình ở slide 5–6, thêm “tăng cường sự lãnh đạo của Đảng” ở slide 8 và sửa số trang chú thích."
+      "input": "Giáo trình học phần Chủ nghĩa xã hội khoa học – Chương 7 (bản PDF)",
+      "prompt": "Tôi gửi kèm Chương 7 giáo trình Chủ nghĩa xã hội khoa học. Nhóm tôi trình bày mục III “Xây dựng gia đình Việt Nam trong thời kỳ quá độ lên chủ nghĩa xã hội”, gồm: III.1 Sự biến đổi của gia đình Việt Nam; III.2 Biến đổi trong thực hiện các chức năng của gia đình; III.3 Biến đổi trong các mối quan hệ gia đình; III.4 Phương hướng cơ bản xây dựng và phát triển gia đình Việt Nam. Hãy chỉ ra các phần lý thuyết này nằm ở mục nào, trang nào trong giáo trình, kèm phần cơ sở xây dựng gia đình làm nền lý luận. Tóm tắt luận điểm chính của từng phần, giữ đúng thuật ngữ của giáo trình.",
+      "output": "Lập bảng vị trí: cơ sở xây dựng gia đình ở mục 2 (2.1–2.4), tr.133–137; III.1 ứng với 3.1.1 quy mô, kết cấu (tr.137–138); III.2 ứng với 3.1.2 (tr.138–140); III.3 ứng với 3.1.3 (tr.140–142); III.4 ứng với 3.2 (tr.142–143). Tóm tắt luận điểm từng phần theo đúng thuật ngữ giáo trình: “gia đình quá độ”, gia đình hạt nhân, hai bước chuyển của kinh tế gia đình, bốn phương hướng.",
+      "evidenceUrl": "https://claude.ai/share/bd4b5cc6-eb76-4679-bcab-d99f1ac642a4"
     },
     {
+      "title": "Phân tích sâu biến đổi cơ cấu và chức năng",
+      "input": "Giáo trình học phần Chủ nghĩa xã hội khoa học – Chương 7 (bản PDF); tìm kiếm web trên trang của cơ quan nhà nước Việt Nam",
+      "prompt": "Phân tích sâu biến đổi về cơ cấu và chức năng của gia đình Việt Nam (mục 3.1.1 và 3.1.2 giáo trình). Với từng nội dung: nêu luận điểm giáo trình kèm trang; đối chiếu với số liệu mới nhất từ nguồn chính thống của cơ quan nhà nước Việt Nam (Cục Thống kê, Tổng cục Thống kê, Quốc hội, Chính phủ, Bộ Văn hóa, Thể thao và Du lịch), ghi rõ năm, cơ quan, trang và link (gợi ý: quy mô hộ, hộ một người, mức sinh, già hóa dân số, tham gia lao động của nam và nữ); giải thích nguyên nhân bằng lý luận về cơ sở kinh tế – xã hội, chính trị – pháp luật và văn hóa của gia đình; chỉ ra mâu thuẫn, xu hướng và giới hạn của số liệu, không kết luận quan hệ nhân quả khi chưa đủ căn cứ; nêu nhận định riêng của nhóm.",
+      "output": "Đối chiếu số liệu Cục Thống kê: quy mô hộ 3,6 người (2019 và 2025), hộ một người 13,5% (2025), hộ từ 5 người trở lên giảm còn 23,4%, tuổi kết hôn lần đầu 28,0; mức sinh 1,93 con/phụ nữ (2025), chỉ số già hóa 63,5%; tham gia lao động nữ 63,0%, thu nhập của nữ bằng khoảng 76% của nam. Nêu giới hạn: “hộ” khác “gia đình”, mức sinh tăng 0,02 chưa đủ nói đảo chiều, tỷ số giới tính khi sinh còn lệch. Nhận định: biến đổi không đều giữa các vùng; chính sách dân số chuyển sang khuyến khích sinh đủ hai con.",
       "id": "AI-02",
-      "title": "Đánh giá theo tiêu chí chấm",
-      "input": "Giáo trình học phần Chủ nghĩa xã hội khoa học – Chương 7 (bản PDF); file nội dung slide; file lời thuyết trình",
-      "prompt": "Đánh giá hai file của nhóm theo các tiêu chí: 1.1 xác định đúng lý thuyết; 1.2 vận dụng đúng lý thuyết, lập luận chặt chẽ, có dẫn chứng cụ thể; 1.3 tính logic giữa các phần, gắn với mục tiêu bài học, thể hiện chính kiến riêng; 2 tính thực tiễn: có dẫn chứng từ bối cảnh hiện nay, dùng nguồn chính thống và trích nguồn rõ ràng. Với mỗi tiêu chí, nêu mức đạt, điểm còn thiếu và cách sửa.",
-      "output": "Tiêu chí 1.1 đạt sau khi sửa theo giáo trình. Tiêu chí 1.2 cần thêm số liệu cho phần cơ cấu và quan hệ gia đình. Tiêu chí 1.3 cần tách rõ “nhận định của nhóm” với nội dung giáo trình. Tiêu chí 2 cần thay nguồn nước ngoài bằng nguồn của cơ quan nhà nước Việt Nam."
+      "evidenceUrl": "https://claude.ai/share/bd4b5cc6-eb76-4679-bcab-d99f1ac642a4"
     },
     {
+      "title": "Phân tích sâu biến đổi các mối quan hệ gia đình",
+      "input": "Giáo trình học phần Chủ nghĩa xã hội khoa học – Chương 7 (bản PDF); tìm kiếm web trên trang của cơ quan nhà nước Việt Nam",
+      "prompt": "Phân tích sâu biến đổi trong các mối quan hệ gia đình (mục 3.1.3 giáo trình): quan hệ vợ chồng, cha mẹ – con, các thế hệ. Nêu luận điểm giáo trình kèm trang; đối chiếu với số liệu và văn bản pháp luật mới nhất từ nguồn chính thống của cơ quan nhà nước Việt Nam (Cục Thống kê, Tổng cục Thống kê, Quốc hội, Chính phủ, Bộ Văn hóa, Thể thao và Du lịch), ghi rõ năm, cơ quan, trang và link (gợi ý: ly hôn và ly thân, bạo lực gia đình, Luật Hôn nhân và gia đình 2014, Luật Phòng, chống bạo lực gia đình 2022); giải thích nguyên nhân bằng lý luận về cơ sở kinh tế – xã hội, chính trị – pháp luật và văn hóa của gia đình; chỉ ra mâu thuẫn, xu hướng và giới hạn của số liệu, không kết luận quan hệ nhân quả khi chưa đủ căn cứ; nêu nhận định riêng của nhóm.",
+      "output": "Ly hôn hoặc ly thân chiếm 3,0% dân số từ 15 tuổi (2025, tăng 0,9 điểm % so với 2019); lưu ý đây là tỷ trọng tại thời điểm điều tra, không phải số vụ ly hôn hằng năm. Điều tra bạo lực 2019: 62,9% phụ nữ từng bị chồng hoặc bạn tình bạo lực, 31,6% trong 12 tháng qua; 90,4% nạn nhân bạo lực thể xác, tình dục không tìm trợ giúp từ cơ quan nhà nước. Đối chiếu Luật HN&GĐ (Điều 17, 19, 71) và Luật PCBLGĐ (Điều 4). Nhận định: pháp luật đi trước thực tế đo được; mâu thuẫn thế hệ là luận điểm mạnh nhưng ít số liệu.",
       "id": "AI-03",
-      "title": "Kiểm chứng số liệu và điều luật",
-      "input": "Giáo trình học phần Chủ nghĩa xã hội khoa học – Chương 7 (bản PDF); thông cáo Cục Thống kê 05/01/2026; Luật Dân số 2025; Luật Hôn nhân và gia đình 2014; Luật Phòng, chống bạo lực gia đình 2022",
-      "prompt": "Kiểm tra các số liệu và điều luật sau với văn bản gốc của cơ quan nhà nước Việt Nam: tổng tỷ suất sinh 2025, tỷ trọng dân số từ 60 tuổi trở lên, tỷ lệ tham gia lực lượng lao động nam và nữ (Cục Thống kê, thông cáo 05/01/2026); Luật Dân số số 113/2025/QH15, Điều 13 và 14; Luật Hôn nhân và gia đình 2014, Điều 17 và 19; Luật Phòng, chống bạo lực gia đình 2022, Điều 4 và 17. Với mỗi mục, ghi giá trị hoặc nội dung, nguồn và đường link.",
-      "output": "Xác nhận đúng: tổng tỷ suất sinh 2025 là 1,93 con/phụ nữ (2024: 1,91); dân số từ 60 tuổi trở lên 14,5% (2024: 14,0%); tỷ lệ tham gia lực lượng lao động nữ 63,0%, nam 74,3%. Luật Dân số Điều 13 về quyền quyết định sinh con bình đẳng; Luật Phòng, chống bạo lực gia đình Điều 4 (phòng ngừa là chính, lấy người bị bạo lực làm trung tâm) và Điều 17 (hòa giải không thay thế xử lý vi phạm)."
+      "evidenceUrl": "https://claude.ai/share/bd4b5cc6-eb76-4679-bcab-d99f1ac642a4"
     },
     {
+      "title": "Phân tích sâu phương hướng và chính sách hiện nay",
+      "input": "Giáo trình học phần Chủ nghĩa xã hội khoa học – Chương 7 (bản PDF); tìm kiếm web trên trang của cơ quan nhà nước Việt Nam",
+      "prompt": "Phân tích sâu bốn phương hướng xây dựng và phát triển gia đình Việt Nam (mục 3.2 giáo trình). Với từng phương hướng: nêu luận điểm giáo trình kèm trang; đối chiếu với chủ trương, chính sách và pháp luật hiện hành từ nguồn chính thống của cơ quan nhà nước Việt Nam (Cục Thống kê, Tổng cục Thống kê, Quốc hội, Chính phủ, Bộ Văn hóa, Thể thao và Du lịch), ghi rõ năm, cơ quan, trang và link (gợi ý: Luật Dân số 2025, Chiến lược phát triển gia đình Việt Nam đến năm 2030 theo Quyết định 2238/QĐ-TTg); chỉ ra điểm đã thay đổi so với thời điểm biên soạn giáo trình; nêu nhận định riêng và kiến nghị cho gia đình Việt Nam hiện nay.",
+      "output": "Bốn phương hướng vẫn đúng và đã được cụ thể hóa sau khi giáo trình biên soạn: phương hướng 1 qua Quyết định 2238/QĐ-TTg và hướng dẫn công tác gia đình của Bộ VHTTDL; phương hướng 2 qua Luật Dân số 2025 (hỗ trợ sinh đủ hai con, nhà ở xã hội); phương hướng 3 qua hệ giá trị gia đình Việt Nam; phương hướng 4 qua Nghị định 86/2023/NĐ-CP (tiêu chuẩn gia đình văn hóa có bình đẳng giới, phòng chống bạo lực). Kiến nghị cho gia đình, nhà trường, chính quyền cơ sở và công tác thống kê.",
       "id": "AI-04",
-      "title": "Bổ sung dẫn chứng thực tiễn",
-      "input": "Giáo trình học phần Chủ nghĩa xã hội khoa học – Chương 7 (bản PDF); Tổng điều tra dân số và nhà ở 2019 (Tổng cục Thống kê); trang của Bộ Văn hóa, Thể thao và Du lịch",
-      "prompt": "Tìm thêm số liệu từ nguồn chính thống của Việt Nam để minh họa các biến đổi gia đình trong giáo trình: quy mô hộ gia đình, hộ một người, tỷ lệ ly hôn hoặc ly thân, bạo lực gia đình. Với mỗi số liệu, ghi năm, cơ quan công bố, trang và đường link.",
-      "output": "Tổng điều tra 2019: quy mô hộ bình quân 3,6 người (1999: 4,6); hộ một người 10,4% (2009: 7,2%); dân số từ 15 tuổi trở lên ly hôn hoặc ly thân 2,1% (2009: 1,4%). Bộ Văn hóa, Thể thao và Du lịch: 62,9% phụ nữ từng bị chồng hoặc bạn tình bạo lực trong đời, 31,6% trong 12 tháng qua; 90,4% không tìm kiếm sự giúp đỡ."
+      "evidenceUrl": "https://claude.ai/share/bd4b5cc6-eb76-4679-bcab-d99f1ac642a4"
     },
     {
       "id": "AI-05",
       "title": "Chọn ảnh minh họa",
-      "input": "Giáo trình học phần Chủ nghĩa xã hội khoa học – Chương 7 (bản PDF); file nội dung slide",
+      "input": "Giáo trình học phần Chủ nghĩa xã hội khoa học – Chương 7 (bản PDF); tìm kiếm web trên trang của cơ quan nhà nước Việt Nam",
       "prompt": "Gợi ý ảnh minh họa cho các slide về cơ cấu gia đình, quan hệ các thế hệ, phong trào gia đình văn hóa, phòng chống bạo lực gia đình và phần kết luận. Chỉ lấy ảnh từ báo hoặc cổng thông tin của cơ quan nhà nước Việt Nam; ghi chú thích, tác giả ảnh và link bài gốc.",
-      "output": "Năm ảnh từ Báo Điện tử Chính phủ và Tạp chí Tiếng Chuông (Cổng Thông tin điện tử Chính phủ): gia đình trẻ ở đảo Song Tử Tây; tranh cổ động “Ông bà, cha mẹ mẫu mực, con cháu thảo hiền”; thôn Ngọc Tỉnh (Hưng Yên), nơi khởi nguồn phong trào Gia đình văn hóa; chiến dịch “Trái tim xanh”; Ngày hội Gia đình Việt Nam 2026."
+      "output": "Đề xuất 8 ảnh từ Vietnam+, Báo Nhân Dân, Báo Văn hóa, Cổng Bộ VHTTDL và Cổng Thông tin điện tử Chính phủ, kèm chú thích gốc, tác giả và link; lưu ý ghi nguồn, tránh ảnh nạn nhân và ảnh lãnh đạo. Nhóm dùng ảnh Ngày hội Gia đình Việt Nam 2026 theo đề xuất và chọn thêm ảnh từ Báo Điện tử Chính phủ, Tạp chí Tiếng Chuông.",
+      "evidenceUrl": "https://claude.ai/share/bd4b5cc6-eb76-4679-bcab-d99f1ac642a4"
     },
     {
       "id": "AI-06",
-      "title": "Rút gọn slide và chia phần trình bày",
-      "input": "File nội dung slide; file lời thuyết trình",
-      "prompt": "Rút gọn chữ trên mỗi slide còn tối đa 4 ý ngắn, chuyển phần giải thích sang lời thuyết trình. Viết lại lời thuyết trình khoảng 13–14 phút, ghi thời gian từng trang và chia cho 5 người theo thứ tự: Doãn Gia Khang (mở đầu), Lê Tôn Anh Tuấn, Nguyễn Thế Sơn, Nhan Thành Lộc, Hoàn Thiên Lộc; thêm câu chuyển lời giữa các bạn.",
-      "output": "Mỗi slide còn 50–100 chữ. Lời thuyết trình khoảng 1.800 chữ (13–14 phút), chia: Khang trang 1–3, Tuấn trang 4–5, Sơn trang 6–7, Thành Lộc trang 8–9, Thiên Lộc trang 10–11 và phần trắc nghiệm."
+      "title": "Viết lời thuyết trình và chia phần 5 người",
+      "input": "Giáo trình học phần Chủ nghĩa xã hội khoa học – Chương 7 (bản PDF)",
+      "prompt": "Viết lời thuyết trình cho 11 slide, tổng khoảng 13–14 phút, ghi thời gian từng trang. Chia cho 5 người theo thứ tự: Doãn Gia Khang (mở đầu, trang 1–3), Lê Tôn Anh Tuấn, Nguyễn Thế Sơn, Nhan Thành Lộc, Hoàn Thiên Lộc (kết luận và điều phối phần trắc nghiệm); thêm câu chuyển lời giữa các bạn. Lời nói phải bám giáo trình, dẫn đúng số liệu ở bước trước và có nhận định riêng của nhóm.",
+      "output": "Lời thuyết trình khoảng 1.800 chữ (13–14 phút) có thời gian từng trang. Khang trang 1–3, Tuấn trang 4–5, Sơn trang 6–7, Thành Lộc trang 8–9, Thiên Lộc trang 10–11 và phần trắc nghiệm; có câu chuyển lời và nhận định riêng ở phần cơ cấu, vận dụng."
     },
     {
       "id": "AI-07",
-      "title": "Tạo câu hỏi trắc nghiệm",
-      "input": "Giáo trình học phần Chủ nghĩa xã hội khoa học – Chương 7 (bản PDF); file nội dung slide",
-      "prompt": "Từ nội dung đã kiểm chứng, tạo 5 câu trắc nghiệm cho người nghe, mỗi câu ứng với một phần của bài. Mỗi câu có 4 phương án, 1 đáp án đúng, giải thích ngắn và nguồn (trang giáo trình hoặc điều luật). Không thêm dữ kiện ngoài nguồn.",
-      "output": "Năm câu hỏi về: cốt lõi cơ sở kinh tế – xã hội (sở hữu xã hội chủ nghĩa); gia đình hạt nhân và quy mô hộ 3,6 người; chức năng tình cảm; nguyên tắc của Luật Phòng, chống bạo lực gia đình; phong trào gia đình văn hóa tránh chạy theo thành tích."
+      "title": "Tự rà soát theo tiêu chí chấm",
+      "input": "Giáo trình học phần Chủ nghĩa xã hội khoa học – Chương 7 (bản PDF)",
+      "prompt": "Rà soát toàn bộ nội dung đã làm theo tiêu chí chấm: 1.1 xác định đúng lý thuyết; 1.2 vận dụng đúng lý thuyết, lập luận chặt chẽ, có dẫn chứng cụ thể; 1.3 tính logic giữa các phần, gắn với mục tiêu, thể hiện chính kiến riêng; 2 tính thực tiễn: dẫn chứng từ bối cảnh hiện nay, nguồn chính thống, trích nguồn rõ ràng. Với mỗi tiêu chí, nêu mức đạt, điểm còn thiếu và sửa ngay phần chưa đạt.",
+      "output": "Đánh giá đạt cả 4 tiêu chí; chỉnh lại để mỗi slide ghi trang giáo trình, tách rõ nhận định riêng của nhóm và chỉ giữ nguồn của cơ quan nhà nước Việt Nam."
     }
   ]
 }
