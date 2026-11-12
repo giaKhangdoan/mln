@@ -4,17 +4,17 @@ import { chapter2QuizQuestions } from '../data/historyQuiz';
 
 const reverseDatePassword = '30/04/1975'.split('').reverse().join('');
 
-export default function QuizSection() {
+export default function QuizSection({ questions = chapter2QuizQuestions, intro = 'Năm câu hỏi ôn tập Chương 2. Chọn một đáp án để xem kết quả và giải thích ngay.' }) {
   const [unlocked, setUnlocked] = useState(false);
   const [password, setPassword] = useState('');
   const [passwordError, setPasswordError] = useState(false);
   const [answers, setAnswers] = useState({});
   const [questionIndex, setQuestionIndex] = useState(0);
   const [showResult, setShowResult] = useState(false);
-  const question = chapter2QuizQuestions[questionIndex];
+  const question = questions[questionIndex];
   const selectedAnswer = answers[question?.id];
   const answeredCount = Object.keys(answers).length;
-  const correctCount = chapter2QuizQuestions.filter((item) => answers[item.id] === item.answer).length;
+  const correctCount = questions.filter((item) => answers[item.id] === item.answer).length;
   const isCorrect = selectedAnswer === question?.answer;
 
   function unlockQuiz(event) {
@@ -43,7 +43,7 @@ export default function QuizSection() {
   }
 
   function advance() {
-    if (questionIndex === chapter2QuizQuestions.length - 1) {
+    if (questionIndex === questions.length - 1) {
       setShowResult(true);
       return;
     }
@@ -59,7 +59,7 @@ export default function QuizSection() {
       <div data-reveal className="mb-8 max-w-4xl border-t border-stone-300 pt-5">
         <h2 className="text-3xl font-semibold leading-[1.15] text-stone-900 sm:text-4xl">Trắc nghiệm</h2>
         <p className="mt-4 max-w-[68ch] text-lg leading-8 text-stone-700">
-          Năm câu hỏi ôn tập Chương 2. Chọn một đáp án để xem kết quả và giải thích ngay.
+          {intro}
         </p>
       </div>
 
@@ -107,7 +107,7 @@ export default function QuizSection() {
         <div className="quiz-feedback-enter rounded-2xl border border-stone-200 bg-white p-5 shadow-[0_14px_50px_-38px_rgba(41,37,36,0.3)] sm:p-8">
           <div className="mx-auto max-w-xl py-4 text-center">
             <p className="text-sm font-semibold text-[#741e25]">Hoàn thành</p>
-            <h3 className="mt-2 text-2xl font-semibold text-stone-900 sm:text-3xl">Bạn trả lời đúng {correctCount}/{chapter2QuizQuestions.length} câu</h3>
+            <h3 className="mt-2 text-2xl font-semibold text-stone-900 sm:text-3xl">Bạn trả lời đúng {correctCount}/{questions.length} câu</h3>
             <p className="mt-3 text-base leading-7 text-stone-700">Các câu hỏi và giải thích được xây dựng từ giáo trình và nguồn thống kê ghi trong phụ lục.</p>
             <button
               type="button"
@@ -122,9 +122,9 @@ export default function QuizSection() {
         <div className="rounded-2xl border border-stone-200 bg-white p-5 shadow-[0_14px_50px_-38px_rgba(41,37,36,0.3)] sm:p-8">
           <div className="mb-7 grid gap-4 rounded-xl bg-[#f4f1eb] p-4 sm:grid-cols-[1fr_auto] sm:items-center sm:p-5">
             <div>
-              <p className="text-sm font-semibold text-stone-700">Câu {questionIndex + 1}/{chapter2QuizQuestions.length}</p>
+              <p className="text-sm font-semibold text-stone-700">Câu {questionIndex + 1}/{questions.length}</p>
               <p aria-live="polite" className="mt-1 text-base font-semibold text-stone-900">
-                Đã trả lời {answeredCount}/{chapter2QuizQuestions.length} · đúng {correctCount}
+                Đã trả lời {answeredCount}/{questions.length} · đúng {correctCount}
               </p>
             </div>
             <div
@@ -132,10 +132,10 @@ export default function QuizSection() {
               role="progressbar"
               aria-label="Tiến độ trả lời câu hỏi"
               aria-valuemin={0}
-              aria-valuemax={chapter2QuizQuestions.length}
+              aria-valuemax={questions.length}
               aria-valuenow={answeredCount}
             >
-              <div className="quiz-progress-fill h-full rounded-full bg-[#741e25]" style={{ width: `${(answeredCount / chapter2QuizQuestions.length) * 100}%` }} />
+              <div className="quiz-progress-fill h-full rounded-full bg-[#741e25]" style={{ width: `${(answeredCount / questions.length) * 100}%` }} />
             </div>
           </div>
 
@@ -189,7 +189,7 @@ export default function QuizSection() {
                 onClick={advance}
                 className="mt-4 inline-flex min-h-12 items-center justify-center gap-2 rounded-xl bg-[#741e25] px-5 text-base font-semibold text-white transition-colors hover:bg-[#5f1820] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#741e25] active:scale-[0.99]"
               >
-                {questionIndex === chapter2QuizQuestions.length - 1 ? 'Xem kết quả' : 'Câu tiếp theo'}
+                {questionIndex === questions.length - 1 ? 'Xem kết quả' : 'Câu tiếp theo'}
                 <ArrowRight size={16} aria-hidden="true" />
               </button>
             </div>

@@ -6,7 +6,8 @@ import {
   Landmark,
   Presentation
 } from 'lucide-react';
-import { chapters, chapter7Hero, chapter7Intro, sourcePage } from './data/chapter7-family';
+import { chapters, chapter7Hero, chapter7Intro, chapter7QuizQuestions, sourcePage } from './data/chapter7-family';
+import QuizSection from './components/QuizSection';
 import PresentationMode from './components/PresentationMode';
 
 const navigationItems = [
@@ -501,7 +502,7 @@ export default function App() {
           </section>
           {chapters.map((chapter) => <ChapterSection key={chapter.id} chapter={chapter} />)}
           <SourcePageSection page={sourcePage} />
-          <PlaceholderSection id="quiz" number="04" title="Trắc nghiệm" />
+          <QuizSection questions={chapter7QuizQuestions} intro="Năm câu hỏi dành cho người nghe về Chương 7. Chọn một đáp án để xem kết quả và giải thích ngay." />
           <PlaceholderSection id="phu-luc-ai" number="05" title="Phụ lục AI" />
         </div>
       </main>
