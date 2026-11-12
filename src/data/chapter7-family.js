@@ -106,7 +106,7 @@ export const chapters = [
           'LO 2 · Phân tích: Biến đổi về cơ cấu, chức năng và quan hệ.',
           'LO 3 · Vận dụng: Đối chiếu phương hướng với luật, số liệu chính thức.'
         ],
-        source: 'Khung bài trình bày; GT mục 3 (III), tr.137–143 / PDF tr.136–142'
+        source: 'GT mục 3, tr.137–143'
       },
       {
         number: '03',
@@ -264,11 +264,11 @@ export const sourcePage = {
     {
       title: 'Giáo trình',
       items: [
-        'Mục 2 (II): tr.133–137 / PDF 132–136.',
-        'III.1.1: tr.137–138 / PDF 136–137.',
-        'III.1.2: tr.138–140 / PDF 137–139.',
-        'III.1.3: tr.140–142 / PDF 139–141.',
-        'III.2: tr.142–143 / PDF 141–142.'
+        'Mục 2 · Cơ sở xây dựng gia đình: tr.133–137.',
+        'Mục 3.1.1 · Biến đổi cơ cấu: tr.137–138.',
+        'Mục 3.1.2 · Biến đổi chức năng: tr.138–140.',
+        'Mục 3.1.3 · Biến đổi quan hệ: tr.140–142.',
+        'Mục 3.2 · Phương hướng: tr.142–143.'
       ]
     },
     {
@@ -295,7 +295,7 @@ export const sourcePage = {
   fullSources: [
     {
       id: 'S-01',
-      title: textbookBase + ' Tệp PDF do người dùng cung cấp, mục 2–3 (II–III), tr.133–143 theo số trang in; số trang PDF đối chiếu được ghi ở các phần trên.',
+      title: textbookBase + ' Mục 2–3, tr.133–143.',
       links: []
     },
     {

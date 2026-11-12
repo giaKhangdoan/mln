@@ -8,6 +8,8 @@ import {
 } from 'lucide-react';
 import { chapters, chapter7Hero, chapter7Intro, chapter7QuizQuestions, sourcePage } from './data/chapter7-family';
 import QuizSection from './components/QuizSection';
+import AIAppendix from './components/AIAppendix';
+import chapter7Ai from './data/chapter7-ai.json';
 import PresentationMode from './components/PresentationMode';
 
 const navigationItems = [
@@ -318,17 +320,6 @@ function SourcePageSection({ page }) {
   );
 }
 
-function PlaceholderSection({ id, number, title }) {
-  return (
-    <section id={id} aria-labelledby={`${id}-title`} className="scroll-mt-32 py-8 sm:py-10">
-      <h2 id={`${id}-title`} className="sr-only">{number} {title}</h2>
-      <div className="rounded-2xl border border-stone-200 bg-white/45 px-5 py-6 shadow-[0_14px_50px_-38px_rgba(41,37,36,0.3)] sm:px-8">
-        <p className="text-base leading-7 text-stone-700">Nội dung sẽ được bổ sung sau</p>
-      </div>
-    </section>
-  );
-}
-
 export default function App() {
   const [activeChapter, setActiveChapter] = useState(chapters[0].id);
   const [clickStars, setClickStars] = useState([]);
@@ -503,7 +494,17 @@ export default function App() {
           {chapters.map((chapter) => <ChapterSection key={chapter.id} chapter={chapter} />)}
           <SourcePageSection page={sourcePage} />
           <QuizSection questions={chapter7QuizQuestions} intro="Năm câu hỏi dành cho người nghe về Chương 7. Chọn một đáp án để xem kết quả và giải thích ngay." />
-          <PlaceholderSection id="phu-luc-ai" number="05" title="Phụ lục AI" />
+          <AIAppendix
+            log={chapter7Ai.entries.map((entry) => ({ ...entry, tool: chapter7Ai.tool, promptLabel: 'Prompt dùng' }))}
+            prompts={[]}
+            metrics={[
+              { value: String(chapter7Ai.entries.length).padStart(2, '0'), label: 'lượt dùng AI' },
+              { value: '01', label: 'giáo trình đối chiếu' },
+              { value: '05', label: 'câu hỏi trắc nghiệm' }
+            ]}
+            intro="Nhóm dùng AI để đối chiếu giáo trình, kiểm chứng số liệu, chọn ảnh, rút gọn slide và soạn câu hỏi. Mọi kết quả đều được nhóm kiểm tra lại với giáo trình và nguồn chính thống."
+            logNote="Mỗi lượt ghi AI dùng, tài liệu gửi AI, prompt và kết quả đầu ra."
+          />
         </div>
       </main>
 

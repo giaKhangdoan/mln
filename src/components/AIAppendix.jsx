@@ -18,13 +18,26 @@ function LogEntry({ entry }) {
       </summary>
       <div className="grid gap-5 border-t border-stone-200 px-4 py-5 sm:grid-cols-2 sm:px-5">
         <div>
-          <h4 className="text-sm font-bold text-stone-800">Tác vụ</h4>
+          <h4 className="text-sm font-bold text-stone-800">{entry.promptLabel ?? 'Tác vụ'}</h4>
           <p className="mt-2 text-sm leading-6 text-stone-700">{entry.prompt}</p>
         </div>
         <div>
           <h4 className="text-sm font-bold text-stone-800">Đầu ra</h4>
           <p className="mt-2 text-sm leading-6 text-stone-700">{entry.output}</p>
         </div>
+        {entry.input && (
+          <div className="sm:col-span-2">
+            <h4 className="text-sm font-bold text-stone-800">Tài liệu gửi AI</h4>
+            <p className="mt-2 text-sm leading-6 text-stone-700">{entry.input}</p>
+          </div>
+        )}
+        {entry.evidenceUrl && (
+          <div className="sm:col-span-2">
+            <a href={entry.evidenceUrl} target="_blank" rel="noreferrer" className="inline-flex min-h-11 items-center gap-1 text-sm font-semibold text-[#741e25] no-underline hover:text-[#a1383d] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#741e25]">
+              Xem minh chứng <ArrowUpRight size={14} aria-hidden="true" />
+            </a>
+          </div>
+        )}
         {entry.source && (
           <div className="sm:col-span-2">
             <h4 className="text-sm font-bold text-stone-800">Nguồn</h4>
@@ -61,23 +74,31 @@ function PromptEntry({ prompt }) {
   );
 }
 
-export default function AIAppendix() {
+const defaultMetrics = [
+  { value: '04', label: 'lượt hỗ trợ AI' },
+  { value: '05', label: 'prompt tham khảo' },
+  { value: '05', label: 'câu hỏi ôn tập' }
+];
+
+export default function AIAppendix({
+  log = aiUsageLog,
+  prompts = aiPromptExamples,
+  metrics = defaultMetrics,
+  intro = 'AI hỗ trợ đối chiếu tài liệu, kiểm tra số liệu và biên soạn câu hỏi.',
+  logNote = 'Bốn lượt hỗ trợ gắn với nội dung Chương 2.'
+}) {
   return (
     <section id="phu-luc-ai" className="scroll-mt-36 py-12 sm:scroll-mt-32 sm:py-16">
       <div data-reveal className="mb-8 max-w-4xl border-t border-stone-300 pt-5">
         <p className="text-sm font-semibold text-[#741e25]">Phần 05</p>
         <h2 className="mt-3 text-3xl font-semibold leading-[1.15] text-stone-900 sm:text-4xl">Phụ lục AI</h2>
         <p className="mt-4 max-w-[68ch] text-lg leading-8 text-stone-700">
-          AI hỗ trợ đối chiếu tài liệu, kiểm tra số liệu và biên soạn câu hỏi.
+          {intro}
         </p>
       </div>
 
       <div className="grid grid-cols-3 gap-3 sm:gap-4">
-        {[
-          { value: '04', label: 'lượt hỗ trợ AI' },
-          { value: '05', label: 'prompt tham khảo' },
-          { value: '05', label: 'câu hỏi ôn tập' }
-        ].map((metric) => (
+        {metrics.map((metric) => (
           <div key={metric.label} className="rounded-xl border border-stone-200 bg-white/75 p-3 sm:p-5">
             <p className="text-2xl font-semibold leading-none text-[#741e25] sm:text-3xl">{metric.value}</p>
             <p className="mt-2 text-xs leading-5 text-stone-700 sm:text-sm">{metric.label}</p>
@@ -87,28 +108,28 @@ export default function AIAppendix() {
 
       <nav aria-label="Nội dung phụ lục AI" className="mt-5 flex flex-wrap gap-2">
         <a href="#ai-nhat-ky" className="inline-flex min-h-11 items-center rounded-full border border-stone-300 bg-white px-4 text-sm font-semibold text-stone-800 no-underline transition-colors motion-reduce:transition-none hover:border-[#741e25] hover:text-[#741e25] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#741e25]">Nhật ký AI</a>
-        <a href="#ai-prompt-mau" className="inline-flex min-h-11 items-center rounded-full border border-stone-300 bg-white px-4 text-sm font-semibold text-stone-800 no-underline transition-colors motion-reduce:transition-none hover:border-[#741e25] hover:text-[#741e25] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#741e25]">Prompt mẫu</a>
+        {prompts.length > 0 && <a href="#ai-prompt-mau" className="inline-flex min-h-11 items-center rounded-full border border-stone-300 bg-white px-4 text-sm font-semibold text-stone-800 no-underline transition-colors motion-reduce:transition-none hover:border-[#741e25] hover:text-[#741e25] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#741e25]">Prompt mẫu</a>}
       </nav>
 
       <section id="ai-nhat-ky" className="scroll-mt-36 pt-10 sm:scroll-mt-32 sm:pt-14">
         <div className="mb-5 max-w-3xl">
           <h3 className="text-2xl font-semibold leading-tight text-stone-900 sm:text-3xl">Nhật ký sử dụng AI</h3>
-          <p className="mt-2 text-base leading-7 text-stone-700">Bốn lượt hỗ trợ gắn với nội dung Chương 2.</p>
+          <p className="mt-2 text-base leading-7 text-stone-700">{logNote}</p>
         </div>
         <div className="grid gap-3">
-          {aiUsageLog.map((entry) => <LogEntry key={entry.id} entry={entry} />)}
+          {log.map((entry) => <LogEntry key={entry.id} entry={entry} />)}
         </div>
       </section>
 
-      <section id="ai-prompt-mau" className="scroll-mt-36 pt-12 sm:scroll-mt-32 sm:pt-16">
+      {prompts.length > 0 && <section id="ai-prompt-mau" className="scroll-mt-36 pt-12 sm:scroll-mt-32 sm:pt-16">
         <div className="mb-4 max-w-3xl">
           <h3 className="text-2xl font-semibold leading-tight text-stone-900 sm:text-3xl">Prompt mẫu</h3>
           <p className="mt-2 text-base leading-7 text-stone-700">Năm prompt để tham khảo khi đọc tài liệu, kiểm chứng và biên soạn.</p>
         </div>
         <div className="rounded-2xl border border-stone-200 bg-white/75 px-4 sm:px-6">
-          {aiPromptExamples.map((prompt) => <PromptEntry key={prompt.id} prompt={prompt} />)}
+          {prompts.map((prompt) => <PromptEntry key={prompt.id} prompt={prompt} />)}
         </div>
-      </section>
+      </section>}
 
     </section>
   );
