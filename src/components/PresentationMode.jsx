@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { ArrowLeft, ArrowRight, ArrowUpRight, X } from 'lucide-react';
 import { chapter7Intro, presentationSlides } from '../data/chapter7-family';
+import Chapter7OverviewVisual from './Chapter7OverviewVisual';
 
 function PresentationPhoto({ photo }) {
   return (
@@ -138,6 +139,8 @@ function PresentationSlide({ slide, titleRef }) {
                     ))}
                   </ul>
                 )}
+
+                <Chapter7OverviewVisual slide={slide} />
 
                 {slide.highlight && (
                   <aside className="mt-4 rounded-xl border border-[#ead8ba] bg-[#f6efe3] p-4">

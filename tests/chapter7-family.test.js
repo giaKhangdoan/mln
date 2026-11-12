@@ -29,6 +29,22 @@ test('source page 11 is the final page in the shared 11-page presentation', () =
   assert.equal(presentationSlides.at(-1).sourcePage, sourcePage);
 });
 
+test('slides 01 and 02 use a visual three-stage roadmap and structured learning goals', async () => {
+  const slides = chapters.flatMap(({ slides: chapterSlides }) => chapterSlides);
+  const slide01 = slides.find(({ number }) => number === '01');
+  const slide02 = slides.find(({ number }) => number === '02');
+  const app = await readFile(resolve(projectRoot, 'src/App.jsx'), 'utf8');
+  const presentation = await readFile(resolve(projectRoot, 'src/components/PresentationMode.jsx'), 'utf8');
+
+  assert.deepEqual(slide01.roadmapSteps, ['Cơ sở lý luận', 'Biến đổi', 'Phương hướng xây dựng']);
+  assert.equal(slide01.points.length, 1);
+  assert.deepEqual(slide02.objectives.map(({ code }) => code), ['LO 1', 'LO 2', 'LO 3']);
+  assert.ok(slide02.objectives.every(({ title, description }) => title && description));
+  assert.doesNotMatch(JSON.stringify(slides.slice(0, 2)), /Mạch trình bày/);
+  assert.match(app, /<Chapter7OverviewVisual slide=\{slide\} \/>/);
+  assert.match(presentation, /<Chapter7OverviewVisual slide=\{slide\} \/>/);
+});
+
 test('slide 07 preserves all four cited demographic and labor metrics', () => {
   const slide07 = chapters.flatMap(({ slides }) => slides).find(({ number }) => number === '07');
 

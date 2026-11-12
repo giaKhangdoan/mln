@@ -94,17 +94,17 @@ export const chapters = [
         title: 'Xây dựng gia đình Việt Nam',
         lead: 'Trong thời kỳ quá độ lên chủ nghĩa xã hội',
         points: [
-          'Câu hỏi trung tâm: ' + chapter7Intro.centralQuestion,
-          'Mạch trình bày: ' + chapter7Intro.roadmap + '.'
-        ]
+          'Câu hỏi trung tâm: ' + chapter7Intro.centralQuestion
+        ],
+        roadmapSteps: chapter7Intro.roadmap.split(' → ')
       },
       {
         number: '02',
-        title: 'Mạch trình bày và mục tiêu',
-        points: [
-          'LO 1 · Nắm lý luận: Cơ sở xây dựng gia đình trong thời kỳ quá độ.',
-          'LO 2 · Phân tích: Biến đổi về cơ cấu, chức năng và quan hệ.',
-          'LO 3 · Vận dụng: Đối chiếu phương hướng với luật, số liệu chính thức.'
+        title: 'Mục tiêu bài trình bày',
+        objectives: [
+          { code: 'LO 1', title: 'Nắm lý luận', description: 'Cơ sở xây dựng gia đình trong thời kỳ quá độ.' },
+          { code: 'LO 2', title: 'Phân tích', description: 'Biến đổi về cơ cấu, chức năng và quan hệ.' },
+          { code: 'LO 3', title: 'Vận dụng', description: 'Đối chiếu phương hướng với luật, số liệu chính thức.' }
         ],
         source: 'GT mục 3, tr.137–143'
       },

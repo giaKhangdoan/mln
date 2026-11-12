@@ -11,6 +11,7 @@ import QuizSection from './components/QuizSection';
 import AIAppendix from './components/AIAppendix';
 import chapter7Ai from './data/chapter7-ai.json';
 import PresentationMode from './components/PresentationMode';
+import Chapter7OverviewVisual from './components/Chapter7OverviewVisual';
 
 const navigationItems = [
   ...chapters.map((chapter) => ({ ...chapter, navTitle: chapter.shortTitle, navType: 'Chặng' })),
@@ -182,6 +183,8 @@ function SlideCard({ slide, index }) {
               ))}
             </ul>
           )}
+
+          <Chapter7OverviewVisual slide={slide} />
 
           {slide.metrics && <MetricGrid metrics={slide.metrics} />}
           {slide.metricNote && <p className="mt-3 text-sm leading-6 text-stone-700">{slide.metricNote}</p>}
@@ -483,8 +486,8 @@ export default function App() {
               <h2 id="scope-title" className="mt-3 text-3xl font-semibold leading-tight text-stone-900 sm:text-4xl">Gia đình trong thời kỳ quá độ</h2>
               <p className="mt-4 max-w-[60ch] text-base leading-7 text-stone-700">{chapter7Intro.centralQuestion}</p>
             </div>
-            <aside data-reveal aria-label="Mạch trình bày" className="min-w-0 rounded-2xl bg-[#651d24] px-6 py-7 text-[#f0d9b8] shadow-[0_24px_60px_-38px_rgba(28,8,12,0.75)] sm:px-8 sm:py-9">
-              <p className="text-xs font-bold uppercase tracking-[0.16em] text-white/75">Mạch trình bày</p>
+            <aside data-reveal aria-label="Ba chặng" className="min-w-0 rounded-2xl bg-[#651d24] px-6 py-7 text-[#f0d9b8] shadow-[0_24px_60px_-38px_rgba(28,8,12,0.75)] sm:px-8 sm:py-9">
+              <p className="text-xs font-bold uppercase tracking-[0.16em] text-white/75">Ba chặng</p>
               <p className="mt-4 text-2xl font-semibold leading-snug sm:text-3xl">{chapter7Intro.roadmap}</p>
               <p className="mt-3 max-w-[58ch] text-base leading-7 text-white/90">
                 Từ cơ sở lý luận, qua biến đổi về cơ cấu, chức năng và quan hệ, đến các phương hướng xây dựng gia đình Việt Nam.
