@@ -102,9 +102,9 @@ export const chapters = [
         number: '02',
         title: 'Mục tiêu bài trình bày',
         objectives: [
-          { code: 'LO 1', title: 'Nắm lý luận', description: 'Cơ sở xây dựng gia đình trong thời kỳ quá độ.' },
-          { code: 'LO 2', title: 'Phân tích', description: 'Biến đổi về cơ cấu, chức năng và quan hệ.' },
-          { code: 'LO 3', title: 'Vận dụng', description: 'Đối chiếu phương hướng với luật, số liệu chính thức.' }
+          { code: 'LO 1', title: 'Nắm lý luận', description: 'Hiểu bốn cơ sở xây dựng gia đình trong thời kỳ quá độ.' },
+          { code: 'LO 2', title: 'Phân tích', description: 'Phân tích được biến đổi về cơ cấu, chức năng và quan hệ.' },
+          { code: 'LO 3', title: 'Vận dụng', description: 'Liên hệ phương hướng xây dựng với luật và số liệu chính thức.' }
         ],
         source: 'GT mục 3, tr.137–143'
       },
